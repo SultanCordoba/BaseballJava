@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+body {
+    /* font-family: "Lato", Arial, Helvetica, sans-serif; */
+    /* Margin bottom by footer height */
+    padding-top: 60px;
+    margin-bottom: 40px;
+}
+
+#encabezado-menu {
+	font-weight: 500;
+	font-size: 1.25em;
+}
+
+.fondo {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.breadcrumb {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+}
+
+.panel-beisbol {
+	background-color:rgba(127, 127, 127, 0.5);
+}
+
+.color-fondo {
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    background-color: rgba(40, 205, 40, 0.3);
+}
+
+.tabla-beisbol {
+    background-color: sienna;
+    color: white;
+    font-size: larger;
+}
+
+.table-curved {
+    border-collapse: separate;
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    border-left:0px;
+    border-top:0px;
+}
+.table-curved > thead:first-child > tr:first-child > th {
+    border-bottom: 0px;
+    border-top: solid #ddd 1px;
+}
+.table-curved td, .table-curved th {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.table-curved > :first-child > :first-child > :first-child {
+    border-top-left-radius: 6px;
+}
+.table-curved > :first-child > :first-child > :last-child {
+    border-top-right-radius: 6px;
+}
+.table-curved > :last-child > :last-child > :first-child {
+    border-bottom-left-radius: 6px;
+}
+.table-curved > :last-child > :last-child > :last-child {
+    border-bottom-right-radius: 6px;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td 
+{
+    background-color: #D9F4DD;
+}
+
+.resaltar 
+{
+	font-weight: bold;	
+}

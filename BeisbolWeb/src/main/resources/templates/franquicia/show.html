@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+ 	<head>
+	   	<link th:href="@{/webjars/datatables/1.10.5/css/jquery.dataTables.min.css}" 
+			  rel="stylesheet" media="screen" type="text/css" />
+  	</head>
+	<body>
+		<div layout:fragment="content">
+			<div class="row">
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
+						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
+						<li><a href="#" th:text="#{liga.showall.equipos}"></a></li>						
+						<li class="active" th:text="${franquicia.nombre}"></li>
+					</ol>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading" th:text="${franquicia.nombre}">
+				</div>
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<th>Fecha</th>
+							<th>Nombre</th>
+						</thead>
+						
+						<tfoot>
+							<th>Fecha</th>
+							<th>Nombre</th>
+						</tfoot>
+						
+						<tbody>
+							<tr th:each = "nombre : ${franquicia.nombres}">
+								<td th:text="${nombre.rangoString}"></td>
+								<td th:text="${nombre.nombre}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>	

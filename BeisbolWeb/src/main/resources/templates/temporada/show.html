@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+	<head>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<div class="row">
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
+						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
+						<li><a th:href="@{/liga/show/{id}/temporadas(id = ${liga.id})}" th:text="${liga.siglas}"></a></li>
+						<li class="active" th:text="${temporada.nombre}"></li>
+					</ol>
+				</div>
+			</div>	
+		
+			<h2 th:text="#{temporada.show.temporada} + ' ' + ${temporada.nombre}"></h2>
+		
+			<div role="tabpanel">
+				<ul class="nav nav-pills" role="tablist" id="navTemporada">
+					<li role="presentation"><a href="#tabEtapas" aria-controls="home" role="pill" data-toggle="tab">Etapas</a></li>
+					<li role="presentation"><a href="#tabLideres" aria-controls="home" role="pill" data-toggle="tab">Líderes</a></li>
+					<li role="presentation"><a href="#tabPartidos" aria-controls="home" role="pill" data-toggle="tab">Partidos</a></li>
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane" id="tabEtapas">
+
+			
+						<div role="tabpanel">
+							<ul class="nav nav-tabs" role="tablist" id="navEtapa">
+								<li role="presentation" th:each="etapa : ${temporada.etapas}">
+									<a th:href="'#e' + ${etapa.id}" aria-controls="home" role="tab" data-toggle="tab"
+									  th:text="${etapa.nombre}"></a>
+								</li>
+							</ul>
+							
+							<div class="tab-content">
+								<div th:each="etapa : ${etapas}" role="tabpanel" class="tab-pane" th:id="'e' + ${etapa.id}">					
+									<div role="tabpanel">
+										<ul class="nav nav-tabs" role="tablist" id="navVuelta">
+											<li role="presentation" th:each="vuelta,iterStat : ${etapa.vueltas}">
+												<a th:href="'#v' + ${iterStat.count} + 'e' + ${etapa.id}" 
+												  aria-controls="home" role="tab" data-toggle="tab"
+												  th:text="${vuelta.key}"></a>
+											</li>
+										</ul>
+										
+										<div class="tab-content">
+											<div th:each="vuelta,iterStat: ${etapa.vueltas}" role="tabpanel" th:class="${iterStat.first}?'tab-pane active' : 'tab-pane'" 
+												th:id="'v' + ${iterStat.count} + 'e' + ${etapa.id}" >
+												<div class="panel panel-default" th:each="grupo : ${vuelta.value}">
+												  <!-- Default panel contents -->
+												  <div class="panel-heading resaltar" th:text="${grupo.key}"></div>
+												  <div class="panel-body"></div>
+												
+												  <table class="table">
+												  	<thead>
+												  		<th th:text="#{temporada.show.equipo}"></th>
+												  		<th th:text="#{temporada.show.ganados}"></th>
+												  		<th th:text="#{temporada.show.perdidos}"></th>
+												  		<th th:text="#{temporada.show.porcentaje}"></th>
+												  		<th th:text="#{temporada.show.juegosDetras}"></th>
+												  	</thead>
+												  	
+													<tfoot>
+												  		<th th:text="#{temporada.show.equipo}"></th>
+												  		<th th:text="#{temporada.show.ganados}"></th>
+												  		<th th:text="#{temporada.show.perdidos}"></th>
+												  		<th th:text="#{temporada.show.porcentaje}"></th>
+												  		<th th:text="#{temporada.show.juegosDetras}"></th>
+												  	</tfoot>
+												  	
+												  	<tbody>
+													  	<tr th:each="record : ${grupo.value}">
+													  		<td th:text="${record.nombre}"></td>
+													  		<td th:text="${record.ganados}"></td>
+													  		<td th:text="${record.perdidos}"></td>
+													  		<td th:text="${record.pctjeString}"></td>
+													  		<td th:text="${record.juegosDetras}"></td>
+													  	</tr>
+												  	</tbody>
+												  </table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="alert alert-info alert-dismissable fade in"
+						   th:if="${not #lists.isEmpty(temporada.campeon.nombre)}">
+						    <strong th:text="#{temporada.show.campeon} + ': ' + ${temporada.campeon.nombre}"></strong>
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						</div>					
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tabLideres">
+						<p>Coming soon...</p>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tabPartidos">
+						<p>Coming soon...</p>
+					</div>
+				</div>
+			</div>
+		
+						
+		</div>
+		
+		<div layout:fragment="scripts">
+			<script th:src="@{/webjars/bootstrap/3.3.4/js/tab.js}" type="text/javascript"></script>
+			<script th:inline="javascript">
+				$(document).ready(function() {
+					$('#navTemporada a:first').tab('show');
+					$('#navEtapa a:first').tab('show');
+					$('#navVuelta a:first').tab('show');
+				});
+			</script>		
+		</div>		
+	</body>
+</html>

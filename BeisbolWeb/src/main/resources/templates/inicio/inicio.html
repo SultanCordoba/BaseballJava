@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+	<body>
+		<div layout:fragment="content">
+			<p>Página de Inicio del Almanaque de Beisbol</p>
+			
+	   		<script type="text/javascript">
+				$(document).ready(function () {
+						$("#mainTab > li.active").removeClass('active');
+						$("#tabInicio").addClass('active');
+					});
+			</script>
+		</div>
+	</body>
+</html>

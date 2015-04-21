@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+	<head>
+	</head>
+	<body>
+		<div layout:fragment="content">
+		    <div th:each="liga : ${ligas}" class="col-md-4 col-xs-10">
+		    	<div class="panel panel-info panel-beisbol">
+		    		<table class="table table-striped">
+		    			<tr>
+		    				<th class="tabla-beisbol" th:text="${liga.nombre}"></th>
+		    			</tr>
+		    		</table>
+		    		<div class="panel-body color-fondo">
+		    			<ul class="list-group">
+		    				<li class="list-group-item">
+		    					<a th:href="@{/liga/show/{id}/general(id = ${liga.id})}">General</a>
+		    				</li>
+		    				<li class="list-group-item">	    				
+		    					<a th:href="@{/liga/show/{id}/temporadas(id = ${liga.id})}" 
+		    					   th:text="#{liga.showall.temporadas}"></a>
+		    				</li>	    					
+		    				<li class="list-group-item">
+		    					<a th:href="@{/liga/show/{id}/equipos(id = ${liga.id})}" 
+		    					   th:text="#{liga.showall.equipos}"></a> 
+		    				</li>
+		    			</ul>
+		    		</div>
+		    	</div>	    
+		    </div>		   
+		</div>	
+		
+	    <div layout:fragment="scripts">
+	   		<script type="text/javascript">
+				$(document).ready(function () {
+						$('#mainTab > li.active').removeClass('active');
+						$("#tabLigas").addClass('active');
+					});
+			</script>
+		</div>
+
+	</body>
+</html>

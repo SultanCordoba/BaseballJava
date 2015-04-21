@@ -1,0 +1,315 @@
+2015-04-06_11:54:14.814 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-06_11:54:16.035 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_05/master_scoreboard.json
+2015-04-06_11:54:18.253 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:18.479 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:18.704 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:18.857 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:19.046 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:19.199 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:19.323 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:19.477 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-06_11:54:19.478 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-05
+2015-04-06_11:54:19.479 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-09_10:57:45.472 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-09_10:57:46.650 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_07/master_scoreboard.json
+2015-04-09_10:57:48.282 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR: org.springframework.transaction.TransactionSystemException: Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Transaction marked as rollbackOnly - Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Transaction marked as rollbackOnly
+2015-04-09_10:57:48.424 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:48.580 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:48.752 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:48.908 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:49.044 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:49.184 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:49.329 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:49.345 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-07
+2015-04-09_10:57:49.346 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_08/master_scoreboard.json
+2015-04-09_10:57:49.867 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Suspended
+2015-04-09_10:57:49.982 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR: org.springframework.transaction.TransactionSystemException: Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Transaction marked as rollbackOnly - Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Transaction marked as rollbackOnly
+2015-04-09_10:57:50.094 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:50.094 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Postponed
+2015-04-09_10:57:50.219 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:50.312 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:50.437 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:50.520 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_10:57:50.536 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-08
+2015-04-09_10:57:50.536 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-09_11:05:49.154 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-09_11:05:50.356 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_07/master_scoreboard.json
+2015-04-09_11:05:51.464 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:52.712 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:52.826 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:52.929 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.049 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.173 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.298 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.436 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.437 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-07
+2015-04-09_11:05:53.456 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_08/master_scoreboard.json
+2015-04-09_11:05:53.517 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Suspended
+2015-04-09_11:05:53.646 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.747 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.748 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Postponed
+2015-04-09_11:05:53.843 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:53.939 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:54.023 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:54.106 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-09_11:05:54.113 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-08
+2015-04-09_11:05:54.113 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-10_09:35:20.342 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-10_09:35:21.349 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_07/master_scoreboard.json
+2015-04-10_09:35:23.609 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:23.815 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.007 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.187 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.355 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.499 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.659 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.837 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:24.838 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-07
+2015-04-10_09:35:24.849 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_08/master_scoreboard.json
+2015-04-10_09:35:25.193 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.324 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.455 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.455 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Postponed
+2015-04-10_09:35:25.570 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.700 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.811 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.912 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:25.920 [main] INFO  deportes.beisbol.App - Se encontraron 8 juegos para 2015-04-08
+2015-04-10_09:35:25.920 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-10_09:35:56.675 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-10_09:35:57.798 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_09/master_scoreboard.json
+2015-04-10_09:35:58.610 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:58.736 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:58.853 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:58.972 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.090 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.205 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.297 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.397 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.504 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.605 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-10_09:35:59.607 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-09
+2015-04-10_09:35:59.607 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-13_09:42:34.282 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-13_09:42:35.513 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_10/master_scoreboard.json
+2015-04-13_09:42:38.689 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:38.975 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:39.297 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:39.652 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:40.181 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:40.359 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:40.528 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:40.716 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:40.717 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-10
+2015-04-13_09:42:40.730 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_11/master_scoreboard.json
+2015-04-13_09:42:41.516 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:41.685 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:41.815 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:41.972 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:42.149 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:42.275 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:42.410 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:42.578 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:42.588 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-11
+2015-04-13_09:42:42.588 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_12/master_scoreboard.json
+2015-04-13_09:42:42.752 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Postponed
+2015-04-13_09:42:42.899 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.069 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.246 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.448 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.563 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.714 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.824 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.934 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-13_09:42:43.935 [main] INFO  deportes.beisbol.App - Se encontraron 24 juegos para 2015-04-12
+2015-04-13_09:42:43.950 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_13/master_scoreboard.json
+2015-04-13_09:42:44.047 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-13_09:42:44.047 [main] INFO  deportes.beisbol.App - Se encontraron 16 juegos para 2015-04-13
+2015-04-13_09:42:44.047 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-17_08:50:07.855 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-17_08:50:09.226 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_13/master_scoreboard.json
+2015-04-17_08:50:13.555 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:13.556 [main] INFO  deportes.beisbol.App - Se encontraron 16 juegos para 2015-04-13
+2015-04-17_08:50:13.570 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_14/master_scoreboard.json
+2015-04-17_08:50:14.214 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:14.492 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:14.748 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:14.928 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:15.104 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:15.263 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:15.508 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-17_08:50:15.694 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:15.695 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-14
+2015-04-17_08:50:15.702 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_15/master_scoreboard.json
+2015-04-17_08:50:16.081 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:16.234 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:16.400 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:16.489 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-17_08:50:16.628 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:16.761 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:16.934 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.046 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.047 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-15
+2015-04-17_08:50:17.069 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_16/master_scoreboard.json
+2015-04-17_08:50:17.357 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.449 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-17_08:50:17.587 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.694 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.820 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.901 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:17.993 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:18.076 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:50:18.076 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-16
+2015-04-17_08:50:18.082 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-17_08:50:18.176 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.183 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.183 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.183 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.184 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.189 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.189 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.189 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:50:18.189 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-17_08:50:18.190 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-17_08:57:21.535 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-17_08:57:22.677 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_14/master_scoreboard.json
+2015-04-17_08:57:23.519 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:23.691 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:23.822 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:23.947 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.057 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.197 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.307 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.401 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.401 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-14
+2015-04-17_08:57:24.401 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_15/master_scoreboard.json
+2015-04-17_08:57:24.850 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:24.948 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.080 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.202 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.330 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.457 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.546 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.653 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.661 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-15
+2015-04-17_08:57:25.669 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_16/master_scoreboard.json
+2015-04-17_08:57:25.839 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:25.917 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.027 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.105 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.183 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.261 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.355 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.433 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-17_08:57:26.433 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-16
+2015-04-17_08:57:26.449 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-17_08:57:26.543 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.543 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.543 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.543 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.558 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.558 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.558 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.558 [main] INFO  d.b.json.set1.LectorMultiPartidos - status:Preview
+2015-04-17_08:57:26.574 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-17_08:57:26.574 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:12:09.314 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:12:10.544 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:12:11.575 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:12:11.584 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:12:11.872 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:12:11.884 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_19/master_scoreboard.json
+2015-04-20_09:12:14.031 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:14.234 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:14.465 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:14.697 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:14.873 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:15.021 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:15.164 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:15.299 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:12:15.299 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-04-19
+2015-04-20_09:12:15.307 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_20/master_scoreboard.json
+2015-04-20_09:12:15.439 [main] INFO  deportes.beisbol.App - Se encontraron 15 juegos para 2015-04-20
+2015-04-20_09:12:15.439 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:17:52.125 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:17:53.675 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:17:54.338 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:17:54.354 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:17:54.733 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:17:54.737 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:18:33.202 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:18:34.415 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:20:51.917 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:20:53.075 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:20:54.040 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:54.165 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:54.275 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:54.353 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:54.353 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:20:54.368 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:20:54.884 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:54.995 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:55.089 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:55.227 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:20:55.229 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:20:55.229 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:26:05.172 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:26:06.454 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:27:07.359 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:27:08.618 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:28:14.248 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:28:15.472 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:29:14.125 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:14.244 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:14.338 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:14.432 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:14.432 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:29:14.432 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:29:14.885 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:14.979 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:15.060 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:15.153 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:29:15.153 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:29:15.153 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:46:38.401 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:46:39.550 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:46:40.621 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:40.758 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:46:40.883 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:41.023 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:41.023 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:46:41.023 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:46:41.605 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:41.699 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:46:41.887 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:42.044 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:46:42.045 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:46:42.046 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:50:19.591 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:50:20.654 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:50:21.639 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:21.830 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:21.971 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.080 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.080 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:50:22.080 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:50:22.618 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.727 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.819 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.928 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:22.928 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:50:22.928 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-04-20_09:50:51.652 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-04-20_09:50:52.717 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_17/master_scoreboard.json
+2015-04-20_09:50:53.671 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:53.764 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:50:53.889 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:53.998 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:53.998 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-17
+2015-04-20_09:50:54.014 [main] INFO  d.b.json.set1.LectorMultiPartidos - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_04/day_18/master_scoreboard.json
+2015-04-20_09:50:54.498 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:54.580 [main] INFO  d.b.json.set1.LectorMultiPartidos - ERROR desconocido
+2015-04-20_09:50:54.705 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:54.814 [main] INFO  d.b.json.set1.LectorMultiPartidos - OP_EXITOSA
+2015-04-20_09:50:54.829 [main] INFO  deportes.beisbol.App - Se encontraron 23 juegos para 2015-04-18
+2015-04-20_09:50:54.829 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO

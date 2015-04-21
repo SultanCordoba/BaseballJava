@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+ 	<head>
+	   	<link th:href="@{/webjars/datatables/1.10.5/css/jquery.dataTables.min.css}" 
+			  rel="stylesheet" media="screen" type="text/css" />
+  	</head>
+	<body>
+		<div layout:fragment="content">
+			<div class="row">
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
+						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
+						<li class="active" th:text="${ligaD.nombre}"></li>
+					</ol>
+				</div>
+			</div>				
+		
+			<div role="tabpanel">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#general" aria-controls="home" role="tab" data-toggle="tab">General</a></li>
+					<li role="presentation"><a href="#temporadas" aria-controls="home" role="tab" data-toggle="tab" 
+					  th:text="#{liga.showall.temporadas}"></a></li>
+					<li role="presentation"><a href="#equipos" aria-controls="home" role="tab" data-toggle="tab" 
+					  th:text="#{liga.showall.equipos}"></a></li>  
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="general">
+						<div class="panel panel-default">
+							<div class="panel-heading">General</div>
+							<div class="panel-body">
+								<p th:text="${ligaD.nombre}"></p>
+							</div>
+						</div>	
+					</div>	
+					
+					<div role="tabpanel" class="tab-pane" id="temporadas">
+						<div class="panel panel-default">
+							<div class="panel-heading" th:text="#{liga.showall.temporadas}">
+							</div>
+							<div class="panel-body">
+								<div class="container col-md-11">
+									<table id="tabTemporadas" class="display table-curved" cellspacing="0">
+										<thead>
+											<tr>
+												<th th:text="#{liga.show.nombreTemp}"></th>
+												<th th:text="#{liga.show.nombreCampeon}"></th>
+											</tr>
+										</thead>
+										
+										<tfoot>
+											<tr>
+												<th th:text="#{liga.show.nombreTemp}"></th>
+												<th th:text="#{liga.show.nombreCampeon}"></th>
+											</tr>						
+										</tfoot>
+										
+										<tbody>
+											<tr th:each="temporada : ${ligaD.temporadas}">
+												<td><a th:href="@{/temporada/show/{id}(id = ${temporada.id})}" th:text="${temporada.nombre}"></a></td>
+												<td th:text="${temporada.campeon.nombre}"></td>
+											</tr>
+										</tbody>
+									</table>								
+								</div>
+							</div>						
+						</div>
+					</div>
+					
+					<div role="tabpanel" class="tab-pane" id="equipos">
+						<div class="panel panel-default">
+							<div class="panel-heading" th:text="#{liga.showall.equipos}">
+							</div>
+							<div class="panel-body">
+								<div class="container col-md-11">
+									<table id="tabEquipos" class="display table-curved" cellspacing="0">
+										<thead>
+											<tr>
+												<th th:text="#{liga.show.nombreEquipo}"></th>
+												<th th:text="#{liga.show.nombrePais}"></th>
+											</tr>
+										</thead>
+										
+										<tfoot>
+											<tr>
+												<th th:text="#{liga.show.nombreEquipo}"></th>
+												<th th:text="#{liga.show.nombrePais}"></th>
+											</tr>
+										</tfoot>
+										
+										<tbody>
+											<tr th:each="equipo : ${equipos}">
+												<td><a th:href="@{/franquicia/show/{id}(id = ${equipo.idFranquicia})}" 
+												  th:text="${equipo.nombre}"></a></td>
+												<td th:text="${equipo.pais}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>		
+			</div>
+		
+			<div role="tabpanel">
+				
+				<div class="tab-content">
+
+					
+					<div role="tabpanel" class="tab-pane" id="temporadas">
+						<div class="panel panel-default" style="margin-right:30px;">
+							<div class="panel-heading" th:text="#{liga.showall.temporadas}">
+							</div>
+							<div class="panel-body">
+								<div class="container col-md-11">
+									<table id="tabTemporadas" class="display table-curved" cellspacing="0">
+										<thead>
+											<tr>
+												<th th:text="#{liga.show.nombreTemp}"></th>
+												<th th:text="#{liga.show.nombreCampeon}"></th>
+											</tr>
+										</thead>
+										
+										<tfoot>
+											<tr>
+												<th th:text="#{liga.show.nombreTemp}"></th>
+												<th th:text="#{liga.show.nombreCampeon}"></th>
+											</tr>						
+										</tfoot>
+										
+										<tbody>
+											<tr th:each="temporada : ${ligaD.temporadas}">
+												<td><a th:href="@{/temporada/show/{id}(id = ${temporada.id})}" th:text="${temporada.nombre}"></a></td>
+												<td th:text="${temporada.campeon.nombre}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>						
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="equipos">
+						<div class="panel panel-default">
+							<div class="panel-heading" th:text="#{liga.showall.equipos}">
+							</div>
+							<div class="panel-body">
+								<div class="container col-md-11">
+									<table id="tabEquipos" class="display table-curved" cellspacing="0">
+										<thead>
+											<tr>
+												<th>id</th>
+												<th th:text="#{liga.show.nombreEquipo}"></th>
+												<th th:text="#{liga.show.nombrePais}"></th>
+											</tr>
+										</thead>
+										
+										<tfoot>
+											<tr>
+												<th>id</th>
+												<th th:text="#{liga.show.nombreEquipo}"></th>
+												<th th:text="#{liga.show.nombrePais}"></th>
+											</tr>
+										</tfoot>
+										
+										<tbody>
+											<tr th:each="equipo : ${equipos}">
+												<td th:text="${equipo.idFranquicia}"></td>
+												<td><a href="#" th:text="${equipo.nombre}"></a></td>
+												<td th:text="${equipo.pais}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div layout:fragment="scripts">
+		  	<script th:src="@{/webjars/datatables/1.10.5/js/jquery.dataTables.min.js}" type="text/javascript"></script>
+		  	<script th:src="@{/webjars/bootstrap/3.3.4/js/tab.js}" type="text/javascript"></script>		
+		  	
+	   		<script th:inline="javascript">
+				$(document).ready(function () {
+						$('#mainTab > li.active').removeClass('active');
+						$("#tabLigas").addClass('active');
+												
+						$('#tabTemporadas').dataTable( {
+							"language": {
+								"lengthMenu": [[#{liga.show.lenghtMenu}]],
+								"zeroRecords": [[#{liga.show.zeroRecords}]],
+								"info": [[#{liga.show.info}]],
+								"infoFiltered": [[#{liga.show.infoFiltered}]],
+								"search": [[#{liga.show.search}]],
+								"paginate": {
+									"first": [[#{liga.show.paginateFirst}]],
+									"last": [[#{liga.show.paginateLast}]],
+									"next": [[#{liga.show.paginateNext}]],
+									"previous": [[#{liga.show.paginatePrevious}]],								
+								}
+							},
+							"order": [[0, "desc"]]
+						});	
+						
+						$('#tabEquipos').dataTable( {
+							"language": {
+								"lengthMenu": [[#{liga.show.lenghtMenu}]],
+								"zeroRecords": [[#{liga.show.zeroRecords}]],
+								"info": [[#{liga.show.info}]],
+								"infoFiltered": [[#{liga.show.infoFiltered}]],
+								"search": [[#{liga.show.search}]],
+								"paginate": {
+									"first": [[#{liga.show.paginateFirst}]],
+									"last": [[#{liga.show.paginateLast}]],
+									"next": [[#{liga.show.paginateNext}]],
+									"previous": [[#{liga.show.paginatePrevious}]]
+								}
+							}
+						});							
+					});				
+			</script>				
+		</div>
+	</body>
+</html>

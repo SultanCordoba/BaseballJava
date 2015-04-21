@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+<body>
+	<script layout:fragment="ligaFooter" type="text/javascript">
+		$(document).ready(function () {
+				$("#tabInicio").removeClass('active');
+				$("#tabLigas").addClass('active');
+				console.log("ready!");
+			});
+	</script>
+</body>
+</html>
