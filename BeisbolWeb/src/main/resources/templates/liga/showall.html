@@ -7,30 +7,19 @@
 	</head>
 	<body>
 		<div layout:fragment="content">
-		    <div th:each="liga : ${ligas}" class="col-md-4 col-xs-10">
-		    	<div class="panel panel-info panel-beisbol">
-		    		<table class="table table-striped">
-		    			<tr>
-		    				<th class="tabla-beisbol" th:text="${liga.nombre}"></th>
-		    			</tr>
-		    		</table>
-		    		<div class="panel-body color-fondo">
-		    			<ul class="list-group">
-		    				<li class="list-group-item">
-		    					<a th:href="@{/liga/show/{id}/general(id = ${liga.id})}">General</a>
-		    				</li>
-		    				<li class="list-group-item">	    				
-		    					<a th:href="@{/liga/show/{id}/temporadas(id = ${liga.id})}" 
-		    					   th:text="#{liga.showall.temporadas}"></a>
-		    				</li>	    					
-		    				<li class="list-group-item">
-		    					<a th:href="@{/liga/show/{id}/equipos(id = ${liga.id})}" 
-		    					   th:text="#{liga.showall.equipos}"></a> 
-		    				</li>
-		    			</ul>
-		    		</div>
-		    	</div>	    
-		    </div>		   
+			<div class="row">
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
+						<li class="active" th:text="#{header.ligas}"></li>
+					</ol>
+				</div>
+			</div>	
+		
+			<div class="list-group">
+				<a th:each="liga : ${ligas}" class="list-group-item" th:text="${liga.nombre}"
+				   th:href="@{/liga/show/{id}/general(id = ${liga.id})}"></a>
+			</div>		
 		</div>	
 		
 	    <div layout:fragment="scripts">

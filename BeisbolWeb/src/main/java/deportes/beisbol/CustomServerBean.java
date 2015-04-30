@@ -18,9 +18,9 @@ public class CustomServerBean implements EmbeddedServletContainerCustomizer {
 	@Override
 	public void customize(ConfigurableEmbeddedServletContainer container) {
 		// TODO Auto-generated method stub
-		container.setPort(8090);
+		/* container.setPort(8090);
 		container.setSessionTimeout(120);
-		container.setContextPath("/baseball");
+		container.setContextPath("/baseball"); */
 	}
 	
     /*@Bean

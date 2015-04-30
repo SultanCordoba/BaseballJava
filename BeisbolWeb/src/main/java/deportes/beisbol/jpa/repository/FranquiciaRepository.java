@@ -12,4 +12,6 @@ public interface FranquiciaRepository extends JpaRepository<Franquicia, Short> {
 	
 	@Query("SELECT f FROM Franquicia f WHERE f.liga.id = :id ORDER BY f.nombreTablasEs")
 	public Collection<Franquicia> findLigaId(@Param("id") Byte id);
+	
+	
 }

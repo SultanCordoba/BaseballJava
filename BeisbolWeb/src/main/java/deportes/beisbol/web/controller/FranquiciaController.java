@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import deportes.beisbol.model.FranquiciaBeisbol;
+import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.service.FranquiciaService;
 
 @Controller
@@ -31,6 +32,10 @@ public class FranquiciaController {
 		
 		model.addAttribute("franquicia", resultado.get());
 		model.addAttribute("pais", resultado.get().getPais());
+		
+		Optional<LigaBeisbol> ligaBeisbol = franquiciaService.findLigaPorFranquicia(resultado.get().getId(), idioma);
+		
+		model.addAttribute("liga", ligaBeisbol.get());
 		
 		return "../templates/franquicia/show";
 	}

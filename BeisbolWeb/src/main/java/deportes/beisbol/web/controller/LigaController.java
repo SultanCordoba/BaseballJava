@@ -90,8 +90,9 @@ public class LigaController {
 			
 		}
 		
-		/* model.addAttribute("zona", "#"+zona);
-		model.addAttribute("navZona", "#link" + zona.substring(0, 1).toUpperCase() + zona.substring(1)); */
+		model.addAttribute("zona", "#"+zona);
+		model.addAttribute("zonaTab", "#zT"+zona);
+		/* model.addAttribute("navZona", "#link" + zona.substring(0, 1).toUpperCase() + zona.substring(1)); */
 		model.addAttribute("ligaD", resultado.get());
 		model.addAttribute("equipos", equipos.values());
 		

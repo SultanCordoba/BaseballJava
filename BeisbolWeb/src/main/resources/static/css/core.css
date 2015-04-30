@@ -43,7 +43,7 @@ body {
     background-color: rgba(40, 205, 40, 0.3);
 }
 
-.tabla-beisbol {
+.encabezado-beisbol {
     background-color: sienna;
     color: white;
     font-size: larger;
@@ -86,3 +86,8 @@ body {
 {
 	font-weight: bold;	
 }
+
+.thumbnail > img {
+	width:200px;
+	height:200px;
+} 

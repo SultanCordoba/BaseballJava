@@ -20,12 +20,19 @@
 			</div>				
 		
 			<div role="tabpanel">
-				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#general" aria-controls="home" role="tab" data-toggle="tab">General</a></li>
-					<li role="presentation"><a href="#temporadas" aria-controls="home" role="tab" data-toggle="tab" 
-					  th:text="#{liga.showall.temporadas}"></a></li>
-					<li role="presentation"><a href="#equipos" aria-controls="home" role="tab" data-toggle="tab" 
-					  th:text="#{liga.showall.equipos}"></a></li>  
+				<ul class="nav nav-tabs" role="tablist" id="navLiga">
+					<li role="presentation" id="zTgeneral">
+						<a href="#general" aria-controls="home" role="tab" 
+						   data-toggle="tab">General</a>
+					</li>
+					<li role="presentation" id="zTtemporadas">
+						<a href="#temporadas" aria-controls="home" role="tab" data-toggle="tab" 
+					  	   th:text="#{liga.showall.temporadas}"></a>
+					</li>
+					<li role="presentation" id="zTequipos">
+						<a href="#equipos" aria-controls="home" role="tab" data-toggle="tab" 
+					  	   th:text="#{liga.showall.equipos}"></a>
+					</li>  
 				</ul>
 				
 				<div class="tab-content">
@@ -39,9 +46,7 @@
 					</div>	
 					
 					<div role="tabpanel" class="tab-pane" id="temporadas">
-						<div class="panel panel-default">
-							<div class="panel-heading" th:text="#{liga.showall.temporadas}">
-							</div>
+						<div class="panel panel-default">						
 							<div class="panel-body">
 								<div class="container col-md-11">
 									<table id="tabTemporadas" class="display table-curved" cellspacing="0">
@@ -73,11 +78,9 @@
 					
 					<div role="tabpanel" class="tab-pane" id="equipos">
 						<div class="panel panel-default">
-							<div class="panel-heading" th:text="#{liga.showall.equipos}">
-							</div>
 							<div class="panel-body">
 								<div class="container col-md-11">
-									<table id="tabEquipos" class="display table-curved" cellspacing="0">
+									<table id="tabEquipos" class="display table-curved">
 										<thead>
 											<tr>
 												<th th:text="#{liga.show.nombreEquipo}"></th>
@@ -107,11 +110,8 @@
 				</div>		
 			</div>
 		
-			<div role="tabpanel">
-				
-				<div class="tab-content">
-
-					
+			<div role="tabpanel">				
+				<div class="tab-content">					
 					<div role="tabpanel" class="tab-pane" id="temporadas">
 						<div class="panel panel-default" style="margin-right:30px;">
 							<div class="panel-heading" th:text="#{liga.showall.temporadas}">
@@ -192,6 +192,10 @@
 				$(document).ready(function () {
 						$('#mainTab > li.active').removeClass('active');
 						$("#tabLigas").addClass('active');
+						
+						
+						$('#navLiga a[href="' + [[${zona}]] + '"]').tab('show');
+						
 												
 						$('#tabTemporadas').dataTable( {
 							"language": {

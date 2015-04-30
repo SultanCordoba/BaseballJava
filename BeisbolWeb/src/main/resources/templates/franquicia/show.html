@@ -14,7 +14,7 @@
 					<ol class="breadcrumb">
 						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
 						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
-						<li><a href="#" th:text="#{liga.showall.equipos}"></a></li>						
+						<li><a th:href="@{/liga/show/{id}/equipos(id = ${liga.id})}" th:text="${liga.siglas}"></a></li>				
 						<li class="active" th:text="${franquicia.nombre}"></li>
 					</ol>
 				</div>
@@ -30,11 +30,6 @@
 							<th>Nombre</th>
 						</thead>
 						
-						<tfoot>
-							<th>Fecha</th>
-							<th>Nombre</th>
-						</tfoot>
-						
 						<tbody>
 							<tr th:each = "nombre : ${franquicia.nombres}">
 								<td th:text="${nombre.rangoString}"></td>
@@ -42,6 +37,37 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Escudos</div>
+				<div class="panel-body">
+					<div th:each="escudo : ${franquicia.escudos}" class="col-xs-4">
+						<a href="#" class="thumbnail">
+							<p class="encabezado-beisbol" th:text="${escudo.rangoString}"></p>
+							<img th:src="@{'/imagenes/' + ${liga.siglas} + '/logos/' + ${escudo.nombre}}" th:alt="${escudo.nombre}"></img>
+						</a>
+					</div>
+				</div>
+				<!--  <div th:each="escudo : ${franquicia.escudos}" class="col-md-4 col-xs-10">
+			    	<div class="panel panel-info panel-beisbol">
+			    		<table class="table table-striped">
+			    			<tr>
+			    				<th class="tabla-beisbol" th:text="${escudo.rangoString}"></th>
+			    			</tr>
+			    		</table>
+			    		<div class="panel-body thumbnail">
+			    			<img th:src="@{'/imagenes/' + ${liga.siglas} + '/logos/' + ${escudo.nombre}}"></img>
+			    		</div>
+			    	</div>	    
+			    </div>		 -->   
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Parques</div>
+				<div class="panel-body">
+					<p>Coming soon...</p>
 				</div>
 			</div>
 		</div>
