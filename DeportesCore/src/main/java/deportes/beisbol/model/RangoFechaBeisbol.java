@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
+import com.google.common.base.Strings;
 
 import deportes.core.interfaces.DeporteBasicoInterfaz;
 import deportes.core.interfaces.DeporteRangoFechaInterfaz;
@@ -81,18 +84,36 @@ public class RangoFechaBeisbol implements DeporteRangoFechaInterfaz,
 	
 	public void creaRangoString() {
 		
-		Joiner joiner = Joiner.on(" - ");
+		Joiner joiner = Joiner.on(" - ").skipNulls();
 		ArrayList<String> paso = new ArrayList<>();
 		
 		paso.add(Integer.toString(fechaInicio.getYear()));
 		
+		String endYear = "";
+		
 		if (fechaFin.isBefore(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
-			paso.add(Integer.toString(fechaFin.getYear()));
-		} else {
+			
+			endYear = Integer.toString(fechaFin.getYear());
+			
+			if (! endYear.equals(paso.get(0))) {
+				paso.add(endYear);
+			}
+		}
+		else {
 			paso.add("");
 		}
 		
 		rangoString = joiner.join(paso);
+	}
+	
+	@Override
+	public String toString() {
+		
+		ToStringHelper toStringHelper = MoreObjects.toStringHelper(this);
+		
+		toStringHelper.add("nombre", this.nombre).add("fechaInicio", this.fechaInicio).add("fechaFin", this.fechaFin);
+		
+		return toStringHelper.toString();
 	}
 
 }
