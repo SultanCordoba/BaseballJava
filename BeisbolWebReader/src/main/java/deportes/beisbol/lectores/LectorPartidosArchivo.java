@@ -1,38 +1,25 @@
-package deportes.beisbol.archivo;
+package deportes.beisbol.lectores;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
-import deportes.beisbol.model.ContrincanteBeisbol;
-import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.PartidoBeisbol;
 
-public class LectorPartidosArchivo {
+public class LectorPartidosArchivo extends BaseballPartidosReader {
 
 	private static final Logger logger = LoggerFactory.getLogger(LectorPartidosArchivo.class);
 	
-	private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
+	/* private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
@@ -58,9 +45,9 @@ public class LectorPartidosArchivo {
 			System.out.println(hcee.getResponseBodyAsString());
 			return hcee.getMessage();
 		}
-	}
+	} */
 	
-	private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
+	/* private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
 		PartidoBeisbol resultado = new PartidoBeisbol();
 		
 		//resultado.setFechaRealizacion(datosPartido.get("fechaJuego"));
@@ -95,7 +82,7 @@ public class LectorPartidosArchivo {
 		resultado.setLocal(cteLocal);
 		
 		return resultado;
-	}
+	} */
 	
 	private HashMap<String, String> traducePartido(String partido) {
 		HashMap<String, String> resultado = new HashMap<>();
@@ -108,7 +95,7 @@ public class LectorPartidosArchivo {
 		// resultado.put("minorLeagueId", "");
 		
 		ArrayList<String> datosPartido = Lists.newArrayList(Splitter.on(",").trimResults().omitEmptyStrings().split(partido));
-		String fechaJuego = datosPartido.get(0);
+		String fechaPartido = datosPartido.get(0);
 		
 		/* if (fechaJuego.contains("(")) {
 			
@@ -128,16 +115,15 @@ public class LectorPartidosArchivo {
 		resultado.put("errorVisita", "0");
 		resultado.put("hitsLocal", "0");
 		resultado.put("errorLocal", "0");
-
 		
 		return resultado;	
 	}
 	
-	public int ObtenerPartidos() {
+	public int obtieneJuegos() {
 		
 		int resultado = 0;
 		
-		Properties partidoPropiedades = new Properties();
+		/* Properties partidoPropiedades = new Properties();
 		String rutaPropiedades = System.getProperty("user.dir") + 
 				File.separator + "lector.properties";        
 		
@@ -145,10 +131,7 @@ public class LectorPartidosArchivo {
 			partidoPropiedades.load(new FileInputStream(rutaPropiedades));
 		} catch (IOException e) {
 			e.printStackTrace();			
-		}
-		
-		String etapa = partidoPropiedades.getProperty("etapa");
-		String vuelta = partidoPropiedades.getProperty("vuelta");
+		} */
 		
 		String rutaPartidos = System.getProperty("user.dir") + 
 				File.separator + "partidos.txt";
@@ -158,8 +141,12 @@ public class LectorPartidosArchivo {
 			
 			String line;
 		    while ((line = br.readLine()) != null) {
-		    	PartidoBeisbol partidoPaso = construyePartido(traducePartido(line));
-		        System.out.println(grabarJuego(partidoPaso, etapa, vuelta));
+		    	PartidoBeisbol partidoPaso = super.construyePartido(traducePartido(line));
+		    	
+		    	resultado++;
+		    	
+		        System.out.println(super.grabarJuego(partidoPaso, this.getPartidoPropiedades().getProperty("etapa"), 
+		        		this.getPartidoPropiedades().getProperty("vuelta")));
 		    }
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -167,5 +154,9 @@ public class LectorPartidosArchivo {
 		}
 		
 		return resultado;
+	}
+	
+	public LectorPartidosArchivo() throws IOException {
+		super();
 	}
 }

@@ -1,36 +1,19 @@
-package deportes.beisbol.json.set1;
+package deportes.beisbol.lectores;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
@@ -38,17 +21,13 @@ import com.google.common.collect.Lists;
 
 import deportes.beisbol.json.set1.BeisbolJuegoJson;
 import deportes.beisbol.json.set1.Juego;
-import deportes.beisbol.model.ContrincanteBeisbol;
-import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.PartidoBeisbol;
 import deportes.beisbol.web.util.EnumReaderActions;
 
-public class LectorMultiPartidos {
+public class LectorMultiPartidos extends BaseballPartidosReader {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LectorMultiPartidos.class);
 	
-	private LocalDate fechaJuegos;
 	private String liga;
 	private String grupoLiga;
 	
@@ -66,33 +45,27 @@ public class LectorMultiPartidos {
 
 	public void setLiga(String liga) {
 		this.liga = liga;
-	}
+	}		
 
-	public LocalDate getFechaJuegos() {
-		return fechaJuegos;
-	}
-
-	public void setFechaJuegos(LocalDate fechaJuegos) {
-		this.fechaJuegos = fechaJuegos;
-	}
-	
-	public void setFechaJuegos(String fecha) {
-		this.fechaJuegos = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-	}
-
-	public LectorMultiPartidos(LocalDate fechaJuegos) {
-		this.fechaJuegos = fechaJuegos;
-	}
-	
-	public LectorMultiPartidos() {
+	public LectorMultiPartidos() throws IOException {
 		this(LocalDate.now().minusDays(1));
 	}
 	
-	public LectorMultiPartidos(String fecha) {
-		this(LocalDate.parse(fecha, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+	public LectorMultiPartidos(LocalDate fechaJuegos) throws IOException {
+		super(fechaJuegos);
+		
+		this.grupoLiga = this.getPartidoPropiedades().getProperty("grupoLiga");
+		this.liga = this.getPartidoPropiedades().getProperty("liga");
+	}
+		
+	public LectorMultiPartidos(String fecha) throws IOException {
+		super(fecha);
+		
+		this.grupoLiga = this.getPartidoPropiedades().getProperty("grupoLiga");
+		this.liga = this.getPartidoPropiedades().getProperty("liga");
 	}
 	
-	private String construyeLigaPartidos() {
+	/* private String construyeLigaPartidos() {
 		
 		Joiner joiner = Joiner.on("/");
 		
@@ -112,34 +85,9 @@ public class LectorMultiPartidos {
 		logger.info("Liga de partidos:" + joiner.join(sitioPartidos));
 		
 		return joiner.join(sitioPartidos);
-	}
+	} */
 	
-	private String construyeLigaJugadores(String juegoId) {
-		
-		Joiner joiner = Joiner.on("/");
-		
-		ArrayList<String> sitioPartidos = new ArrayList<>();
-		
-		sitioPartidos.add("http:/");
-		
-		String host = "origin.milb.com/gdcross/components/game";
-		
-		String rutaDef = "gid_" + juegoId.replace("/", "_").replace("-", "_");
-		
-		sitioPartidos.add(host);
-		sitioPartidos.add(grupoLiga);
-		sitioPartidos.add("year_" + fechaJuegos.getYear());
-		sitioPartidos.add("month_" + String.format("%02d", fechaJuegos.getMonthValue()));
-		sitioPartidos.add("day_" + String.format("%02d", fechaJuegos.getDayOfMonth()));
-		sitioPartidos.add(rutaDef);
-		sitioPartidos.add("boxscore.json");
-		
-		//System.out.println(joiner.join(sitioPartidos));
-		
-		return joiner.join(sitioPartidos);
-	}
-	
-	private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
+	/* private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
 		PartidoBeisbol resultado = new PartidoBeisbol();
 		
 		//resultado.setFechaRealizacion(datosPartido.get("fechaJuego"));
@@ -172,9 +120,9 @@ public class LectorMultiPartidos {
 		resultado.setLocal(cteLocal);
 		
 		return resultado;
-	}
+	} */
 	
-	private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
+	/* private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
@@ -200,9 +148,9 @@ public class LectorMultiPartidos {
 			System.out.println(hcee.getResponseBodyAsString());
 			return hcee.getMessage();
 		}
-	}
+	} */
 	
-	private HashMap<String, String> obtenerEquivalenciasEquipos() {
+	/* private HashMap<String, String> obtenerEquivalenciasEquipos() {
 		HashMap<String, String> resultado = new HashMap<>();
 		
         Properties archivoEquivalencias = new Properties();
@@ -226,30 +174,26 @@ public class LectorMultiPartidos {
 		}
 				
 		return resultado;
-	}
+	} */
 	
 	public int obtieneJuegos(EnumReaderActions accion) throws HttpMessageNotReadableException {
         RestTemplate restTemplate = new RestTemplate();
         int resultado = 0;
         
-        //String listaJuegos = "master_scoreboard.json";
-        
         BeisbolJuegoJson beisbolJuegoJson = new BeisbolJuegoJson();
         try {
 			beisbolJuegoJson = restTemplate.getForObject(
-					construyeLigaPartidos(), BeisbolJuegoJson.class);
+					super.construyeLigaPartidos(this.grupoLiga), BeisbolJuegoJson.class);
 		} catch (ResourceAccessException rae) {
-			logger.info("No hay acceso al sitio para los juegos del dia " + this.fechaJuegos);
+			logger.info("No hay acceso al sitio para los juegos del dia " + this.getFechaJuegos());
 			return 0;
 		} catch (HttpClientErrorException ex) {
-			logger.info("No hay partidos para este dia " + this.fechaJuegos);
+			logger.info("No hay partidos para este dia " + this.getFechaJuegos());
 			return 0;
 		} catch (RestClientException e) {
 			e.printStackTrace();
 			return 0;
 		} 
-        
-        //System.out.println(beisbolJuegoJson.getData().getGames().getMonth());
         
         Iterator<Juego> juegos = beisbolJuegoJson.getData().getGames().getGame().iterator();
         Juego juego;
@@ -279,8 +223,6 @@ public class LectorMultiPartidos {
         				juego.getStatus().getStatus().equalsIgnoreCase("Completed Early")||
         				juego.getStatus().getStatus().equalsIgnoreCase("Game Over")||
         				juego.getStatus().getStatus().equalsIgnoreCase("Suspended")) {        			
-            		/*datosJuego = new ArrayList<>();
-            		extraDatosJuego = new ArrayList<>();*/
         			
         			mapaDatosPartido.clear();
         			
@@ -354,7 +296,7 @@ public class LectorMultiPartidos {
 	            				mapaDatosPartido.put("eqLocal", equivalenciasEquipos.get(mapaDatosPartido.get("eqLocal")));
 	            			}
 	            			
-	            	        Properties partidoPropiedades = new Properties();
+	            	        /* Properties partidoPropiedades = new Properties();
 	            			String rutaPropiedades = System.getProperty("user.dir") + 
 	            					File.separator + "lector.properties";        
 	            			
@@ -362,12 +304,12 @@ public class LectorMultiPartidos {
 	            				partidoPropiedades.load(new FileInputStream(rutaPropiedades));
 	            			} catch (IOException e) {
 	            				e.printStackTrace();			
-	            			}
+	            			} */
 	            			            			
-	            			PartidoBeisbol partidoPaso = construyePartido(mapaDatosPartido);
+	            			PartidoBeisbol partidoPaso = super.construyePartido(mapaDatosPartido);
 	            			
-	            			logger.info(grabarJuego(partidoPaso, partidoPropiedades.getProperty("etapa"), 
-	            					partidoPropiedades.getProperty("vuelta")));
+	            			logger.info(super.grabarJuego(partidoPaso, this.getPartidoPropiedades().getProperty("etapa"), 
+	            					this.getPartidoPropiedades().getProperty("vuelta")));
 	            			// logger.info(partidoPaso.partidoString());
 	            			break;
 	            			

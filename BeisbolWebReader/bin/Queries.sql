@@ -27,3 +27,9 @@ AUTO_INCREMENT = 26532 ;
 ALTER TABLE `baseball`.`partido_equipo` 
 AUTO_INCREMENT = 49338 ;
 
+select * from baseball.franquicia
+where id = 137;
+
+select * from baseball.franquicia_historico
+where franquicia_id = 15 and archivo_escudo is null;
+

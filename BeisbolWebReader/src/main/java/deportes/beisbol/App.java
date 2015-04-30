@@ -11,44 +11,54 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 
-import deportes.beisbol.json.set1.LectorMultiPartidos;
-import deportes.beisbol.json.set2.LectorPartidoSencillo;
+import deportes.beisbol.lectores.LectorMultiPartidos;
+import deportes.beisbol.lectores.LectorPartidoSencillo;
 import deportes.beisbol.web.util.EnumReaderActions;
 
 public class App {
 	public static void main(String[] args) {
 			
 		final Logger logger = LoggerFactory.getLogger(App.class);
+				
+		// System.out.println(rutaPropiedades);
+		
+		/* try {
+			propiedadesLector.load(new FileInputStream(rutaPropiedades));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} */
+		
+		logger.info("INICIO DE PROCEDIMIENTO");
+		
+		LectorMultiPartidos lectorMultiPartidos = null;
+		LectorPartidoSencillo lectorPartidoSencillo = null;
 		
 		Properties propiedadesLector = new Properties();
 		
 		String rutaPropiedades = System.getProperty("user.dir") + 
 				File.separator + "lector.properties";
 		
-		// System.out.println(rutaPropiedades);
-		
 		try {
 			propiedadesLector.load(new FileInputStream(rutaPropiedades));
+			lectorMultiPartidos = new LectorMultiPartidos();
+			lectorPartidoSencillo = new LectorPartidoSencillo();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
-		
-		logger.info("INICIO DE PROCEDIMIENTO");
-		
-		LectorMultiPartidos lectorMultiPartidos = new LectorMultiPartidos();
-		LectorPartidoSencillo lectorPartidoSencillo = new LectorPartidoSencillo();
-		
-		lectorMultiPartidos.setGrupoLiga(propiedadesLector.getProperty("grupoLiga"));
+				
+		/* lectorMultiPartidos.setGrupoLiga(propiedadesLector.getProperty("grupoLiga"));
 		lectorMultiPartidos.setLiga(propiedadesLector.getProperty("liga"));
 
 		lectorPartidoSencillo.setGrupoLiga(propiedadesLector.getProperty("grupoLiga"));
-		lectorPartidoSencillo.setLiga(propiedadesLector.getProperty("liga"));
+		lectorPartidoSencillo.setLiga(propiedadesLector.getProperty("liga")); */
 		
 		LocalDate startDate = LocalDate.parse(propiedadesLector.getProperty("fechaInicio"), 
-				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				DateTimeFormatter.ofPattern(lectorMultiPartidos.formatoFecha));
 		LocalDate endDate = LocalDate.parse(propiedadesLector.getProperty("fechaFin"), 
-				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				DateTimeFormatter.ofPattern(lectorMultiPartidos.formatoFecha));
 		
 		/*lectorPartidos.setGrupoLiga("aaa");  // valores aaa o win
 		lectorPartidos.setLiga("MEX");   // valores MEX o LMP, SC
