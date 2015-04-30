@@ -91,17 +91,23 @@ public class RangoFechaBeisbol implements DeporteRangoFechaInterfaz,
 		
 		String endYear = "";
 		
-		if (fechaFin.isBefore(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
-			
-			endYear = Integer.toString(fechaFin.getYear());
-			
-			if (! endYear.equals(paso.get(0))) {
-				paso.add(endYear);
+		if (fechaFin != null) {		
+			if (fechaFin.isBefore(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+				
+				endYear = Integer.toString(fechaFin.getYear());
+				
+				if (! endYear.equals(paso.get(0))) {
+					paso.add(endYear);
+				}
+			}
+			else {
+				paso.add("");
 			}
 		}
 		else {
 			paso.add("");
 		}
+		
 		
 		rangoString = joiner.join(paso);
 	}

@@ -21,7 +21,7 @@
 			</div>
 			
 			<div class="panel panel-default">
-				<div class="panel-heading" th:text="${franquicia.nombre}">
+				<div class="panel-heading encabezado-beisbol" th:text="${franquicia.nombre}">
 				</div>
 				<div class="panel-body">
 					<table class="table">
@@ -41,9 +41,9 @@
 			</div>
 			
 			<div class="panel panel-default">
-				<div class="panel-heading">Escudos</div>
+				<div class="panel-heading encabezado-beisbol">Escudos</div>
 				<div class="panel-body">
-					<div th:each="escudo : ${franquicia.escudos}" class="col-xs-4">
+					<div th:each="escudo : ${franquicia.escudos}" class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 						<a href="#" class="thumbnail">
 							<p class="encabezado-beisbol" th:text="${escudo.rangoString}"></p>
 							<img th:src="@{'/imagenes/' + ${liga.siglas} + '/logos/' + ${escudo.nombre}}" th:alt="${escudo.nombre}"></img>
@@ -65,9 +65,21 @@
 			</div>
 			
 			<div class="panel panel-default">
-				<div class="panel-heading">Parques</div>
+				<div class="panel-heading encabezado-beisbol">Parques</div>
 				<div class="panel-body">
-					<p>Coming soon...</p>
+					<table class="table">
+						<thead>
+							<th>Fecha</th>
+							<th>Nombre</th>
+						</thead>
+						
+						<tbody>
+							<tr th:each = "parque : ${franquicia.parques}">
+								<td th:text="${parque.rangoString}"></td>
+								<td th:text="${parque.nombre}"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

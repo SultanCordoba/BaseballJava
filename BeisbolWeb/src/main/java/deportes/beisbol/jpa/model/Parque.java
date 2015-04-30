@@ -106,7 +106,7 @@ public class Parque implements Serializable {
 	}
 	
 	//bi-directional many-to-one association to Partido
-	@OneToMany(mappedBy="parque")
+	@OneToMany(mappedBy="parque", fetch=FetchType.EAGER)
 	public Set<Franquicia> getFranquicias() {
 		return this.franquicias;
 	}

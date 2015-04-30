@@ -5,14 +5,23 @@
   layout:decorator="shared/start">
 	<body>
 		<div layout:fragment="content">
-			<p>Página de Inicio del Almanaque de Beisbol</p>
-			
-	   		<script type="text/javascript">
+			<div class="panel panel-default">						
+				<div class="panel-body">
+					<div class="container col-md-11">
+						<p>Página de Inicio del Almanaque de Beisbol</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div layout:fragment="scripts">
+			<script th:inline="javascript">
 				$(document).ready(function () {
-						$("#mainTab > li.active").removeClass('active');
-						$("#tabInicio").addClass('active');
-					});
+					$("#mainTab > li.active").removeClass('active');
+					$("#tabInicio").addClass('active');
+				});
 			</script>
 		</div>
+		
 	</body>
 </html>

@@ -9,7 +9,7 @@ html {
 body {
     /* font-family: "Lato", Arial, Helvetica, sans-serif; */
     /* Margin bottom by footer height */
-    padding-top: 60px;
+    padding-top: 50px; /* 60px; */
     margin-bottom: 40px;
 }
 
@@ -19,7 +19,13 @@ body {
 }
 
 .fondo {
+	background-image:url('/baseball/imagenes/baseball-field.jpg');
+	background-position: center top;
+	background-size: 100% 100%;
 	background-color: rgba(0, 0, 0, 0);
+	background-origin: border-box;
+	background-repeat: no-repeat; 
+    min-height:100vh;
 }
 
 .breadcrumb {
@@ -47,6 +53,7 @@ body {
     background-color: sienna;
     color: white;
     font-size: larger;
+    padding-left: 5px;
 }
 
 .table-curved {
@@ -88,6 +95,19 @@ body {
 }
 
 .thumbnail > img {
-	width:200px;
-	height:200px;
-} 
+	max-width: 100%;
+	height: auto;
+	max-height: 200px;
+}
+
+#mainTab > li {
+	background-color: rgb(164, 111, 15);
+}
+
+#mainTab > li > a {
+	color: white;
+}
+
+#mainTab > li.active > a {
+	background-color: rgb(0, 206, 72);
+}

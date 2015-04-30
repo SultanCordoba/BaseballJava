@@ -13,6 +13,7 @@ import deportes.beisbol.jpa.model.Franquicia;
 import deportes.beisbol.jpa.model.FranquiciaHistorico;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
+import deportes.beisbol.utils.FechaUtils;
 import deportes.beisbol.web.controller.LigaController;
 
 public class FranquiciaConverter {
@@ -32,12 +33,15 @@ public class FranquiciaConverter {
 		
 		String nombreActual = inicioString;
 		String escudoActual = inicioString;
+		String parqueActual = inicioString;
 		FranquiciaHistorico franqHistPaso;
 		
 		LinkedHashSet<RangoFechaBeisbol> listaNombres = new LinkedHashSet<>();
 		LinkedHashSet<RangoFechaBeisbol> listaEscudos = new LinkedHashSet<>();
+		LinkedHashSet<RangoFechaBeisbol> listaParques = new LinkedHashSet<>();
 		RangoFechaBeisbol rangoNombre = null;
 		RangoFechaBeisbol rangoEscudo = null;
+		RangoFechaBeisbol rangoParque = null;
 		
 		logger.info("Procesando " + franquicia.getNombreTablasEs() + " con id " + franquicia.getId());
 		
@@ -56,10 +60,10 @@ public class FranquiciaConverter {
 
 				rangoNombre = new RangoFechaBeisbol();
 				
-				rangoNombre.setFechaInicio(franqHistPaso.getFechaInicio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+				rangoNombre.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
 				rangoNombre.setNombre(franqHistPaso.getNombreCompletoEs());				
 			} 
-			rangoNombre.setFechaFin(franqHistPaso.getFechaFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			rangoNombre.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
 			
 			if (!escudoActual.equalsIgnoreCase(franqHistPaso.getArchivoEscudo())) {
 				escudoActual = Strings.nullToEmpty(franqHistPaso.getArchivoEscudo());
@@ -73,11 +77,29 @@ public class FranquiciaConverter {
 				
 				rangoEscudo = new RangoFechaBeisbol();
 				
-				rangoEscudo.setFechaInicio(franqHistPaso.getFechaInicio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+				
+				
+				rangoEscudo.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
 				rangoEscudo.setNombre(franqHistPaso.getArchivoEscudo());
 			}
-			rangoEscudo.setFechaFin(franqHistPaso.getFechaFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			rangoEscudo.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
 			
+			if (!parqueActual.equalsIgnoreCase(franqHistPaso.getParque().getNombre())) {
+				parqueActual = Strings.nullToEmpty(franqHistPaso.getParque().getNombre());
+				
+				if (rangoParque != null) {
+					if (!Strings.isNullOrEmpty(rangoParque.getNombre())) {
+						rangoParque.creaRangoString();
+						listaParques.add(rangoParque);
+					}
+				}
+				
+				rangoParque = new RangoFechaBeisbol();
+				
+				rangoParque.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
+				rangoParque.setNombre(franqHistPaso.getParque().getNombre());
+			}
+			rangoParque.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
 		}
 		
 		if (!nombreActual.equals(inicioString)) {
@@ -93,9 +115,19 @@ public class FranquiciaConverter {
 				rangoEscudo.creaRangoString();
 				listaEscudos.add(rangoEscudo);
 			}
-		}
-		
+		}		
 		resultado.setEscudos(listaEscudos);
+		
+		//logger.info(rangoParque.getFechaInicio().toString());
+		// logger.info(rangoParque.getFechaFin().toString());
+		
+		if (!parqueActual.equals(inicioString)) {
+			if (!Strings.isNullOrEmpty(rangoParque.getNombre())) {
+				rangoParque.creaRangoString();
+				listaParques.add(rangoParque);
+			}
+		}
+		resultado.setParques(listaParques);
 		
 		resultado.setPais(franquicia.getClub().getPai().getNombreEs());
 		
