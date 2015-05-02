@@ -50,12 +50,17 @@ body {
 }
 
 .encabezado-beisbol {
-    background-color: sienna;
-    color: white;
+    background-color: rgb(164, 111, 15) !important;
+    color: white !important;
     font-size: larger;
     padding-left: 5px;
 }
 
+.encabezado-beisbol-h2 {
+    background-color: rgb(0, 206, 72);
+    color: white;
+    padding-left: 3px;
+}
 .table-curved {
     border-collapse: separate;
     border: solid #ccc 1px;

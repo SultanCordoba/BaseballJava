@@ -67,14 +67,6 @@
 												  		<th th:text="#{temporada.show.juegosDetras}"></th>
 												  	</thead>
 												  	
-													<tfoot>
-												  		<th th:text="#{temporada.show.equipo}"></th>
-												  		<th th:text="#{temporada.show.ganados}"></th>
-												  		<th th:text="#{temporada.show.perdidos}"></th>
-												  		<th th:text="#{temporada.show.porcentaje}"></th>
-												  		<th th:text="#{temporada.show.juegosDetras}"></th>
-												  	</tfoot>
-												  	
 												  	<tbody>
 													  	<tr th:each="record : ${grupo.value}">
 													  		<td th:text="${record.nombre}"></td>
@@ -95,7 +87,7 @@
 						
 						<div class="alert alert-info alert-dismissable fade in"
 						   th:if="${not #lists.isEmpty(temporada.campeon.nombre)}">
-						    <strong th:text="#{temporada.show.campeon} + ': ' + ${temporada.campeon.nombre}"></strong>
+						    <span class="resaltar" th:text="#{temporada.show.campeon} + ': ' + ${temporada.campeon.nombre}"></span>
 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						</div>					
 					</div>

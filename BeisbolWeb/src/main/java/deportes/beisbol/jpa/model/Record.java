@@ -13,7 +13,7 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Record.findAll", query="SELECT r FROM Record r")
+// @NamedQuery(name="Record.findAll", query="SELECT r FROM Record r")
 public class Record implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
