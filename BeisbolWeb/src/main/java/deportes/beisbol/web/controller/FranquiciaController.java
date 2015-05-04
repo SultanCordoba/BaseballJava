@@ -91,10 +91,7 @@ public class FranquiciaController {
 		model.addAttribute("liga", ligaBeisbol.get());
 		
 		LinkedHashSet<TemporadaEquipo> temporadasEquipo = (LinkedHashSet<TemporadaEquipo>) 
-				recordService.findTemporadasEquipos(resultado.get().getId());
-		
-		
-		
+				recordService.findTemporadasEquipos(resultado.get().getId(), idioma);
 		
 		model.addAttribute("temporadas", condensarRecords(temporadasEquipo));
 		

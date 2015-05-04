@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			
-			<div class="panel panel-default">
+			<div class="panel panel-default" th:if="${not #lists.isEmpty(franquicia.escudos)}">
 				<div class="panel-heading encabezado-beisbol" th:text="#{franquicia.show.escudos}"></div>
 				<div class="panel-body">
 					<div th:each="escudo : ${franquicia.escudos}" class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
@@ -50,21 +50,9 @@
 						</a>
 					</div>
 				</div>
-				<!--  <div th:each="escudo : ${franquicia.escudos}" class="col-md-4 col-xs-10">
-			    	<div class="panel panel-info panel-beisbol">
-			    		<table class="table table-striped">
-			    			<tr>
-			    				<th class="tabla-beisbol" th:text="${escudo.rangoString}"></th>
-			    			</tr>
-			    		</table>
-			    		<div class="panel-body thumbnail">
-			    			<img th:src="@{'/imagenes/' + ${liga.siglas} + '/logos/' + ${escudo.nombre}}"></img>
-			    		</div>
-			    	</div>	    
-			    </div>		 -->   
 			</div>
 			
-			<div class="panel panel-default">
+			<div class="panel panel-default" th:if="${not #lists.isEmpty(franquicia.parques)}">
 				<div class="panel-heading encabezado-beisbol" th:text="#{franquicia.show.parques}"></div>
 				<div class="panel-body">
 					<table class="table">
@@ -88,10 +76,10 @@
 				<div class="panel-body">
 					<table class="table" id="tabRecords" name="tabRecords">
 						<thead>
-							<th>Año</th>
-							<th>Etapa</th>
-							<th>Record</th>
-							<th>Pctje.</th>
+							<th th:text="#{franquicia.show.records.temporada}"></th>
+							<th th:text="#{franquicia.show.records.etapa}"></th>
+							<th th:text="#{franquicia.show.records.record}"></th>
+							<th th:text="#{franquicia.show.records.porcentaje}"></th>
 						</thead>
 						
 						<tbody>
