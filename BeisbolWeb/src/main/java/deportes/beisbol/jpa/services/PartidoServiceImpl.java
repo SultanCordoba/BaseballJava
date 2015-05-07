@@ -3,17 +3,23 @@ package deportes.beisbol.jpa.services;
 import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Optional;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.slf4j.Logger;
 import deportes.beisbol.jpa.model.Partido;
 import deportes.beisbol.jpa.model.PartidoEquipo;
+import deportes.beisbol.jpa.model.Record;
 import deportes.beisbol.jpa.repository.EquipoRepository;
 import deportes.beisbol.jpa.repository.EtapaRepository;
 import deportes.beisbol.jpa.repository.ParqueRepository;
 import deportes.beisbol.jpa.repository.PartidoRepository;
+import deportes.beisbol.jpa.repository.RecordRepository;
 import deportes.beisbol.jpa.repository.VueltaRepository;
 import deportes.beisbol.model.PartidoBeisbol;
 import deportes.beisbol.service.PartidoService;
@@ -22,7 +28,7 @@ import deportes.beisbol.service.PartidoService;
 @Transactional
 public class PartidoServiceImpl implements PartidoService {
 
-	//private static final Logger logger = LoggerFactory.getLogger(PartidoServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(PartidoServiceImpl.class);
 	
 	@Autowired
 	PartidoRepository partidoRepository;
@@ -38,6 +44,9 @@ public class PartidoServiceImpl implements PartidoService {
 	
 	@Autowired
 	EquipoRepository equipoRepository;
+	
+	@Autowired
+	RecordRepository recordRepository;
 	
 	@Override
 	public boolean save(PartidoBeisbol partido, short etapaId, byte vueltaId) {	
@@ -89,7 +98,6 @@ public class PartidoServiceImpl implements PartidoService {
 				}
 			}
 					
-			//partidoBase.setParque(parqueRepository.findOne(equipoLocal.getEquipo().getParqueId()));
 			partidoBase.setParque(equipoLocal.getEquipo().getParque());
 			partidoBase.setFechaActualizacion(new Timestamp(ahora.getTime()));
 			
@@ -97,8 +105,46 @@ public class PartidoServiceImpl implements PartidoService {
 			partidoBase.addPartidoEquipo(equipoVisita);
 			
 			partidoBase = partidoRepository.save(partidoBase);
+			
+			/* Buscar el Record para tanto el equipo local, como el equipo visitante */
+			
+			Iterator<PartidoEquipo> iteraEquipos = partidoBase.getPartidoEquipos().iterator();
+			PartidoEquipo partidoTemp;
+			Optional<Record> recordTemp;
+			Record registroEquipo = null;
+			
+			while (iteraEquipos.hasNext()) {
+				partidoTemp = iteraEquipos.next();
+				
+				recordTemp = recordRepository.findByEquipo(partidoTemp.getEquipo().getId(), partidoBase.getEtapa(), partidoBase.getVuelta());
+				
+				if (recordTemp.isPresent()) {
+					registroEquipo = recordTemp.get();
+					
+					if (partidoTemp.getGano() > 0) {
+						registroEquipo.setGanados((byte)(registroEquipo.getGanados() + 1));
+					}
+					
+					if (partidoTemp.getPerdio() > 0) {
+						registroEquipo.setPerdidos((byte)(registroEquipo.getPerdidos() + 1));
+					}
+				}
+				else {
+					registroEquipo = new Record();
+					registroEquipo.setEtapa(partidoBase.getEtapa());
+					registroEquipo.setGanados((byte) registroEquipo.getGanados());
+					registroEquipo.setPerdidos((byte) registroEquipo.getPerdidos());
+					registroEquipo.setParticipante(partidoTemp.getEquipo().getParticipante());
+					registroEquipo.setVuelta(partidoBase.getVuelta());
+					registroEquipo.setFechaActualizacion(new Timestamp(ahora.getTime()));
+				}
+								
+				recordRepository.save(registroEquipo);
+			}
+			
 			return true;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return false;
 		}
 	}

@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface RecordService {
 	public Collection<TemporadaEquipo> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma);
+	
+	
 }

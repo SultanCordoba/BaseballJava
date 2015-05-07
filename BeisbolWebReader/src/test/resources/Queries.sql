@@ -15,21 +15,16 @@ order by 1, 3 desc;
 
 select max(id) from baseball.partido;
 
-select * from baseball.partido
-where fecha_realizacion = '2015-04-17';
+select * from baseball.records_vista
+where temporada_nombre = '2004' and liga_id = 1
+and nombre_tablas_es in ('CAMPECHE', 'CANCUN')
+and vuelta_id > 1;
 
-delete from baseball.partido_equipo
-where id > 26531;
-
-ALTER TABLE `baseball`.`partido` 
-AUTO_INCREMENT = 26532 ;
+select * from baseball.records_vista
+where temporada_nombre = '2015' and liga_id = 1;
 
 ALTER TABLE `baseball`.`partido_equipo` 
-AUTO_INCREMENT = 49338 ;
+AUTO_INCREMENT = 49578 ;
 
-select * from baseball.franquicia
-where id = 137;
-
-select * from baseball.franquicia_historico
-where franquicia_id = 15 and archivo_escudo is null;
-
+ALTER TABLE `baseball`.`partido` 
+AUTO_INCREMENT = 26652 ;

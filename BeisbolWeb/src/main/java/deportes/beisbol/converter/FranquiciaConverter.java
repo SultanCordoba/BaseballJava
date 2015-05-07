@@ -43,7 +43,7 @@ public class FranquiciaConverter {
 		RangoFechaBeisbol rangoEscudo = null;
 		RangoFechaBeisbol rangoParque = null;
 		
-		logger.info("Procesando " + franquicia.getNombreTablasEs() + " con id " + franquicia.getId());
+		//logger.info("Procesando " + franquicia.getNombreTablasEs() + " con id " + franquicia.getId());
 		
 		while (iteraFranqHist.hasNext()) {
 			franqHistPaso = iteraFranqHist.next();
@@ -76,9 +76,7 @@ public class FranquiciaConverter {
 				}
 				
 				rangoEscudo = new RangoFechaBeisbol();
-				
-				
-				
+								
 				rangoEscudo.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
 				rangoEscudo.setNombre(franqHistPaso.getArchivoEscudo());
 			}
