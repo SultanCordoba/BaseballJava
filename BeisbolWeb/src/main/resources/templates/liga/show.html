@@ -90,7 +90,7 @@
 										
 										<tbody>
 											<tr th:each="equipo : ${equipos}">
-												<td><a th:href="@{/franquicia/show/{id}(id = ${equipo.idFranquicia})}" 
+												<td><a th:href="@{/liga/{idLiga}/franquicia/{id}/show/(idLiga = ${ligaD.id}, id = ${equipo.idFranquicia})}" 
 												  th:text="${equipo.nombre}"></a></td>
 												<td th:text="${equipo.pais}"></td>
 											</tr>
@@ -101,80 +101,7 @@
 						</div>					
 					</div>
 				</div>		
-			</div>
-		
-			<div role="tabpanel">				
-				<div class="tab-content">					
-					<div role="tabpanel" class="tab-pane" id="temporadas">
-						<div class="panel panel-default" style="margin-right:30px;">
-							<div class="panel-heading" th:text="#{liga.showall.temporadas}">
-							</div>
-							<div class="panel-body">
-								<div class="container col-md-11">
-									<table id="tabTemporadas" class="display table-curved">
-										<thead>
-											<tr>
-												<th th:text="#{liga.show.nombreTemp}"></th>
-												<th th:text="#{liga.show.nombreCampeon}"></th>
-											</tr>
-										</thead>
-										
-										<tfoot>
-											<tr>
-												<th th:text="#{liga.show.nombreTemp}"></th>
-												<th th:text="#{liga.show.nombreCampeon}"></th>
-											</tr>						
-										</tfoot>
-										
-										<tbody>
-											<tr th:each="temporada : ${ligaD.temporadas}">
-												<td><a th:href="@{/temporada/show/{id}(id = ${temporada.id})}" th:text="${temporada.nombre}"></a></td>
-												<td th:text="${temporada.campeon.nombre}"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>						
-					</div>
-
-					<div role="tabpanel" class="tab-pane" id="equipos">
-						<div class="panel panel-default">
-							<div class="panel-heading" th:text="#{liga.showall.equipos}">
-							</div>
-							<div class="panel-body">
-								<div class="container col-md-11">
-									<table id="tabEquipos" class="display table-curved">
-										<thead>
-											<tr>
-												<th>id</th>
-												<th th:text="#{liga.show.nombreEquipo}"></th>
-												<th th:text="#{liga.show.nombrePais}"></th>
-											</tr>
-										</thead>
-										
-										<tfoot>
-											<tr>
-												<th>id</th>
-												<th th:text="#{liga.show.nombreEquipo}"></th>
-												<th th:text="#{liga.show.nombrePais}"></th>
-											</tr>
-										</tfoot>
-										
-										<tbody>
-											<tr th:each="equipo : ${equipos}">
-												<td th:text="${equipo.idFranquicia}"></td>
-												<td><a href="#" th:text="${equipo.nombre}"></a></td>
-												<td th:text="${equipo.pais}"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>					
-					</div>
-				</div>
-			</div>
+			</div>		
 		</div>
 		
 		<div layout:fragment="scripts">

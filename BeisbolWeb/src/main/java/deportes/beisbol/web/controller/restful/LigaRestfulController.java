@@ -19,8 +19,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import deportes.beisbol.ErrorInfo;
+import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.model.LigaBeisbol;
-import deportes.beisbol.service.LigaService;
 import deportes.beisbol.web.exception.LigaNotFoundException;
 
 @RestController

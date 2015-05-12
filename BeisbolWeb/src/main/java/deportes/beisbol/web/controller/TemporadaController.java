@@ -29,7 +29,7 @@ import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.service.EquipoService;
 import deportes.beisbol.service.EtapaService;
-import deportes.beisbol.service.LigaService;
+import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.utils.EtapaBeisbolAux;
 
 @Controller

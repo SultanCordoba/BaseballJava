@@ -129,7 +129,7 @@ body {
 	background-color: seagreen;
 }
 
-.breadcrumb > .active, #navEtapa > li > a  {
+.breadcrumb > .active {
 	color: cornsilk;
 }
 

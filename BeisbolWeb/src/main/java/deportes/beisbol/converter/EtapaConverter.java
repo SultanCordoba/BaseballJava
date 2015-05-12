@@ -121,7 +121,7 @@ public class EtapaConverter {
 				
 				vueltaActual = recordActual.getNombreVuelta();
 				
-				logger.info("Agregando Vuelta " + vueltaActual);
+				// logger.info("Agregando Vuelta " + vueltaActual);
 				
 				resultado.addVuelta(vueltaActual);
 				grupoActual = "XXX";
@@ -150,14 +150,6 @@ public class EtapaConverter {
 		if (!grupoActual.equalsIgnoreCase("XXX") && !(vueltaActual.equalsIgnoreCase("XXX"))) {
 			resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
 		}
-		
-		//logger.info("La etapa " + resultado.getNombre() + " tiene " + resultado.getVueltas().keySet().size() + " vueltas.");
-		
-		/* if (resultado.getVueltas().keySet().size() > 2) {
-			LinkedHashSet<RecordBeisbol> vueltaTotal = new LinkedHashSet<>();
-			
-			
-		} */
 		
 		if (resultado.getVueltas().keySet().size() > 1) {
 			Iterator<String> totalVueltas = resultado.getVueltas().keySet().iterator();
