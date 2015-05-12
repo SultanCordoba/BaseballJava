@@ -23,13 +23,13 @@ import deportes.beisbol.jpa.repository.LigaHistoricoRepository;
 import deportes.beisbol.jpa.repository.LigaRepository;
 import deportes.beisbol.jpa.repository.TemporadaRepository;
 import deportes.beisbol.jpa.model.Franquicia;
+import deportes.beisbol.jpa.model.Liga;
 import deportes.beisbol.jpa.model.LigaHistorico;
 import deportes.beisbol.jpa.model.LigaHistoricoInt;
 import deportes.beisbol.jpa.model.Temporada;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.service.LigaService;
 import static deportes.beisbol.jpa.predicates.LigaPredicates.nombreIsLike;
 import static deportes.beisbol.jpa.predicates.LigaPredicates.siglasIsLike;
 
@@ -174,8 +174,6 @@ public class LigaServiceImpl implements LigaService {
 	public Optional<LigaBeisbol> findOne(Byte id, Optional<String> idioma) {
 		LigaBeisbol ligaBeisbol = null;
 		Optional<LigaHistorico> temporal = Optional.empty();
-
-		//ligasHistorico = ligaHistoricoRepository.findBySiglasEs(siglas).iterator();
 		
 		if (idioma.isPresent()) {
 			String idiomaAbrev = Strings.nullToEmpty(idioma.get()).toUpperCase();
@@ -206,6 +204,11 @@ public class LigaServiceImpl implements LigaService {
 				
 		return Optional.ofNullable(ligaBeisbol);
 
+	}
+
+	@Override
+	public Optional<Liga> findOneBd(Byte id) {
+		return Optional.ofNullable(ligaRepository.findOne(id));
 	}
 
 }

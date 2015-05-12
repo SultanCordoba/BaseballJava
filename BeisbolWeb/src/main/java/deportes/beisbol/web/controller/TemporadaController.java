@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
 import deportes.beisbol.converter.EtapaConverter;
+import deportes.beisbol.converter.LigaConverter;
+import deportes.beisbol.jpa.model.Temporada;
+import deportes.beisbol.jpa.services.TemporadaService;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.EtapaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
@@ -27,7 +30,6 @@ import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.service.EquipoService;
 import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.service.LigaService;
-import deportes.beisbol.service.TemporadaService;
 import deportes.beisbol.utils.EtapaBeisbolAux;
 
 @Controller
@@ -73,9 +75,13 @@ public class TemporadaController {
 		
 		model.addAttribute("temporada", resultado.get());
 		
-		Optional<LigaBeisbol> ligaBeisbol = temporadaService.findLigaPorTemporada(resultado.get().getId(), idioma);
+		//Optional<LigaBeisbol> ligaBeisbol = temporadaService.findLigaPorTemporada(resultado.get().getId(), idioma);
 		
-		model.addAttribute("liga", ligaBeisbol.get());
+		Temporada temporada = temporadaService.findOneBd(resultado.get().getId()).get();
+		LigaBeisbol ligaBeisbol = LigaConverter.convierteDeBase
+				(temporada.getLigaHistorico(), idioma);
+				
+		model.addAttribute("liga", ligaBeisbol);
 		
 		LinkedHashSet<EtapaBeisbolAux> etapaVista = new LinkedHashSet<>();
 		Iterator<EtapaBeisbol> iteraEtapas = (Iterator<EtapaBeisbol>) resultado.get().getEtapas().iterator();

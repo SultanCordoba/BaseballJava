@@ -20,7 +20,108 @@
 				</div>
 			</div>
 			
-			<div class="panel panel-default">
+			<h2 th:text="${franquicia.nombre}"></h2>
+		
+			<div role="tabpanel">
+				<ul class="nav nav-pills" role="tablist" id="navEquipo">
+					<li role="presentation"><a href="#tabNombres" aria-controls="home" role="pill" data-toggle="tab">Nombres</a></li>
+					<li role="presentation">
+						<a href="#tabEscudos" aria-controls="home" role="pill" data-toggle="tab" 
+						   th:text="#{franquicia.show.escudos}"></a>
+					</li>
+					<li role="presentation">
+						<a href="#tabParques" aria-controls="home" role="pill" data-toggle="tab"
+						   th:text="#{franquicia.show.parques}"></a>
+					</li>
+					<li role="presentation"><a href="#tabRecords" aria-controls="home" role="pill" data-toggle="tab">Records</a></li>					
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane" id="tabNombres">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<table class="table">
+									<thead>
+										<th th:text="#{franquicia.show.tabla.fecha}"></th>
+										<th th:text="#{franquicia.show.tabla.nombre}"></th>
+									</thead>
+									
+									<tbody>
+										<tr th:each = "nombre : ${franquicia.nombres}">
+											<td th:text="${nombre.rangoString}"></td>
+											<td th:text="${nombre.nombre}"></td>
+										</tr>
+									</tbody>
+								</table>							
+							</div>							
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tabEscudos">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div th:each="escudo : ${franquicia.escudos}" class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+									<a href="#" class="thumbnail">
+										<p class="encabezado-beisbol-h2" th:text="${escudo.rangoString}"></p>
+										<img th:src="@{'/imagenes/' + ${liga.siglas} + '/logos/' + ${escudo.nombre}}" th:alt="${escudo.nombre}"></img>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tabParques">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<table class="table">
+									<thead>
+										<th th:text="#{franquicia.show.tabla.fecha}"></th>
+										<th th:text="#{franquicia.show.tabla.nombre}"></th>
+									</thead>
+									
+									<tbody>
+										<tr th:each = "parque : ${franquicia.parques}">
+											<td th:text="${parque.rangoString}"></td>
+											<td th:text="${parque.nombre}"></td>
+										</tr>
+									</tbody>
+								</table>							
+							</div>
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tabRecords">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<table class="table" id="tabRecords" name="tablaRecords">
+									<thead>
+										<th th:text="#{franquicia.show.records.temporada}"></th>
+										<th th:text="#{franquicia.show.records.etapa}"></th>
+										<th th:text="#{franquicia.show.records.record}"></th>
+										<th th:text="#{franquicia.show.records.porcentaje}"></th>
+									</thead>
+									
+									<tbody>
+										<tr th:each = "record : ${temporadas}">
+											<td th:text="${record.temporadaNombre}"></td>
+											<div th:if="${record.campeon}">
+												<td class="resaltar" th:text="#{temporada.show.campeon}"></td>
+											</div>
+											<div th:unless="${record.campeon}">
+												<td th:text="${record.etapaNombre}"></td>
+											</div>								
+											<td th:text="${record.recordTotal}"></td>
+											<td th:text="${record.pctjeString}"></td>
+										</tr>
+									</tbody>
+								</table>							
+							</div>
+						</div>			
+					</div>
+				</div>
+			</div>
+			
+			<!-- <div class="panel panel-default">
 				<div class="panel-heading encabezado-beisbol" th:text="${franquicia.nombre}">
 				</div>
 				<div class="panel-body">
@@ -97,7 +198,7 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		
 		<div layout:fragment="scripts">
@@ -106,7 +207,7 @@
 		  	
 		  	<script th:inline="javascript">
 				$(document).ready(function () {
-					$('#tabRecords').dataTable( {
+					$('#tablaRecords').dataTable( {
 						"language": {
 							"lengthMenu": [[#{liga.show.lenghtMenu}]],
 							"zeroRecords": [[#{liga.show.zeroRecords}]],

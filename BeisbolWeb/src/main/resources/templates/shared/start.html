@@ -14,8 +14,13 @@
 		<link th:href="@{/css/core.css}" rel="stylesheet" media="screen" type="text/css" />
 	</head>
 	<body>
-		<div th:replace="shared/header :: header"></div>		
-		<div class="container fondo" layout:fragment="content"></div>
+		<div th:replace="shared/header :: header"></div>
+				
+		<div class="container fondo">
+			<div th:include="shared/breadcrumb :: breadcrumb"></div>
+			<div layout:fragment="content">
+			</div>
+		</div>
 		
 	    <footer layout:fragment="footer"></footer>
 	    	    

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+	<head>
+	</head>
+	<body>
+		<div th:fragment="breadcrumb">
+			<div class="row">
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li th:each="menuItem : ${menuBread}">
+							<a th:if="${not #strings.startsWith(menuItem.key,'X')}"
+							   th:href="@{__${menuItem.key}__}"
+							   th:text="#{__${menuItem.value}__}"></a>
+							<a th:unless="${not #strings.startsWith(menuItem.key,'X')}"
+							   th:href="@{__${#strings.substring(menuItem.key, 1)}__}"
+							   th:text="${menuItem.value}">
+							</a>
+						</li>
+						<li th:if="${not #strings.startsWith(menuActivo,'X')}"  
+						   class="active" th:text="${menuActivo}"></li>
+						<li th:unless="${not #strings.startsWith(menuActivo,'X')}"
+						   class="active" th:text="#{__${#strings.substring(menuActivo, 1)}__}"></li>
+					</ol>
+				</div>
+			</div>			
+		</div>
+	</body>
+</html>

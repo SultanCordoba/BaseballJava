@@ -9,16 +9,6 @@
   	</head>
 	<body>
 		<div layout:fragment="content">
-			<div class="row">
-				<div class="col-md-6">
-					<ol class="breadcrumb">
-						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
-						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
-						<li class="active" th:text="${ligaD.nombre}"></li>
-					</ol>
-				</div>
-			</div>				
-		
 			<div role="tabpanel">
 				<ul class="nav nav-tabs" role="tablist" id="navLiga">
 					<li role="presentation" id="zTgeneral">
@@ -66,7 +56,10 @@
 										
 										<tbody>
 											<tr th:each="temporada : ${ligaD.temporadas}">
-												<td><a th:href="@{/temporada/show/{id}(id = ${temporada.id})}" th:text="${temporada.nombre}"></a></td>
+												<td>
+												   <a th:href="@{/liga/{idLiga}/temporada/{id}/show(idLiga = ${ligaD.id}, id = ${temporada.id})}" 
+												      th:text="${temporada.nombre}"></a>
+												</td>
 												<td th:text="${temporada.campeon.nombre}"></td>
 											</tr>
 										</tbody>

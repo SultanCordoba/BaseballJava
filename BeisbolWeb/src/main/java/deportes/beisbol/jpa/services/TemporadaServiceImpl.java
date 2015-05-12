@@ -17,8 +17,6 @@ import deportes.beisbol.jpa.repository.LigaHistoricoRepository;
 import deportes.beisbol.jpa.repository.TemporadaRepository;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.service.TemporadaService;
-import deportes.beisbol.web.controller.LigaController;
 
 @Service
 @Transactional(readOnly = true)
@@ -74,6 +72,8 @@ public class TemporadaServiceImpl implements TemporadaService {
 		return Optional.ofNullable(LigaConverter.convierteDeBase(resultado.getLigaHistorico(), idioma));
 	}
 
-
-
+	@Override
+	public Optional<Temporada> findOneBd(short id) {
+		return Optional.ofNullable(temporadaRepository.findOne(id));
+	}
 }

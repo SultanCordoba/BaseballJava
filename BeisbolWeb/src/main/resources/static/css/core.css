@@ -116,3 +116,23 @@ body {
 #mainTab > li.active > a {
 	background-color: rgb(0, 206, 72);
 }
+
+.nav-pills > li > a {
+	color: ForestGreen;
+	background-color: #eee;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, 
+.nav-pills>li.active>a:hover {
+	color: white;
+	/* background-color: rgb(0, 206, 72); */
+	background-color: seagreen;
+}
+
+.breadcrumb > .active, #navEtapa > li > a  {
+	color: cornsilk;
+}
+
+.breadcrumb > li > a {
+	color: sienna;
+}
