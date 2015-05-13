@@ -21,14 +21,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
 import deportes.beisbol.converter.EtapaConverter;
-import deportes.beisbol.converter.LigaConverter;
 import deportes.beisbol.converter.TemporadaConverter;
 import deportes.beisbol.jpa.model.Temporada;
 import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.jpa.services.TemporadaService;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.EtapaBeisbol;
-import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.service.EquipoService;
 import deportes.beisbol.service.EtapaService;
@@ -51,13 +49,10 @@ public class TemporadaController {
 	@Autowired
 	EtapaService etapaService;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET) 
 	public String getTemporada(@PathVariable Short id, Model model, Locale locale) {
 		Optional<TemporadaBeisbol> resultado = Optional.empty();
-		
-		/* resultado = temporadaService.findById(id);
-		
-		resultado.orElseThrow(() -> new TemporadaNotFoundException(id)); */
 		
 		Optional<Temporada> temporada = temporadaService.findOneBd(id);
 		
@@ -80,18 +75,6 @@ public class TemporadaController {
 		
 		model.addAttribute("temporada", resultado.get());
 		
-		LigaBeisbol ligaBeisbol = LigaConverter.convierteDeBase(temporada.get().getLigaHistorico(), idioma);
-		
-		//Optional<LigaBeisbol> ligaBeisbol = temporadaService.findLigaPorTemporada(resultado.get().getId(), idioma);
-		//Optional<LigaBeisbol> ligaBeisbol = ligaService.findOne(idLiga, idioma);
-		
-		//model.addAttribute("liga", ligaBeisbol);
-
-		/* HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> auxiliar = new TreeMap<>();
-		auxiliar.put("ligaSiglas", ligaBeisbol.getSiglas());
-		auxiliar.put("zonaLiga", "temporadas"); */		
-		
 		LinkedHashSet<EtapaBeisbolAux> etapaVista = new LinkedHashSet<>();
 		Iterator<EtapaBeisbol> iteraEtapas = (Iterator<EtapaBeisbol>) resultado.get().getEtapas().iterator();
 		EtapaBeisbol etapa;
@@ -102,7 +85,7 @@ public class TemporadaController {
 			etapaVista.add(EtapaConverter.convierteDeEntidad(etapa));
 		}
 		
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico());
+		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());

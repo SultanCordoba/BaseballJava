@@ -8,7 +8,7 @@
 	<body>
 		<div th:fragment="breadcrumb">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li th:each="menuItem : ${menuBread}">
 							<a th:if="${not #strings.startsWith(menuItem.key,'X')}"

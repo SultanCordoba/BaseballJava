@@ -21,7 +21,7 @@ import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.jpa.services.FranquiciaService;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
-import deportes.beisbol.utils.TemporadaEquipo;
+import deportes.beisbol.utils.RecordEtapa;
 
 @Controller
 @RequestMapping("/franquicia")
@@ -36,15 +36,15 @@ public class FranquiciaController {
 	@Autowired
 	LigaService ligaService;
 	
-	private LinkedHashSet<TemporadaEquipo> condensarRecords(LinkedHashSet<TemporadaEquipo> temporadas) {
-		LinkedHashSet<TemporadaEquipo> resultado = new LinkedHashSet<TemporadaEquipo>();
+	private LinkedHashSet<RecordEtapa> condensarRecords(LinkedHashSet<RecordEtapa> temporadas) {
+		LinkedHashSet<RecordEtapa> resultado = new LinkedHashSet<RecordEtapa>();
 		
 		String temporadaActual = "XXXX";
 		String etapaActual = "XXXX";
 		
-		Iterator<TemporadaEquipo> iteraRecords = temporadas.iterator();
-		TemporadaEquipo paso;
-		TemporadaEquipo condensado = null;
+		Iterator<RecordEtapa> iteraRecords = temporadas.iterator();
+		RecordEtapa paso;
+		RecordEtapa condensado = null;
 		
 		while (iteraRecords.hasNext()) {
 			paso = iteraRecords.next();
@@ -58,11 +58,7 @@ public class FranquiciaController {
 				temporadaActual = paso.getTemporadaNombre();
 				etapaActual = paso.getEtapaNombre();
 				
-				/* if (paso.isCampeon()) {
-					etapaActual = "Campeón";
-				} */
-				
-				condensado = new TemporadaEquipo();
+				condensado = new RecordEtapa();
 				condensado.setTemporadaNombre(temporadaActual);
 				condensado.setEtapaNombre(etapaActual);
 				condensado.setGanados(paso.getGanados());
@@ -98,21 +94,16 @@ public class FranquiciaController {
 		
 		model.addAttribute("liga", ligaBeisbol.get());
 		
-		LinkedHashSet<TemporadaEquipo> temporadasEquipo = (LinkedHashSet<TemporadaEquipo>) 
+		LinkedHashSet<RecordEtapa> temporadasEquipo = (LinkedHashSet<RecordEtapa>) 
 				recordService.findTemporadasEquipos(resultado.get().getId(), idioma);
 		
 		model.addAttribute("temporadas", condensarRecords(temporadasEquipo));
-		
-		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		/*TreeMap<String, String> auxiliar = new TreeMap<>();
-		auxiliar.put("ligaSiglas", ligaBeisbol.get().getSiglas());
-		auxiliar.put("zonaLiga", "equipos"); */
 		
 		Liga ligaPaso = ligaService.findOneBd(ligaBeisbol.get().getId()).get();
 		
 		Iterator<LigaHistorico> ligaHistoricos = ligaPaso.getLigaHistoricos().iterator();
 		
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeFranquicia(ligaHistoricos.next());
+		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(ligaHistoricos.next(), "equipos");
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());

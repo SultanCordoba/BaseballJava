@@ -3,8 +3,8 @@ package deportes.beisbol.converter;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.google.common.base.Strings;
 
@@ -16,7 +16,7 @@ import deportes.beisbol.utils.FechaUtils;
 
 public class FranquiciaConverter {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
+	// private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
 	
 	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia) {
 		

@@ -4,11 +4,6 @@ import deportes.beisbol.model.RecordBeisbol;
 
 import java.util.LinkedHashSet;
 import java.util.TreeMap;
-import java.util.Iterator;
-
-import com.google.common.collect.LinkedHashMultimap;
-
-// LinkedHashMultiMap<String, TreeMap<String, LinkedHashSet<RecordBeisbol>>>;
 
 public class EtapaBeisbolAux {
 	private Short id;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="equipo/show">
+	<head>
+	</head>
+	<body>
+		<div th:fragment="detalleEquipo">
+			<div role="tabpanel">
+				<ul class="nav nav-pills navEquipoG" role="tablist" id="navEquipo">
+					<li role="presentation" id="zTetapas">
+						<a href="#etapas" aria-controls="home" role="tab" 
+						   data-toggle="tab">General</a>
+					</li>
+					<li role="presentation" id="zTroster">
+						<a href="#roster" aria-controls="home" role="tab" 
+						   data-toggle="tab">Roster</a>
+					</li>
+					<li role="presentation" id="zTpartidos">
+						<a href="#partidos" aria-controls="home" role="tab" 
+						   data-toggle="tab">Partidos</a>
+					</li>  
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="etapas">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<h2 th:text="${equipo.nombre}"></h2>
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+					
+					<div role="tabpanel" class="tab-pane" id="roster">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+					
+					<div role="tabpanel" class="tab-pane" id="partidos">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>		
+		</div>
+	</body>
+</html>

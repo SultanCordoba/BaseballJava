@@ -12,6 +12,7 @@ public class EquipoConverter {
 			resultado.setNombreTabla(equipoBase.getNombreTablasEs());
 			resultado.setSiglas(equipoBase.getAbreviatura());
 			resultado.setId(equipoBase.getId());
+			resultado.setLogotipo(equipoBase.getArchivoEscudo());
 		} catch (NullPointerException npe) {
 			resultado.setNombre("");
 			resultado.setNombreTabla("");

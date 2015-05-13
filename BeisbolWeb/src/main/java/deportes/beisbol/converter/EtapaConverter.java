@@ -9,8 +9,9 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.TreeMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
+
 
 import com.google.common.base.Strings;
 
@@ -23,7 +24,7 @@ import deportes.beisbol.utils.RecordComparator;
 
 public class EtapaConverter {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EtapaConverter.class);
+	// private static final Logger logger = LoggerFactory.getLogger(EtapaConverter.class);
 	
 	public static EtapaBeisbol convierteDeBase(Etapa etapaBase, Optional<String> idioma) {
 		EtapaBeisbol resultado = new EtapaBeisbol();
@@ -94,6 +95,7 @@ public class EtapaConverter {
 		return recordTemp.iterator();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static EtapaBeisbolAux convierteDeEntidad(EtapaBeisbol etapaBeisbol) {
 		EtapaBeisbolAux resultado = new EtapaBeisbolAux();
 	

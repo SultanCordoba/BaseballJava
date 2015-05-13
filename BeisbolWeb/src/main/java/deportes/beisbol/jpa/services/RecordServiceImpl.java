@@ -13,7 +13,7 @@ import deportes.beisbol.converter.RecordConverter;
 import deportes.beisbol.jpa.model.EtapaInt;
 import deportes.beisbol.jpa.model.Record;
 import deportes.beisbol.jpa.repository.RecordRepository;
-import deportes.beisbol.utils.TemporadaEquipo;
+import deportes.beisbol.utils.RecordEtapa;
 
 @Service
 @Transactional(readOnly = true)
@@ -24,13 +24,13 @@ public class RecordServiceImpl implements RecordService {
 		
 	
 	@Override
-	public Collection<TemporadaEquipo> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
+	public Collection<RecordEtapa> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
 
 		Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
 		Record recordBase = null;
 		
-		LinkedHashSet<TemporadaEquipo> resultado = new LinkedHashSet<>();
-		TemporadaEquipo tempEquipo = null;
+		LinkedHashSet<RecordEtapa> resultado = new LinkedHashSet<>();
+		RecordEtapa tempEquipo = null;
 		
 		while (iteraRecord.hasNext()) {
 			recordBase = iteraRecord.next();

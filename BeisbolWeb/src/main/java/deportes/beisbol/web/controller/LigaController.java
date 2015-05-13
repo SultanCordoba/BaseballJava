@@ -7,8 +7,9 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -26,14 +27,14 @@ import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
-import deportes.beisbol.utils.EquipoAux;
+import deportes.beisbol.utils.EquipoPais;
 import deportes.beisbol.web.exception.LigaNotFoundException;
 
 @Controller
 @RequestMapping("/liga")
 public class LigaController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LigaController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(LigaController.class);
 	
 	@Autowired
 	LigaService ligaService;
@@ -54,6 +55,7 @@ public class LigaController {
 		return "../templates/liga/showall";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{id}/show/{zona}", method = RequestMethod.GET)
 	public String showLiga(@PathVariable Byte id, @PathVariable String zona, Model model, 
 			Locale locale) {
@@ -70,9 +72,9 @@ public class LigaController {
 		FranquiciaBeisbol franquicia = null;
 		//HashSet<EquipoAux> equipos = new HashSet<>(); 
 		
-		TreeMap<String, EquipoAux> equipos = new TreeMap<>();
+		TreeMap<String, EquipoPais> equipos = new TreeMap<>();
 		
-		EquipoAux equipoAux = null;
+		EquipoPais equipoAux = null;
 		
 		while (iteradorFranquicias.hasNext()) {
 			franquicia = iteradorFranquicias.next();
@@ -80,7 +82,7 @@ public class LigaController {
 					franquicia.getNombres().iterator();
 			
 			while (nombres.hasNext()) {
-				equipoAux = new EquipoAux();
+				equipoAux = new EquipoPais();
 				equipoAux.setIdFranquicia(franquicia.getId());
 				equipoAux.setNombre(nombres.next().getNombre());
 				equipoAux.setPais(franquicia.getPais());

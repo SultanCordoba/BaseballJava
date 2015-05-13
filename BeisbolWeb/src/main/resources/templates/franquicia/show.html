@@ -8,18 +8,7 @@
 			  rel="stylesheet" media="screen" type="text/css" />
   	</head>
 	<body>
-		<div layout:fragment="content">
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<ol class="breadcrumb">
-						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
-						<li><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
-						<li><a th:href="@{/liga/show/{id}/equipos(id = ${liga.id})}" th:text="${liga.siglas}"></a></li>				
-						<li class="active" th:text="${franquicia.nombre}"></li>
-					</ol>
-				</div>
-			</div>  -->
-			
+		<div layout:fragment="content">			
 			<h2 th:text="${franquicia.nombre}"></h2>
 		
 			<div role="tabpanel">
@@ -106,7 +95,7 @@
 									<tbody>
 										<tr th:each = "record : ${temporadas}">
 											<td>
-												<a th:href="@{/equipo/{id}/show/franquicia(id = ${record.participanteId})}" 
+												<a th:href="@{/equipo/{id}/show/equipos(id = ${record.participanteId})}" 
 												   th:text="${record.temporadaNombre}"></a>
 											</td>
 											<div th:if="${record.campeon}">
@@ -135,7 +124,7 @@
 				$(document).ready(function () {
 					$('#navEquipo a:first').tab('show');
 					
-					$('#tablaRecords').dataTable( {
+					$('#tablaRecords').dataTable({
 						"language": {
 							"lengthMenu": [[#{liga.show.lenghtMenu}]],
 							"zeroRecords": [[#{liga.show.zeroRecords}]],

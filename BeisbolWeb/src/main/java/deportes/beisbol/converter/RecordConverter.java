@@ -6,7 +6,7 @@ import java.util.Optional;
 import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Record;
 import deportes.beisbol.model.RecordBeisbol;
-import deportes.beisbol.utils.TemporadaEquipo;
+import deportes.beisbol.utils.RecordEtapa;
 
 public class RecordConverter {
 	public static RecordBeisbol convierteDeBase(Record recordBase, Optional<String> idioma) {
@@ -23,8 +23,8 @@ public class RecordConverter {
 		return resultado;
 	}
 	
-	public static TemporadaEquipo convierteAuxDeBase(Record recordBase) {
-		TemporadaEquipo resultado = new TemporadaEquipo();
+	public static RecordEtapa convierteAuxDeBase(Record recordBase) {
+		RecordEtapa resultado = new RecordEtapa();
 		
 		resultado.setTemporadaNombre(recordBase.getParticipante().getTemporada().getNombre());
 		String etapaNombre = recordBase.getEtapa().getNombre();
