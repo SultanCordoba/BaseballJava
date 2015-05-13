@@ -16,12 +16,8 @@ order by 1, 3 desc;
 select max(id) from baseball.partido;
 
 select * from baseball.records_vista
-where temporada_nombre = '2004' and liga_id = 1
-and nombre_tablas_es in ('CAMPECHE', 'CANCUN')
-and vuelta_id > 1;
-
-select * from baseball.records_vista
-where temporada_nombre = '2015' and liga_id = 1;
+where temporada_nombre = '2015' and liga_id = 1
+order by nombre_grupo, pctje desc;
 
 ALTER TABLE `baseball`.`partido_equipo` 
 AUTO_INCREMENT = 49578 ;
