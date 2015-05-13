@@ -3,15 +3,11 @@ package deportes.beisbol.converter;
 import java.util.Iterator;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.LigaHistorico;
 import deportes.beisbol.jpa.model.LigaHistoricoInt;
 import deportes.beisbol.model.LigaBeisbol;
-import deportes.beisbol.web.controller.LigaController;
 
 public class LigaConverter {
 	
@@ -47,11 +43,4 @@ public class LigaConverter {
 		
 		return resultado;
 	}
-	
-	/* public LigaHistorico convierteDeObjeto(LigaBeisbol ligaBase) {
-		LigaHistorico resultado = new LigaHistorico();
-		
-		
-		return resultado;
-	} */
 }

@@ -11,6 +11,7 @@ public class TemporadaEquipo {
 	private int ganados;
 	private int perdidos;
 	private boolean campeon;
+	private short participanteId;
 
 	public boolean isCampeon() {
 		return campeon;
@@ -65,5 +66,13 @@ public class TemporadaEquipo {
 		
 		NumberFormat formatter = new DecimalFormat("0.000");
 		return formatter.format(porcentaje);
+	}
+
+	public short getParticipanteId() {
+		return participanteId;
+	}
+
+	public void setParticipanteId(short participanteId) {
+		this.participanteId = participanteId;
 	}
 }

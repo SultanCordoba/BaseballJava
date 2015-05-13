@@ -14,6 +14,7 @@ public class RecordBeisbol implements DeporteRecordInterfaz {
 	private String pctjeString;
 	private String juegosDetras;
 	private String nombreAbrev;
+	private short participanteId;
 	
 	@Override
 	public String getNombre() {
@@ -101,5 +102,13 @@ public class RecordBeisbol implements DeporteRecordInterfaz {
 
 	public void setNombreAbrev(String nombreAbrev) {
 		this.nombreAbrev = nombreAbrev;
+	}
+
+	public short getParticipanteId() {
+		return participanteId;
+	}
+
+	public void setParticipanteId(short participanteId) {
+		this.participanteId = participanteId;
 	}
 }

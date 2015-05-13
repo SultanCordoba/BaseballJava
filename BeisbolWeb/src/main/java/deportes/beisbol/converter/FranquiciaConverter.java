@@ -1,6 +1,5 @@
 package deportes.beisbol.converter;
 
-import java.time.ZoneId;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
@@ -14,7 +13,6 @@ import deportes.beisbol.jpa.model.FranquiciaHistorico;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
 import deportes.beisbol.utils.FechaUtils;
-import deportes.beisbol.web.controller.LigaController;
 
 public class FranquiciaConverter {
 	
@@ -115,9 +113,6 @@ public class FranquiciaConverter {
 			}
 		}		
 		resultado.setEscudos(listaEscudos);
-		
-		//logger.info(rangoParque.getFechaInicio().toString());
-		// logger.info(rangoParque.getFechaFin().toString());
 		
 		if (!parqueActual.equals(inicioString)) {
 			if (!Strings.isNullOrEmpty(rangoParque.getNombre())) {

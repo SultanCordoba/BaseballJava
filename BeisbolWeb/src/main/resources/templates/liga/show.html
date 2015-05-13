@@ -57,7 +57,7 @@
 										<tbody>
 											<tr th:each="temporada : ${ligaD.temporadas}">
 												<td>
-												   <a th:href="@{/liga/{idLiga}/temporada/{id}/show(idLiga = ${ligaD.id}, id = ${temporada.id})}" 
+												   <a th:href="@{/temporada/{id}/show(id = ${temporada.id})}" 
 												      th:text="${temporada.nombre}"></a>
 												</td>
 												<td th:text="${temporada.campeon.nombre}"></td>
@@ -90,7 +90,7 @@
 										
 										<tbody>
 											<tr th:each="equipo : ${equipos}">
-												<td><a th:href="@{/liga/{idLiga}/franquicia/{id}/show/(idLiga = ${ligaD.id}, id = ${equipo.idFranquicia})}" 
+												<td><a th:href="@{/franquicia/{id}/show/(id = ${equipo.idFranquicia})}" 
 												  th:text="${equipo.nombre}"></a></td>
 												<td th:text="${equipo.pais}"></td>
 											</tr>

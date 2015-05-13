@@ -3,8 +3,8 @@ package deportes.beisbol.jpa.services;
 import java.util.Iterator;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ import deportes.beisbol.model.TemporadaBeisbol;
 @Transactional(readOnly = true)
 public class TemporadaServiceImpl implements TemporadaService {
 
-	private static final Logger logger = LoggerFactory.getLogger(TemporadaServiceImpl.class);
+	//private static final Logger logger = LoggerFactory.getLogger(TemporadaServiceImpl.class);
 	
 	@Autowired
 	TemporadaRepository temporadaRepository;

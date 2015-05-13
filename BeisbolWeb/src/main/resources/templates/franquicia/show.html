@@ -105,7 +105,10 @@
 									
 									<tbody>
 										<tr th:each = "record : ${temporadas}">
-											<td th:text="${record.temporadaNombre}"></td>
+											<td>
+												<a th:href="@{/equipo/{id}/show/franquicia(id = ${record.participanteId})}" 
+												   th:text="${record.temporadaNombre}"></a>
+											</td>
 											<div th:if="${record.campeon}">
 												<td class="resaltar" th:text="#{temporada.show.campeon}"></td>
 											</div>

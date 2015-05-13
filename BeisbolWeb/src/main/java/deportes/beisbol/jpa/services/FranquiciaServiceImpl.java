@@ -12,11 +12,9 @@ import deportes.beisbol.converter.FranquiciaConverter;
 import deportes.beisbol.converter.LigaConverter;
 import deportes.beisbol.jpa.model.Franquicia;
 import deportes.beisbol.jpa.model.LigaHistorico;
-import deportes.beisbol.jpa.model.Temporada;
 import deportes.beisbol.jpa.repository.FranquiciaRepository;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
-import deportes.beisbol.service.FranquiciaService;
 
 @Service
 @Transactional(readOnly = true)
@@ -58,6 +56,11 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 		}
 		
 		return Optional.ofNullable(LigaConverter.convierteDeBase(resultado, idioma));
+	}
+
+	@Override
+	public Optional<Franquicia> findOneBd(short id) {
+		return Optional.ofNullable(franquiciaRepository.findOne(id));
 	}
 
 }

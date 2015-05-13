@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -17,8 +16,6 @@ import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Etapa;
 import deportes.beisbol.jpa.model.EtapaInt;
-import deportes.beisbol.jpa.model.LigaHistoricoInt;
-import deportes.beisbol.jpa.services.EtapaServiceImpl;
 import deportes.beisbol.model.EtapaBeisbol;
 import deportes.beisbol.model.RecordBeisbol;
 import deportes.beisbol.utils.EtapaBeisbolAux;
@@ -125,7 +122,6 @@ public class EtapaConverter {
 				
 				resultado.addVuelta(vueltaActual);
 				grupoActual = "XXX";
-				//recordGrupo = new LinkedHashSet<>();
 			}
 			
 			if (!grupoActual.equalsIgnoreCase(recordActual.getNombreGrupo())) {

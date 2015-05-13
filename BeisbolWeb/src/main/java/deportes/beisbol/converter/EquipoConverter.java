@@ -1,9 +1,5 @@
 package deportes.beisbol.converter;
 
-import java.util.Optional;
-
-import com.google.common.base.Strings;
-
 import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.model.EquipoBeisbol;
 

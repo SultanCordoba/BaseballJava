@@ -1,10 +1,6 @@
 package deportes.beisbol.web.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -23,37 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.support.RequestContext;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 
 import deportes.beisbol.ErrorInfo;
-import deportes.beisbol.converter.EtapaConverter;
-import deportes.beisbol.converter.LigaConverter;
-import deportes.beisbol.converter.TemporadaConverter;
-import deportes.beisbol.jpa.model.Temporada;
 import deportes.beisbol.jpa.services.LigaService;
-import deportes.beisbol.jpa.services.RecordService;
-import deportes.beisbol.jpa.services.TemporadaService;
-import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.EtapaBeisbol;
-import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.FranquiciaBeisbol;
+import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
-import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.service.EquipoService;
-import deportes.beisbol.service.EtapaService;
-import deportes.beisbol.service.FranquiciaService;
+import deportes.beisbol.utils.ConstructorBreadcrumb;
 import deportes.beisbol.utils.EquipoAux;
-import deportes.beisbol.utils.EtapaBeisbolAux;
-import deportes.beisbol.utils.TemporadaEquipo;
-import deportes.beisbol.utils.UrlUtils;
 import deportes.beisbol.web.exception.LigaNotFoundException;
-import deportes.core.interfaces.FranquiciaInterfaz;
 
 @Controller
 @RequestMapping("/liga")
@@ -64,29 +38,14 @@ public class LigaController {
 	@Autowired
 	LigaService ligaService;
 	
-	@Autowired
-	TemporadaService temporadaService;
-	
-	@Autowired
-	EquipoService equipoService;
-	
-	@Autowired
-	EtapaService etapaService;
-	
-	@Autowired
-	FranquiciaService franquiciaService;
-	
-	@Autowired
-	RecordService recordService;
-	
 	@RequestMapping(value = "/showall", method = RequestMethod.GET)
 	public String showAllLigas(Model model, Locale locale) {
 		
 		Optional<String> idioma = Optional.of(locale.getLanguage());
 		
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> menuBread = UrlUtils.construyeBreadcrumb(request.getRequestURI(), null);
-		menuBread.remove(menuBread.lastKey());
+		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeInicio();
+		// menuBread.remove(menuBread.lastKey());
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", "Xheader.ligas");
@@ -130,8 +89,8 @@ public class LigaController {
 			
 		}
 			
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> menuBread = UrlUtils.construyeBreadcrumb(request.getRequestURI(), null);
+		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLigasAll();
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());
@@ -144,148 +103,11 @@ public class LigaController {
 		return "../templates/liga/show";
 	}
 	
-	@RequestMapping(value = "/{idLiga}/temporada/{id}/show", method = RequestMethod.GET) 
-	public String getTemporada(@PathVariable Byte idLiga, @PathVariable Short id, 
-			Model model, Locale locale) {
-		
-		Optional<TemporadaBeisbol> resultado = Optional.empty();
-		
-		/* resultado = temporadaService.findById(id);
-		
-		resultado.orElseThrow(() -> new TemporadaNotFoundException(id)); */
-		
-		Optional<Temporada> temporada = temporadaService.findOneBd(id);
-		
-		if (temporada.isPresent()) {
-			resultado = Optional.ofNullable(TemporadaConverter.convierteDeBase(temporada.get()));
-		}
-		
-		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
-		if (resultado.isPresent()) {
-			
-			resultado.get().setEtapas(etapaService.findEtapasByTemporada(resultado.get(), idioma));
-			
-			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get());
-			
-			if (campeon.isPresent()) {
-				resultado.get().setCampeon(campeon.get());
-			}
-		}
-		
-		model.addAttribute("temporada", resultado.get());
-		
-		LigaBeisbol ligaBeisbol = LigaConverter.convierteDeBase(temporada.get().getLigaHistorico(), idioma);
-		
-		//Optional<LigaBeisbol> ligaBeisbol = temporadaService.findLigaPorTemporada(resultado.get().getId(), idioma);
-		//Optional<LigaBeisbol> ligaBeisbol = ligaService.findOne(idLiga, idioma);
-		
-		//model.addAttribute("liga", ligaBeisbol);
-
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> auxiliar = new TreeMap<>();
-		auxiliar.put("ligaSiglas", ligaBeisbol.getSiglas());
-		auxiliar.put("zonaLiga", "temporadas");
-		TreeMap<String, String> menuBread = UrlUtils.construyeBreadcrumb(request.getRequestURI(), auxiliar);
-		
-		LinkedHashSet<EtapaBeisbolAux> etapaVista = new LinkedHashSet<>();
-		Iterator<EtapaBeisbol> iteraEtapas = (Iterator<EtapaBeisbol>) resultado.get().getEtapas().iterator();
-		EtapaBeisbol etapa;
-		
-		while (iteraEtapas.hasNext()) {
-			etapa = iteraEtapas.next();
-			
-			etapaVista.add(EtapaConverter.convierteDeEntidad(etapa));
-		}
-		
-		model.addAttribute("menuBread", menuBread);
-		model.addAttribute("menuActivo", resultado.get().getNombre());
-		model.addAttribute("etapas", etapaVista);
-		
-		return "../templates/temporada/show";
-	}
-	
-	private LinkedHashSet<TemporadaEquipo> condensarRecords(LinkedHashSet<TemporadaEquipo> temporadas) {
-		LinkedHashSet<TemporadaEquipo> resultado = new LinkedHashSet<TemporadaEquipo>();
-		
-		String temporadaActual = "XXXX";
-		String etapaActual = "XXXX";
-		
-		Iterator<TemporadaEquipo> iteraRecords = temporadas.iterator();
-		TemporadaEquipo paso;
-		TemporadaEquipo condensado = null;
-		
-		while (iteraRecords.hasNext()) {
-			paso = iteraRecords.next();
-			
-			if (!paso.getTemporadaNombre().equalsIgnoreCase(temporadaActual)) {
-				
-				if (!temporadaActual.endsWith("XXXX")) {
-					resultado.add(condensado);
-				}
-				
-				temporadaActual = paso.getTemporadaNombre();
-				etapaActual = paso.getEtapaNombre();
-				
-				condensado = new TemporadaEquipo();
-				condensado.setTemporadaNombre(temporadaActual);
-				condensado.setEtapaNombre(etapaActual);
-				condensado.setGanados(paso.getGanados());
-				condensado.setPerdidos(paso.getPerdidos());
-				condensado.setCampeon(paso.isCampeon());
-			}
-			else {
-				condensado.setGanados(condensado.getGanados() + paso.getGanados());
-				condensado.setPerdidos(condensado.getPerdidos() + paso.getPerdidos());
-			}
-		}
-		
-		if (!temporadaActual.endsWith("XXXX")) {
-			resultado.add(condensado);
-		}
-		
-		return resultado;
-	}
-
-	
-	@RequestMapping(value = "/{idLiga}/franquicia/{id}/show", method = RequestMethod.GET)
-	public String showFranquicia(@PathVariable Byte idLiga, @PathVariable Short id, Model model, Locale locale) {
-		
-		Optional<FranquiciaBeisbol> resultado;
-		
-		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
-		resultado = franquiciaService.findById(id);
-		
-		model.addAttribute("franquicia", resultado.get());
-		model.addAttribute("pais", resultado.get().getPais());
-		
-		Optional<LigaBeisbol> ligaBeisbol = franquiciaService.findLigaPorFranquicia(resultado.get().getId(), idioma);
-		
-		model.addAttribute("liga", ligaBeisbol.get());
-		
-		LinkedHashSet<TemporadaEquipo> temporadasEquipo = (LinkedHashSet<TemporadaEquipo>) 
-				recordService.findTemporadasEquipos(resultado.get().getId(), idioma);
-		
-		model.addAttribute("temporadas", condensarRecords(temporadasEquipo));
-		
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> auxiliar = new TreeMap<>();
-		auxiliar.put("ligaSiglas", ligaBeisbol.get().getSiglas());
-		auxiliar.put("zonaLiga", "equipos");
-		TreeMap<String, String> menuBread = UrlUtils.construyeBreadcrumb(request.getRequestURI(), auxiliar);
-		
-		model.addAttribute("menuBread", menuBread);
-		model.addAttribute("menuActivo", resultado.get().getNombre());
-		
-		return "../templates/franquicia/show";
-	}
-	
 	@RequestMapping(value = "/{idLiga}/franquicia/{idFranq}/temporada/{idTemp}", method = RequestMethod.GET)
 	public String showFranquiciaTemporada(@PathVariable Byte idLiga, @PathVariable Short idFranq, 
 			@PathVariable Short idTemp, Model model, Locale locale)
 	{
-		return "../templates/liga/showFranqTemp";
+		return "../templates/equipo/show";
 	}
 	
 	@ExceptionHandler(LigaNotFoundException.class)

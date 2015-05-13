@@ -35,6 +35,8 @@ public class RecordConverter {
 		resultado.setPerdidos(recordBase.getPerdidos());
 		resultado.setCampeon(false);
 		
+		resultado.setParticipanteId(recordBase.getParticipante().getId());
+		
 		Iterator<Equipo> equipos = recordBase.getParticipante().getEquipos().iterator();
 		Equipo equipoPaso;
 		

@@ -1,7 +1,9 @@
 package deportes.beisbol.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -56,7 +58,7 @@ public class Participante implements Serializable {
 
 
 	//bi-directional many-to-one association to Equipo
-	@OneToMany(mappedBy="participante")
+	@OneToMany(mappedBy="participante", fetch=FetchType.EAGER)
 	@OrderBy("fechaInicio")
 	public Set<Equipo> getEquipos() {
 		return this.equipos;

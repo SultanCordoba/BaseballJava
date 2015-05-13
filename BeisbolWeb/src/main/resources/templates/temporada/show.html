@@ -56,7 +56,10 @@
 												  	
 												  	<tbody>
 													  	<tr th:each="record : ${grupo.value}">
-													  		<td th:text="${record.nombre}"></td>
+													  		<td>
+													  			<a th:href="@{/equipo/{id}/show/temporada(id = ${record.participanteId})}"
+													  			   th:text="${record.nombre}"></a>
+													  		</td>
 													  		<td th:text="${record.ganados}"></td>
 													  		<td th:text="${record.perdidos}"></td>
 													  		<td th:text="${record.pctjeString}"></td>

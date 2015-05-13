@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+	<head>
+	   	<link th:href="@{/webjars/datatables/1.10.5/css/jquery.dataTables.min.css}" 
+			  rel="stylesheet" media="screen" type="text/css" />
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<div role="tabpanel">
+				<ul class="nav nav-tabs" role="tablist" id="navFranqTemp">
+					<li role="presentation" id="zTetapas">
+						<a href="#etapas" aria-controls="home" role="tab" 
+						   data-toggle="tab">General</a>
+					</li>
+					<li role="presentation" id="zTroster">
+						<a href="#roster" aria-controls="home" role="tab" 
+						   data-toggle="tab">Roster</a>
+					</li>
+					<li role="presentation" id="zTpartidos">
+						<a href="#partidos" aria-controls="home" role="tab" 
+						   data-toggle="tab">Partidos</a>
+					</li>  
+				</ul>
+				
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="etapas">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+					
+					<div role="tabpanel" class="tab-pane" id="roster">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+					
+					<div role="tabpanel" class="tab-pane" id="partidos">
+					<div class="panel panel-default">
+							<div class="panel-body">
+								<p>Coming Soon...</p>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		<div layout:fragment="scripts">
+		  	<script th:src="@{/webjars/datatables/1.10.5/js/jquery.dataTables.min.js}" type="text/javascript"></script>
+		  	<script th:src="@{/webjars/bootstrap/3.3.4/js/tab.js}" type="text/javascript"></script>	
+		</div>
+	</body>
+</html>

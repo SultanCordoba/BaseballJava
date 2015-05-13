@@ -5,14 +5,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +38,7 @@ public class EtapaServiceImpl implements EtapaService {
 	@Autowired
 	TemporadaRepository temporadaRepository;
 
-	private static final Logger logger = LoggerFactory.getLogger(EtapaServiceImpl.class);
+	// private static final Logger logger = LoggerFactory.getLogger(EtapaServiceImpl.class);
 	
 	@Override
 	public Collection<EtapaBeisbol> findEtapasByTemporada(
@@ -74,7 +72,7 @@ public class EtapaServiceImpl implements EtapaService {
 				
 				NumberFormat formatter = new DecimalFormat("0.000");
 				recordBeisbol.setPctjeString(formatter.format(recordBeisbol.getPorcentaje()));
-				
+				recordBeisbol.setParticipanteId(recordBase.getParticipante().getId());
 				records.add(recordBeisbol);
 			}
 			

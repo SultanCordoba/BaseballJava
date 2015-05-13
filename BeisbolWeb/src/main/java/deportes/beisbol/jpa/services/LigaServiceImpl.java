@@ -31,7 +31,6 @@ import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
 import static deportes.beisbol.jpa.predicates.LigaPredicates.nombreIsLike;
-import static deportes.beisbol.jpa.predicates.LigaPredicates.siglasIsLike;
 
 @Service
 @Transactional(readOnly = true)
