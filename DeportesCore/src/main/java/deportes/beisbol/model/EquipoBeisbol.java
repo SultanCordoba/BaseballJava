@@ -14,6 +14,8 @@ public class EquipoBeisbol implements DeporteEquipoInterfaz {
 	private String siglas;
 	private String nombre;
 	private String nombreTabla;
+	private String logotipo;
+	private String parque;
 	
 	public Short getId() {
 		return id;
@@ -66,6 +68,22 @@ public class EquipoBeisbol implements DeporteEquipoInterfaz {
 
 	}
 	
+	public String getLogotipo() {
+		return logotipo;
+	}
+
+	public void setLogotipo(String logotipo) {
+		this.logotipo = logotipo;
+	}
+
+	public String getParque() {
+		return parque;
+	}
+
+	public void setParque(String parque) {
+		this.parque = parque;
+	}
+
 	public EquipoBeisbol() {}
 
 }
