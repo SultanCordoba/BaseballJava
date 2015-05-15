@@ -3,6 +3,7 @@ package deportes.beisbol.jpa.services;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +15,10 @@ import deportes.beisbol.converter.JugadorConverter;
 import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.jpa.repository.JugadorRepository;
 import deportes.beisbol.model.JugadorBeisbol;
-import deportes.beisbol.service.JugadorService;
 import static deportes.beisbol.jpa.predicates.JugadorPredicates.nombreIsLike;
 
 @Service
-@Transactional(readOnly = false)
+@Transactional(readOnly = true)
 public class JugadorServiceImpl implements JugadorService {
 
 	private static final Logger logger = LoggerFactory.getLogger(JugadorServiceImpl.class);
@@ -50,8 +50,13 @@ public class JugadorServiceImpl implements JugadorService {
 		return jugadorRepository.findAll();
 	}
 
-	public Jugador save(Jugador j) {		
+	/* public Jugador save(Jugador j) {		
 		
 		return jugadorRepository.save(j);
+	} */
+
+	@Override
+	public Optional<Jugador> findOne(short id) {
+		return Optional.ofNullable(jugadorRepository.findOne(id));
 	}
 }

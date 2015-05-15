@@ -2,14 +2,15 @@ package deportes.beisbol.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
-import deportes.core.interfaces.DeporteJugadorInterfaz;
+import deportes.core.interfaces.JugadorInterfaz;
 
-public class JugadorBeisbol implements DeporteJugadorInterfaz {
+public class JugadorBeisbol implements JugadorInterfaz {
 
 	public short id;
 	private String nombre;
@@ -123,6 +124,27 @@ public class JugadorBeisbol implements DeporteJugadorInterfaz {
 		armaNombre.add(apellidoPaterno);
 		
 		return joiner.join(armaNombre);
+	}
+	
+	@Override
+	public boolean equals(Object object) {
+		if (object == null) {
+			return false;
+		}
+
+		if (getClass() != object.getClass()) {
+			return false;
+		}
+
+		final JugadorBeisbol other = (JugadorBeisbol) object;
+		return Objects.equals(this.nombre, other.nombre) &&
+				Objects.equals(this.apellidoPaterno, other.apellidoPaterno) &&
+				Objects.equals(this.apellidoMaterno, other.apellidoMaterno);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.nombre, this.apellidoPaterno, this.apellidoMaterno);
 	}
 
 }

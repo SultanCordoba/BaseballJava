@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.Joiner;
 
-import deportes.core.interfaces.DeporteContrincanteInterfaz;
-import deportes.core.interfaces.DeportePartidoInterfaz;
+import deportes.core.interfaces.ContrincanteInterfaz;
+import deportes.core.interfaces.PartidoInterfaz;
 import deportes.core.util.JsonDateSerializer;
 import deportes.core.util.JsonDateDeserializer;
 
 @JsonTypeName("partidoBeisbol")
-public class PartidoBeisbol implements DeportePartidoInterfaz {
+public class PartidoBeisbol implements PartidoInterfaz {
 
 	@JsonSerialize(using = JsonDateSerializer.class)
 	@JsonDeserialize(using = JsonDateDeserializer.class)	
@@ -100,7 +100,7 @@ public class PartidoBeisbol implements DeportePartidoInterfaz {
 	}
 	
 	@Override
-	public void setLocal(DeporteContrincanteInterfaz equipoLocal) {
+	public void setLocal(ContrincanteInterfaz equipoLocal) {
 		this.equipoLocal = (ContrincanteBeisbol) equipoLocal;
 	}
 	
@@ -110,7 +110,7 @@ public class PartidoBeisbol implements DeportePartidoInterfaz {
 	}
 	
 	@Override
-	public void setVisita(DeporteContrincanteInterfaz equipoVisita) {
+	public void setVisita(ContrincanteInterfaz equipoVisita) {
 		this.equipoVisita = (ContrincanteBeisbol) equipoVisita;
 	}
 	

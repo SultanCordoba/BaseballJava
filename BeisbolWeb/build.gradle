@@ -41,7 +41,7 @@ dependencies {
     testCompile("junit:junit")
     compile('com.jolbox:bonecp:0.8.0.RELEASE')
     compile('mysql:mysql-connector-java')
-    compile('deportes:deportes-core:3.5') 
+    compile('deportes:deportes-core:4.0') 
     compile('com.mysema.querydsl:querydsl-apt:3.6.3')
     compile('com.mysema.querydsl:querydsl-jpa:3.6.3')
     compile('ch.qos.logback:logback-classic')

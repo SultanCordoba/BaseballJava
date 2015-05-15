@@ -14,7 +14,8 @@
 			<div role="tabpanel">
 				<ul class="nav nav-pills" role="tablist" id="navEquipo">
 					<li role="presentation">
-						<a href="#tabNombres" aria-controls="home" role="pill" data-toggle="tab">Nombres</a>
+						<a href="#tabNombres" aria-controls="home" role="pill" data-toggle="tab"
+						   th:text="#{franquicia.show.nombres}"></a>
 					</li>
 					<li role="presentation" th:if="${not #lists.isEmpty(franquicia.escudos)}">
 						<a href="#tabEscudos" aria-controls="home" role="pill" data-toggle="tab" 
@@ -95,7 +96,7 @@
 									<tbody>
 										<tr th:each = "record : ${temporadas}">
 											<td>
-												<a th:href="@{/equipo/{id}/show/equipos(id = ${record.participanteId})}" 
+												<a th:href="@{/equipo/{id}/show/E(id = ${record.participanteId})}" 
 												   th:text="${record.temporadaNombre}"></a>
 											</td>
 											<div th:if="${record.campeon}">

@@ -10,7 +10,7 @@ import java.util.Collection;
  *
  * @author L00596254
  */
-public interface LigaInterfaz extends DeporteNombreInterfaz {
+public interface LigaInterfaz extends NombreInterfaz {
     public Collection<? extends TemporadaInterfaz> getTemporadas();
     
     public void setTemporadas(Collection<? extends TemporadaInterfaz> temporadas);

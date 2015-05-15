@@ -1,8 +1,8 @@
 package deportes.beisbol.model;
 
-import deportes.core.interfaces.DeporteRecordInterfaz;
+import deportes.core.interfaces.RecordInterfaz;
 
-public class RecordBeisbol implements DeporteRecordInterfaz {
+public class RecordBeisbol implements RecordInterfaz {
 
 	private String nombre;
 	private short ganados;

@@ -10,7 +10,7 @@ import java.util.Set;
 
 import com.google.common.base.MoreObjects.ToStringHelper;
 
-import deportes.core.interfaces.DeporteRangoFechaInterfaz;
+import deportes.core.interfaces.RangoFechaInterfaz;
 import deportes.core.interfaces.FranquiciaInterfaz;
 
 /**
@@ -59,7 +59,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	 * @see deportes.core.interfaces.FranquiciaInterfaz#getNombres()
 	 */
 	@Override
-	public Collection<? extends DeporteRangoFechaInterfaz> getNombres() {
+	public Collection<? extends RangoFechaInterfaz> getNombres() {
 		return this.nombres;
 	}
 
@@ -69,7 +69,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void setNombres(
-			Collection<? extends DeporteRangoFechaInterfaz> nombres) {
+			Collection<? extends RangoFechaInterfaz> nombres) {
 		this.nombres = (Set<RangoFechaBeisbol>) nombres;
 
 	}
@@ -78,7 +78,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	 * @see deportes.core.interfaces.FranquiciaInterfaz#getEscudos()
 	 */
 	@Override
-	public Collection<? extends DeporteRangoFechaInterfaz> getEscudos() {
+	public Collection<? extends RangoFechaInterfaz> getEscudos() {
 		return this.escudos;
 	}
 
@@ -88,7 +88,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void setEscudos(
-			Collection<? extends DeporteRangoFechaInterfaz> escudos) {
+			Collection<? extends RangoFechaInterfaz> escudos) {
 		this.escudos = (Set<RangoFechaBeisbol>) escudos;
 
 	}
@@ -97,7 +97,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	 * @see deportes.core.interfaces.FranquiciaInterfaz#getParques()
 	 */
 	@Override
-	public Collection<? extends DeporteRangoFechaInterfaz> getParques() {
+	public Collection<? extends RangoFechaInterfaz> getParques() {
 		return this.parques;
 	}
 
@@ -107,7 +107,7 @@ public class FranquiciaBeisbol implements FranquiciaInterfaz {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void setParques(
-			Collection<? extends DeporteRangoFechaInterfaz> parques) {
+			Collection<? extends RangoFechaInterfaz> parques) {
 		this.parques = (Set<RangoFechaBeisbol>) parques;
 	}
 	

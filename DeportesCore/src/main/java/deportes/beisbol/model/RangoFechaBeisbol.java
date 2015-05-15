@@ -15,13 +15,13 @@ import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Strings;
 
 import deportes.core.interfaces.DeporteBasicoInterfaz;
-import deportes.core.interfaces.DeporteRangoFechaInterfaz;
+import deportes.core.interfaces.RangoFechaInterfaz;
 
 /**
  * @author juanfriverap
  *
  */
-public class RangoFechaBeisbol implements DeporteRangoFechaInterfaz,
+public class RangoFechaBeisbol implements RangoFechaInterfaz,
 		DeporteBasicoInterfaz {
 	
 	private String nombre;

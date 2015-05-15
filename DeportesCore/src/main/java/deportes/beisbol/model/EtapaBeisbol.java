@@ -10,8 +10,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
-import deportes.core.interfaces.DeportePartidoInterfaz;
-import deportes.core.interfaces.DeporteRecordInterfaz;
+import deportes.core.interfaces.PartidoInterfaz;
+import deportes.core.interfaces.RecordInterfaz;
 import deportes.core.interfaces.EtapaInterfaz;
 
 /**
@@ -52,7 +52,7 @@ public class EtapaBeisbol implements EtapaInterfaz {
 	 * @see deportes.core.interfaces.EtapaInterfaz#getPartidos()
 	 */
 	@Override
-	public Collection<? extends DeportePartidoInterfaz> getPartidos() {
+	public Collection<? extends PartidoInterfaz> getPartidos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,7 +62,7 @@ public class EtapaBeisbol implements EtapaInterfaz {
 	 */
 	@Override
 	public void setPartidos(
-			Collection<? extends DeportePartidoInterfaz> partidos) {
+			Collection<? extends PartidoInterfaz> partidos) {
 		// TODO Auto-generated method stub
 
 	}
@@ -71,7 +71,7 @@ public class EtapaBeisbol implements EtapaInterfaz {
 	 * @see deportes.core.interfaces.EtapaInterfaz#getRecords()
 	 */
 	@Override
-	public Collection<? extends DeporteRecordInterfaz> getRecords() {
+	public Collection<? extends RecordInterfaz> getRecords() {
 		return records;
 	}
 
@@ -81,7 +81,7 @@ public class EtapaBeisbol implements EtapaInterfaz {
 	@SuppressWarnings("unchecked")
 	@Override
 	@JsonDeserialize(as=LinkedHashSet.class)
-	public void setRecords(Collection<? extends DeporteRecordInterfaz> records) {
+	public void setRecords(Collection<? extends RecordInterfaz> records) {
 		// TODO Auto-generated method stub
 		this.records = (LinkedHashSet<RecordBeisbol>) records;
 	}

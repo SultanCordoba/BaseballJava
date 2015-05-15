@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import deportes.beisbol.jpa.services.JugadorService;
 import deportes.beisbol.model.JugadorBeisbol;
-import deportes.beisbol.service.JugadorService;
 
 @RestController
 @RequestMapping("/jugador")

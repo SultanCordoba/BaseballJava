@@ -55,16 +55,16 @@ public class ConstructorBreadcrumb {
 		ArrayList<String> urlLiga = new ArrayList<>();
 		
 		switch(zona.toUpperCase()) {
-		case "EQUIPOS":
+		case "E":
 			urlLiga.add("X");
 			urlLiga.add("franquicia");
-			urlLiga.add(String.valueOf(participante.getEquipos().iterator().next().getFranquiciaHistorico().getId()));
+			urlLiga.add(String.valueOf(participante.getEquipos().iterator().next().getFranquiciaHistorico().getFranquicia().getId()));
 			urlLiga.add("show");
 						
 			resultado.put(joiner.join(urlLiga).toString(), ParticipanteConverter.nombreParticipante(participante, false, null));			
 			break;
 			
-		case "TEMPORADAS":
+		case "T":
 			urlLiga.add("X");
 			urlLiga.add("temporada");
 			urlLiga.add(String.valueOf(participante.getTemporada().getId()));

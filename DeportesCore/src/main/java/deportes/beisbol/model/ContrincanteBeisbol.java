@@ -3,11 +3,11 @@ package deportes.beisbol.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import deportes.core.interfaces.DeporteContrincanteInterfaz;
-import deportes.core.interfaces.DeporteEquipoInterfaz;
+import deportes.core.interfaces.ContrincanteInterfaz;
+import deportes.core.interfaces.EquipoInterfaz;
 
 @JsonTypeName("contBeisbol")
-public class ContrincanteBeisbol implements DeporteContrincanteInterfaz {
+public class ContrincanteBeisbol implements ContrincanteInterfaz {
 
 	private EquipoBeisbol equipo;
 	private short score;
@@ -32,7 +32,7 @@ public class ContrincanteBeisbol implements DeporteContrincanteInterfaz {
 	}
 
 	@Override
-	public void setEquipo(DeporteEquipoInterfaz equipo) {
+	public void setEquipo(EquipoInterfaz equipo) {
 		this.equipo = (EquipoBeisbol) equipo;
 	}
 

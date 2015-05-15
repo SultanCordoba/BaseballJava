@@ -10,29 +10,29 @@
 			<div role="tabpanel">
 				<ul class="nav nav-pills navEquipoG" role="tablist" id="navEquipo">
 					<li role="presentation" id="zTetapas">
-						<a href="#etapas" aria-controls="home" role="tab" 
+						<a th:href="${'#etapas' + equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
 						   data-toggle="tab">General</a>
 					</li>
 					<li role="presentation" id="zTroster">
-						<a href="#roster" aria-controls="home" role="tab" 
+						<a th:href="${'#roster' + equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
 						   data-toggle="tab">Roster</a>
 					</li>
 					<li role="presentation" id="zTpartidos">
-						<a href="#partidos" aria-controls="home" role="tab" 
-						   data-toggle="tab">Partidos</a>
+						<a href="${'#partidos' + equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
+						   data-toggle="tab" th:text="#{equipo.show.partidos}"></a>
 					</li>  
 				</ul>
 				
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="etapas">
+					<div role="tabpanel" class="tab-pane active" th:id="${'etapas' + equipo.equipoBeisbol.id}">
 					<div class="panel panel-default">
 							<div class="panel-body">
 								<h2 th:text="${equipo.equipoBeisbol.nombre} + ' ' + ${equipo.totalEquipo}"></h2>
 								
-								<h3 th:if="${equipo.campeon}">Campeón</h3>
+								<h3 th:if="${equipo.campeon}" th:text="#{equipo.show.campeon}"></h3>
 								
 								<div class="panel panel-default col-md-5">
-									<div class="panel-heading resaltar">Etapas</div>
+									<div class="panel-heading resaltar" th:text="#{equipo.show.general.etapas}"></div>
 									<div class="panel-body">
 										<table class="table">
 											<tr th:each="etapa : ${equipo.records}">
@@ -46,36 +46,56 @@
 								<div class="panel panel-default col-md-offset-1 col-md-5">
 									<div class="panel-heading resaltar">Managers</div>
 									<div class="panel-body">
-										<p>Coming Soon...</p>
+										<ul class="list-group">
+											<li class="list-group-item" th:each="manager : ${equipo.managers}" 
+											   th:text="${manager.jugador.nombreCompleto}"></li>
+										</ul>
 									</div>
 								</div>
 							</div>
 						</div>	
 					</div>	
 					
-					<div role="tabpanel" class="tab-pane" id="roster">
+					<div role="tabpanel" class="tab-pane" th:id="${'roster' + equipo.equipoBeisbol.id}">
 					<div class="panel panel-default">
 							<div class="panel-body">
+								<!-- <div class="col-md-5">
+									<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
+								</div>
+								
+								<div class="col-md-offset-1 col-md-5">
+									<ul class="list-group">
+										<li class="list-group-item">* Denota que el jugador terminó la temporada en otro equipo.</li>
+										<li class="list-group-item">^ Denota que el jugador inició la temporada en otro equipo.</li>
+									</ul>
+								</div>  -->
+								
 								<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
 								
 								<div class="panel panel-default col-md-5">
-									<div class="panel-heading resaltar">Bateadores</div>
+									<div class="panel-heading resaltar" th:text="#{equipo.show.roster.bateadores}"></div>
 									<div class="panel-body">
-										<p>Coming Soon...</p>
+										<ul class="list-group">
+											<li class="list-group-item" th:each="bateador : ${equipo.bateadores}" 
+											   th:text="${bateador.jugador.nombreAbreviado}"></li>
+										</ul>
 									</div>
 								</div>
 
 								<div class="panel panel-default col-md-offset-1 col-md-5">
-									<div class="panel-heading resaltar">Lanzadores</div>
+									<div class="panel-heading resaltar" th:text="#{equipo.show.roster.lanzadores}"></div>
 									<div class="panel-body">
-										<p>Coming Soon...</p>
+										<ul class="list-group">
+											<li class="list-group-item" th:each="pitcher : ${equipo.pitchers}" 
+											   th:text="${pitcher.jugador.nombreAbreviado}"></li>
+										</ul>
 									</div>
 								</div>
 							</div>
 						</div>	
 					</div>	
 					
-					<div role="tabpanel" class="tab-pane" id="partidos">
+					<div role="tabpanel" class="tab-pane" th:id="${'partidos' + equipo.equipoBeisbol.id}">
 					<div class="panel panel-default">
 							<div class="panel-body">
 								<p>Coming Soon...</p>

@@ -5,7 +5,7 @@
 package deportes.core.util;
 
 import deportes.core.interfaces.DeporteBasicoInterfaz;
-import deportes.core.interfaces.DeporteRangoFechaInterfaz;
+import deportes.core.interfaces.RangoFechaInterfaz;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Contiene un nombre y el rango de fechas en que ese nombre es usado.
  */
-public class NombreTiempo implements DeporteRangoFechaInterfaz, DeporteBasicoInterfaz {
+public class NombreTiempo implements RangoFechaInterfaz, DeporteBasicoInterfaz {
 
     private LocalDate fechaInicio;
     private LocalDate fechaFin;

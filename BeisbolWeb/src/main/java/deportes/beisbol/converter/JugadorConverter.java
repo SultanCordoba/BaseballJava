@@ -11,6 +11,7 @@ public class JugadorConverter {
 		resultado.setNombre(jugadorBase.getNombres());
 		resultado.setApellidoPaterno(jugadorBase.getApellidoPaterno());
 		resultado.setApellidoMaterno(jugadorBase.getApellidoMaterno());
+		// resultado.setFechaNacimiento(jugadorBase.getFechaNacimiento());
 		
 		return resultado;
 	}

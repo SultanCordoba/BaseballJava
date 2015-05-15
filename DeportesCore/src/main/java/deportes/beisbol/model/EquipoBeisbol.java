@@ -4,11 +4,11 @@ import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import deportes.core.interfaces.DeporteEquipoInterfaz;
-import deportes.core.interfaces.DeporteJugadorInterfaz;
+import deportes.core.interfaces.EquipoInterfaz;
+import deportes.core.interfaces.JugadorInterfaz;
 
 @JsonTypeName("equipoBeisbol")
-public class EquipoBeisbol implements DeporteEquipoInterfaz {
+public class EquipoBeisbol implements EquipoInterfaz {
 
 	private Short id;
 	private String siglas;
@@ -56,14 +56,14 @@ public class EquipoBeisbol implements DeporteEquipoInterfaz {
 	}
 
 	@Override
-	public Collection<? extends DeporteJugadorInterfaz> getJugadores() {
+	public Collection<? extends JugadorInterfaz> getJugadores() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setJugadores(
-			Collection<? extends DeporteJugadorInterfaz> jugadores) {
+			Collection<? extends JugadorInterfaz> jugadores) {
 		// TODO Auto-generated method stub
 
 	}

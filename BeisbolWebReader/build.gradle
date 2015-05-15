@@ -28,6 +28,6 @@ repositories {
 dependencies {
     compile("org.springframework:spring-web")
     testCompile("junit:junit")
-    compile('deportes:deportes-core:3.5') 
+    compile('deportes:deportes-core:4.0') 
     compile("ch.qos.logback:logback-classic")    
 }
