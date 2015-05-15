@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,7 +85,7 @@ public class TemporadaController {
 			etapaVista.add(EtapaConverter.convierteDeEntidad(etapa));
 		}
 		
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
+		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());

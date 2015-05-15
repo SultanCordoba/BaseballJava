@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,7 +103,7 @@ public class FranquiciaController {
 		
 		Iterator<LigaHistorico> ligaHistoricos = ligaPaso.getLigaHistoricos().iterator();
 		
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(ligaHistoricos.next(), "equipos");
+		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(ligaHistoricos.next(), "equipos");
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());

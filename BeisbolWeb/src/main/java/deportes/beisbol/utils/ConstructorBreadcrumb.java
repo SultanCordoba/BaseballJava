@@ -1,7 +1,7 @@
 package deportes.beisbol.utils;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
@@ -16,24 +16,24 @@ public class ConstructorBreadcrumb {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(ConstructorBreadcrumb.class);
 	
-	public static TreeMap<String, String> construyeInicio() {
-		TreeMap<String, String> resultado = new TreeMap<>();
+	public static LinkedHashMap<String, String> construyeInicio() {
+		LinkedHashMap<String, String> resultado = new LinkedHashMap<>();
 		
 		resultado.put("/inicio", "header.inicio");
 		
 		return resultado;
 	}
 	
-	public static TreeMap<String, String> construyeLigasAll() {
-		TreeMap<String, String> resultado = construyeInicio();
+	public static LinkedHashMap<String, String> construyeLigasAll() {
+		LinkedHashMap<String, String> resultado = construyeInicio();
 		
 		resultado.put("/liga/showall", "header.ligas");
 		
 		return resultado;
 	}
 	
-	public static TreeMap<String, String> construyeLiga(LigaHistorico ligaBeisbol, String zona) {
-		TreeMap<String, String> resultado = construyeLigasAll();
+	public static LinkedHashMap<String, String> construyeLiga(LigaHistorico ligaBeisbol, String zona) {
+		LinkedHashMap<String, String> resultado = construyeLigasAll();
 		
 		Joiner joiner = Joiner.on("/").skipNulls();
 		ArrayList<String> urlLiga = new ArrayList<>();
@@ -48,8 +48,8 @@ public class ConstructorBreadcrumb {
 		return resultado;
 	}	
 	
-	public static TreeMap<String, String> construyeEquipo(Participante participante, String zona) {
-		TreeMap<String, String> resultado = construyeLiga(participante.getTemporada().getLigaHistorico(), zona);
+	public static LinkedHashMap<String, String> construyeEquipo(Participante participante, String zona) {
+		LinkedHashMap<String, String> resultado = construyeLiga(participante.getTemporada().getLigaHistorico(), zona);
 		
 		Joiner joiner = Joiner.on("/").skipNulls();
 		ArrayList<String> urlLiga = new ArrayList<>();

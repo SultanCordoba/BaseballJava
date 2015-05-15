@@ -3,7 +3,7 @@ package deportes.beisbol.web.controller;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -45,7 +45,7 @@ public class LigaController {
 		Optional<String> idioma = Optional.of(locale.getLanguage());
 		
 		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeInicio();
+		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeInicio();
 		// menuBread.remove(menuBread.lastKey());
 		
 		model.addAttribute("menuBread", menuBread);
@@ -72,7 +72,7 @@ public class LigaController {
 		FranquiciaBeisbol franquicia = null;
 		//HashSet<EquipoAux> equipos = new HashSet<>(); 
 		
-		TreeMap<String, EquipoPais> equipos = new TreeMap<>();
+		LinkedHashMap<String, EquipoPais> equipos = new LinkedHashMap<>();
 		
 		EquipoPais equipoAux = null;
 		
@@ -92,7 +92,7 @@ public class LigaController {
 		}
 			
 		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		TreeMap<String, String> menuBread = ConstructorBreadcrumb.construyeLigasAll();
+		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLigasAll();
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());

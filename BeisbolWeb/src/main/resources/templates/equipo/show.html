@@ -11,21 +11,18 @@
 		<div layout:fragment="content">	
 			<div role="tabpanel">
 				<ul class="nav nav-tabs" role="tablist" id="navParticipante">
-					<li th:each="equipo : ${equipos}" role="presentation" th:id="'t' + ${equipo.id}">
-						<a th:href="'#e' + ${equipo.id}" aria-controls="home" role="tab" 
-						   data-toggle="tab" th:text="${equipo.nombreTabla}"></a>
+					<li th:each="equipo : ${equipos}" role="presentation" th:id="'t' + ${equipo.equipoBeisbol.id}">
+						<a th:href="'#e' + ${equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
+						   data-toggle="tab" th:text="${equipo.equipoBeisbol.nombreTabla}"></a>
 					</li>
 				</ul>
 				
 				<div class="tab-content">
-					<div th:each="equipo : ${equipos}" role="tabpanel" class="tab-pane" th:id="'e' + ${equipo.id}" >
+					<div th:each="equipo : ${equipos}" role="tabpanel" class="tab-pane" th:id="'e' + ${equipo.equipoBeisbol.id}" >
 						<div th:include="equipo/detalleEquipo :: detalleEquipo"></div>
 					</div>
 				</div>
 			</div>
-							
-			<!--  <div th:if="${#lists.size(equipos) == 1}" th:include="equipo/detalleEquipo :: detalleEquipo"></div>
-			<div th:unless="${#lists.size(equipos) == 1}"><p>Multiples equipos coming soon...</p></div>  -->
 		</div>
 		
 		<div layout:fragment="scripts">

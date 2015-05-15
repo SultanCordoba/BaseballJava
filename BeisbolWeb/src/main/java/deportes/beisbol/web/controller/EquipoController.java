@@ -19,8 +19,11 @@ import deportes.beisbol.converter.ParticipanteConverter;
 import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Participante;
 import deportes.beisbol.jpa.services.ParticipanteService;
+import deportes.beisbol.jpa.services.RecordService;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
+import deportes.beisbol.utils.EquipoAux;
+import deportes.beisbol.utils.RecordEtapa;
 
 @Controller
 @RequestMapping("/equipo")
@@ -30,6 +33,9 @@ public class EquipoController {
 	
 	@Autowired
 	ParticipanteService participanteService;
+	
+	@Autowired
+	RecordService recordService;
 
 	@RequestMapping(value = "{id}/show/{zona}", method = RequestMethod.GET)
 	public String getEquipo(@PathVariable short id, @PathVariable String zona, 
@@ -39,11 +45,19 @@ public class EquipoController {
 		
 		// logger.info("Participante:" + participante.getId() + " Equipos: "  + participante.getEquipos().size());
 		
-		LinkedHashSet<EquipoBeisbol> equipos = new LinkedHashSet<>();
+		LinkedHashSet<EquipoAux> equipos = new LinkedHashSet<>();
 		Iterator<Equipo> iteraEquipos = participante.getEquipos().iterator();
+		EquipoAux equipoAux;
+		Equipo equipoPaso;
 		
 		while (iteraEquipos.hasNext()) {
-			equipos.add(EquipoConverter.convierteDeBase(iteraEquipos.next()));
+			equipoPaso = iteraEquipos.next();
+			equipoAux = new EquipoAux();
+			equipoAux.setEquipoBeisbol(EquipoConverter.convierteDeBase(equipoPaso));
+			equipoAux.setRecords((LinkedHashSet<RecordEtapa>) recordService.findEtapaEquipo
+					(equipoPaso.getFranquiciaHistorico().getFranquicia().getId(), 
+					 participante.getTemporada().getId(), Optional.of(locale.getLanguage())));
+			equipos.add(equipoAux);
 		}
 		
 		model.addAttribute("equipos", equipos);

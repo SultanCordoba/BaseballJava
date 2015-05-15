@@ -22,11 +22,7 @@ public class RecordServiceImpl implements RecordService {
 	@Autowired
 	RecordRepository recordRepository;
 		
-	
-	@Override
-	public Collection<RecordEtapa> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
-
-		Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
+	private LinkedHashSet<RecordEtapa> convierteRecords(Iterator<Record> iteraRecord, Optional<String> idioma) {
 		Record recordBase = null;
 		
 		LinkedHashSet<RecordEtapa> resultado = new LinkedHashSet<>();
@@ -58,6 +54,25 @@ public class RecordServiceImpl implements RecordService {
 			resultado.add(tempEquipo);
 		}
 		
-		return resultado;
+		return resultado;		
+	}
+	
+	
+	@Override
+	public Collection<RecordEtapa> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
+
+		Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
+		
+		return convierteRecords(iteraRecord, idioma);
+	}
+
+
+	@Override
+	public Collection<RecordEtapa> findEtapaEquipo(Short franquiciaId,
+			Short temporadaId, Optional<String> idioma) {
+
+		Iterator<Record> iteraRecord = recordRepository.findByParticipanteTemporada(franquiciaId, temporadaId).iterator();
+		
+		return convierteRecords(iteraRecord, idioma);
 	}
 }

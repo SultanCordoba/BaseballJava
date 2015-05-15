@@ -27,8 +27,28 @@
 					<div role="tabpanel" class="tab-pane active" id="etapas">
 					<div class="panel panel-default">
 							<div class="panel-body">
-								<h2 th:text="${equipo.nombre}"></h2>
-								<p>Coming Soon...</p>
+								<h2 th:text="${equipo.equipoBeisbol.nombre} + ' ' + ${equipo.totalEquipo}"></h2>
+								
+								<h3 th:if="${equipo.campeon}">Campeón</h3>
+								
+								<div class="panel panel-default col-md-5">
+									<div class="panel-heading resaltar">Etapas</div>
+									<div class="panel-body">
+										<table class="table">
+											<tr th:each="etapa : ${equipo.records}">
+												<td th:text="${etapa.etapaNombre}"></td>
+												<td th:text="${etapa.ganados} + ' - ' + ${etapa.perdidos}"></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+
+								<div class="panel panel-default col-md-offset-1 col-md-5">
+									<div class="panel-heading resaltar">Managers</div>
+									<div class="panel-body">
+										<p>Coming Soon...</p>
+									</div>
+								</div>
 							</div>
 						</div>	
 					</div>	
@@ -36,7 +56,21 @@
 					<div role="tabpanel" class="tab-pane" id="roster">
 					<div class="panel panel-default">
 							<div class="panel-body">
-								<p>Coming Soon...</p>
+								<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
+								
+								<div class="panel panel-default col-md-5">
+									<div class="panel-heading resaltar">Bateadores</div>
+									<div class="panel-body">
+										<p>Coming Soon...</p>
+									</div>
+								</div>
+
+								<div class="panel panel-default col-md-offset-1 col-md-5">
+									<div class="panel-heading resaltar">Lanzadores</div>
+									<div class="panel-body">
+										<p>Coming Soon...</p>
+									</div>
+								</div>
 							</div>
 						</div>	
 					</div>	
