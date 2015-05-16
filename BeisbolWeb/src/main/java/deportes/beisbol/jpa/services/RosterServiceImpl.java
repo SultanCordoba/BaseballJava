@@ -1,6 +1,7 @@
 package deportes.beisbol.jpa.services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
@@ -59,6 +60,13 @@ public class RosterServiceImpl implements RosterService {
 		
 		// TODO Auto-generated method stub
 		return resultado; */
+	}
+
+	@Override
+	public Collection<Roster> hallarRosterByJugadorTemporada(Short jugadorId,
+			Date fechaInicio, Date fechaFin) {
+		
+		return rosterRepository.hallarRosterByJugadorAndTemproada(jugadorId, fechaInicio, fechaFin);
 	}
 
 }

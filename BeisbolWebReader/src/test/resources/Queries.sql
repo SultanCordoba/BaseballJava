@@ -42,3 +42,6 @@ AUTO_INCREMENT = 49714 ;
 ALTER TABLE `baseball`.`partido` 
 AUTO_INCREMENT = 26720 ;
 
+select * from baseball.roster
+where jugador_id = 1402 and '1975-03-01' <= fecha_fin
+and '1975-09-30' >= fecha_inicio;

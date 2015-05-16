@@ -10,7 +10,7 @@
 	<body>
 		<div layout:fragment="content">
 			<div role="tabpanel">
-				<ul class="nav nav-tabs" role="tablist" id="navLiga">
+				<ul class="nav nav-tabs" role="tablist" id="navInterior">
 					<li role="presentation" id="zTgeneral">
 						<a href="#general" aria-controls="home" role="tab" 
 						   data-toggle="tab">General</a>
@@ -112,11 +112,9 @@
 				$(document).ready(function () {
 						$('#mainTab > li.active').removeClass('active');
 						$("#tabLigas").addClass('active');
-						
-						
+
 						$('#navLiga a[href="' + [[${zona}]] + '"]').tab('show');
 						
-												
 						$('#tabTemporadas').dataTable( {
 							"language": {
 								"lengthMenu": [[#{liga.show.lenghtMenu}]],

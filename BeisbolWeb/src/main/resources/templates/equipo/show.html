@@ -31,6 +31,9 @@
 		  	
 		  	<script th:inline="javascript">
 				$(document).ready(function () {
+					$('#mainTab > li.active').removeClass('active');
+					$("#tabLigas").addClass('active');
+					
 					$('ul.navEquipoG').find('a:first').tab('show');
 					$('#navParticipante a:first').tab('show');
 				});				

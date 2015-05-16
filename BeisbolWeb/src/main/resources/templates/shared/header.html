@@ -17,9 +17,10 @@
 					<a class="navbar-brand" href="#" th:text="#{header.titulo}"></a>
 				</div>
 				<div class="navbar-collapse collapse" id="navbar">	
-					<ul class="nav navbar-nav" id="mainTab">
+					<ul class="nav navbar-nav tabBeisbol" id="mainTab">
 						<li class="active" id="tabInicio"><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
 						<li id="tabLigas"><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
+						<li id="tabJugadores"><a href="#">Jugadores</a></li>
 						<li id="tabIngles"><a th:href="@{${#httpServletRequest.requestURL}(lang = en)}">English</a></li>
 						<li id="tabEspanol"><a th:href="@{${#httpServletRequest.requestURL}(lang = es)}">Español</a></li>
 					</ul>

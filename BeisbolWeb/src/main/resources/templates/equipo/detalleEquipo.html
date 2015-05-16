@@ -18,7 +18,7 @@
 						   data-toggle="tab">Roster</a>
 					</li>
 					<li role="presentation" id="zTpartidos">
-						<a href="${'#partidos' + equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
+						<a th:href="${'#partidos' + equipo.equipoBeisbol.id}" aria-controls="home" role="tab" 
 						   data-toggle="tab" th:text="#{equipo.show.partidos}"></a>
 					</li>  
 				</ul>
@@ -58,8 +58,8 @@
 					
 					<div role="tabpanel" class="tab-pane" th:id="${'roster' + equipo.equipoBeisbol.id}">
 					<div class="panel panel-default">
-							<div class="panel-body">
-								<!-- <div class="col-md-5">
+							<div class="panel-body">								
+								<div class="col-md-5">
 									<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
 								</div>
 								
@@ -68,17 +68,24 @@
 										<li class="list-group-item">* Denota que el jugador terminó la temporada en otro equipo.</li>
 										<li class="list-group-item">^ Denota que el jugador inició la temporada en otro equipo.</li>
 									</ul>
-								</div>  -->
-								
-								<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
+								</div>
+
 								
 								<div class="panel panel-default col-md-5">
 									<div class="panel-heading resaltar" th:text="#{equipo.show.roster.bateadores}"></div>
 									<div class="panel-body">
-										<ul class="list-group">
-											<li class="list-group-item" th:each="bateador : ${equipo.bateadores}" 
-											   th:text="${bateador.jugador.nombreAbreviado}"></li>
-										</ul>
+										<table class="table">
+											<thead>
+												<th th:text="#{equipo.show.roster.bateadores.nombre}"></th>
+												<th th:text="#{equipo.show.roster.bateadores.posicion}"></th>
+											</thead>
+											
+											<tr th:each="bateador : ${equipo.bateadores}">
+												<td th:text="${bateador.jugador.nombreAbreviado + ' '
+												    + bateador.otraTemporada}"></td>
+												<td th:text="${bateador.posicion}"></td>
+											</tr>
+										</table>
 									</div>
 								</div>
 
@@ -87,7 +94,8 @@
 									<div class="panel-body">
 										<ul class="list-group">
 											<li class="list-group-item" th:each="pitcher : ${equipo.pitchers}" 
-											   th:text="${pitcher.jugador.nombreAbreviado}"></li>
+											   th:text="${pitcher.jugador.nombreAbreviado + ' '
+												    + pitcher.otraTemporada}"></li>
 										</ul>
 									</div>
 								</div>

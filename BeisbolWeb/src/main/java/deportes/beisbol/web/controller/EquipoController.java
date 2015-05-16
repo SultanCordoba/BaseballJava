@@ -99,6 +99,7 @@ public class EquipoController {
 				rosterBeisbol.setJugador(jugadorBeisbol);
 				
 				/* Asignando Posición */
+				
 				rosterBeisbol.setPosicion("");
 				if (!Strings.isNullOrEmpty(roster.getPosicion())) {
 					rosterBeisbol.setPosicion(roster.getPosicion());					
@@ -110,6 +111,40 @@ public class EquipoController {
 				}
 				
 				/* TODO: Calculando otra temporada */
+				
+				Iterator<Roster> listaRoster = 
+					rosterService.hallarRosterByJugadorTemporada(
+						roster.getJugadorId(), 
+						equipoPaso.getParticipante().getTemporada().getFechaInicio(), 
+						equipoPaso.getParticipante().getTemporada().getFechaFin()).iterator();
+				Roster pasoJugador;
+				int i = 1;
+				int numRoster = 0;
+				
+				
+				while (listaRoster.hasNext()) {
+					pasoJugador = listaRoster.next();
+					numRoster++;
+					
+					if (pasoJugador.getEquipoId() == equipoPaso.getId()) {
+						i = numRoster;
+					}
+				}
+				
+				logger.info(jugadorBeisbol.getNombreAbreviado() + " j_id=" + jugadorBeisbol.getId() +
+						" i=" + i + 
+						" numRoster=" + numRoster);
+				
+				rosterBeisbol.setOtraTemporada("");
+				if (i > 1) {
+					rosterBeisbol.setOtraTemporada(rosterBeisbol.getOtraTemporada() + "^");
+				}
+				
+				if (i < numRoster) {
+					rosterBeisbol.setOtraTemporada(rosterBeisbol.getOtraTemporada() + "*");
+				}
+				
+				// Calculando posición.
 				
 				if (rosterBeisbol.getPosicion().toUpperCase().contains("M")) {
 					equipoAux.addManager(rosterBeisbol);
@@ -127,11 +162,11 @@ public class EquipoController {
 			
 			ArrayList<RosterBeisbol> paso;
 			paso = Lists.newArrayList(equipoAux.getBateadores());
-			Collections.sort(paso, new JugadorComparator());
+			Collections.sort(paso, new JugadorComparator(locale));
 			equipoAux.setBateadores(Sets.newLinkedHashSet(paso));
 			
 			paso = Lists.newArrayList(equipoAux.getPitchers());
-			Collections.sort(paso, new JugadorComparator());
+			Collections.sort(paso, new JugadorComparator(locale));
 			equipoAux.setPitchers(Sets.newLinkedHashSet(paso));
 			
 			equipos.add(equipoAux);
