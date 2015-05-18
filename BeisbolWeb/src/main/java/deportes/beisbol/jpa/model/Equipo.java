@@ -34,7 +34,8 @@ public class Equipo implements Serializable {
 	private Participante participante;
 	private Parque parque;
 	private Set<PartidoEquipo> partidoEquipos;
-
+	private Set<Roster> rosters;
+	
 	public Equipo() {
 
 	}
@@ -163,7 +164,7 @@ public class Equipo implements Serializable {
 	}
 
 	
-	@OneToMany(mappedBy="partido")
+	@OneToMany(mappedBy="equipo")
 	public Set<PartidoEquipo> getPartidoEquipos() {
 		return partidoEquipos;
 	}
@@ -177,5 +178,23 @@ public class Equipo implements Serializable {
 		partidoEquipo.setEquipo(this);
 
 		return partidoEquipo;
+	}
+
+	//bi-directional many-to-one association to FranquiciaHistorico
+	@OneToMany(mappedBy="equipo", fetch=FetchType.EAGER)
+	public Set<Roster> getRosters() {
+		return rosters;
+	}
+
+
+	public void setRosters(Set<Roster> rosters) {
+		this.rosters = rosters;
+	}
+	
+	public Roster addRoster(Roster roster) {
+		getRosters().add(roster);
+		roster.setEquipo(this);
+		
+		return roster;
 	}
 }

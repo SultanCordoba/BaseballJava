@@ -55,8 +55,8 @@ public class EquipoController {
 	@Autowired
 	RosterService rosterService;
 	
-	@Autowired
-	JugadorService jugadorService;
+	/* @Autowired
+	JugadorService jugadorService; */
 
 	@RequestMapping(value = "{id}/show/{zona}", method = RequestMethod.GET)
 	public String getEquipo(@PathVariable short id, @PathVariable String zona, 
@@ -92,7 +92,8 @@ public class EquipoController {
 			while (iteraJugador.hasNext()) {
 				roster = iteraJugador.next();
 				
-				jugadorBase = jugadorService.findOne(roster.getJugadorId()).get();
+				//jugadorBase = jugadorService.findOne(roster.getJugadorId()).get();
+				jugadorBase = roster.getJugador();
 				jugadorBeisbol = JugadorConverter.convierteDeBase(jugadorBase);
 				
 				rosterBeisbol = new RosterBeisbol();
@@ -114,7 +115,7 @@ public class EquipoController {
 				
 				Iterator<Roster> listaRoster = 
 					rosterService.hallarRosterByJugadorTemporada(
-						roster.getJugadorId(), 
+						roster.getJugador().getId(), 
 						equipoPaso.getParticipante().getTemporada().getFechaInicio(), 
 						equipoPaso.getParticipante().getTemporada().getFechaFin()).iterator();
 				Roster pasoJugador;
@@ -126,14 +127,14 @@ public class EquipoController {
 					pasoJugador = listaRoster.next();
 					numRoster++;
 					
-					if (pasoJugador.getEquipoId() == equipoPaso.getId()) {
+					if (pasoJugador.getEquipo().getId() == equipoPaso.getId()) {
 						i = numRoster;
 					}
 				}
 				
-				logger.info(jugadorBeisbol.getNombreAbreviado() + " j_id=" + jugadorBeisbol.getId() +
+/*				logger.info(jugadorBeisbol.getNombreAbreviado() + " j_id=" + jugadorBeisbol.getId() +
 						" i=" + i + 
-						" numRoster=" + numRoster);
+						" numRoster=" + numRoster); */
 				
 				rosterBeisbol.setOtraTemporada("");
 				if (i > 1) {

@@ -1,7 +1,9 @@
 package deportes.beisbol.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -14,13 +16,15 @@ import java.util.Date;
 public class Roster implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private short equipoId;
+	// private short equipoId;
 	private Date fechaFin;
 	private Date fechaInicio;
-	private short jugadorId;
+	// private short jugadorId;
 	private Date fechaActualizacion;
 	private byte ordenEquipo;
 	private String posicion;
+	private Equipo equipo;
+	private Jugador jugador;
 
 	public Roster() {
 	}
@@ -37,14 +41,14 @@ public class Roster implements Serializable {
 	}
 
 
-	@Column(name="equipo_id")
+	/* @Column(name="equipo_id")
 	public short getEquipoId() {
 		return this.equipoId;
 	}
 
 	public void setEquipoId(short equipoId) {
 		this.equipoId = equipoId;
-	}
+	} */
 
 
 	@Temporal(TemporalType.DATE)
@@ -69,14 +73,14 @@ public class Roster implements Serializable {
 	}
 
 
-	@Column(name="jugador_id")
+	/* @Column(name="jugador_id")
 	public short getJugadorId() {
 		return this.jugadorId;
 	}
 
 	public void setJugadorId(short jugadorId) {
 		this.jugadorId = jugadorId;
-	}
+	} */
 
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -106,6 +110,28 @@ public class Roster implements Serializable {
 
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="equipo_id")
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="jugador_id")
+	public Jugador getJugador() {
+		return jugador;
+	}
+
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
 	}
 
 }

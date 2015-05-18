@@ -13,7 +13,7 @@ public interface RosterRepository extends JpaRepository<Roster, Short> {
 	public Collection<Roster> findByEquipoIdOrderByFechaInicioAsc(Short equipoId);
 	
 	@Query("SELECT r FROM Roster r  "
-			+ "WHERE r.jugadorId = :jugadorId "
+			+ "WHERE r.jugador.id = :jugadorId "
 			+ "AND :fechaInicio <= r.fechaFin AND :fechaFin >= r.fechaInicio "
 			+ "ORDER BY r.fechaInicio")
 	public Collection<Roster> hallarRosterByJugadorAndTemproada(@Param("jugadorId") Short jugadorId,

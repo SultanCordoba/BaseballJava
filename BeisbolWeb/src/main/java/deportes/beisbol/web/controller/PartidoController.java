@@ -46,4 +46,16 @@ public class PartidoController {
 		
 		return new ResponseEntity<String>(resultado, new HttpHeaders(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/record/{etapa}/{vuelta}", method = RequestMethod.POST, headers="Accept=application/json")
+	@ResponseBody
+	public ResponseEntity<String> incrementarRecord(@PathVariable short etapa, @PathVariable byte vuelta, 
+			@RequestBody PartidoBeisbol partido) {
+		
+		String resultado = "OP_EXITOSA";
+		
+		
+		
+		return new ResponseEntity<String>(resultado, new HttpHeaders(), HttpStatus.OK);
+	}
 }

@@ -10,8 +10,7 @@ import java.util.Optional;
 import java.util.TreeMap;
 
 /* import org.slf4j.Logger;
-import org.slf4j.LoggerFactory; */
-
+import org.slf4j.LoggerFactory;  */
 
 import com.google.common.base.Strings;
 
@@ -40,8 +39,6 @@ public class EtapaConverter {
 			
 			while (etapasInt.hasNext()) {
 				etapaInt = etapasInt.next();
-				
-				// logger.info("Idioma Int:" + ligaHistoricoInt.getIdioma().getAbreviatura());
 				
 				if (etapaInt.getIdioma().getAbreviatura().toUpperCase().equals(idiomaAbrev)) {
 					resultado.setNombre(etapaInt.getNombre());

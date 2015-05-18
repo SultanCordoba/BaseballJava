@@ -12,15 +12,27 @@ import org.springframework.transaction.annotation.Transactional;
 import deportes.beisbol.converter.RecordConverter;
 import deportes.beisbol.jpa.model.EtapaInt;
 import deportes.beisbol.jpa.model.Record;
+import deportes.beisbol.jpa.repository.EquipoRepository;
+import deportes.beisbol.jpa.repository.EtapaRepository;
 import deportes.beisbol.jpa.repository.RecordRepository;
+import deportes.beisbol.jpa.repository.VueltaRepository;
 import deportes.beisbol.utils.RecordEtapa;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class RecordServiceImpl implements RecordService {
 
 	@Autowired
 	RecordRepository recordRepository;
+	
+	@Autowired
+	EtapaRepository etapaRepository;
+	
+	@Autowired
+	VueltaRepository vueltaRepository;
+	
+	@Autowired
+	EquipoRepository equipoRepository;
 		
 	private LinkedHashSet<RecordEtapa> convierteRecords(Iterator<Record> iteraRecord, Optional<String> idioma) {
 		Record recordBase = null;
@@ -75,4 +87,7 @@ public class RecordServiceImpl implements RecordService {
 		
 		return convierteRecords(iteraRecord, idioma);
 	}
+
+
+
 }

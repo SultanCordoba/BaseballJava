@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 import java.sql.Timestamp;
 
 
@@ -31,6 +32,7 @@ public class Jugador implements Serializable {
 	private String claveSABR;
 	private String bbRef;
 	private String nombreBusqueda;
+	private Set<Roster> rosters;
 
 	public Jugador() {
 	}
@@ -177,5 +179,22 @@ public class Jugador implements Serializable {
 
 	public void setNombreBusqueda(String nombreBusqueda) {
 		this.nombreBusqueda = nombreBusqueda;
+	}
+	
+	//bi-directional many-to-one association to FranquiciaHistorico
+	@OneToMany(mappedBy="jugador")
+	public Set<Roster> getRosters() {
+		return rosters;
+	}
+
+	public void setRosters(Set<Roster> rosters) {
+		this.rosters = rosters;
+	}
+	
+	public Roster addRoster(Roster roster) {
+		getRosters().add(roster);
+		roster.setJugador(this);
+		
+		return roster;
 	}
 }

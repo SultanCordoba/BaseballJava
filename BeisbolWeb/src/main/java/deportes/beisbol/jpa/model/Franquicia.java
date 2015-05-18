@@ -13,7 +13,7 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Franquicia.findAll", query="SELECT f FROM Franquicia f")
+// @NamedQuery(name="Franquicia.findAll", query="SELECT f FROM Franquicia f")
 public class Franquicia implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
