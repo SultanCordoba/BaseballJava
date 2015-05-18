@@ -75,8 +75,9 @@ public class EquipoController {
 		while (iteraEquipos.hasNext()) {
 			equipoPaso = iteraEquipos.next();
 			equipoAux = new EquipoAux();
-			equipoBeisbol = EquipoConverter.convierteDeBase(equipoPaso);
-			equipoAux.setEquipoBeisbol(EquipoConverter.convierteDeBase(equipoPaso));
+			equipoBeisbol = EquipoConverter.convierteDeBase(equipoPaso, Optional.ofNullable(locale.getLanguage()));
+			//equipoAux.setEquipoBeisbol(EquipoConverter.convierteDeBase(equipoPaso));
+			equipoAux.setEquipoBeisbol(equipoBeisbol);
 			equipoAux.setRecords((LinkedHashSet<RecordEtapa>) recordService.findEtapaEquipo
 					(equipoPaso.getFranquiciaHistorico().getFranquicia().getId(), 
 					 participante.getTemporada().getId(), Optional.of(locale.getLanguage())));

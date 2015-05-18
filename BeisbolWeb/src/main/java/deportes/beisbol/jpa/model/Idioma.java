@@ -21,6 +21,7 @@ public class Idioma implements Serializable {
 	private Set<LigaHistoricoInt> ligaHistoricoInts;
 	private Set<EtapaInt> etapaInts;
 	private Set<RecordInt> recordInts;
+	private Set<FranquiciaHistoricoInt> franquiciaHistoricoInts;
 	
 	public Idioma() {} 
 	
@@ -130,4 +131,30 @@ public class Idioma implements Serializable {
 
 		return recordInt;
 	}
+	
+	
+	@OneToMany(mappedBy="idioma")
+	public Set<FranquiciaHistoricoInt> getFranquiciaHistoricoInts() {
+		return franquiciaHistoricoInts;
+	}
+
+	public void setFranquiciaHistoricoInts(
+			Set<FranquiciaHistoricoInt> franquiciaHistoricoInts) {
+		this.franquiciaHistoricoInts = franquiciaHistoricoInts;
+	}
+	
+	public FranquiciaHistoricoInt addFranquiciaHistoricoInt(FranquiciaHistoricoInt franquiciaHistoricoInt) {
+		getFranquiciaHistoricoInts().add(franquiciaHistoricoInt);
+		franquiciaHistoricoInt.setIdioma(this);
+		return franquiciaHistoricoInt;
+	}
+	
+	public FranquiciaHistoricoInt removeFranquiciaHistoricoInt(FranquiciaHistoricoInt franquiciaHistoricoInt) {
+		getFranquiciaHistoricoInts().remove(franquiciaHistoricoInt);
+		franquiciaHistoricoInt.setIdioma(null);
+		return franquiciaHistoricoInt;
+	}
+
 }
+
+

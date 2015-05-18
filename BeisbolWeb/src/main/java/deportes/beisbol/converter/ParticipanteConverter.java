@@ -5,8 +5,10 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Equipo;
+import deportes.beisbol.jpa.model.FranquiciaHistoricoInt;
 import deportes.beisbol.jpa.model.Participante;
 
 public class ParticipanteConverter {
@@ -22,13 +24,36 @@ public class ParticipanteConverter {
 			equipo = iteraEquipos.next();
 			
 			if (!abreviado) {
-				nombreEquipo = equipo.getNombreCompletoEs();
+				
+				nombreEquipo = FranquiciaConverter.nombreCompletoIdioma(equipo.getFranquiciaHistorico(), idioma);
+				
+				/* nombreEquipo = equipo.getNombreCompletoEs();
+				
+				if (idioma.isPresent()) {
+					String idiomaPaso = idioma.get().toUpperCase();
+					
+					nombreEquipo = FranquiciaConverter.nombreCompletoIdioma(equipo.getFranquiciaHistorico(), idioma);
+					
+					 if (!idiomaPaso.equalsIgnoreCase("ES")) {
+						Iterator<FranquiciaHistoricoInt> iteraFranqHist = equipo.getFranquiciaHistorico().getFranquiciaHistoricoInts().iterator();
+						FranquiciaHistoricoInt franqPaso;
+						
+						while (iteraFranqHist.hasNext()) {
+							franqPaso = iteraFranqHist.next();
+							
+							if (franqPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaPaso)) {
+								nombreEquipo = franqPaso.getNombreCompleto();
+								break;
+							}
+						}
+						
+					} 
+				} */
+				
 			}
 			else {
 				nombreEquipo = equipo.getNombreTablasEs();
 			}
-			
-			// Calcular nombre en otro idioma si se especifica
 			
 			fullName.add(nombreEquipo);
 		}

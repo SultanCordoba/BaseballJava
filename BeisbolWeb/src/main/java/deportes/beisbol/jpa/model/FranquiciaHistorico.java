@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="franquicia_historico")
-@NamedQuery(name="FranquiciaHistorico.findAll", query="SELECT f FROM FranquiciaHistorico f")
+// @NamedQuery(name="FranquiciaHistorico.findAll", query="SELECT f FROM FranquiciaHistorico f")
 public class FranquiciaHistorico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
@@ -30,6 +30,7 @@ public class FranquiciaHistorico implements Serializable {
 	private byte versionFranquicia;
 	private Set<Equipo> equipos;
 	private Franquicia franquicia;
+	private Set<FranquiciaHistoricoInt> franquiciaHistoricoInts;
 
 	public FranquiciaHistorico() {
 	}
@@ -172,6 +173,29 @@ public class FranquiciaHistorico implements Serializable {
 
 	public void setFranquicia(Franquicia franquicia) {
 		this.franquicia = franquicia;
+	}
+
+
+	@OneToMany(mappedBy="franquiciaHistorico", fetch=FetchType.EAGER)
+	public Set<FranquiciaHistoricoInt> getFranquiciaHistoricoInts() {
+		return franquiciaHistoricoInts;
+	}
+
+	public void setFranquiciaHistoricoInts(
+			Set<FranquiciaHistoricoInt> franquiciaHistoricoInts) {
+		this.franquiciaHistoricoInts = franquiciaHistoricoInts;
+	}
+	
+	public FranquiciaHistoricoInt addFranquiciaHistoricoInt(FranquiciaHistoricoInt franquiciaHistoricoInt) {
+		getFranquiciaHistoricoInts().add(franquiciaHistoricoInt);
+		franquiciaHistoricoInt.setFranquiciaHistorico(this);
+		return franquiciaHistoricoInt;
+	}
+	
+	public FranquiciaHistoricoInt removeFranquiciaHistoricoInt(FranquiciaHistoricoInt franquiciaHistoricoInt) {
+		getFranquiciaHistoricoInts().remove(franquiciaHistoricoInt);
+		franquiciaHistoricoInt.setFranquiciaHistorico(null);
+		return franquiciaHistoricoInt;
 	}
 
 }

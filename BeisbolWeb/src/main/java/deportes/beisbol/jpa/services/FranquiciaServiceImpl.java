@@ -28,7 +28,7 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 		
 		FranquiciaBeisbol resultado = null;
 		
-		resultado = FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id));
+		resultado = FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), Optional.ofNullable("ES"));
 		
 		return Optional.ofNullable(resultado);
 	}

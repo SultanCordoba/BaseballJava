@@ -52,7 +52,7 @@ public class TemporadaRestfulController {
 			
 			resultado.get().setEtapas(etapaService.findEtapasByTemporada(resultado.get(), Optional.ofNullable("ES")));
 			
-			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get());
+			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get(), Optional.ofNullable("ES"));
 			
 			if (campeon.isPresent()) {
 				resultado.get().setCampeon(campeon.get());

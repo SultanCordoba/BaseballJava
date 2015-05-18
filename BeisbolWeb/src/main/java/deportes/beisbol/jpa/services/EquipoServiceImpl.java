@@ -23,21 +23,21 @@ public class EquipoServiceImpl implements EquipoService {
 	EquipoRepository equipoRepository;
 	
 	@Override
-	public Optional<EquipoBeisbol> findCampeon(TemporadaBeisbol t) {
+	public Optional<EquipoBeisbol> findCampeon(TemporadaBeisbol t, Optional<String> idioma) {
 		
 		EquipoBeisbol equipoBeisbol = null;
 		Equipo equipo = equipoRepository.findCampeon(t.getId());
-		equipoBeisbol = EquipoConverter.convierteDeBase(equipo);
+		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
 		
 		return Optional.ofNullable(equipoBeisbol);
 	}
 
 	@Override
-	public Optional<EquipoBeisbol> findOne(Short id) {
+	public Optional<EquipoBeisbol> findOne(Short id, Optional<String> idioma) {
 		
 		EquipoBeisbol equipoBeisbol = null;
 		Equipo equipo = equipoRepository.findOne(id);
-		equipoBeisbol = EquipoConverter.convierteDeBase(equipo);
+		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
 		
 		return Optional.ofNullable(equipoBeisbol);
 	}

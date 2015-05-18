@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,8 @@ import static deportes.beisbol.jpa.predicates.LigaPredicates.nombreIsLike;
 @Transactional(readOnly = true)
 public class LigaServiceImpl implements LigaService {
 
+	private static final Logger logger = LoggerFactory.getLogger(LigaServiceImpl.class);
+	
 	@Autowired
 	LigaRepository ligaRepository;
 
@@ -67,7 +71,7 @@ public class LigaServiceImpl implements LigaService {
 		
 		while (temporadasBase.hasNext()) {
 			tempPaso = TemporadaConverter.convierteDeBase(temporadasBase.next());
-			tempPaso.setCampeon(EquipoConverter.convierteDeBase(equipoRepository.findCampeon(tempPaso.getId())));
+			tempPaso.setCampeon(EquipoConverter.convierteDeBase(equipoRepository.findCampeon(tempPaso.getId()), idioma));
 			temporadas.add(tempPaso);
 		}			
 		
@@ -80,7 +84,7 @@ public class LigaServiceImpl implements LigaService {
 		FranquiciaBeisbol franqPaso;
 		
 		while (franquiciasBase.hasNext()) {
-			franqPaso = FranquiciaConverter.convierteDeBase(franquiciasBase.next());
+			franqPaso = FranquiciaConverter.convierteDeBase(franquiciasBase.next(), idioma);
 			if (!franqPaso.getNombre().isEmpty()) {
 				franquicias.add(franqPaso);
 			}

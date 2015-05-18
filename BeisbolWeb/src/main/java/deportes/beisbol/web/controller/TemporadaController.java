@@ -66,7 +66,7 @@ public class TemporadaController {
 			
 			resultado.get().setEtapas(etapaService.findEtapasByTemporada(resultado.get(), idioma));
 			
-			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get());
+			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get(), idioma);
 			
 			if (campeon.isPresent()) {
 				resultado.get().setCampeon(campeon.get());

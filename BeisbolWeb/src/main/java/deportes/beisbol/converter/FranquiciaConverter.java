@@ -3,22 +3,47 @@ package deportes.beisbol.converter;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-/* import org.slf4j.Logger;
-import org.slf4j.LoggerFactory; */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+import java.util.Optional;
 
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Franquicia;
 import deportes.beisbol.jpa.model.FranquiciaHistorico;
+import deportes.beisbol.jpa.model.FranquiciaHistoricoInt;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
 import deportes.beisbol.utils.FechaUtils;
 
 public class FranquiciaConverter {
 	
-	// private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
+	private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
 	
-	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia) {
+	public static String nombreCompletoIdioma(FranquiciaHistorico franquiciaHistorico, Optional<String> idioma) {
+		String resultado = franquiciaHistorico.getNombreCompletoEs();
+		
+		String idiomaPaso = Strings.nullToEmpty(idioma.get());
+		
+		if (!idiomaPaso.equalsIgnoreCase("ES")) {
+			Iterator<FranquiciaHistoricoInt> iteraFranqHist = franquiciaHistorico.getFranquiciaHistoricoInts().iterator();
+			FranquiciaHistoricoInt franqPaso;
+			
+			while (iteraFranqHist.hasNext()) {
+				franqPaso = iteraFranqHist.next();
+				
+				if (franqPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaPaso)) {
+					resultado = franqPaso.getNombreCompleto();
+				}
+			}
+		}
+		
+		return resultado;
+	}
+	
+	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia, Optional<String> idioma) {
 		
 		String inicioString = "XXXX";
 		
@@ -43,11 +68,17 @@ public class FranquiciaConverter {
 		
 		//logger.info("Procesando " + franquicia.getNombreTablasEs() + " con id " + franquicia.getId());
 		
+		String nombreCompara;
+		
 		while (iteraFranqHist.hasNext()) {
 			franqHistPaso = iteraFranqHist.next();
+			nombreCompara = nombreCompletoIdioma(franqHistPaso, idioma);
 			
-			if (!nombreActual.equalsIgnoreCase(franqHistPaso.getNombreCompletoEs())) {
-				nombreActual = franqHistPaso.getNombreCompletoEs();
+			//logger.info(nombreCompara + " idioma=" + idioma.get());
+			
+			if (!nombreActual.equalsIgnoreCase(nombreCompara)) {
+				//nombreActual = franqHistPaso.getNombreCompletoEs();
+				nombreActual = nombreCompara;
 				
 				if (rangoNombre != null) {
 					if (!Strings.isNullOrEmpty(rangoNombre.getNombre())) {
@@ -59,7 +90,7 @@ public class FranquiciaConverter {
 				rangoNombre = new RangoFechaBeisbol();
 				
 				rangoNombre.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
-				rangoNombre.setNombre(franqHistPaso.getNombreCompletoEs());				
+				rangoNombre.setNombre(nombreActual);				
 			} 
 			rangoNombre.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
 			
