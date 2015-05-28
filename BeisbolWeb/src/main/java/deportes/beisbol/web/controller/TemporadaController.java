@@ -1,10 +1,8 @@
 package deportes.beisbol.web.controller;
 
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,18 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
-import deportes.beisbol.converter.EtapaConverter;
-import deportes.beisbol.converter.TemporadaConverter;
 import deportes.beisbol.jpa.model.Temporada;
 import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.jpa.services.TemporadaService;
-import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.EtapaBeisbol;
-import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.service.EquipoService;
 import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
-import deportes.beisbol.utils.EtapaBeisbolAux;
 import deportes.beisbol.web.model.TemporadaModel;
 
 @Controller
@@ -50,10 +42,10 @@ public class TemporadaController {
 	@Autowired
 	EtapaService etapaService;
 	
-	@SuppressWarnings("unchecked")
+	
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET) 
 	public String getTemporada(@PathVariable Short id, Model model, Locale locale) {
-		Optional<TemporadaBeisbol> resultado = Optional.empty();
+		/* Optional<TemporadaBeisbol> resultado = Optional.empty();
 		
 		Optional<Temporada> temporada = temporadaService.findOneBd(id);
 		
@@ -82,16 +74,22 @@ public class TemporadaController {
 			etapa = iteraEtapas.next();
 			
 			etapaVista.add(EtapaConverter.convierteDeEntidad(etapa));
-		}
+		} */
+		
+		Optional<Temporada> temporada = temporadaService.findOneBd(id);
 		
 		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
 		
-		TemporadaModel temporadaModelo = new TemporadaModel();
-		temporadaModelo.setTemporada(resultado.get());
-		temporadaModelo.setEtapas(etapaVista);
+		// TemporadaModel temporadaModelo = new TemporadaModel();
+		
+		/* temporadaModelo.setTemporada(resultado.get());
+		temporadaModelo.setEtapas(etapaVista); */
+		
+		TemporadaModel temporadaModelo = temporadaService.crearTemporadaModel(id, Optional.of(locale.getLanguage()));
 		
 		model.addAttribute("menuBread", menuBread);
-		model.addAttribute("menuActivo", resultado.get().getNombre());
+		model.addAttribute("menuActivo", temporada.get().getNombre());
+		// model.addAttribute("menuActivo", resultado.get().getNombre());
 		/* model.addAttribute("temporada", resultado.get());
 		model.addAttribute("etapas", etapaVista); */
 		

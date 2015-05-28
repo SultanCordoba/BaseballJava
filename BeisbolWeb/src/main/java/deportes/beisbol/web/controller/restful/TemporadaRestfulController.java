@@ -1,5 +1,6 @@
 package deportes.beisbol.web.controller.restful;
 
+import java.util.Locale;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,51 +16,29 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import deportes.beisbol.ErrorInfo;
-import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.service.EquipoService;
-import deportes.beisbol.service.EtapaService;
-import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.jpa.services.TemporadaService;
+import deportes.beisbol.web.model.TemporadaModel;
 
 @RestController
 @RequestMapping("/temporada-restful")
 public class TemporadaRestfulController {
 	
 	@Autowired
-	LigaService ligaService;
-	
-	@Autowired
 	TemporadaService temporadaService;
+	
+	/* @Autowired
+	LigaService ligaService;
 	
 	@Autowired
 	EquipoService equipoService;
 	
 	@Autowired
-	EtapaService etapaService;
+	EtapaService etapaService; */
 	
-	@RequestMapping(value = "/{siglas}/get/{nombre}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
 	@ResponseBody 
-	public TemporadaBeisbol getTemporada(@PathVariable String siglas,
-			@PathVariable String nombre) {
-		Optional<TemporadaBeisbol> resultado;
-		
-		resultado = temporadaService.findByNombreAndLiga(nombre, siglas);
-		
-		resultado.orElseThrow(() -> new TemporadaNotFoundException(siglas, nombre));
-		
-		if (resultado.isPresent()) {
-			
-			resultado.get().setEtapas(etapaService.findEtapasByTemporada(resultado.get(), Optional.ofNullable("ES")));
-			
-			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get(), Optional.ofNullable("ES"));
-			
-			if (campeon.isPresent()) {
-				resultado.get().setCampeon(campeon.get());
-			}
-		}
-		
-		return resultado.get();
+	public TemporadaModel getTemporada(@PathVariable Short id, Locale locale) {
+		return temporadaService.crearTemporadaModel(id, Optional.of(locale.getLanguage()));
 	}
 	
 	@ExceptionHandler(TemporadaNotFoundException.class)
