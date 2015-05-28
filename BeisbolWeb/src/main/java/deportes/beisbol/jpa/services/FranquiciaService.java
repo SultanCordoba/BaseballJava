@@ -8,7 +8,7 @@ import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
 
 public interface FranquiciaService {
-	public Optional<FranquiciaBeisbol> findById(short id);
+	public Optional<FranquiciaBeisbol> findById(short id, Optional<String> idioma);
 	
 	public Collection<FranquiciaBeisbol> findByLigaId(Byte id);
 	

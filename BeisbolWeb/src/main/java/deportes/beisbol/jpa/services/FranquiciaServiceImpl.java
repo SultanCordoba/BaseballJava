@@ -24,11 +24,11 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 	FranquiciaRepository franquiciaRepository;
 	
 	@Override
-	public Optional<FranquiciaBeisbol> findById(short id) {
+	public Optional<FranquiciaBeisbol> findById(short id, Optional<String> idioma) {
 		
 		FranquiciaBeisbol resultado = null;
 		
-		resultado = FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), Optional.ofNullable("ES"));
+		resultado = FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), idioma);
 		
 		return Optional.ofNullable(resultado);
 	}

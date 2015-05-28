@@ -7,27 +7,30 @@
 	</head>
 	<body>
 		<div layout:fragment="content">	
-			<h2 th:text="#{temporada.show.temporada} + ' ' + ${temporada.nombre}"></h2>
+			<h2 th:text="#{temporada.show.temporada} + ' ' + ${modelo.temporada.nombre}"></h2>
 		
 			<div role="tabpanel">
 				<ul class="nav nav-pills" role="tablist" id="navTemporada">
-					<li role="presentation"><a href="#tabEtapas" aria-controls="home" role="pill" data-toggle="tab">Etapas</a></li>
-					<li role="presentation"><a href="#tabLideres" aria-controls="home" role="pill" data-toggle="tab">Líderes</a></li>
-					<li role="presentation"><a href="#tabPartidos" aria-controls="home" role="pill" data-toggle="tab">Partidos</a></li>
+					<li role="presentation"><a href="#tabEtapas" aria-controls="home" role="pill" 
+					    data-toggle="tab" th:text="#{temporada.show.etapas}"></a></li>
+					<li role="presentation"><a href="#tabLideres" aria-controls="home" role="pill" 
+					    data-toggle="tab" th:text="#{temporada.show.lideres}"></a></li>
+					<li role="presentation"><a href="#tabPartidos" aria-controls="home" role="pill" 
+					    data-toggle="tab" th:text="#{temporada.show.partidos}"></a></li>
 				</ul>
 				
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane" id="tabEtapas">			
 						<div role="tabpanel">
 							<ul class="nav nav-tabs" role="tablist" id="navInterior">
-								<li role="presentation" th:each="etapa : ${temporada.etapas}">
+								<li role="presentation" th:each="etapa : ${modelo.temporada.etapas}">
 									<a th:href="'#e' + ${etapa.id}" aria-controls="home" role="tab" data-toggle="tab"
 									  th:text="${etapa.nombre}"></a>
 								</li>
 							</ul>
 							
 							<div class="tab-content">
-								<div th:each="etapa : ${etapas}" role="tabpanel" class="tab-pane" th:id="'e' + ${etapa.id}">					
+								<div th:each="etapa : ${modelo.etapas}" role="tabpanel" class="tab-pane" th:id="'e' + ${etapa.id}">					
 									<div role="tabpanel">
 										<ul class="nav nav-tabs" role="tablist" id="navVuelta">
 											<li role="presentation" th:each="vuelta,iterStat : ${etapa.vueltas}">
@@ -76,8 +79,8 @@
 						</div>
 						
 						<div class="alert alert-info alert-dismissable fade in"
-						   th:if="${not #lists.isEmpty(temporada.campeon.nombre)}">
-						    <span class="resaltar" th:text="#{temporada.show.campeon} + ': ' + ${temporada.campeon.nombre}"></span>
+						   th:if="${not #lists.isEmpty(modelo.temporada.campeon.nombre)}">
+						    <span class="resaltar" th:text="#{temporada.show.campeon} + ': ' + ${modelo.temporada.campeon.nombre}"></span>
 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						</div>					
 					</div>

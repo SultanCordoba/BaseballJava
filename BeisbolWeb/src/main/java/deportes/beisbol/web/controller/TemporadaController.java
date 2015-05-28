@@ -32,6 +32,7 @@ import deportes.beisbol.service.EquipoService;
 import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
 import deportes.beisbol.utils.EtapaBeisbolAux;
+import deportes.beisbol.web.model.TemporadaModel;
 
 @Controller
 @RequestMapping("/temporada")
@@ -73,8 +74,6 @@ public class TemporadaController {
 			}
 		}
 		
-		model.addAttribute("temporada", resultado.get());
-		
 		LinkedHashSet<EtapaBeisbolAux> etapaVista = new LinkedHashSet<>();
 		Iterator<EtapaBeisbol> iteraEtapas = (Iterator<EtapaBeisbol>) resultado.get().getEtapas().iterator();
 		EtapaBeisbol etapa;
@@ -87,9 +86,16 @@ public class TemporadaController {
 		
 		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
 		
+		TemporadaModel temporadaModelo = new TemporadaModel();
+		temporadaModelo.setTemporada(resultado.get());
+		temporadaModelo.setEtapas(etapaVista);
+		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", resultado.get().getNombre());
-		model.addAttribute("etapas", etapaVista);
+		/* model.addAttribute("temporada", resultado.get());
+		model.addAttribute("etapas", etapaVista); */
+		
+		model.addAttribute("modelo", temporadaModelo);
 		
 		return "../templates/temporada/show";
 	}

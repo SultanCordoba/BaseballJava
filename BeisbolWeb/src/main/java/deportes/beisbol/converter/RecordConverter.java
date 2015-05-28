@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Record;
+import deportes.beisbol.jpa.model.RecordInt;
 import deportes.beisbol.model.RecordBeisbol;
 import deportes.beisbol.utils.RecordEtapa;
 
@@ -13,9 +14,25 @@ public class RecordConverter {
 		RecordBeisbol resultado = new RecordBeisbol();
 		
 		resultado.setNombreGrupo(recordBase.getNombreGrupo());
+		
+		if (idioma.isPresent()) {
+			String idiomaCompara = idioma.get().toUpperCase();
+			
+			if (!idiomaCompara.equalsIgnoreCase("ES")) {
+				Iterator<RecordInt> iteraRecordInt = recordBase.getRecordInts().iterator();
+				RecordInt recordIntPaso;
+				while (iteraRecordInt.hasNext()) {
+					recordIntPaso = iteraRecordInt.next();
+					if (recordIntPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaCompara)) {
+						resultado.setNombreGrupo(recordIntPaso.getNombreGrupo());
+					}
+				}
+			}
+		}
+		
 		resultado.setGanados(recordBase.getGanados());
 		resultado.setPerdidos(recordBase.getPerdidos());
-		resultado.setPorcentaje(recordBase.getPerdidos() > 0 ? 
+		resultado.setPorcentaje((recordBase.getGanados() + recordBase.getPerdidos()) > 0 ? 
 				recordBase.getGanados() / ((double) recordBase.getGanados() + recordBase.getPerdidos()) : 0);
 		resultado.setIdVuelta(recordBase.getVuelta().getId());
 		resultado.setNombreVuelta(recordBase.getVuelta().getNombre());

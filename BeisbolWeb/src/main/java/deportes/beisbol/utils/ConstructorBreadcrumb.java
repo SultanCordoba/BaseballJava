@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
 
+import java.util.Optional;
+
 import com.google.common.base.Joiner;
 
 import deportes.beisbol.converter.ParticipanteConverter;
@@ -48,7 +50,7 @@ public class ConstructorBreadcrumb {
 		return resultado;
 	}	
 	
-	public static LinkedHashMap<String, String> construyeEquipo(Participante participante, String zona) {
+	public static LinkedHashMap<String, String> construyeEquipo(Participante participante, String zona, Optional<String> idioma) {
 		LinkedHashMap<String, String> resultado = construyeLiga(participante.getTemporada().getLigaHistorico(), zona);
 		
 		Joiner joiner = Joiner.on("/").skipNulls();
@@ -61,7 +63,7 @@ public class ConstructorBreadcrumb {
 			urlLiga.add(String.valueOf(participante.getEquipos().iterator().next().getFranquiciaHistorico().getFranquicia().getId()));
 			urlLiga.add("show");
 						
-			resultado.put(joiner.join(urlLiga).toString(), ParticipanteConverter.nombreParticipante(participante, false, null));			
+			resultado.put(joiner.join(urlLiga).toString(), ParticipanteConverter.nombreParticipante(participante, false, idioma));			
 			break;
 			
 		case "T":

@@ -6,16 +6,7 @@
 	<head>
 	</head>
 	<body>
-		<div layout:fragment="content">
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<ol class="breadcrumb">
-						<li><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
-						<li class="active" th:text="#{header.ligas}"></li>
-					</ol>
-				</div>
-			</div>	 -->
-		
+		<div layout:fragment="content">		
 			<div class="list-group">
 				<a th:each="liga : ${ligas}" class="list-group-item" th:text="${liga.nombre}"
 				   th:href="@{/liga/{id}/show/general(id = ${liga.id})}"></a>

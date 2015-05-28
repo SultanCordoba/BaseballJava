@@ -30,7 +30,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">General</div>
 							<div class="panel-body">
-								<p th:text="${ligaD.nombre}"></p>
+								<p th:text="${modelo.liga.nombre}"></p>
 							</div>
 						</div>	
 					</div>	
@@ -55,7 +55,7 @@
 										</tfoot>
 										
 										<tbody>
-											<tr th:each="temporada : ${ligaD.temporadas}">
+											<tr th:each="temporada : ${modelo.liga.temporadas}">
 												<td>
 												   <a th:href="@{/temporada/{id}/show(id = ${temporada.id})}" 
 												      th:text="${temporada.nombre}"></a>
@@ -89,7 +89,7 @@
 										</tfoot>
 										
 										<tbody>
-											<tr th:each="equipo : ${equipos}">
+											<tr th:each="equipo : ${modelo.equipos}">
 												<td><a th:href="@{/franquicia/{id}/show/(id = ${equipo.idFranquicia})}" 
 												  th:text="${equipo.nombre}"></a></td>
 												<td th:text="${equipo.pais}"></td>

@@ -176,7 +176,7 @@ public class EquipoController {
 		
 		model.addAttribute("equipos", equipos);
 		
-		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeEquipo(participante, zona));
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeEquipo(participante, zona, Optional.of(locale.getLanguage())));
 		
 		String menuActivo = "INICIO";
 		

@@ -1,5 +1,6 @@
 package deportes.beisbol.web.controller.restful;
 
+import java.util.Collection;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -19,9 +20,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import deportes.beisbol.ErrorInfo;
+import deportes.beisbol.component.LigaComponent;
 import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.model.LigaBeisbol;
 import deportes.beisbol.web.exception.LigaNotFoundException;
+import deportes.beisbol.web.model.LigaModel;
 
 @RestController
 @RequestMapping("/liga-restful")
@@ -30,9 +33,18 @@ public class LigaRestfulController {
 	@Autowired
 	LigaService ligaService;
 	
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+	@Autowired
+	LigaComponent ligaComponent;
+	
+	@RequestMapping(value = "/showall", method = RequestMethod.GET)
+	@ResponseBody
+	public Collection<LigaBeisbol> getAllLigas(Locale locale) {
+		return ligaComponent.getAllLigas(Optional.of(locale.getLanguage()));
+	}
+	
+	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
 	@ResponseBody 
-	public LigaBeisbol getLiga(@PathVariable Byte id, Locale locale) {
+	public LigaModel getLiga(@PathVariable Byte id, Locale locale) {
 		Optional<LigaBeisbol> resultado;
 		Optional<String> idioma = Optional.of(locale.getLanguage());
 		
@@ -40,7 +52,9 @@ public class LigaRestfulController {
 		
 		resultado.orElseThrow(() -> new LigaNotFoundException(id));
 		
-		return resultado.get();
+		// return resultado.get();
+		
+		return ligaComponent.creaLigaModel(id, idioma);
 	}
 	
 	@ExceptionHandler(LigaNotFoundException.class)

@@ -8,8 +8,9 @@ import java.util.LinkedHashMap;
 import javax.servlet.http.HttpServletRequest;
 
 
- import org.slf4j.Logger;
-import org.slf4j.LoggerFactory; 
+
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
+import deportes.beisbol.component.LigaComponent;
 import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.LigaBeisbol;
@@ -29,48 +31,46 @@ import deportes.beisbol.model.RangoFechaBeisbol;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
 import deportes.beisbol.utils.EquipoPais;
 import deportes.beisbol.web.exception.LigaNotFoundException;
+import deportes.beisbol.web.model.LigaModel;
 
 @Controller
 @RequestMapping("/liga")
 public class LigaController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LigaController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(LigaController.class);
+	
+	/* @Autowired
+	LigaService ligaService; */
 	
 	@Autowired
-	LigaService ligaService;
+	LigaComponent ligaComponent;
 	
 	@RequestMapping(value = "/showall", method = RequestMethod.GET)
 	public String showAllLigas(Model model, Locale locale) {
 		
-		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
 		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeInicio();
-		// menuBread.remove(menuBread.lastKey());
 		
 		model.addAttribute("menuBread", menuBread);
 		model.addAttribute("menuActivo", "Xheader.ligas");
-		model.addAttribute("ligas", ligaService.findActivas(idioma));
+		// model.addAttribute("ligas", ligaService.findActivas(Optional.of(locale.getLanguage())));
+		model.addAttribute("ligas", ligaComponent.getAllLigas(Optional.of(locale.getLanguage())));
 				
 		return "../templates/liga/showall";
 	}
 	
-	@SuppressWarnings("unchecked")
+	// @SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{id}/show/{zona}", method = RequestMethod.GET)
 	public String showLiga(@PathVariable Byte id, @PathVariable String zona, Model model, 
 			Locale locale) {
-		Optional<LigaBeisbol> resultado;
+		/* Optional<LigaBeisbol> resultado;
 		
-		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
-		resultado = ligaService.findOne(id, idioma);
-		
+		resultado = ligaService.findOne(id, Optional.of(locale.getLanguage()));		
 		resultado.orElseThrow(() -> new LigaNotFoundException(id));
 		
 		Iterator<FranquiciaBeisbol> iteradorFranquicias = (Iterator<FranquiciaBeisbol>) 
 				resultado.get().getFranquicias().iterator();
 		FranquiciaBeisbol franquicia = null;
-		//HashSet<EquipoAux> equipos = new HashSet<>(); 
 		
 		LinkedHashMap<String, EquipoPais> equipos = new LinkedHashMap<>();
 		
@@ -93,27 +93,32 @@ public class LigaController {
 			}
 			
 		}
-			
-		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLigasAll();
 		
-		model.addAttribute("menuBread", menuBread);
-		model.addAttribute("menuActivo", resultado.get().getNombre());
+		// LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLigasAll();
+		LigaModel ligaModelo = new LigaModel();
+		ligaModelo.setLiga(resultado.get());
+		ligaModelo.setEquipos(equipos.values()); */
+		
+		// LigaComponent ligaComponent = new LigaComponent();
+		LigaModel ligaModelo = ligaComponent.creaLigaModel(id, Optional.of(locale.getLanguage()));
+		
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeLigasAll());
+		model.addAttribute("menuActivo", ligaModelo.getLiga().getNombre());		
+		/* model.addAttribute("ligaD", resultado.get());
+		model.addAttribute("equipos", equipos.values()); */
+		model.addAttribute("modelo", ligaModelo);
 		model.addAttribute("zona", "#"+zona);
 		model.addAttribute("zonaTab", "#zT"+zona);
-		/* model.addAttribute("navZona", "#link" + zona.substring(0, 1).toUpperCase() + zona.substring(1)); */
-		model.addAttribute("ligaD", resultado.get());
-		model.addAttribute("equipos", equipos.values());
-		
+
 		return "../templates/liga/show";
 	}
 	
-	@RequestMapping(value = "/{idLiga}/franquicia/{idFranq}/temporada/{idTemp}", method = RequestMethod.GET)
+	/* @RequestMapping(value = "/{idLiga}/franquicia/{idFranq}/temporada/{idTemp}", method = RequestMethod.GET)
 	public String showFranquiciaTemporada(@PathVariable Byte idLiga, @PathVariable Short idFranq, 
 			@PathVariable Short idTemp, Model model, Locale locale)
 	{
 		return "../templates/equipo/show";
-	}
+	} */
 	
 	@ExceptionHandler(LigaNotFoundException.class)
 	@ResponseStatus(value=HttpStatus.NOT_FOUND)

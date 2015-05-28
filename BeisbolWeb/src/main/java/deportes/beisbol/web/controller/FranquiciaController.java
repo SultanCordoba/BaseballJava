@@ -85,7 +85,7 @@ public class FranquiciaController {
 		Optional<FranquiciaBeisbol> resultado;		
 		Optional<String> idioma = Optional.of(locale.getLanguage());
 		
-		resultado = franquiciaService.findById(id);
+		resultado = franquiciaService.findById(id, idioma);
 		
 		model.addAttribute("franquicia", resultado.get());
 		model.addAttribute("pais", resultado.get().getPais());
