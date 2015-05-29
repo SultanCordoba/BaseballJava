@@ -1,7 +1,11 @@
 package deportes.beisbol.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -67,7 +71,7 @@ public class Pais implements Serializable {
 
 
 	//bi-directional many-to-one association to Club
-	@OneToMany(mappedBy="pai")
+	@OneToMany(mappedBy="pai", fetch=FetchType.LAZY)
 	public Set<Club> getClubs() {
 		return this.clubs;
 	}
@@ -92,7 +96,7 @@ public class Pais implements Serializable {
 
 
 	//bi-directional many-to-one association to Estado
-	@OneToMany(mappedBy="pai")
+	@OneToMany(mappedBy="pai", fetch=FetchType.LAZY)
 	public Set<Estado> getEstados() {
 		return this.estados;
 	}

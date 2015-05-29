@@ -129,7 +129,7 @@ public class EtapaConverter {
 					resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
 				}
 				
-				grupoActual = recordActual.getNombreGrupo();
+				grupoActual = Strings.nullToEmpty(recordActual.getNombreGrupo());
 				
 				resultado.addGrupo(grupoActual, vueltaActual);
 				recordGrupo = new LinkedHashSet<>();

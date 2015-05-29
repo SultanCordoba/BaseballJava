@@ -1,6 +1,5 @@
 package deportes.beisbol.web.controller;
 
-import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -34,18 +33,13 @@ public class LigaController {
 	@Autowired
 	LigaService ligaService;
 	
-	/* @Autowired
-	LigaComponent ligaComponent; */
-	
 	@RequestMapping(value = "/showall", method = RequestMethod.GET)
 	public String showAllLigas(Model model, Locale locale) {
 		
 		// HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeInicio();
 		
-		model.addAttribute("menuBread", menuBread);
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeInicio());
 		model.addAttribute("menuActivo", "Xheader.ligas");
-		// model.addAttribute("ligas", ligaService.findActivas(Optional.of(locale.getLanguage())));
 		model.addAttribute("ligas", ligaService.getAllLigas(Optional.of(locale.getLanguage())));
 				
 		return "../templates/liga/showall";
@@ -60,8 +54,6 @@ public class LigaController {
 		
 		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeLigasAll());
 		model.addAttribute("menuActivo", ligaModelo.getLiga().getNombre());		
-		/* model.addAttribute("ligaD", resultado.get());
-		model.addAttribute("equipos", equipos.values()); */
 		model.addAttribute("modelo", ligaModelo);
 		model.addAttribute("zona", "#"+zona);
 		model.addAttribute("zonaTab", "#zT"+zona);

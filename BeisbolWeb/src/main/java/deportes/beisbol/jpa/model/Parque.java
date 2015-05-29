@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -71,7 +73,7 @@ public class Parque implements Serializable {
 
 
 	//bi-directional many-to-one association to Ciudad
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Ciudad getCiudad() {
 		return this.ciudad;
 	}
@@ -106,7 +108,8 @@ public class Parque implements Serializable {
 	}
 	
 	//bi-directional many-to-one association to Partido
-	@OneToMany(mappedBy="parque", fetch=FetchType.EAGER)
+	//@OneToMany(mappedBy="parque", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="parque")
 	public Set<Franquicia> getFranquicias() {
 		return this.franquicias;
 	}

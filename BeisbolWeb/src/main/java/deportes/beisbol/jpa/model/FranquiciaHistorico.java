@@ -124,7 +124,6 @@ public class FranquiciaHistorico implements Serializable {
 		return parque;
 	}
 
-
 	public void setParque(Parque parque) {
 		this.parque = parque;
 	}

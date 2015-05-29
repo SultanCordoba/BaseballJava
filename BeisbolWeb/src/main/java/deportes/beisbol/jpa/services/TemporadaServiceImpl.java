@@ -18,7 +18,7 @@ import deportes.beisbol.jpa.repository.TemporadaRepository;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.EtapaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.service.EquipoService;
+
 import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.utils.EtapaBeisbolAux;
 import deportes.beisbol.web.model.TemporadaModel;

@@ -1,6 +1,5 @@
 package deportes.beisbol.web.controller;
 
-import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -19,10 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
 import deportes.beisbol.jpa.model.Temporada;
-import deportes.beisbol.jpa.services.LigaService;
 import deportes.beisbol.jpa.services.TemporadaService;
-import deportes.beisbol.service.EquipoService;
-import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
 import deportes.beisbol.web.model.TemporadaModel;
 
@@ -31,68 +27,16 @@ import deportes.beisbol.web.model.TemporadaModel;
 public class TemporadaController {
 
 	@Autowired
-	LigaService ligaService;
-	
-	@Autowired
 	TemporadaService temporadaService;
 	
-	@Autowired
-	EquipoService equipoService;
-	
-	@Autowired
-	EtapaService etapaService;
-	
-	
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET) 
-	public String getTemporada(@PathVariable Short id, Model model, Locale locale) {
-		/* Optional<TemporadaBeisbol> resultado = Optional.empty();
-		
+	public String getTemporada(@PathVariable Short id, Model model, Locale locale) {		
 		Optional<Temporada> temporada = temporadaService.findOneBd(id);
-		
-		if (temporada.isPresent()) {
-			resultado = Optional.ofNullable(TemporadaConverter.convierteDeBase(temporada.get()));
-		}
-		
-		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
-		if (resultado.isPresent()) {
-			
-			resultado.get().setEtapas(etapaService.findEtapasByTemporada(resultado.get(), idioma));
-			
-			Optional<EquipoBeisbol> campeon = equipoService.findCampeon(resultado.get(), idioma);
-			
-			if (campeon.isPresent()) {
-				resultado.get().setCampeon(campeon.get());
-			}
-		}
-		
-		LinkedHashSet<EtapaBeisbolAux> etapaVista = new LinkedHashSet<>();
-		Iterator<EtapaBeisbol> iteraEtapas = (Iterator<EtapaBeisbol>) resultado.get().getEtapas().iterator();
-		EtapaBeisbol etapa;
-		
-		while (iteraEtapas.hasNext()) {
-			etapa = iteraEtapas.next();
-			
-			etapaVista.add(EtapaConverter.convierteDeEntidad(etapa));
-		} */
-		
-		Optional<Temporada> temporada = temporadaService.findOneBd(id);
-		
-		LinkedHashMap<String, String> menuBread = ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas");
-		
-		// TemporadaModel temporadaModelo = new TemporadaModel();
-		
-		/* temporadaModelo.setTemporada(resultado.get());
-		temporadaModelo.setEtapas(etapaVista); */
 		
 		TemporadaModel temporadaModelo = temporadaService.crearTemporadaModel(id, Optional.of(locale.getLanguage()));
 		
-		model.addAttribute("menuBread", menuBread);
-		model.addAttribute("menuActivo", temporada.get().getNombre());
-		// model.addAttribute("menuActivo", resultado.get().getNombre());
-		/* model.addAttribute("temporada", resultado.get());
-		model.addAttribute("etapas", etapaVista); */
-		
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas"));
+		model.addAttribute("menuActivo", temporadaModelo.getTemporada().getNombre());
 		model.addAttribute("modelo", temporadaModelo);
 		
 		return "../templates/temporada/show";

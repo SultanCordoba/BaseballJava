@@ -2,6 +2,8 @@ package deportes.beisbol.utils;
 
 import java.util.Comparator;
 
+import com.google.common.base.Strings;
+
 import deportes.beisbol.model.RecordBeisbol;
 
 public class RecordComparator implements Comparator<RecordBeisbol> {
@@ -14,8 +16,10 @@ public class RecordComparator implements Comparator<RecordBeisbol> {
     }
     
     private int doSecondaryOrderSort(RecordBeisbol o1, RecordBeisbol o2) {
-    	return o1.getNombreGrupo().compareToIgnoreCase(o2.getNombreGrupo()) != 0 ?
-        		o1.getNombreGrupo().compareToIgnoreCase(o2.getNombreGrupo()) :		            	
+    	return Strings.nullToEmpty(o1.getNombreGrupo()).compareToIgnoreCase
+    			  (Strings.nullToEmpty(o2.getNombreGrupo())) != 0 ?
+        		Strings.nullToEmpty(o1.getNombreGrupo()).compareToIgnoreCase
+        		   (Strings.nullToEmpty(o2.getNombreGrupo())) :		            	
         		doTertiaryOrderSort(o1,o2);
     }
 

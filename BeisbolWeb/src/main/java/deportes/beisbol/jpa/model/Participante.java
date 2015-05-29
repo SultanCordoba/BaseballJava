@@ -13,7 +13,7 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Participante.findAll", query="SELECT p FROM Participante p")
+// @NamedQuery(name="Participante.findAll", query="SELECT p FROM Participante p")
 public class Participante implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;

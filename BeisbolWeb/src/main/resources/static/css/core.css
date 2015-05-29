@@ -5,12 +5,15 @@ html {
     min-height: 100%;
 }
 
-
 body {
     /* font-family: "Lato", Arial, Helvetica, sans-serif; */
     /* Margin bottom by footer height */
     padding-top: 50px; /* 60px; */
     margin-bottom: 40px;
+}
+
+h2 {
+	color: rgb(164, 111, 15);
 }
 
 #encabezado-menu {
@@ -143,3 +146,4 @@ body {
 .breadcrumb > li > a {
 	color: sienna;
 }
+

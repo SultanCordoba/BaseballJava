@@ -1,11 +1,15 @@
-package deportes.beisbol.service;
+package deportes.beisbol.jpa.services;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Locale;
 import java.util.Optional;
 
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
+import deportes.beisbol.utils.EquipoAux;
+import deportes.beisbol.web.model.EquipoModel;
 
 public interface EquipoService {
 	public Optional<EquipoBeisbol> findCampeon(TemporadaBeisbol t, Optional<String> idioma);
@@ -13,5 +17,6 @@ public interface EquipoService {
 	public Optional<EquipoBeisbol> findOne(Short id, Optional<String> idioma);
 	
 	public Collection<EquipoBeisbol> findByFranquicia(FranquiciaBeisbol f);
-
+	
+	public EquipoModel creaEquipoModel(Short id, Optional<String> idioma);
 }

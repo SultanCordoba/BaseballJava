@@ -1,18 +1,17 @@
 package deportes.beisbol.jpa.services;
 
-import java.util.Collection;
 import java.util.Optional;
 
-import deportes.beisbol.jpa.model.Franquicia;
-import deportes.beisbol.model.FranquiciaBeisbol;
-import deportes.beisbol.model.LigaBeisbol;
+import deportes.beisbol.web.model.FranquiciaModel;
 
 public interface FranquiciaService {
-	public Optional<FranquiciaBeisbol> findById(short id, Optional<String> idioma);
+	/* public Optional<FranquiciaBeisbol> findById(short id, Optional<String> idioma);
 	
 	public Collection<FranquiciaBeisbol> findByLigaId(Byte id);
 	
 	public Optional<LigaBeisbol> findLigaPorFranquicia(short id, Optional<String> idioma);
 	
-	public Optional<Franquicia> findOneBd(short id);
+	public Optional<Franquicia> findOneBd(short id); */
+	
+	public FranquiciaModel creaFranquiciaModelo(Short id, Optional<String> idioma);
 } 

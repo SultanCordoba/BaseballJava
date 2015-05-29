@@ -1,7 +1,12 @@
 package deportes.beisbol.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -11,7 +16,6 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Estado.findAll", query="SELECT e FROM Estado e")
 public class Estado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
@@ -67,7 +71,7 @@ public class Estado implements Serializable {
 
 
 	//bi-directional many-to-one association to Ciudad
-	@OneToMany(mappedBy="estado")
+	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY)
 	public Set<Ciudad> getCiudads() {
 		return this.ciudads;
 	}
