@@ -5,9 +5,19 @@ import java.util.Optional;
 
 import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.model.JugadorBeisbol;
+import deportes.beisbol.utils.PaginaDefinidor;
+import deportes.beisbol.web.model.JugadorModel;
 
 public interface JugadorService {
-	public Collection<JugadorBeisbol> findLikeNombre(String nombre);
+	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina);
 	
 	public Optional<Jugador> findOne(short id);
+	
+	public Collection<JugadorBeisbol> findAll();
+	
+	public short totalRegistros();
+	
+	public short totalRegistros(String nombre);
+	
+	public JugadorModel getJugador(short id);
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="shared/start">
+ 	<head>
+	   	<link th:href="@{/webjars/datatables/1.10.7/css/jquery.dataTables.min.css}" 
+			  rel="stylesheet" media="screen" type="text/css" />
+  	</head>
+	<body>
+		<div layout:fragment="content">
+			<p th:text="'Datos de ' + ${modelo.jugador.nombreCompleto}"></p>
+		</div>
+	</body>
+</html>

@@ -2,6 +2,7 @@ package deportes.beisbol.converter;
 
 import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.model.JugadorBeisbol;
+import deportes.beisbol.utils.FechaUtils;
 
 public class JugadorConverter {
 	public static JugadorBeisbol convierteDeBase(Jugador jugadorBase) {
@@ -11,7 +12,8 @@ public class JugadorConverter {
 		resultado.setNombre(jugadorBase.getNombres());
 		resultado.setApellidoPaterno(jugadorBase.getApellidoPaterno());
 		resultado.setApellidoMaterno(jugadorBase.getApellidoMaterno());
-		// resultado.setFechaNacimiento(jugadorBase.getFechaNacimiento());
+		resultado.setFechaNacimiento(FechaUtils.convertidor(jugadorBase.getFechaNacimiento()));
+		resultado.setCiudadNacimiento(jugadorBase.getCiudad().nombreCiudad());
 		
 		return resultado;
 	}

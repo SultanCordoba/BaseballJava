@@ -6,8 +6,11 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Set;
 
 
@@ -104,4 +107,18 @@ public class Ciudad implements Serializable {
 		return parque;
 	}
 
+	public String nombreCiudad() {
+		Joiner joiner = Joiner.on(", ").skipNulls();
+		ArrayList<String> ciudadArreglo = new ArrayList<>();
+		
+		try {
+			ciudadArreglo.add(Strings.emptyToNull(this.getNombre().replace("Indefinido", "")));
+			ciudadArreglo.add(Strings.emptyToNull(this.getEstado().getNombreEs().replace("Indefinido", "")));
+			ciudadArreglo.add(Strings.emptyToNull(this.getEstado().getPai().getAbreviaturaEs().replace("Indefinido", "")));
+		} catch (NullPointerException npe) {
+			ciudadArreglo.add(Strings.emptyToNull(""));
+		}
+		
+		return Strings.nullToEmpty(joiner.join(ciudadArreglo));
+	}
 }

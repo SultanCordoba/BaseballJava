@@ -78,4 +78,12 @@ public class ConstructorBreadcrumb {
 				
 		return resultado;
 	}
+	
+	public static LinkedHashMap<String, String> construyeJugador() {
+		LinkedHashMap<String, String> resultado = construyeInicio();
+		
+		resultado.put("/jugador/search", "header.jugadores");
+		
+		return resultado;
+	}
 }

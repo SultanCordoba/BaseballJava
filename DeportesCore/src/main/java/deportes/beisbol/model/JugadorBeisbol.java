@@ -21,6 +21,15 @@ public class JugadorBeisbol implements JugadorInterfaz {
 	private String posicion;
 	private String batea;
 	private String tira;
+	private String ciudadNacimiento;
+
+	public String getCiudadNacimiento() {
+		return ciudadNacimiento;
+	}
+
+	public void setCiudadNacimiento(String ciudadNacimiento) {
+		this.ciudadNacimiento = ciudadNacimiento;
+	}
 
 	public short getId() {
 		return id;

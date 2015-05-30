@@ -5,10 +5,8 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 
 import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Equipo;
-import deportes.beisbol.jpa.model.FranquiciaHistoricoInt;
 import deportes.beisbol.jpa.model.Participante;
 
 public class ParticipanteConverter {

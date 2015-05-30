@@ -1,18 +1,19 @@
 package deportes.beisbol.web.controller;
 
-import java.util.LinkedHashSet;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import deportes.beisbol.jpa.services.JugadorService;
-import deportes.beisbol.model.JugadorBeisbol;
+import deportes.beisbol.utils.ConstructorBreadcrumb;
+import deportes.beisbol.web.model.JugadorModel;
 
-@RestController
+@Controller
 @RequestMapping("/jugador")
 public class JugadorController {
 	
@@ -21,15 +22,37 @@ public class JugadorController {
 	@Autowired
 	JugadorService jugadorService;
 
-	@RequestMapping(value = "/search/{nombre}", method = RequestMethod.GET)
-	@ResponseBody 
-	public LinkedHashSet<JugadorBeisbol> searchJugadores(@PathVariable String nombre) {
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String searchJugadores(Model model, Locale locale) {
 		
-		LinkedHashSet<JugadorBeisbol> resultado = (LinkedHashSet<JugadorBeisbol>) jugadorService.findLikeNombre(nombre);
+		String jugadoresTitulo = "Jugadores";
+		switch (locale.getLanguage().toUpperCase()) {
+		case "EN":
+			jugadoresTitulo = "Players";
+			break;
+		}
 		
-		//logger.info("Numero Jugadores:" + resultado.size());
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeInicio());
+		model.addAttribute("menuActivo", jugadoresTitulo);
 		
-		return resultado;
+		return "../templates/jugador/search";
+	}
+	
+	@RequestMapping(value = "/{id}/show/{zona}", method = RequestMethod.GET)
+	public String getJugador(@PathVariable Short id, @PathVariable String zona, 
+			Model model, Locale locale) {
+		
+		JugadorModel jugadorModelo = jugadorService.getJugador(id);
+		
+		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeJugador());
+		model.addAttribute("menuActivo", jugadorModelo.getJugador().getNombreAbreviado());
+		model.addAttribute("modelo", jugadorModelo);
+		
+		/* switch(zona) {
+		case "J":
+		} */
+		
+		return "../templates/jugador/show";
 	}
 	
 }

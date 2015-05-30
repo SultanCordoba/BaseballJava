@@ -34,9 +34,7 @@ public class EquipoController {
 		
 		EquipoModel equipoModelo = equipoService.creaEquipoModel(id, Optional.of(locale.getLanguage()));
 		Optional<String> idioma = Optional.of(locale.getLanguage());
-		
-		model.addAttribute("equipos", equipoModelo.getEquipos());
-		
+				
 		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeEquipo(equipoModelo.getParticipante(), zona, idioma));
 		
 		String menuActivo = "INICIO";
@@ -52,6 +50,7 @@ public class EquipoController {
 		}
 		
 		model.addAttribute("menuActivo", menuActivo);
+		model.addAttribute("equipos", equipoModelo.getEquipos());
 		
 		return "../templates/equipo/show";
 	}
