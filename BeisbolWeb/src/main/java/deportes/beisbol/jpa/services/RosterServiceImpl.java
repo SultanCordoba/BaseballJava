@@ -2,22 +2,15 @@ package deportes.beisbol.jpa.services;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.base.Strings;
-
-import deportes.beisbol.converter.JugadorConverter;
-import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.jpa.model.Roster;
 import deportes.beisbol.jpa.repository.JugadorRepository;
 import deportes.beisbol.jpa.repository.RosterRepository;
 import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.JugadorBeisbol;
 
 @Service
 @Transactional(readOnly = true)
@@ -66,7 +59,7 @@ public class RosterServiceImpl implements RosterService {
 	public Collection<Roster> hallarRosterByJugadorTemporada(Short jugadorId,
 			Date fechaInicio, Date fechaFin) {
 		
-		return rosterRepository.hallarRosterByJugadorAndTemproada(jugadorId, fechaInicio, fechaFin);
+		return rosterRepository.hallarRosterByJugadorAndTemporada(jugadorId, fechaInicio, fechaFin);
 	}
 
 }

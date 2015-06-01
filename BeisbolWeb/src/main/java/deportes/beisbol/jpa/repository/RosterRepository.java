@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import deportes.beisbol.jpa.model.Equipo;
+import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.jpa.model.Roster;
 
 public interface RosterRepository extends JpaRepository<Roster, Short> {
@@ -16,6 +18,8 @@ public interface RosterRepository extends JpaRepository<Roster, Short> {
 			+ "WHERE r.jugador.id = :jugadorId "
 			+ "AND :fechaInicio <= r.fechaFin AND :fechaFin >= r.fechaInicio "
 			+ "ORDER BY r.fechaInicio")
-	public Collection<Roster> hallarRosterByJugadorAndTemproada(@Param("jugadorId") Short jugadorId,
+	public Collection<Roster> hallarRosterByJugadorAndTemporada(@Param("jugadorId") Short jugadorId,
 			@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
+	
+	public Collection<Roster> findByJugadorIdOrderByFechaInicioAsc(Short jugadorId);
 }

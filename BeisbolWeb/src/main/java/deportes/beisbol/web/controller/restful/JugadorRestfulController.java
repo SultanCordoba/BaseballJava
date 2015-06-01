@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,7 @@ import deportes.beisbol.jpa.services.JugadorService;
 import deportes.beisbol.model.JugadorBeisbol;
 import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RespuestaDataTables;
+import deportes.beisbol.web.model.JugadorModel;
 
 @RestController
 @RequestMapping("/jugador-restful")
@@ -99,5 +101,11 @@ public class JugadorRestfulController {
 		resultado.setData(jugadoresJson);
 		
 		return resultado;
+	}
+	
+	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
+	@ResponseBody 
+	public JugadorModel getJugador(@PathVariable short id) {
+		return jugadorService.getJugador(id);
 	}
 }

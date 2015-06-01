@@ -12,14 +12,11 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Roster.findAll", query="SELECT r FROM Roster r")
 public class Roster implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
-	// private short equipoId;
 	private Date fechaFin;
 	private Date fechaInicio;
-	// private short jugadorId;
 	private Date fechaActualizacion;
 	private byte ordenEquipo;
 	private String posicion;

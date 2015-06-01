@@ -16,9 +16,12 @@ import com.google.common.collect.Lists;
 
 import deportes.beisbol.converter.JugadorConverter;
 import deportes.beisbol.jpa.model.Jugador;
+import deportes.beisbol.jpa.model.Roster;
 import deportes.beisbol.jpa.repository.JugadorRepository;
+import deportes.beisbol.jpa.repository.RosterRepository;
 import deportes.beisbol.model.JugadorBeisbol;
 import deportes.beisbol.utils.PaginaDefinidor;
+import deportes.beisbol.utils.RosterBeisbol;
 import deportes.beisbol.web.model.JugadorModel;
 import static deportes.beisbol.jpa.predicates.JugadorPredicates.nombreIsLike;
 
@@ -30,6 +33,9 @@ public class JugadorServiceImpl implements JugadorService {
 	
 	@Autowired
 	JugadorRepository jugadorRepository;
+	
+	@Autowired
+	RosterRepository rosterRepository;
 	
 	@Override
 	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina) {
@@ -98,11 +104,49 @@ public class JugadorServiceImpl implements JugadorService {
 				(nombreIsLike(nombre))).size();
 	}
 
+	private LinkedHashSet<RosterBeisbol> convertirListaRoster(Iterator<Roster> iteraRoster, boolean managers) {
+		Roster rosterPaso;		
+		RosterBeisbol rosterBeisbol = null;
+		LinkedHashSet<RosterBeisbol> rosterJugadores = new LinkedHashSet<>();
+		String temporadaActual = "XXX";
+		
+		while (iteraRoster.hasNext()) {
+			rosterPaso = iteraRoster.next();
+			
+			if (rosterPaso.getPosicion().startsWith("M") == managers) {
+				if (!temporadaActual.equals(rosterPaso.getEquipo().getParticipante().getTemporada().getNombre())) {
+					if (rosterBeisbol != null) {
+						rosterJugadores.add(rosterBeisbol);
+						temporadaActual = rosterPaso.getEquipo().getParticipante().getTemporada().getNombre();
+					}
+					
+					rosterBeisbol = new RosterBeisbol();
+					rosterBeisbol.setTemporada(rosterPaso.getEquipo().getParticipante().getTemporada().getNombre());
+					rosterBeisbol.setLiga(rosterPaso.getEquipo().getParticipante().getTemporada().getLigaHistorico().getSiglas());
+					rosterBeisbol.setEquipo(rosterPaso.getEquipo().getNombreTablasEs());
+				}
+				else {
+					rosterBeisbol.setEquipo(rosterBeisbol.getEquipo() + "*" + rosterPaso.getEquipo().getAbreviatura());
+				}
+			}
+		}
+		
+		if (rosterBeisbol != null) {
+			rosterJugadores.add(rosterBeisbol);
+		}
+		
+		return rosterJugadores;
+		
+	}
+	
 	@Override
 	public JugadorModel getJugador(short id) {
 		JugadorModel resultado = new JugadorModel();
 		
 		resultado.setJugador(JugadorConverter.convierteDeBase(jugadorRepository.findOne(id)));
+		
+		resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), false));
+		resultado.setManagers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), true));
 		
 		return resultado;
 	}

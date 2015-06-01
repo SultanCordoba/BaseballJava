@@ -6,7 +6,34 @@ public class RosterBeisbol {
 	private JugadorBeisbol jugador;
 	private String posicion;
 	private String otraTemporada;
+	private String equipo;
+	private String temporada;
+	private String liga;
 	
+	public String getTemporada() {
+		return temporada;
+	}
+
+	public void setTemporada(String temporada) {
+		this.temporada = temporada;
+	}
+
+	public String getLiga() {
+		return liga;
+	}
+
+	public void setLiga(String liga) {
+		this.liga = liga;
+	}
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
+
 	public JugadorBeisbol getJugador() {
 		return jugador;
 	}
