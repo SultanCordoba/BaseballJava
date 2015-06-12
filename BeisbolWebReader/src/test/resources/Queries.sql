@@ -13,6 +13,12 @@ where p.etapa_id = 522 and r.etapa_id = p.etapa_id
 group by r.nombre_grupo, eq.nombre_tablas_es
 order by 1, 3 desc;
 
+select temporada_nombre, fecha_realizacion, juego_dia, equipo_visita,
+  carr_visita, equipo_local, carr_local
+from baseball.partido_vista
+where siglas_liga = 'LMB' and temporada_nombre = '2015'
+and equipo_local in ('TIJ', 'AGS') and equipo_visita in ('TIJ', 'AGS');
+
 select fecha_realizacion, count(*)
 from baseball.partido
 where fecha_realizacion > '2015-05-01' and etapa_id = 522

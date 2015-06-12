@@ -8,9 +8,12 @@ public class JugadorPredicates {
 	public static Predicate nombreIsLike(final String searchTerm) {
 		QJugador jugador = QJugador.jugador;
 				
-		return jugador.nombres.startsWithIgnoreCase(searchTerm)
+		return jugador.nombreCompleto.startsWithIgnoreCase(searchTerm)
+				.or(jugador.nombreBusqueda.startsWithIgnoreCase(searchTerm));
+		
+		/* return jugador.nombres.startsWithIgnoreCase(searchTerm)
 				.or(jugador.apellidoPaterno.startsWithIgnoreCase(searchTerm))
 				.or(jugador.apellidoMaterno.startsWith(searchTerm))
-				.or(jugador.nombreBusqueda.startsWithIgnoreCase(searchTerm));
+				.or(jugador.nombreBusqueda.startsWithIgnoreCase(searchTerm)); */
 	}
 }
