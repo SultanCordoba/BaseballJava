@@ -104,7 +104,28 @@ public class JugadorServiceImpl implements JugadorService {
 				(nombreIsLike(nombre))).size();
 	}
 
-	private LinkedHashSet<RosterBeisbol> convertirListaRoster(Iterator<Roster> iteraRoster, boolean managers) {
+	private boolean evaluaTipoRoster(String tipoRoster, String posicion) {
+		boolean resultado = false;
+		
+		switch (tipoRoster) {
+		case "B":     //Bateadores
+			// resultado = !(posicion.contains("M") || posicion.contains("P"));
+			resultado = !posicion.contains("M");
+			break;
+			
+		/* case "P":	  //Pitchers
+			resultado = posicion.contains("P");
+			break; */
+			
+		case "M":	  //Managers
+			resultado = posicion.startsWith("M");
+			break;
+		}
+		
+		return resultado;
+	}
+	
+	private LinkedHashSet<RosterBeisbol> convertirListaRoster(Iterator<Roster> iteraRoster, String tipoRoster) {
 		Roster rosterPaso;		
 		RosterBeisbol rosterBeisbol = null;
 		LinkedHashSet<RosterBeisbol> rosterJugadores = new LinkedHashSet<>();
@@ -113,13 +134,13 @@ public class JugadorServiceImpl implements JugadorService {
 		while (iteraRoster.hasNext()) {
 			rosterPaso = iteraRoster.next();
 			
-			if (rosterPaso.getPosicion().startsWith("M") == managers) {
+			if (evaluaTipoRoster(tipoRoster, rosterPaso.getPosicion())) {
 				if (!temporadaActual.equals(rosterPaso.getEquipo().getParticipante().getTemporada().getNombre())) {
 					if (rosterBeisbol != null) {
-						rosterJugadores.add(rosterBeisbol);
-						temporadaActual = rosterPaso.getEquipo().getParticipante().getTemporada().getNombre();
+						rosterJugadores.add(rosterBeisbol);						
 					}
 					
+					temporadaActual = rosterPaso.getEquipo().getParticipante().getTemporada().getNombre();
 					rosterBeisbol = new RosterBeisbol();
 					rosterBeisbol.setTemporada(rosterPaso.getEquipo().getParticipante().getTemporada().getNombre());
 					rosterBeisbol.setLiga(rosterPaso.getEquipo().getParticipante().getTemporada().getLigaHistorico().getSiglas());
@@ -145,8 +166,9 @@ public class JugadorServiceImpl implements JugadorService {
 		
 		resultado.setJugador(JugadorConverter.convierteDeBase(jugadorRepository.findOne(id)));
 		
-		resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), false));
-		resultado.setManagers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), true));
+		resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "B"));
+		// resultado.setPitchers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "P"));
+		resultado.setManagers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "M"));
 		
 		return resultado;
 	}

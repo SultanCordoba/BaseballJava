@@ -50,4 +50,7 @@ AUTO_INCREMENT = 49714 ;
 ALTER TABLE `baseball`.`partido` 
 AUTO_INCREMENT = 26720 ;
 
+select * from roster_vista
+where siglas_es = 'LMB' and temporada_nombre = '2014'
+and posicion like '%M%';
 

@@ -1,15 +1,19 @@
 package deportes.beisbol.jpa.model;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
-import com.google.common.base.Joiner;
-
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
-import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -17,7 +21,6 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-//@NamedQuery(name="Jugador.findAll", query="SELECT j FROM Jugador j")
 public class Jugador implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;

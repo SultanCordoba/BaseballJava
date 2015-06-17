@@ -25,7 +25,7 @@
 				
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" th:id="${'etapas' + equipo.equipoBeisbol.id}">
-					<div class="panel panel-default">
+						<div class="panel panel-default">
 							<div class="panel-body">
 								<h2 th:text="${equipo.equipoBeisbol.nombre} + ' ' + ${equipo.totalEquipo}"></h2>
 								
@@ -58,20 +58,19 @@
 					
 					<div role="tabpanel" class="tab-pane" th:id="${'roster' + equipo.equipoBeisbol.id}">
 					<div class="panel panel-default">
-							<div class="panel-body">								
-								<div class="col-md-5">
-									<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
-								</div>
+						<div class="panel-body">								
+							<div class="col-md-5">
+								<h2 th:text="${equipo.equipoBeisbol.nombre}"></h2>
+							</div>
 								
-								<div class="col-md-offset-1 col-md-5">
+							<div class="col-md-offset-1 col-md-5">
 									<ul class="list-group">
 										<li class="list-group-item" th:text="#{equipo.show.roster.mensajePrevio}"></li>
 										<li class="list-group-item" th:text="#{equipo.show.roster.mensajePosterior}"></li>
 									</ul>
 								</div>
 
-								
-								<div class="panel panel-default col-md-5">
+							<div class="panel panel-default col-md-5">
 									<div class="panel-heading resaltar" th:text="#{equipo.show.roster.bateadores}"></div>
 									<div class="panel-body">
 										<table class="table">
@@ -89,8 +88,8 @@
 									</div>
 								</div>
 
-								<div class="panel panel-default col-md-offset-1 col-md-5">
-									<div class="panel-heading resaltar" th:text="#{equipo.show.roster.lanzadores}"></div>
+							<div class="panel panel-default col-md-offset-1 col-md-5">
+								<div class="panel-heading resaltar" th:text="#{equipo.show.roster.lanzadores}"></div>
 									<div class="panel-body">
 										<ul class="list-group">
 											<li class="list-group-item" th:each="pitcher : ${equipo.pitchers}" 
@@ -104,7 +103,7 @@
 					</div>	
 					
 					<div role="tabpanel" class="tab-pane" th:id="${'partidos' + equipo.equipoBeisbol.id}">
-					<div class="panel panel-default">
+						<div class="panel panel-default">
 							<div class="panel-body">
 								<p>Coming Soon...</p>
 							</div>

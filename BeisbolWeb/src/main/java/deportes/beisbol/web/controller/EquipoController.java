@@ -30,7 +30,7 @@ public class EquipoController {
 	public String getEquipo(@PathVariable short id, @PathVariable String zona, 
 			Model model, Locale locale) {
 
-		logger.info("Region = " + locale.getCountry() + " Display = " + locale.getScript());
+		// logger.info("Region = " + locale.getCountry() + " Display = " + locale.getScript());
 		
 		EquipoModel equipoModelo = equipoService.creaEquipoModel(id, Optional.of(locale.getLanguage()));
 		Optional<String> idioma = Optional.of(locale.getLanguage());

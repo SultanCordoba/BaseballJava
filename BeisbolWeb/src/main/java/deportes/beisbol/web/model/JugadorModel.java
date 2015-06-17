@@ -8,6 +8,7 @@ import deportes.beisbol.utils.RosterBeisbol;
 public class JugadorModel {
 	private JugadorBeisbol jugador;
 	private LinkedHashSet<RosterBeisbol> rosters;
+	private LinkedHashSet<RosterBeisbol> pitchers;
 	private LinkedHashSet<RosterBeisbol> managers;
 
 	public LinkedHashSet<RosterBeisbol> getManagers() {
@@ -24,6 +25,14 @@ public class JugadorModel {
 
 	public void setRosters(LinkedHashSet<RosterBeisbol> rosters) {
 		this.rosters = rosters;
+	}
+
+	public LinkedHashSet<RosterBeisbol> getPitchers() {
+		return pitchers;
+	}
+
+	public void setPitchers(LinkedHashSet<RosterBeisbol> pitchers) {
+		this.pitchers = pitchers;
 	}
 
 	public JugadorBeisbol getJugador() {

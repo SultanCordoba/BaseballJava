@@ -1,5 +1,7 @@
 package deportes.beisbol.jpa.services;
 
+import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -18,9 +20,9 @@ import deportes.beisbol.jpa.repository.TemporadaRepository;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.EtapaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
-
 import deportes.beisbol.service.EtapaService;
 import deportes.beisbol.utils.EtapaBeisbolAux;
+import deportes.beisbol.web.model.TemporadaActual;
 import deportes.beisbol.web.model.TemporadaModel;
 
 @Service
@@ -85,6 +87,28 @@ public class TemporadaServiceImpl implements TemporadaService {
 		temporadaModelo.setEtapas(etapaVista);
 		
 		return temporadaModelo;
+	}
+
+	@Override
+	public Collection<TemporadaActual> buscarActuales() {
+		
+		LinkedHashSet<TemporadaActual> resultado = new LinkedHashSet<>();
+		
+		Iterator<Temporada> iteraTemporada = temporadaRepository.buscarActuales(new Date()).iterator();
+		Temporada temporada;
+		TemporadaActual temporadaActual;
+		
+		while (iteraTemporada.hasNext()) {
+			temporada = iteraTemporada.next();
+			temporadaActual = new TemporadaActual();
+			
+			temporadaActual.setTemporada(TemporadaConverter.convierteDeBase(temporada));
+			temporadaActual.setLiga(temporada.getLigaHistorico().getSiglas());
+			
+			resultado.add(temporadaActual);
+		}
+		
+		return resultado;
 	}
 	
 	/* @Override

@@ -12,7 +12,7 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Temporada.findAll", query="SELECT t FROM Temporada t")
+// @NamedQuery(name="Temporada.findAll", query="SELECT t FROM Temporada t")
 public class Temporada implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;

@@ -9,7 +9,91 @@
   	</head>
 	<body>
 		<div layout:fragment="content">
-			<p th:text="'Datos de ' + ${modelo.jugador.nombreCompleto}"></p>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2 th:text="${modelo.jugador.nombreCompleto}"></h2>
+						<p><b>Fecha de nacimiento:</b><span th:text="${modelo.jugador.fechaNacimiento}"></span></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix col-md-12">		
+				<div class="panel panel-default">
+					<div class="panel-heading resaltar">Números del Jugador</div>
+						
+					<div class="panel-body">
+						<div role="tabpanel">
+							<ul class="nav nav-pills" role="tablist" id="navJugador">
+								<li role="presentation" id="zBateador" th:if="${not #lists.isEmpty(modelo.rosters)}">
+									<a href="#bateadores" aria-controls="home" role="tab" 
+							   			data-toggle="tab">Bateo</a>
+								</li>
+								
+								<!-- <li role="presentation" id="zPitcher">
+									<a href="#pitchers" aria-controls="home" role="tab" 
+							   			data-toggle="tab">Pitcheo</a>
+								</li> -->
+								
+								<li role="presentation" id="zManager" th:if="${not #lists.isEmpty(modelo.managers)}">
+									<a href="#managers" aria-controls="home" role="tab" 
+							   			data-toggle="tab">Managers</a>
+								</li>
+							</ul>
+							
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="bateadores" th:if="${not #lists.isEmpty(modelo.rosters)}">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<table class="table" id="tJugRoster">
+												<thead>
+													<th>Liga</th>
+													<th>Temporada</th>
+													<th>Equipo</th>
+												</thead>
+												
+												<tbody>
+													<tr th:each = "bateador : ${modelo.rosters}">
+														<td th:text="${bateador.liga}"></td>
+														<td th:text="${bateador.temporada}"></td>
+														<td th:text="${bateador.equipo}"></td>
+													</tr>
+												</tbody>
+											</table>							
+										</div>							
+									</div>								
+								</div>
+								
+								<!-- <div role="tabpanel" class="tab-pane" id="pitchers">
+									<p>Zona de pitchers</p>
+								</div>  -->
+								
+								<div role="tabpanel" class="tab-pane" id="managers" th:if="${not #lists.isEmpty(modelo.rosters)}">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<table class="table" id="tJugManager">
+												<thead>
+													<th>Liga</th>
+													<th>Temporada</th>
+													<th>Equipo</th>
+												</thead>
+												
+												<tbody>
+													<tr th:each = "manager : ${modelo.managers}">
+														<td th:text="${manager.liga}"></td>
+														<td th:text="${manager.temporada}"></td>
+														<td th:text="${manager.equipo}"></td>
+													</tr>
+												</tbody>
+											</table>							
+										</div>							
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

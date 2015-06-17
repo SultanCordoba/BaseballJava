@@ -18,7 +18,7 @@
 				</div>
 				<div class="navbar-collapse collapse" id="navbar">	
 					<ul class="nav navbar-nav tabBeisbol" id="mainTab">
-						<li class="active" id="tabInicio"><a th:href="@{/inicio/}" th:text="#{header.inicio}"></a></li>
+						<li class="active" id="tabInicio"><a th:href="@{/inicio}" th:text="#{header.inicio}"></a></li>
 						<li id="tabLigas"><a th:href="@{/liga/showall}" th:text="#{header.ligas}"></a></li>
 						<li id="tabJugadores"><a th:href="@{/jugador/search}" th:text="#{header.jugadores}"></a></li>
 						<li id="tabIngles"><a th:href="@{${#httpServletRequest.requestURL}(lang = en)}">English</a></li>

@@ -42,13 +42,13 @@ dependencies {
     compile('com.jolbox:bonecp:0.8.0.RELEASE')
     compile('mysql:mysql-connector-java')
     compile('deportes:deportes-core:4.0') 
-    compile('com.mysema.querydsl:querydsl-apt:3.6.3')
-    compile('com.mysema.querydsl:querydsl-jpa:3.6.3')
+    compile('com.mysema.querydsl:querydsl-apt:3.6.4')
+    compile('com.mysema.querydsl:querydsl-jpa:3.6.4')
     compile('ch.qos.logback:logback-classic')
     compile('org.webjars:datatables:1.10.7')
     compile('org.webjars:bootstrap:3.3.4')
     compile('org.webjars:jquery:2.1.4')
-    querydslapt group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.6.3', classifier:   'apt-one-jar', transitive: false	        
+    querydslapt group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.6.4', classifier:   'apt-one-jar', transitive: false	        
 }
 
 //Querydsl 
