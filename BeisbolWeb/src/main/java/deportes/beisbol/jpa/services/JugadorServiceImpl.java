@@ -145,6 +145,7 @@ public class JugadorServiceImpl implements JugadorService {
 					rosterBeisbol.setTemporada(rosterPaso.getEquipo().getParticipante().getTemporada().getNombre());
 					rosterBeisbol.setLiga(rosterPaso.getEquipo().getParticipante().getTemporada().getLigaHistorico().getSiglas());
 					rosterBeisbol.setEquipo(rosterPaso.getEquipo().getNombreTablasEs());
+					rosterBeisbol.setPosicion(rosterPaso.getPosicion());
 				}
 				else {
 					rosterBeisbol.setEquipo(rosterBeisbol.getEquipo() + "*" + rosterPaso.getEquipo().getAbreviatura());

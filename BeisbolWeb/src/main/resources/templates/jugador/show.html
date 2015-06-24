@@ -12,32 +12,54 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2 th:text="${modelo.jugador.nombreCompleto}"></h2>
-						<p><b>Fecha de nacimiento:</b><span th:text="${modelo.jugador.fechaNacimiento}"></span></p>
+						<div class="row">
+							<div class="col-md-12">
+								<h2 th:text="${modelo.jugador.nombreCompleto}"></h2>	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3" th:unless="${modelo.jugador.fechaNacimiento} == null">
+								<b th:text="#{jugador.show.fechaNacimiento} + ': '"></b>
+								   <span th:text="${modelo.jugador.fechaNacimiento}"></span>
+							</div>
+							<div class="col-md-1 col-xs-3">
+								<b>B: </b><span th:text="${modelo.jugador.batea}"></span>
+							</div>
+							<div class="col-md-1 col-xs-3">
+								<b>T: </b><span th:text="${modelo.jugador.tira}"></span>
+							</div>							
+						</div>
+						<div class="row" th:unless="${modelo.jugador.ciudadNacimiento} == null">
+							<div class="col-md-12">
+								<b th:text="#{jugador.show.lugarNacimiento} + ': '"></b>
+								   <span th:text="${modelo.jugador.ciudadNacimiento}"></span>
+							</div>
+							
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="clearfix col-md-12">		
 				<div class="panel panel-default">
-					<div class="panel-heading resaltar">Números del Jugador</div>
+					<div class="panel-heading resaltar" th:text="#{jugador.show.data}"></div>
 						
 					<div class="panel-body">
 						<div role="tabpanel">
 							<ul class="nav nav-pills" role="tablist" id="navJugador">
 								<li role="presentation" id="zBateador" th:if="${not #lists.isEmpty(modelo.rosters)}">
 									<a href="#bateadores" aria-controls="home" role="tab" 
-							   			data-toggle="tab">Bateo</a>
+							   			data-toggle="tab" th:text="#{jugador.show.data.bateo}"></a>
 								</li>
 								
 								<!-- <li role="presentation" id="zPitcher">
 									<a href="#pitchers" aria-controls="home" role="tab" 
-							   			data-toggle="tab">Pitcheo</a>
+							   			data-toggle="tab" th:text="#{jugador.show.data.pitcher}">Pitcheo</a>
 								</li> -->
 								
 								<li role="presentation" id="zManager" th:if="${not #lists.isEmpty(modelo.managers)}">
 									<a href="#managers" aria-controls="home" role="tab" 
-							   			data-toggle="tab">Managers</a>
+							   			data-toggle="tab" th:text="#{jugador.show.data.manager}"></a>
 								</li>
 							</ul>
 							
@@ -47,9 +69,10 @@
 										<div class="panel-body">
 											<table class="table" id="tJugRoster">
 												<thead>
-													<th>Liga</th>
-													<th>Temporada</th>
-													<th>Equipo</th>
+													<th th:text="#{jugador.show.data.liga}"></th>
+													<th th:text="#{jugador.show.data.temporada}"></th>
+													<th th:text="#{jugador.show.data.equipo}"></th>
+													<th th:text="#{jugador.show.data.posicion}"></th>
 												</thead>
 												
 												<tbody>
@@ -57,6 +80,7 @@
 														<td th:text="${bateador.liga}"></td>
 														<td th:text="${bateador.temporada}"></td>
 														<td th:text="${bateador.equipo}"></td>
+														<td th:text="${bateador.posicion}"></td>
 													</tr>
 												</tbody>
 											</table>							
@@ -73,9 +97,9 @@
 										<div class="panel-body">
 											<table class="table" id="tJugManager">
 												<thead>
-													<th>Liga</th>
-													<th>Temporada</th>
-													<th>Equipo</th>
+													<th th:text="#{jugador.show.data.liga}"></th>
+													<th th:text="#{jugador.show.data.temporada}"></th>
+													<th th:text="#{jugador.show.data.equipo}"></th>
 												</thead>
 												
 												<tbody>

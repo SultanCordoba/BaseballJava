@@ -16,7 +16,7 @@ import deportes.beisbol.jpa.model.FranquiciaHistorico;
 import deportes.beisbol.jpa.model.FranquiciaHistoricoInt;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.RangoFechaBeisbol;
-import deportes.beisbol.utils.FechaUtils;
+import deportes.beisbol.utils.FormatoUtils;
 
 public class FranquiciaConverter {
 	
@@ -89,10 +89,10 @@ public class FranquiciaConverter {
 
 				rangoNombre = new RangoFechaBeisbol();
 				
-				rangoNombre.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
+				rangoNombre.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoNombre.setNombre(nombreActual);				
 			} 
-			rangoNombre.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
+			rangoNombre.setFechaFin(FormatoUtils.convertidorFecha(franqHistPaso.getFechaFin()));
 			
 			if (!escudoActual.equalsIgnoreCase(franqHistPaso.getArchivoEscudo())) {
 				escudoActual = Strings.nullToEmpty(franqHistPaso.getArchivoEscudo());
@@ -106,10 +106,10 @@ public class FranquiciaConverter {
 				
 				rangoEscudo = new RangoFechaBeisbol();
 								
-				rangoEscudo.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
+				rangoEscudo.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoEscudo.setNombre(franqHistPaso.getArchivoEscudo());
 			}
-			rangoEscudo.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
+			rangoEscudo.setFechaFin(FormatoUtils.convertidorFecha(franqHistPaso.getFechaFin()));
 			
 			if (!parqueActual.equalsIgnoreCase(franqHistPaso.getParque().getNombre())) {
 				parqueActual = Strings.nullToEmpty(franqHistPaso.getParque().getNombre());
@@ -123,10 +123,10 @@ public class FranquiciaConverter {
 				
 				rangoParque = new RangoFechaBeisbol();
 				
-				rangoParque.setFechaInicio(FechaUtils.convertidor(franqHistPaso.getFechaInicio()));
+				rangoParque.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoParque.setNombre(franqHistPaso.getParque().getNombre());
 			}
-			rangoParque.setFechaFin(FechaUtils.convertidor(franqHistPaso.getFechaFin()));
+			rangoParque.setFechaFin(FormatoUtils.convertidorFecha(franqHistPaso.getFechaFin()));
 		}
 		
 		if (!nombreActual.equals(inicioString)) {

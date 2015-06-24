@@ -56,7 +56,5 @@ public class RosterBeisbol {
 	
 	public void setOtraTemporada(String otraTemporada) {
 		this.otraTemporada = otraTemporada;
-	}
-	
-	
+	}	
 }
