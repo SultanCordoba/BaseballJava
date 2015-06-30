@@ -71,7 +71,7 @@ public class Application extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
       //String myExternalFilePath = "file:///C://Users//juanfriverap//Google Drive//Beisbol//";
-      String myExternalFilePath = "file://home//pelotero//logos//";
+      String myExternalFilePath = "file:/home/pelotero/logos/";
 
       registry.addResourceHandler("/imagenes/**").addResourceLocations(myExternalFilePath);
 

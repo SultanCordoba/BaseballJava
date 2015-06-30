@@ -21,5 +21,9 @@ public interface RosterRepository extends JpaRepository<Roster, Short> {
 	public Collection<Roster> hallarRosterByJugadorAndTemporada(@Param("jugadorId") Short jugadorId,
 			@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 	
-	public Collection<Roster> findByJugadorIdOrderByFechaInicioAsc(Short jugadorId);
+	@Query("SELECT r FROM Roster r  "
+			+ "WHERE r.jugador.id = :jugadorId "
+			+ "AND r.equipo.franquiciaHistorico.franquicia.liga.activa = 1 "
+			+ "ORDER BY r.fechaInicio")	
+	public Collection<Roster> findByJugadorIdOrderByFechaInicioAsc(@Param("jugadorId") Short jugadorId);
 }
