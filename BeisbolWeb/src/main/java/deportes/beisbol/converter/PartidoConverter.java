@@ -1,6 +1,7 @@
 package deportes.beisbol.converter;
 
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 
 import deportes.beisbol.jpa.model.Partido;
@@ -13,7 +14,11 @@ public class PartidoConverter {
 		PartidoBeisbol resultado = new PartidoBeisbol();
 		
 		resultado.setComentario(partido.getComentario());
-		resultado.setFechaRealizacion(partido.getFechaRealizacion().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+		
+		// La conversión de Date, es porque el objeto partido trae un tipo java.sql.Date en 
+		// lugar de java.util.Date
+		Date fecha = new Date(partido.getFechaRealizacion().getTime());
+		resultado.setFechaRealizacion(fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 		
 		ContrincanteBeisbol contLocal = new ContrincanteBeisbol();
 		ContrincanteBeisbol contVisita = new ContrincanteBeisbol();

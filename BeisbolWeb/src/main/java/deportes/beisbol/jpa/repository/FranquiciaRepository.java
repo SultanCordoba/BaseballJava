@@ -4,14 +4,15 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import deportes.beisbol.jpa.model.Franquicia;
+import deportes.beisbol.jpa.model.Temporada;
 
-public interface FranquiciaRepository extends JpaRepository<Franquicia, Short> {
+public interface FranquiciaRepository extends JpaRepository<Franquicia, Short>,
+    QueryDslPredicateExecutor<Franquicia>{
 	
-	@Query("SELECT f FROM Franquicia f WHERE f.liga.id = :id ORDER BY f.nombreTablasEs")
-	public Collection<Franquicia> findLigaId(@Param("id") Byte id);
-	
-	
+	/* @Query("SELECT f FROM Franquicia f WHERE f.liga.id = :id ORDER BY f.nombreTablasEs")
+	public Collection<Franquicia> findLigaId(@Param("id") Byte id); */
 }

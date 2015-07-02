@@ -22,6 +22,7 @@ import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.jpa.model.Participante;
 import deportes.beisbol.jpa.model.Roster;
+import deportes.beisbol.jpa.predicates.EquipoPredicates;
 import deportes.beisbol.jpa.repository.EquipoRepository;
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.FranquiciaBeisbol;
@@ -53,7 +54,9 @@ public class EquipoServiceImpl implements EquipoService {
 	public Optional<EquipoBeisbol> findCampeon(TemporadaBeisbol t, Optional<String> idioma) {
 		
 		EquipoBeisbol equipoBeisbol = null;
-		Equipo equipo = equipoRepository.findCampeon(t.getId());
+		//Equipo equipo = equipoRepository.findCampeon(t.getId());
+		
+		Equipo equipo = equipoRepository.findOne(EquipoPredicates.campeonTemporada(t.getId()));
 		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
 		
 		return Optional.ofNullable(equipoBeisbol);

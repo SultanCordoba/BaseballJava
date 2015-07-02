@@ -5,7 +5,7 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
 import deportes.beisbol.jpa.model.Liga;
 
-public interface LigaRepository extends JpaRepository<Liga, Byte>,
-   QueryDslPredicateExecutor<Liga> {
+public interface LigaRepository extends JpaRepository<Liga, Byte>,  
+QueryDslPredicateExecutor<Liga> {
 	
 }

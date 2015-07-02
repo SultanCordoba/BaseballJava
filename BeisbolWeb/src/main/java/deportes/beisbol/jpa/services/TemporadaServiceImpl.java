@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
+
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import deportes.beisbol.converter.EtapaConverter;
 import deportes.beisbol.converter.TemporadaConverter;
 import deportes.beisbol.jpa.model.Temporada;
+import deportes.beisbol.jpa.predicates.TemporadaPredicates;
 import deportes.beisbol.jpa.repository.LigaHistoricoRepository;
 import deportes.beisbol.jpa.repository.TemporadaRepository;
 import deportes.beisbol.model.EquipoBeisbol;
@@ -94,7 +96,9 @@ public class TemporadaServiceImpl implements TemporadaService {
 		
 		LinkedHashSet<TemporadaActual> resultado = new LinkedHashSet<>();
 		
-		Iterator<Temporada> iteraTemporada = temporadaRepository.buscarActuales(new Date()).iterator();
+		// Iterator<Temporada> iteraTemporada = temporadaRepository.buscarActuales(new Date()).iterator();
+		Iterator<Temporada> iteraTemporada = temporadaRepository.findAll
+				(TemporadaPredicates.fechaBetween(new Date())).iterator();
 		Temporada temporada;
 		TemporadaActual temporadaActual;
 		

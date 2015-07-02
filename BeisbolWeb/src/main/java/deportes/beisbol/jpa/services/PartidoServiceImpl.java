@@ -2,16 +2,19 @@ package deportes.beisbol.jpa.services;
 
 import java.sql.Timestamp;
 import java.time.ZoneId;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import org.slf4j.Logger;
+
+import deportes.beisbol.converter.PartidoConverter;
 import deportes.beisbol.jpa.model.Partido;
 import deportes.beisbol.jpa.model.PartidoEquipo;
 import deportes.beisbol.jpa.model.Record;
@@ -22,7 +25,6 @@ import deportes.beisbol.jpa.repository.PartidoRepository;
 import deportes.beisbol.jpa.repository.RecordRepository;
 import deportes.beisbol.jpa.repository.VueltaRepository;
 import deportes.beisbol.model.PartidoBeisbol;
-import deportes.beisbol.service.PartidoService;
 
 @Service
 @Transactional
@@ -153,6 +155,19 @@ public class PartidoServiceImpl implements PartidoService {
 	public PartidoBeisbol findOne(Short id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Collection<PartidoBeisbol> findByTemporada(Short temporadaId, Optional<String> idioma) {
+		LinkedHashSet<PartidoBeisbol> resultado = new LinkedHashSet<>();
+		
+		Iterator<Partido> iteraPartido = partidoRepository.findByTemporadaId(temporadaId).iterator();
+		
+		while (iteraPartido.hasNext()) {
+			resultado.add(PartidoConverter.convierteDeBase(iteraPartido.next(), idioma));
+		}
+		
+		return resultado;
 	}
 
 }
