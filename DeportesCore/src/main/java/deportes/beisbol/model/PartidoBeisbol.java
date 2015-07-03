@@ -26,7 +26,16 @@ public class PartidoBeisbol implements PartidoInterfaz {
 	private ContrincanteBeisbol equipoVisita;
 	private int entradas;
 	private String claveMilb;
+	private ParqueBeisbol parque;
 	
+	public ParqueBeisbol getParque() {
+		return parque;
+	}
+
+	public void setParque(ParqueBeisbol parque) {
+		this.parque = parque;
+	}
+
 	public ContrincanteBeisbol getEquipoLocal() {
 		return equipoLocal;
 	}
