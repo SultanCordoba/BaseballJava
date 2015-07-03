@@ -23,16 +23,12 @@ public class LigaConverter {
 		resultado.setNombre(ligaBase.getNombre());
 		resultado.setSiglas(ligaBase.getSiglas());			
 		
-		// logger.info("idiomaAbrev: " + idiomaAbrev);
-		
 		if (!idiomaAbrev.equals("ES")) {
 			Iterator<LigaHistoricoInt> ligasHistoricoInt = ligaBase.getLigaHistoricoInts().iterator();
 			LigaHistoricoInt ligaHistoricoInt;
 			
 			while (ligasHistoricoInt.hasNext()) {
 				ligaHistoricoInt = ligasHistoricoInt.next();
-				
-				// logger.info("Idioma Int:" + ligaHistoricoInt.getIdioma().getAbreviatura());
 				
 				if (ligaHistoricoInt.getIdioma().getAbreviatura().toUpperCase().equals(idiomaAbrev)) {
 					resultado.setNombre(ligaHistoricoInt.getNombre());

@@ -9,8 +9,8 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.TreeMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory; 
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.google.common.base.Strings;
 
@@ -23,7 +23,7 @@ import deportes.beisbol.utils.RecordComparator;
 
 public class EtapaConverter {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EtapaConverter.class);
+	// private static final Logger logger = LoggerFactory.getLogger(EtapaConverter.class);
 	
 	public static EtapaBeisbol convierteDeBase(Etapa etapaBase, Optional<String> idioma) {
 		EtapaBeisbol resultado = new EtapaBeisbol();
@@ -52,7 +52,6 @@ public class EtapaConverter {
 	private static Iterator<RecordBeisbol> fusionarVueltas(
 			TreeMap<String, LinkedHashSet<RecordBeisbol>> primeraVuelta, 
 			TreeMap<String, LinkedHashSet<RecordBeisbol>> segundaVuelta) {
-		// LinkedHashSet<RecordBeisbol> resultado = new LinkedHashSet<>();
 		
 		TreeMap<String, RecordBeisbol> recordFusionado = new TreeMap<>();
 		
@@ -116,8 +115,6 @@ public class EtapaConverter {
 				}
 				
 				vueltaActual = recordActual.getNombreVuelta();
-				
-				// logger.info("Agregando Vuelta " + vueltaActual);
 				
 				resultado.addVuelta(vueltaActual);
 				grupoActual = "XXX";

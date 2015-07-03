@@ -2,12 +2,10 @@ package deportes.beisbol.converter;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
 import java.util.Optional;
+
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.google.common.base.Strings;
 
@@ -20,7 +18,7 @@ import deportes.beisbol.utils.FormatoUtils;
 
 public class FranquiciaConverter {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
+	//private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
 	
 	public static String nombreCompletoIdioma(FranquiciaHistorico franquiciaHistorico, Optional<String> idioma) {
 		String resultado = franquiciaHistorico.getNombreCompletoEs();
@@ -66,18 +64,13 @@ public class FranquiciaConverter {
 		RangoFechaBeisbol rangoEscudo = null;
 		RangoFechaBeisbol rangoParque = null;
 		
-		//logger.info("Procesando " + franquicia.getNombreTablasEs() + " con id " + franquicia.getId());
-		
 		String nombreCompara;
 		
 		while (iteraFranqHist.hasNext()) {
 			franqHistPaso = iteraFranqHist.next();
 			nombreCompara = nombreCompletoIdioma(franqHistPaso, idioma);
 			
-			//logger.info(nombreCompara + " idioma=" + idioma.get());
-			
 			if (!nombreActual.equalsIgnoreCase(nombreCompara)) {
-				//nombreActual = franqHistPaso.getNombreCompletoEs();
 				nombreActual = nombreCompara;
 				
 				if (rangoNombre != null) {
@@ -86,9 +79,7 @@ public class FranquiciaConverter {
 						listaNombres.add(rangoNombre);
 					}
 				}
-
 				rangoNombre = new RangoFechaBeisbol();
-				
 				rangoNombre.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoNombre.setNombre(nombreActual);				
 			} 
@@ -103,9 +94,7 @@ public class FranquiciaConverter {
 						listaEscudos.add(rangoEscudo);
 					}
 				}
-				
 				rangoEscudo = new RangoFechaBeisbol();
-								
 				rangoEscudo.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoEscudo.setNombre(franqHistPaso.getArchivoEscudo());
 			}
@@ -120,9 +109,7 @@ public class FranquiciaConverter {
 						listaParques.add(rangoParque);
 					}
 				}
-				
 				rangoParque = new RangoFechaBeisbol();
-				
 				rangoParque.setFechaInicio(FormatoUtils.convertidorFecha(franqHistPaso.getFechaInicio()));
 				rangoParque.setNombre(franqHistPaso.getParque().getNombre());
 			}
@@ -152,10 +139,8 @@ public class FranquiciaConverter {
 			}
 		}
 		resultado.setParques(listaParques);
-		
 		resultado.setPais(franquicia.getClub().getPai().getNombreEs());
 		
 		return resultado;
 	}
-
 }

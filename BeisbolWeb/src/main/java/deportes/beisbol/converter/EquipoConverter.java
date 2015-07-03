@@ -1,20 +1,18 @@
 package deportes.beisbol.converter;
 
-import java.util.Iterator;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Equipo;
-import deportes.beisbol.jpa.model.FranquiciaHistoricoInt;
 import deportes.beisbol.model.EquipoBeisbol;
 
 public class EquipoConverter {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EquipoConverter.class);
+	//private static final Logger logger = LoggerFactory.getLogger(EquipoConverter.class);
 	
 	public static EquipoBeisbol convierteDeBase(Equipo equipoBase, Optional<String> idioma) {
 		EquipoBeisbol resultado = new EquipoBeisbol();
@@ -31,19 +29,6 @@ public class EquipoConverter {
 				
 				String nombreIdioma = FranquiciaConverter.nombreCompletoIdioma(equipoBase.getFranquiciaHistorico(), idioma);
 				resultado.setNombre(nombreIdioma);
-				
-				
-				/* Iterator<FranquiciaHistoricoInt> iteraFranquicia = equipoBase.getFranquiciaHistorico().getFranquiciaHistoricoInts().iterator();
-				FranquiciaHistoricoInt franqHistPaso;
-				
-				while (iteraFranquicia.hasNext()) {
-					franqHistPaso = iteraFranquicia.next();
-					
-					if (franqHistPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaCompara)) {
-						resultado.setNombre(franqHistPaso.getNombreCompleto());
-						break;
-					}
-				} */
 			} 
 		} catch (NullPointerException npe) {
 			resultado.setNombre("");

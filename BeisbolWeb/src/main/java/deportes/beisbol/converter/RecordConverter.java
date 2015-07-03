@@ -47,11 +47,9 @@ public class RecordConverter {
 		String etapaNombre = recordBase.getEtapa().getNombre();
 		
 		resultado.setEtapaNombre(etapaNombre);
-		
 		resultado.setGanados(recordBase.getGanados());
 		resultado.setPerdidos(recordBase.getPerdidos());
 		resultado.setCampeon(false);
-		
 		resultado.setParticipanteId(recordBase.getParticipante().getId());
 		
 		Iterator<Equipo> equipos = recordBase.getParticipante().getEquipos().iterator();

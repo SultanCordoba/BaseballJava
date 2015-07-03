@@ -22,32 +22,7 @@ public class ParticipanteConverter {
 			equipo = iteraEquipos.next();
 			
 			if (!abreviado) {
-				
-				nombreEquipo = FranquiciaConverter.nombreCompletoIdioma(equipo.getFranquiciaHistorico(), idioma);
-				
-				/* nombreEquipo = equipo.getNombreCompletoEs();
-				
-				if (idioma.isPresent()) {
-					String idiomaPaso = idioma.get().toUpperCase();
-					
-					nombreEquipo = FranquiciaConverter.nombreCompletoIdioma(equipo.getFranquiciaHistorico(), idioma);
-					
-					 if (!idiomaPaso.equalsIgnoreCase("ES")) {
-						Iterator<FranquiciaHistoricoInt> iteraFranqHist = equipo.getFranquiciaHistorico().getFranquiciaHistoricoInts().iterator();
-						FranquiciaHistoricoInt franqPaso;
-						
-						while (iteraFranqHist.hasNext()) {
-							franqPaso = iteraFranqHist.next();
-							
-							if (franqPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaPaso)) {
-								nombreEquipo = franqPaso.getNombreCompleto();
-								break;
-							}
-						}
-						
-					} 
-				} */
-				
+				nombreEquipo = FranquiciaConverter.nombreCompletoIdioma(equipo.getFranquiciaHistorico(), idioma);				
 			}
 			else {
 				nombreEquipo = equipo.getNombreTablasEs();

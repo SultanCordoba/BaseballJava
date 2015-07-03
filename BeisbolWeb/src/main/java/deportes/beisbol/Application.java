@@ -22,9 +22,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @EnableAutoConfiguration
 public class Application extends WebMvcConfigurerAdapter {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) {	
 		SpringApplication.run(Application.class, args);
 		
 		/*ApplicationContext ctx = SpringApplication.run(Application.class, args);
