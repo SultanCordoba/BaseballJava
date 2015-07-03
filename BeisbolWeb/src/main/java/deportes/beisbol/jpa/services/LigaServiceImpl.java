@@ -149,7 +149,10 @@ public class LigaServiceImpl implements LigaService {
 				
 				Iterator<LigaHistoricoInt> ligasHistoricoInt = null;
 				
-				ligasHistoricoInt = ligaHistoricoIntRepository.buscarLigaId(id, idiomaAbrev).iterator();
+				//ligasHistoricoInt = ligaHistoricoIntRepository.buscarLigaId(id, idiomaAbrev).iterator();
+				
+				ligasHistoricoInt = ligaHistoricoIntRepository.findAll
+						(LigaPredicates.ligaIntId(id, idiomaAbrev)).iterator();
 				
 				while (ligasHistoricoInt.hasNext()) {
 					temporal = Optional.of(ligasHistoricoInt.next().getLigaHistorico());

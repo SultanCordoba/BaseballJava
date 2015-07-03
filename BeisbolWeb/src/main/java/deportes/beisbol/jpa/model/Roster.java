@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.mysema.query.annotations.QueryInit;
+
 import java.util.Date;
 
 
@@ -90,7 +92,6 @@ public class Roster implements Serializable {
 		this.fechaActualizacion = fechaActualizacion;
 	}
 
-
 	@Column(name="orden_equipo")
 	public byte getOrdenEquipo() {
 		return this.ordenEquipo;
@@ -111,10 +112,10 @@ public class Roster implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="equipo_id")
+	@QueryInit("franquiciaHistorico.franquicia.liga.activa")
 	public Equipo getEquipo() {
 		return equipo;
 	}
-
 
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;

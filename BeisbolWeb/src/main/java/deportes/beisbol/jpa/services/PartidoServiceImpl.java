@@ -18,6 +18,8 @@ import deportes.beisbol.converter.PartidoConverter;
 import deportes.beisbol.jpa.model.Partido;
 import deportes.beisbol.jpa.model.PartidoEquipo;
 import deportes.beisbol.jpa.model.Record;
+import deportes.beisbol.jpa.predicates.EquipoPredicates;
+import deportes.beisbol.jpa.predicates.PartidoPredicates;
 import deportes.beisbol.jpa.repository.EquipoRepository;
 import deportes.beisbol.jpa.repository.EtapaRepository;
 import deportes.beisbol.jpa.repository.ParqueRepository;
@@ -72,21 +74,34 @@ public class PartidoServiceImpl implements PartidoService {
 			equipoLocal.setHits((byte) partido.getEquipoLocal().getHits());
 			equipoLocal.setErrores((byte) partido.getEquipoLocal().getErrores());
 			equipoLocal.setLocalia("L");
-			equipoLocal.setEquipo(equipoRepository.findAbreviaturaLiga
+			
+			equipoLocal.setEquipo(equipoRepository.findOne(EquipoPredicates.equipoLiga(
+					partido.getEquipoLocal().getEquipo().getSiglas(), 
+					partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(), 
+					partidoBase.getEtapa().getTemporada().getId())));
+			
+			/* equipoLocal.setEquipo(equipoRepository.findAbreviaturaLiga
 					(partido.getEquipoLocal().getEquipo().getSiglas(), 
 					 partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(),
 					 partidoBase.getEtapa().getTemporada().getId()));
-			equipoLocal.setFechaActualizacion(new Timestamp(ahora.getTime()));
+			equipoLocal.setFechaActualizacion(new Timestamp(ahora.getTime())); */
 			
 			PartidoEquipo equipoVisita = new PartidoEquipo();
 			equipoVisita.setCarreras((byte) partido.getEquipoVisita().getScore());
 			equipoVisita.setHits((byte) partido.getEquipoVisita().getHits());
 			equipoVisita.setErrores((byte) partido.getEquipoVisita().getErrores());
 			equipoVisita.setLocalia("V");
-			equipoVisita.setEquipo(equipoRepository.findAbreviaturaLiga
+			
+			equipoVisita.setEquipo(equipoRepository.findOne(EquipoPredicates.equipoLiga(
+					partido.getEquipoVisita().getEquipo().getSiglas(), 
+					partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(), 
+					partidoBase.getEtapa().getTemporada().getId())));
+			
+			/* equipoVisita.setEquipo(equipoRepository.findAbreviaturaLiga
 					(partido.getEquipoVisita().getEquipo().getSiglas(), 
 				     partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(),
-					 partidoBase.getEtapa().getTemporada().getId()));
+					 partidoBase.getEtapa().getTemporada().getId())); */
+			
 			equipoVisita.setFechaActualizacion(new Timestamp(ahora.getTime()));
 			
 			if (partido.getEquipoVisita().getScore() > partido.getEquipoLocal().getScore()) {
@@ -161,7 +176,11 @@ public class PartidoServiceImpl implements PartidoService {
 	public Collection<PartidoBeisbol> findByTemporada(Short temporadaId, Optional<String> idioma) {
 		LinkedHashSet<PartidoBeisbol> resultado = new LinkedHashSet<>();
 		
-		Iterator<Partido> iteraPartido = partidoRepository.findByTemporadaId(temporadaId).iterator();
+		// Iterator<Partido> iteraPartido = partidoRepository.findByTemporadaId(temporadaId).iterator();
+		
+		Iterator<Partido> iteraPartido = partidoRepository.findAll
+				(PartidoPredicates.partidoTemporadaIs(temporadaId), 
+				 PartidoPredicates.etapaIdOrder(), PartidoPredicates.fechaRealizacionOrder()).iterator();
 		
 		while (iteraPartido.hasNext()) {
 			resultado.add(PartidoConverter.convierteDeBase(iteraPartido.next(), idioma));

@@ -17,6 +17,7 @@ import com.google.common.collect.Lists;
 import deportes.beisbol.converter.JugadorConverter;
 import deportes.beisbol.jpa.model.Jugador;
 import deportes.beisbol.jpa.model.Roster;
+import deportes.beisbol.jpa.predicates.RosterPredicates;
 import deportes.beisbol.jpa.repository.JugadorRepository;
 import deportes.beisbol.jpa.repository.RosterRepository;
 import deportes.beisbol.model.JugadorBeisbol;
@@ -167,9 +168,15 @@ public class JugadorServiceImpl implements JugadorService {
 		
 		resultado.setJugador(JugadorConverter.convierteDeBase(jugadorRepository.findOne(id)));
 		
-		resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "B"));
+		//resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "B"));
+	    resultado.setRosters(convertirListaRoster(
+				rosterRepository.findAll(RosterPredicates.rosterJugadorLigaActiva(id),
+						RosterPredicates.orderByFechaInicioAsc()).iterator(), "B"));
 		// resultado.setPitchers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "P"));
-		resultado.setManagers(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "M"));
+		resultado.setManagers(convertirListaRoster(
+				rosterRepository.findAll(RosterPredicates.rosterJugadorLigaActiva(id),
+						RosterPredicates.orderByFechaInicioAsc()).iterator(), "M")); 
+		//resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "M"));
 		
 		return resultado;
 	}

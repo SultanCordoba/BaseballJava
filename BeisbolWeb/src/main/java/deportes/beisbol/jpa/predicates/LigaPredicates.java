@@ -4,6 +4,7 @@ import com.mysema.query.types.OrderSpecifier;
 import com.mysema.query.types.Predicate;
 
 import deportes.beisbol.jpa.model.QLigaHistorico;
+import deportes.beisbol.jpa.model.QLigaHistoricoInt;
 
 public class LigaPredicates {
 
@@ -33,5 +34,12 @@ public class LigaPredicates {
 		QLigaHistorico ligaHistorico = QLigaHistorico.ligaHistorico;
 		
 		return ligaHistorico.liga.activa.eq((byte) 1);
+	}
+	
+	public static Predicate ligaIntId(Byte ligaId, String idioma) {
+		QLigaHistoricoInt lhi = QLigaHistoricoInt.ligaHistoricoInt;
+		
+		return lhi.ligaHistorico.liga.id.eq(ligaId).and(
+				lhi.idioma.abreviatura.equalsIgnoreCase(idioma));
 	}
 }

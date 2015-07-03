@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.mysema.query.annotations.QueryInit;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -60,6 +62,7 @@ public class Participante implements Serializable {
 	//bi-directional many-to-one association to Equipo
 	@OneToMany(mappedBy="participante", fetch=FetchType.EAGER)
 	@OrderBy("fechaInicio")
+	@QueryInit("franquiciaHistorico.franquicia.id")
 	public Set<Equipo> getEquipos() {
 		return this.equipos;
 	}
@@ -85,6 +88,7 @@ public class Participante implements Serializable {
 
 	//bi-directional many-to-one association to Temporada
 	@ManyToOne
+	@QueryInit("id")
 	public Temporada getTemporada() {
 		return this.temporada;
 	}

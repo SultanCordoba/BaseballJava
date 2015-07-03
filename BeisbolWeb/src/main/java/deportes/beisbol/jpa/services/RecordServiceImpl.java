@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import deportes.beisbol.converter.RecordConverter;
 import deportes.beisbol.jpa.model.EtapaInt;
 import deportes.beisbol.jpa.model.Record;
+import deportes.beisbol.jpa.predicates.RecordPredicates;
 import deportes.beisbol.jpa.repository.EquipoRepository;
 import deportes.beisbol.jpa.repository.EtapaRepository;
 import deportes.beisbol.jpa.repository.RecordRepository;
@@ -73,7 +74,11 @@ public class RecordServiceImpl implements RecordService {
 	@Override
 	public Collection<RecordEtapa> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
 
-		Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
+		// Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
+		
+		Iterator<Record> iteraRecord = recordRepository.findAll
+				(RecordPredicates.participantesOrdenados(franquiciaId),
+				 RecordPredicates.fechaInicioOrder(), RecordPredicates.etapaIdDesc()).iterator(); 
 		
 		return convierteRecords(iteraRecord, idioma);
 	}

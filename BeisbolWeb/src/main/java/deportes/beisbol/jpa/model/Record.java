@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.mysema.query.annotations.QueryInit;
+
 import java.sql.Timestamp;
 import java.util.Set;
 

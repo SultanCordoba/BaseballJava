@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.mysema.query.annotations.QueryInit;
+
 import java.util.Date;
 import java.util.Set;
 import java.sql.Timestamp;
@@ -14,11 +16,11 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@NamedQueries({
+/*@NamedQueries({
 	/* @NamedQuery(name="Equipo.findAll", query="SELECT e FROM Equipo e"), */
-	@NamedQuery(name="Equipo.findCampeon", query="SELECT e FROM Equipo e " + 
+	/*@NamedQuery(name="Equipo.findCampeon", query="SELECT e FROM Equipo e " + 
 	   "WHERE e.participante.temporada.id = :id AND e.campeon = 1")
-})
+})*/
 public class Equipo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
@@ -144,6 +146,7 @@ public class Equipo implements Serializable {
 	//bi-directional many-to-one association to FranquiciaHistorico
 	@ManyToOne
 	@JoinColumn(name="franquicia_historico_id")
+	@QueryInit("franquicia.liga.siglasEs")
 	public FranquiciaHistorico getFranquiciaHistorico() {
 		return this.franquiciaHistorico;
 	}
@@ -155,6 +158,7 @@ public class Equipo implements Serializable {
 
 	//bi-directional many-to-one association to Participante
 	@ManyToOne
+	@QueryInit("temporada.id")
 	public Participante getParticipante() {
 		return this.participante;
 	}
