@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
     }
 }
 
@@ -28,6 +28,6 @@ repositories {
 dependencies {
     compile("org.springframework:spring-web")
     testCompile("junit:junit")
-    compile('deportes:deportes-core:4.0') 
+    compile('deportes:deportes-core:4.1') 
     compile("ch.qos.logback:logback-classic")    
 }
