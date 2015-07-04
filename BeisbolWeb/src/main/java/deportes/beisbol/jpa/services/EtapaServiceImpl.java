@@ -75,9 +75,7 @@ public class EtapaServiceImpl implements EtapaService {
 				recordBeisbol.setParticipanteId(recordBase.getParticipante().getId());
 				records.add(recordBeisbol);
 			}
-			
 			Collections.sort(records, new RecordComparator());
-			
 			
 			etapaBeisbol.setRecords(new LinkedHashSet<RecordBeisbol>(records));
 			

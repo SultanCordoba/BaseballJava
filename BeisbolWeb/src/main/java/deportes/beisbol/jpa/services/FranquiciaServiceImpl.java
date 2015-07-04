@@ -26,12 +26,14 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 	
 	@Autowired
 	RecordService recordService;
+	
+	final String STRING_INICIO = "XXXX";
 
 	private LinkedHashSet<RecordEtapa> condensarRecords(LinkedHashSet<RecordEtapa> temporadas) {
 		LinkedHashSet<RecordEtapa> resultado = new LinkedHashSet<RecordEtapa>();
 		
-		String temporadaActual = "XXXX";
-		String etapaActual = "XXXX";
+		String temporadaActual = STRING_INICIO;
+		String etapaActual = STRING_INICIO;
 		
 		Iterator<RecordEtapa> iteraRecords = temporadas.iterator();
 		RecordEtapa paso;
@@ -42,7 +44,7 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 			
 			if (!paso.getTemporadaNombre().equalsIgnoreCase(temporadaActual)) {
 				
-				if (!temporadaActual.endsWith("XXXX")) {
+				if (!temporadaActual.endsWith(STRING_INICIO)) {
 					resultado.add(condensado);
 				}
 				
@@ -63,14 +65,13 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 			}
 		}
 		
-		if (!temporadaActual.endsWith("XXXX")) {
+		if (!temporadaActual.endsWith(STRING_INICIO)) {
 			resultado.add(condensado);
 		}
 		
 		return resultado;
 	}
 
-	
 	@Override
 	public FranquiciaModel creaFranquiciaModelo(Short id,
 			Optional<String> idioma) {
@@ -101,45 +102,4 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 
 		return resultado;
 	}
-	
-	/* @Override
-	public Optional<FranquiciaBeisbol> findById(short id, Optional<String> idioma) {
-		
-		FranquiciaBeisbol resultado = null;
-		
-		resultado = FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), idioma);
-		
-		return Optional.ofNullable(resultado);
-	}
-
-	@Override
-	public Collection<FranquiciaBeisbol> findByLigaId(Byte id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<LigaBeisbol> findLigaPorFranquicia(short id,
-			Optional<String> idioma) {
-		// Franquicia resultado = null;
-		
-		// logger.info(resultado.getLigaHistorico().getSiglas());
-		
-		// LigaHistorico resultado;
-		
-		Iterator<LigaHistorico> iteraLigaHistorico = franquiciaRepository.findOne(id).getLiga().getLigaHistoricos().iterator();
-		LigaHistorico resultado = null;
-		
-		while (iteraLigaHistorico.hasNext()) {
-			resultado = iteraLigaHistorico.next();
-		}
-		
-		return Optional.ofNullable(LigaConverter.convierteDeBase(resultado, idioma));
-	}
-
-	@Override
-	public Optional<Franquicia> findOneBd(short id) {
-		return Optional.ofNullable(franquiciaRepository.findOne(id));
-	} */
-
 }

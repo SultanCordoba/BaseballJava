@@ -8,8 +8,9 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +31,14 @@ import deportes.beisbol.web.model.JugadorModel;
 @RequestMapping("/jugador-restful")
 public class JugadorRestfulController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JugadorRestfulController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(JugadorRestfulController.class);
 	
 	@Autowired
 	JugadorService jugadorService;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody 
-	public RespuestaDataTables searchJugadores(HttpServletRequest request, Locale locale) {		
-		// logger.info(request.getParameterMap().keySet().toString());
-	    
+	public RespuestaDataTables searchJugadores(HttpServletRequest request, Locale locale) {			    
 	    String busqueda = request.getParameter("search[value]");
 	    
 	    if (Strings.isNullOrEmpty(busqueda)) busqueda="";

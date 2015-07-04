@@ -1,14 +1,11 @@
 package deportes.beisbol.jpa.services;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Locale;
 import java.util.Optional;
 
 import deportes.beisbol.model.EquipoBeisbol;
 import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
-import deportes.beisbol.utils.EquipoAux;
 import deportes.beisbol.web.model.EquipoModel;
 
 public interface EquipoService {

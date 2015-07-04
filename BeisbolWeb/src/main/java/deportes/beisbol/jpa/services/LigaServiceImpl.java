@@ -74,19 +74,13 @@ public class LigaServiceImpl implements LigaService {
 		
 		LinkedHashSet<TemporadaBeisbol> temporadas = new LinkedHashSet<>();
 		
-		/* Iterator<Temporada> temporadasBase = temporadaRepository
-				.findByLigaHistorico(lh).iterator(); */
-		
 		Iterator<Temporada> temporadasBase = temporadaRepository.findAll
 				(TemporadaPredicates.ligaHistoricoIs(lh)).iterator();
 				
-		
 		TemporadaBeisbol tempPaso;
 		
 		while (temporadasBase.hasNext()) {
 			tempPaso = TemporadaConverter.convierteDeBase(temporadasBase.next());
-			// tempPaso.setCampeon(EquipoConverter.convierteDeBase(equipoRepository.findCampeon(tempPaso.getId()), idioma));
-			
 			tempPaso.setCampeon(EquipoConverter.convierteDeBase(
 					equipoRepository.findOne(EquipoPredicates.campeonTemporada(tempPaso.getId())), idioma));
 			temporadas.add(tempPaso);
@@ -96,8 +90,6 @@ public class LigaServiceImpl implements LigaService {
 		
 		LinkedHashSet<FranquiciaBeisbol> franquicias = new LinkedHashSet<>();
 		
-		/* Iterator<Franquicia> franquiciasBase = franquiciaRepository
-				.findLigaId(lh.getLiga().getId()).iterator(); */
 		Iterator<Franquicia> franquiciasBase = franquiciaRepository.findAll
 				(FranquiciaPredicates.isLigaId(lh.getLiga().getId())).iterator();
 		
@@ -123,8 +115,6 @@ public class LigaServiceImpl implements LigaService {
 	@Override
 	public Collection<LigaBeisbol> getAllLigas(Optional<String> idioma) {
 		LinkedHashSet<LigaBeisbol> resultado = new LinkedHashSet<LigaBeisbol>();
-		
-		//Iterator<LigaHistorico> iteraLigas = ligaHistoricoRepository.findLigasActivas().iterator();
 		Iterator<LigaHistorico> iteraLigas = ligaHistoricoRepository.findAll
 				(LigaPredicates.ligasActivas(), LigaPredicates.orderByNombreAsc()).iterator();
 		
@@ -146,11 +136,7 @@ public class LigaServiceImpl implements LigaService {
 		if (idioma.isPresent()) {
 			String idiomaAbrev = Strings.nullToEmpty(idioma.get()).toUpperCase();
 			if (!idiomaAbrev.equals("ES")) {
-				
-				Iterator<LigaHistoricoInt> ligasHistoricoInt = null;
-				
-				//ligasHistoricoInt = ligaHistoricoIntRepository.buscarLigaId(id, idiomaAbrev).iterator();
-				
+				Iterator<LigaHistoricoInt> ligasHistoricoInt = null;				
 				ligasHistoricoInt = ligaHistoricoIntRepository.findAll
 						(LigaPredicates.ligaIntId(id, idiomaAbrev)).iterator();
 				
@@ -160,8 +146,6 @@ public class LigaServiceImpl implements LigaService {
 			}
 			else {
 				Iterator<LigaHistorico> ligasHistorico = null;
-				
-				//ligasHistorico = ligaHistoricoRepository.buscarLigaId(id).iterator();
 				ligasHistorico = ligaHistoricoRepository.findAll(LigaPredicates.idIs(id)).iterator();
 				
 				while (ligasHistorico.hasNext()) {
@@ -173,10 +157,7 @@ public class LigaServiceImpl implements LigaService {
 		if (temporal.isPresent()) {
 			ligaBeisbol = Optional.of(completarLiga(temporal.get(), idioma));
 		}
-                
-		//ligaBeisbol = ligaService.findOne(id, idioma);		
-		//resultado.orElseThrow(() -> new LigaNotFoundException(id));
-		
+
 		Iterator<FranquiciaBeisbol> iteradorFranquicias = (Iterator<FranquiciaBeisbol>) 
 				ligaBeisbol.get().getFranquicias().iterator();
 		FranquiciaBeisbol franquicia = null;
@@ -198,7 +179,6 @@ public class LigaServiceImpl implements LigaService {
 				equipoAux.setPais(franquicia.getPais());
 				equipos.put(equipoAux.getNombre(), equipoAux);
 			}
-			
 		}
 				
 		resultado.setLiga(ligaBeisbol.get());

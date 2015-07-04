@@ -4,8 +4,9 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import deportes.beisbol.model.PartidoBeisbol;
 @RequestMapping("/partido-restful")
 public class PartidoRestfulController {
 
-	private static final Logger logger = LoggerFactory.getLogger(PartidoRestfulController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(PartidoRestfulController.class);
 	
 	@Autowired
 	PartidoService partidoService;

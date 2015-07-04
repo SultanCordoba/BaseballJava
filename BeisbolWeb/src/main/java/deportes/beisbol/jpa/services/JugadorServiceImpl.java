@@ -5,8 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -24,13 +25,14 @@ import deportes.beisbol.model.JugadorBeisbol;
 import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RosterBeisbol;
 import deportes.beisbol.web.model.JugadorModel;
+
 import static deportes.beisbol.jpa.predicates.JugadorPredicates.nombreIsLike;
 
 @Service
 @Transactional(readOnly = true)
 public class JugadorServiceImpl implements JugadorService {
 
-	private static final Logger logger = LoggerFactory.getLogger(JugadorServiceImpl.class);
+	//private static final Logger logger = LoggerFactory.getLogger(JugadorServiceImpl.class);
 	
 	@Autowired
 	JugadorRepository jugadorRepository;
@@ -39,31 +41,19 @@ public class JugadorServiceImpl implements JugadorService {
 	RosterRepository rosterRepository;
 	
 	@Override
-	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina) {
-		
-		//logger.info(pagina.getInicio() + " - " + pagina.getLongitud() + " - " + pagina.getNumeroPagina());
+	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina) {	
 		
 		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
 				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
 		
 		Iterator<Jugador> iteraJugadores = jugadorRepository.findAll
 				(nombreIsLike(nombre), pageRequest).iterator();  
-
-		/* Iterator<Jugador> iteraJugadores = jugadorRepository.findAll
-				(nombreIsLike(nombre)).iterator(); */
-
 		
 		LinkedHashSet<JugadorBeisbol> resultado = new LinkedHashSet<>();
 		Jugador pasoJugador;
 				
-		while (iteraJugadores.hasNext()) {
-			
+		while (iteraJugadores.hasNext()) {			
 			pasoJugador = iteraJugadores.next();
-			
-			/* logger.info("Nombre:" + pasoJugador.getNombres());
-			logger.info("Apellido Paterno:" + pasoJugador.getApellidoPaterno());
-			logger.info("Apellido Materno:" + pasoJugador.getApellidoMaterno()); */
-			
 			resultado.add(JugadorConverter.convierteDeBase(pasoJugador));
 		}
 		
@@ -83,11 +73,6 @@ public class JugadorServiceImpl implements JugadorService {
 		
 		return resultado;
 	}
-
-	/* public Jugador save(Jugador j) {		
-		
-		return jugadorRepository.save(j);
-	} */
 
 	@Override
 	public Optional<Jugador> findOne(short id) {
@@ -167,8 +152,7 @@ public class JugadorServiceImpl implements JugadorService {
 		JugadorModel resultado = new JugadorModel();
 		
 		resultado.setJugador(JugadorConverter.convierteDeBase(jugadorRepository.findOne(id)));
-		
-		//resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "B"));
+	
 	    resultado.setRosters(convertirListaRoster(
 				rosterRepository.findAll(RosterPredicates.rosterJugadorLigaActiva(id),
 						RosterPredicates.orderByFechaInicioAsc()).iterator(), "B"));
@@ -176,8 +160,6 @@ public class JugadorServiceImpl implements JugadorService {
 		resultado.setManagers(convertirListaRoster(
 				rosterRepository.findAll(RosterPredicates.rosterJugadorLigaActiva(id),
 						RosterPredicates.orderByFechaInicioAsc()).iterator(), "M")); 
-		//resultado.setRosters(convertirListaRoster(rosterRepository.findByJugadorIdOrderByFechaInicioAsc(id).iterator(), "M"));
-		
 		return resultado;
 	}
 }

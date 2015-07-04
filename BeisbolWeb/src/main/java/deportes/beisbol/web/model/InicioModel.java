@@ -13,6 +13,4 @@ public class InicioModel {
 			LinkedHashSet<TemporadaActual> temporadasEnCurso) {
 		this.temporadasEnCurso = temporadasEnCurso;
 	}
-	
-	
 }

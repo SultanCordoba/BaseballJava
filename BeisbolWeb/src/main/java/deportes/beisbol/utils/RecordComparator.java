@@ -23,7 +23,6 @@ public class RecordComparator implements Comparator<RecordBeisbol> {
         		doTertiaryOrderSort(o1,o2);
     }
 
-    //If 'TimeStarted' property is equal sorts by 'TimeEnded' property
     private int doTertiaryOrderSort(RecordBeisbol o1, RecordBeisbol o2) {
         return o1.getPorcentaje()>o2.getPorcentaje() ?
         		-1 : o1.getPorcentaje()<o2.getPorcentaje() ? 1:0;

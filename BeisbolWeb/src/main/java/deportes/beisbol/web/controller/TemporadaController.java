@@ -47,11 +47,7 @@ public class TemporadaController {
 	@ResponseBody
 	public ErrorInfo handleTemporadaNotFoundException(HttpServletRequest req, 
 			TemporadaNotFoundException ex) {
-		// Locale locale = LocaleContextHolder.getLocale();
-		// String errorMessage = messageSource.getMessage("error.bad.smartphone.id", null, locale);
 		String errorMessage = ex.getMessage();
-
-		//errorMessage += ex.getValue();
 		String errorURL = req.getRequestURL().toString();
 
 		return new ErrorInfo(errorURL, errorMessage);

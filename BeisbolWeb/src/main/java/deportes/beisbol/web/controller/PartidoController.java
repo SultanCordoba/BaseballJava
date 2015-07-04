@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import deportes.beisbol.jpa.services.PartidoService;
 import deportes.beisbol.model.PartidoBeisbol;
 
-
 @RestController
 @RequestMapping("/partido")
 public class PartidoController {
@@ -54,9 +53,7 @@ public class PartidoController {
 			@RequestBody PartidoBeisbol partido) {
 		
 		String resultado = "OP_EXITOSA";
-		
-		
-		
+
 		return new ResponseEntity<String>(resultado, new HttpHeaders(), HttpStatus.OK);
 	}
 }

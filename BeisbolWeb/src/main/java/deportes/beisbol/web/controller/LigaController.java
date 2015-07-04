@@ -45,7 +45,6 @@ public class LigaController {
 		return "../templates/liga/showall";
 	}
 	
-	// @SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{id}/show/{zona}", method = RequestMethod.GET)
 	public String showLiga(@PathVariable Byte id, @PathVariable String zona, Model model, 
 			Locale locale) {
@@ -75,16 +74,4 @@ public class LigaController {
 
 		return new ErrorInfo(errorURL, errorMessage);
 	}
-	
-	/* @RequestMapping(value = "/pruebaPost/XXXX", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<String> pruebaPost(@RequestBody LigaBeisbol liga) {
-		//LigaBeisbol resultado = new LigaBeisbol((byte) 0);
-		
-		//return resultado;
-		
-		/* HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("MyResponseHeader", "MyValue"); */
-		/*return new ResponseEntity<String>(liga.getNombre().toUpperCase(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
-	} */
 }

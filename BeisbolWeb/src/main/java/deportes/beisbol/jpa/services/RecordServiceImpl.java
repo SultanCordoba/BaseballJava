@@ -43,7 +43,6 @@ public class RecordServiceImpl implements RecordService {
 		
 		while (iteraRecord.hasNext()) {
 			recordBase = iteraRecord.next();
-			
 			tempEquipo = RecordConverter.convierteAuxDeBase(recordBase);
 			
 			if (idioma.isPresent()) {
@@ -60,29 +59,22 @@ public class RecordServiceImpl implements RecordService {
 							tempEquipo.setEtapaNombre(etapaInt.getNombre());
 						}
 					}
-					
 				}
 			}
 			
 			resultado.add(tempEquipo);
-		}
-		
+		}	
 		return resultado;		
 	}
 	
-	
 	@Override
 	public Collection<RecordEtapa> findTemporadasEquipos(Short franquiciaId, Optional<String> idioma) {
-
-		// Iterator<Record> iteraRecord = recordRepository.findByParticipanteOrdenados(franquiciaId).iterator();
-		
 		Iterator<Record> iteraRecord = recordRepository.findAll
 				(RecordPredicates.participantesOrdenados(franquiciaId),
 				 RecordPredicates.fechaInicioOrder(), RecordPredicates.etapaIdDesc()).iterator(); 
 		
 		return convierteRecords(iteraRecord, idioma);
 	}
-
 
 	@Override
 	public Collection<RecordEtapa> findEtapaEquipo(Short franquiciaId,
@@ -92,7 +84,4 @@ public class RecordServiceImpl implements RecordService {
 		
 		return convierteRecords(iteraRecord, idioma);
 	}
-
-
-
 }

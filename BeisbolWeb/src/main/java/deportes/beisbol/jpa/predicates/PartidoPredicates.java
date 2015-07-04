@@ -1,13 +1,10 @@
 package deportes.beisbol.jpa.predicates;
 
-
-
 import java.util.Date;
 
 import com.mysema.query.types.OrderSpecifier;
 import com.mysema.query.types.Predicate;
 
-import deportes.beisbol.jpa.model.QJugador;
 import deportes.beisbol.jpa.model.QPartido;
 import deportes.beisbol.jpa.model.QPartidoEquipo;
 

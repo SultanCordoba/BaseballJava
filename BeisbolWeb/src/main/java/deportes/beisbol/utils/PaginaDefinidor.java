@@ -2,8 +2,6 @@ package deportes.beisbol.utils;
 
 import org.springframework.data.domain.Sort;
 
-
-
 public class PaginaDefinidor {
 	private int longitud;
 	private int inicio;
@@ -36,5 +34,4 @@ public class PaginaDefinidor {
 	public Sort getSort(String campo) {
 		return new Sort(Sort.Direction.ASC, campo);
 	}
-	
 }

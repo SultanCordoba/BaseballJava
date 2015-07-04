@@ -35,31 +35,4 @@ public class LigaRestfulController {
 		
 		return ligaService.creaLigaModel(id, idioma);
 	}
-	
-/*	@ExceptionHandler(LigaNotFoundException.class)
-	@ResponseStatus(value=HttpStatus.NOT_FOUND)
-	@ResponseBody
-	public ErrorInfo handleLigaNotFoundException(HttpServletRequest req, 
-			LigaNotFoundException ex) {
-		// Locale locale = LocaleContextHolder.getLocale();
-		// String errorMessage = messageSource.getMessage("error.bad.smartphone.id", null, locale);
-		String errorMessage = ex.getMessage();
-
-		//errorMessage += ex.getValue();
-		String errorURL = req.getRequestURL().toString();
-
-		return new ErrorInfo(errorURL, errorMessage);
-	}
-	
-	@RequestMapping(value = "/pruebaPost/XXXX", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<String> pruebaPost(@RequestBody LigaBeisbol liga) {
-		//LigaBeisbol resultado = new LigaBeisbol((byte) 0);
-		
-		//return resultado;
-		
-		/* HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("MyResponseHeader", "MyValue"); 
-		return new ResponseEntity<String>(liga.getNombre().toUpperCase(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
-	} */
 }

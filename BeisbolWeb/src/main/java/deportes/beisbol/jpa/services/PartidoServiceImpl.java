@@ -68,7 +68,6 @@ public class PartidoServiceImpl implements PartidoService {
 			
 			Date ahora = new Date();
 			
-			// HashSet<PartidoEquipo> partidoEquipos = new HashSet<>();
 			PartidoEquipo equipoLocal = new PartidoEquipo();
 			equipoLocal.setCarreras((byte) partido.getEquipoLocal().getScore());
 			equipoLocal.setHits((byte) partido.getEquipoLocal().getHits());
@@ -79,13 +78,7 @@ public class PartidoServiceImpl implements PartidoService {
 					partido.getEquipoLocal().getEquipo().getSiglas(), 
 					partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(), 
 					partidoBase.getEtapa().getTemporada().getId())));
-			
-			/* equipoLocal.setEquipo(equipoRepository.findAbreviaturaLiga
-					(partido.getEquipoLocal().getEquipo().getSiglas(), 
-					 partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(),
-					 partidoBase.getEtapa().getTemporada().getId()));
-			equipoLocal.setFechaActualizacion(new Timestamp(ahora.getTime())); */
-			
+						
 			PartidoEquipo equipoVisita = new PartidoEquipo();
 			equipoVisita.setCarreras((byte) partido.getEquipoVisita().getScore());
 			equipoVisita.setHits((byte) partido.getEquipoVisita().getHits());
@@ -96,12 +89,7 @@ public class PartidoServiceImpl implements PartidoService {
 					partido.getEquipoVisita().getEquipo().getSiglas(), 
 					partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(), 
 					partidoBase.getEtapa().getTemporada().getId())));
-			
-			/* equipoVisita.setEquipo(equipoRepository.findAbreviaturaLiga
-					(partido.getEquipoVisita().getEquipo().getSiglas(), 
-				     partidoBase.getEtapa().getTemporada().getLigaHistorico().getSiglas(),
-					 partidoBase.getEtapa().getTemporada().getId())); */
-			
+						
 			equipoVisita.setFechaActualizacion(new Timestamp(ahora.getTime()));
 			
 			if (partido.getEquipoVisita().getScore() > partido.getEquipoLocal().getScore()) {

@@ -54,7 +54,6 @@ public class EquipoServiceImpl implements EquipoService {
 	public Optional<EquipoBeisbol> findCampeon(TemporadaBeisbol t, Optional<String> idioma) {
 		
 		EquipoBeisbol equipoBeisbol = null;
-		//Equipo equipo = equipoRepository.findCampeon(t.getId());
 		
 		Equipo equipo = equipoRepository.findOne(EquipoPredicates.campeonTemporada(t.getId()));
 		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
@@ -80,11 +79,8 @@ public class EquipoServiceImpl implements EquipoService {
 
 	@Override
 	public EquipoModel creaEquipoModel(Short id, Optional<String> idioma) {
-		EquipoModel equipoModelo = new EquipoModel();
-		
+		EquipoModel equipoModelo = new EquipoModel();	
 		Participante participante = participanteService.findOne(id).get();
-		
-		// logger.info("Participante:" + participante.getId() + " Equipos: "  + participante.getEquipos().size());
 		
 		LinkedHashSet<EquipoAux> equipos = new LinkedHashSet<>();
 		Iterator<Equipo> iteraEquipos = participante.getEquipos().iterator();
@@ -152,10 +148,6 @@ public class EquipoServiceImpl implements EquipoService {
 						i = numRoster;
 					}
 				}
-				
-/*				logger.info(jugadorBeisbol.getNombreAbreviado() + " j_id=" + jugadorBeisbol.getId() +
-						" i=" + i + 
-						" numRoster=" + numRoster); */
 				
 				rosterBeisbol.setOtraTemporada("");
 				if (i > 1) {

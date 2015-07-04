@@ -3,8 +3,9 @@ package deportes.beisbol.web.controller;
 import java.util.Locale;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,7 @@ import deportes.beisbol.web.model.EquipoModel;
 @RequestMapping("/equipo")
 public class EquipoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EquipoController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(EquipoController.class);
 	
 	@Autowired
 	EquipoService equipoService;
@@ -30,8 +31,6 @@ public class EquipoController {
 	public String getEquipo(@PathVariable short id, @PathVariable String zona, 
 			Model model, Locale locale) {
 
-		// logger.info("Region = " + locale.getCountry() + " Display = " + locale.getScript());
-		
 		EquipoModel equipoModelo = equipoService.creaEquipoModel(id, Optional.of(locale.getLanguage()));
 		Optional<String> idioma = Optional.of(locale.getLanguage());
 				

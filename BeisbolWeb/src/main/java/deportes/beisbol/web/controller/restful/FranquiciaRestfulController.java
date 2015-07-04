@@ -25,5 +25,4 @@ public class FranquiciaRestfulController {
 	public FranquiciaModel showFranquicia(@PathVariable Short id, Locale locale) {
 		return franquiciaService.creaFranquiciaModelo(id, Optional.of(locale.getLanguage()));
 	}
-	
 }

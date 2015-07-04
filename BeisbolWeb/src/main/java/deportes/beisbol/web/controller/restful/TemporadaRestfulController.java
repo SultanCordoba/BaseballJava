@@ -26,15 +26,6 @@ public class TemporadaRestfulController {
 	@Autowired
 	TemporadaService temporadaService;
 	
-	/* @Autowired
-	LigaService ligaService;
-	
-	@Autowired
-	EquipoService equipoService;
-	
-	@Autowired
-	EtapaService etapaService; */
-	
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
 	@ResponseBody 
 	public TemporadaModel getTemporada(@PathVariable Short id, Locale locale) {
@@ -46,16 +37,11 @@ public class TemporadaRestfulController {
 	@ResponseBody
 	public ErrorInfo handleTemporadaNotFoundException(HttpServletRequest req, 
 			TemporadaNotFoundException ex) {
-		// Locale locale = LocaleContextHolder.getLocale();
-		// String errorMessage = messageSource.getMessage("error.bad.smartphone.id", null, locale);
 		String errorMessage = ex.getMessage();
-
-		//errorMessage += ex.getValue();
 		String errorURL = req.getRequestURL().toString();
 
 		return new ErrorInfo(errorURL, errorMessage);
 	}
-
 }
 
 class TemporadaNotFoundException extends RuntimeException {

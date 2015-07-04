@@ -96,7 +96,6 @@ public class TemporadaServiceImpl implements TemporadaService {
 		
 		LinkedHashSet<TemporadaActual> resultado = new LinkedHashSet<>();
 		
-		// Iterator<Temporada> iteraTemporada = temporadaRepository.buscarActuales(new Date()).iterator();
 		Iterator<Temporada> iteraTemporada = temporadaRepository.findAll
 				(TemporadaPredicates.fechaBetween(new Date())).iterator();
 		Temporada temporada;
@@ -113,47 +112,5 @@ public class TemporadaServiceImpl implements TemporadaService {
 		}
 		
 		return resultado;
-	}
-	
-	/* @Override
-	public Optional<TemporadaBeisbol> findById(short id) {
-		TemporadaBeisbol resultado = null;
-		
-		resultado = TemporadaConverter.convierteDeBase(temporadaRepository.findOne(id));
-		
-		return Optional.ofNullable(resultado);
-	}
-
-	@Override
-	public Optional<TemporadaBeisbol> findByNombreAndLiga(
-			String nombreTemporada, String ligaSiglas) {
-		TemporadaBeisbol resultado = null;
-		
-		Optional<LigaHistorico> temporal = Optional.empty();
-
-		Iterator<LigaHistorico> ligasHistorico = ligaHistoricoRepository
-				.findBySiglas(ligaSiglas).iterator();
-
-		while (ligasHistorico.hasNext()) {
-			temporal = Optional.of(ligasHistorico.next());
-		}
-		
-		if (temporal.isPresent()) {
-			resultado = TemporadaConverter.convierteDeBase(temporadaRepository.findByNombreAndLigaHistorico
-				(nombreTemporada, temporal.get()));
-		}
-		
-		return Optional.ofNullable(resultado);
-	}
-
-	@Override
-	public Optional<LigaBeisbol> findLigaPorTemporada(short id,	Optional<String> idioma) {
-		Temporada resultado = null;
-		
-		resultado = temporadaRepository.findOne(id);
-		
-		// logger.info(resultado.getLigaHistorico().getSiglas());
-		
-		return Optional.ofNullable(LigaConverter.convierteDeBase(resultado.getLigaHistorico(), idioma));
-	} */
+	}	
 }

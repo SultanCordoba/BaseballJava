@@ -1,18 +1,15 @@
 package deportes.beisbol.utils;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import deportes.beisbol.model.EquipoBeisbol;
-import deportes.beisbol.model.JugadorBeisbol;
-import deportes.beisbol.web.controller.EquipoController;
 
 public class EquipoAux {
-	private static final Logger logger = LoggerFactory.getLogger(EquipoAux.class);
+	// private static final Logger logger = LoggerFactory.getLogger(EquipoAux.class);
 	
 	private EquipoBeisbol equipoBeisbol;
 	private LinkedHashSet<RecordEtapa> records;

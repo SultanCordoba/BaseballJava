@@ -2,18 +2,17 @@ package deportes.beisbol.jpa.predicates;
 
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.mysema.query.types.OrderSpecifier;
 import com.mysema.query.types.Predicate;
 
 import deportes.beisbol.jpa.model.QRoster;
-import deportes.beisbol.jpa.services.JugadorServiceImpl;
 
 public class RosterPredicates {
 	
-	private static final Logger logger = LoggerFactory.getLogger(RosterPredicates.class);
+	//private static final Logger logger = LoggerFactory.getLogger(RosterPredicates.class);
 
 	public static OrderSpecifier<Date> orderByFechaInicioAsc() {
 		return QRoster.roster.fechaInicio.asc();
@@ -21,9 +20,6 @@ public class RosterPredicates {
 	
 	public static Predicate rosterJugadorLigaActiva(Short jugadorId) {
 		QRoster roster = QRoster.roster;
-		
-		logger.info("ROSTER.EQUIPO " + roster.equipo.id);
-		logger.info("R.E.FH " + roster.equipo.franquiciaHistorico.id);
 		
 		return roster.jugador.id.eq(jugadorId).and
 				(roster.equipo.franquiciaHistorico.franquicia.liga.activa.eq((byte) 1));
