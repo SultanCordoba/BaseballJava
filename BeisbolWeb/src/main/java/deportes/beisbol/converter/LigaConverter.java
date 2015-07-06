@@ -1,9 +1,6 @@
 package deportes.beisbol.converter;
 
 import java.util.Iterator;
-import java.util.Optional;
-
-import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.LigaHistorico;
 import deportes.beisbol.jpa.model.LigaHistoricoInt;
@@ -13,12 +10,12 @@ public class LigaConverter {
 	
 	// private static final Logger logger = LoggerFactory.getLogger(LigaConverter.class);
 	
-	public static LigaBeisbol convierteDeBase(LigaHistorico ligaBase, Optional<String> idioma) {
+	public static LigaBeisbol convierteDeBase(LigaHistorico ligaBase, String idioma) {
 		LigaBeisbol resultado = new LigaBeisbol();
 		
 		resultado.setId(ligaBase.getLiga().getId());
 		
-		String idiomaAbrev = Strings.nullToEmpty(idioma.get()).toUpperCase();
+		String idiomaAbrev = idioma.toUpperCase();
 
 		resultado.setNombre(ligaBase.getNombre());
 		resultado.setSiglas(ligaBase.getSiglas());			

@@ -1,20 +1,16 @@
 package deportes.beisbol.converter;
 
-import java.util.Optional;
+import deportes.beisbol.jpa.model.Equipo;
+import deportes.beisbol.model.EquipoBeisbol;
 
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
-
-import com.google.common.base.Strings;
-
-import deportes.beisbol.jpa.model.Equipo;
-import deportes.beisbol.model.EquipoBeisbol;
 
 public class EquipoConverter {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(EquipoConverter.class);
 	
-	public static EquipoBeisbol convierteDeBase(Equipo equipoBase, Optional<String> idioma) {
+	public static EquipoBeisbol convierteDeBase(Equipo equipoBase, String idioma) {
 		EquipoBeisbol resultado = new EquipoBeisbol();
 		
 		try {
@@ -24,7 +20,7 @@ public class EquipoConverter {
 			resultado.setId(equipoBase.getId());
 			resultado.setLogotipo(equipoBase.getArchivoEscudo());
 			
-			String idiomaCompara = Strings.nullToEmpty(idioma.get()).toUpperCase();
+			String idiomaCompara = idioma.toUpperCase();
 			if (!idiomaCompara.equalsIgnoreCase("ES")) {						
 				
 				String nombreIdioma = FranquiciaConverter.nombreCompletoIdioma(equipoBase.getFranquiciaHistorico(), idioma);

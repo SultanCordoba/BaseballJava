@@ -2,7 +2,6 @@ package deportes.beisbol.converter;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
@@ -20,10 +19,10 @@ public class FranquiciaConverter {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(FranquiciaConverter.class);
 	
-	public static String nombreCompletoIdioma(FranquiciaHistorico franquiciaHistorico, Optional<String> idioma) {
+	public static String nombreCompletoIdioma(FranquiciaHistorico franquiciaHistorico, String idioma) {
 		String resultado = franquiciaHistorico.getNombreCompletoEs();
 		
-		String idiomaPaso = Strings.nullToEmpty(idioma.get());
+		String idiomaPaso = Strings.nullToEmpty(idioma);
 		
 		if (!idiomaPaso.equalsIgnoreCase("ES")) {
 			Iterator<FranquiciaHistoricoInt> iteraFranqHist = franquiciaHistorico.getFranquiciaHistoricoInts().iterator();
@@ -41,7 +40,7 @@ public class FranquiciaConverter {
 		return resultado;
 	}
 	
-	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia, Optional<String> idioma) {
+	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia, String idioma) {
 		
 		String inicioString = "XXXX";
 		

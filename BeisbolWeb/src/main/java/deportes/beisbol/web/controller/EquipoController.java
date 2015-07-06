@@ -44,7 +44,7 @@ public class EquipoController {
 			break;
 			
 		case "T":
-			menuActivo = ParticipanteConverter.nombreParticipante(equipoModelo.getParticipante(), false, idioma);
+			menuActivo = ParticipanteConverter.nombreParticipante(equipoModelo.getParticipante(), false, idioma.get());
 			break;
 		}
 		

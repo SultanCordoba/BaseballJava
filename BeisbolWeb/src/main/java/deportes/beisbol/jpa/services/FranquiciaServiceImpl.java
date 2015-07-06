@@ -79,7 +79,7 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 		FranquiciaModel resultado = new FranquiciaModel();
 		
 		Optional<FranquiciaBeisbol> franquiciaBeisbol = 
-			Optional.of(FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), idioma));
+			Optional.of(FranquiciaConverter.convierteDeBase(franquiciaRepository.findOne(id), idioma.get()));
 
 		resultado.setFranquicia(franquiciaBeisbol.get());
 		resultado.setPais(franquiciaBeisbol.get().getPais());
@@ -91,7 +91,7 @@ public class FranquiciaServiceImpl implements FranquiciaService {
 			ligaHist = iteraLigaHistorico.next();
 		}
 		
-		Optional<LigaBeisbol> ligaBeisbol = Optional.ofNullable(LigaConverter.convierteDeBase(ligaHist, idioma));
+		Optional<LigaBeisbol> ligaBeisbol = Optional.ofNullable(LigaConverter.convierteDeBase(ligaHist, idioma.get()));
 
 		resultado.setLiga(ligaBeisbol.get());
 		

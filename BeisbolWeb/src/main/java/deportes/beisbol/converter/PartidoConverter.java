@@ -26,11 +26,11 @@ public class PartidoConverter {
 		for (PartidoEquipo partidoEquipos : partido.getPartidoEquipos()) {
 			if (partidoEquipos.getLocalia().equalsIgnoreCase("L")) {
 				contLocal.setScore(partidoEquipos.getCarreras());
-				contLocal.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma));
+				contLocal.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
 			}
 			else {
 				contVisita.setScore(partidoEquipos.getCarreras());
-				contVisita.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma));
+				contVisita.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
 			}
 		}
 		

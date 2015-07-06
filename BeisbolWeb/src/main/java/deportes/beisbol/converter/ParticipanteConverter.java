@@ -2,7 +2,6 @@ package deportes.beisbol.converter;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 
 import com.google.common.base.Joiner;
 
@@ -10,7 +9,7 @@ import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Participante;
 
 public class ParticipanteConverter {
-	public static String nombreParticipante(Participante participante, boolean abreviado, Optional<String> idioma) {
+	public static String nombreParticipante(Participante participante, boolean abreviado, String idioma) {
 		String resultado;
 		LinkedHashSet<String> fullName = new LinkedHashSet<>();
 		

@@ -56,7 +56,7 @@ public class EquipoServiceImpl implements EquipoService {
 		EquipoBeisbol equipoBeisbol = null;
 		
 		Equipo equipo = equipoRepository.findOne(EquipoPredicates.campeonTemporada(t.getId()));
-		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
+		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma.get());
 		
 		return Optional.ofNullable(equipoBeisbol);
 	}
@@ -66,7 +66,7 @@ public class EquipoServiceImpl implements EquipoService {
 		
 		EquipoBeisbol equipoBeisbol = null;
 		Equipo equipo = equipoRepository.findOne(id);
-		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma);
+		equipoBeisbol = EquipoConverter.convierteDeBase(equipo, idioma.get());
 		
 		return Optional.ofNullable(equipoBeisbol);
 	}
@@ -91,7 +91,7 @@ public class EquipoServiceImpl implements EquipoService {
 		while (iteraEquipos.hasNext()) {
 			equipoPaso = iteraEquipos.next();
 			equipoAux = new EquipoAux();
-			equipoBeisbol = EquipoConverter.convierteDeBase(equipoPaso, idioma);
+			equipoBeisbol = EquipoConverter.convierteDeBase(equipoPaso, idioma.get());
 
 			equipoAux.setEquipoBeisbol(equipoBeisbol);
 			equipoAux.setRecords((LinkedHashSet<RecordEtapa>) recordService.findEtapaEquipo

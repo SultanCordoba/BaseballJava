@@ -67,7 +67,7 @@ public class LigaServiceImpl implements LigaService {
 	@Autowired
 	LigaHistoricoIntRepository ligaHistoricoIntRepository;
 
-	private LigaBeisbol completarLiga(LigaHistorico lh, Optional<String> idioma) {
+	private LigaBeisbol completarLiga(LigaHistorico lh, String idioma) {
 		LigaBeisbol ligaBeisbol = null;
 		
 		ligaBeisbol = LigaConverter.convierteDeBase(lh, idioma);
@@ -113,7 +113,7 @@ public class LigaServiceImpl implements LigaService {
 	}
 	
 	@Override
-	public Collection<LigaBeisbol> getAllLigas(Optional<String> idioma) {
+	public Collection<LigaBeisbol> getAllLigas(String idioma) {
 		LinkedHashSet<LigaBeisbol> resultado = new LinkedHashSet<LigaBeisbol>();
 		Iterator<LigaHistorico> iteraLigas = ligaHistoricoRepository.findAll
 				(LigaPredicates.ligasActivas(), LigaPredicates.orderByNombreAsc()).iterator();
@@ -127,32 +127,30 @@ public class LigaServiceImpl implements LigaService {
     
 	@Override
 	@SuppressWarnings("unchecked")
-	public LigaModel creaLigaModel(Byte id, Optional<String> idioma) {
+	public LigaModel creaLigaModel(Byte id, String idioma) {
 		LigaModel resultado = new LigaModel();
 		
         Optional<LigaBeisbol> ligaBeisbol = null;
 		Optional<LigaHistorico> temporal = Optional.empty();
-		
-		if (idioma.isPresent()) {
-			String idiomaAbrev = Strings.nullToEmpty(idioma.get()).toUpperCase();
-			if (!idiomaAbrev.equals("ES")) {
-				Iterator<LigaHistoricoInt> ligasHistoricoInt = null;				
-				ligasHistoricoInt = ligaHistoricoIntRepository.findAll
-						(LigaPredicates.ligaIntId(id, idiomaAbrev)).iterator();
 				
-				while (ligasHistoricoInt.hasNext()) {
-					temporal = Optional.of(ligasHistoricoInt.next().getLigaHistorico());
-				}
+		String idiomaAbrev = Strings.nullToEmpty(idioma.toUpperCase());
+		if (!idiomaAbrev.equals("ES")) {
+			Iterator<LigaHistoricoInt> ligasHistoricoInt = null;				
+			ligasHistoricoInt = ligaHistoricoIntRepository.findAll
+					(LigaPredicates.ligaIntId(id, idiomaAbrev)).iterator();
+			
+			while (ligasHistoricoInt.hasNext()) {
+				temporal = Optional.of(ligasHistoricoInt.next().getLigaHistorico());
 			}
-			else {
-				Iterator<LigaHistorico> ligasHistorico = null;
-				ligasHistorico = ligaHistoricoRepository.findAll(LigaPredicates.idIs(id)).iterator();
-				
-				while (ligasHistorico.hasNext()) {
-					temporal = Optional.of(ligasHistorico.next());
-				} 
-			}			
 		}
+		else {
+			Iterator<LigaHistorico> ligasHistorico = null;
+			ligasHistorico = ligaHistoricoRepository.findAll(LigaPredicates.idIs(id)).iterator();
+			
+			while (ligasHistorico.hasNext()) {
+				temporal = Optional.of(ligasHistorico.next());
+			} 
+		}			
 						
 		if (temporal.isPresent()) {
 			ligaBeisbol = Optional.of(completarLiga(temporal.get(), idioma));

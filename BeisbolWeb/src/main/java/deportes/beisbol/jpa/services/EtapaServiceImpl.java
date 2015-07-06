@@ -67,8 +67,8 @@ public class EtapaServiceImpl implements EtapaService {
 				recordBeisbol = RecordConverter.convierteDeBase(recordBase, idioma);
 				
 				// Agregar nombre del participante a recordBeisbol
-				recordBeisbol.setNombre(ParticipanteConverter.nombreParticipante(recordBase.getParticipante(), false, idioma));
-				recordBeisbol.setNombreAbrev(ParticipanteConverter.nombreParticipante(recordBase.getParticipante(), true, idioma));
+				recordBeisbol.setNombre(ParticipanteConverter.nombreParticipante(recordBase.getParticipante(), false, idioma.get()));
+				recordBeisbol.setNombreAbrev(ParticipanteConverter.nombreParticipante(recordBase.getParticipante(), true, idioma.get()));
 				
 				NumberFormat formatter = new DecimalFormat("0.000");
 				recordBeisbol.setPctjeString(formatter.format(recordBeisbol.getPorcentaje()));

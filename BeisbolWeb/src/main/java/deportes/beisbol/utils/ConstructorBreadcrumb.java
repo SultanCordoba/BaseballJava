@@ -63,7 +63,7 @@ public class ConstructorBreadcrumb {
 			urlLiga.add(String.valueOf(participante.getEquipos().iterator().next().getFranquiciaHistorico().getFranquicia().getId()));
 			urlLiga.add("show");
 						
-			resultado.put(joiner.join(urlLiga).toString(), ParticipanteConverter.nombreParticipante(participante, false, idioma));			
+			resultado.put(joiner.join(urlLiga).toString(), ParticipanteConverter.nombreParticipante(participante, false, idioma.get()));			
 			break;
 			
 		case "T":

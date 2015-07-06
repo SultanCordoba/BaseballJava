@@ -1,7 +1,6 @@
 package deportes.beisbol.web.controller;
 
 import java.util.Locale;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.google.common.base.Strings;
 
 import deportes.beisbol.ErrorInfo;
 import deportes.beisbol.jpa.services.LigaService;
@@ -40,7 +41,7 @@ public class LigaController {
 		
 		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeInicio());
 		model.addAttribute("menuActivo", "Xheader.ligas");
-		model.addAttribute("ligas", ligaService.getAllLigas(Optional.of(locale.getLanguage())));
+		model.addAttribute("ligas", ligaService.getAllLigas(Strings.nullToEmpty(locale.getLanguage())));
 				
 		return "../templates/liga/showall";
 	}
@@ -49,7 +50,7 @@ public class LigaController {
 	public String showLiga(@PathVariable Byte id, @PathVariable String zona, Model model, 
 			Locale locale) {
 
-		LigaModel ligaModelo = ligaService.creaLigaModel(id, Optional.of(locale.getLanguage()));
+		LigaModel ligaModelo = ligaService.creaLigaModel(id, Strings.nullToEmpty(locale.getLanguage()));
 		
 		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeLigasAll());
 		model.addAttribute("menuActivo", ligaModelo.getLiga().getNombre());		
