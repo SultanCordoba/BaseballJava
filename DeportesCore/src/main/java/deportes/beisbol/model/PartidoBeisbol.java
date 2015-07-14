@@ -28,6 +28,18 @@ public class PartidoBeisbol implements PartidoInterfaz {
 	private String claveMilb;
 	private ParqueBeisbol parque;
 	
+	private String fechaString;
+	private String partidoString;
+	private Short partidoId;
+	
+	public Short getPartidoId() {
+		return partidoId;
+	}
+
+	public void setPartidoId(Short partidoId) {
+		this.partidoId = partidoId;
+	}
+
 	public ParqueBeisbol getParque() {
 		return parque;
 	}
@@ -123,7 +135,9 @@ public class PartidoBeisbol implements PartidoInterfaz {
 		this.equipoVisita = (ContrincanteBeisbol) equipoVisita;
 	}
 	
-	public String partidoString() {
+	
+	
+	public String generaPartidoAbreviado() {
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		ArrayList<String> datosJuego = new ArrayList<>();
@@ -148,6 +162,50 @@ public class PartidoBeisbol implements PartidoInterfaz {
 		datosJuego.add(this.equipoLocal.getEquipo().getSiglas());
 		
 		return Joiner.on(",").skipNulls().join(datosJuego);
+	}
+	
+	public String generaPartidoResumen() {
+		
+		ArrayList<String> datosJuego = new ArrayList<>();
+		ArrayList<String> extraDatosJuego = new ArrayList<>();
+
+		datosJuego.add(this.equipoVisita.getEquipo().getNombreTabla());
+		datosJuego.add(String.valueOf(this.equipoVisita.getScore()));
+		datosJuego.add("-");
+		datosJuego.add(String.valueOf(this.equipoLocal.getScore()));
+		datosJuego.add(this.equipoLocal.getEquipo().getNombreTabla());
+		
+		return Joiner.on(" ").skipNulls().join(datosJuego);
+	}
+	
+	public void asignaPartidoString() {
+		this.partidoString = generaPartidoResumen();
+	}
+	
+	public String getFechaString() {
+		return fechaString;
+	}
+
+	public void setFechaString(String fechaString) {
+		this.fechaString = fechaString;
+	}
+
+	public String getPartidoString() {
+		return partidoString;
+	}
+
+	public void setPartidoString(String partidoString) {
+		this.partidoString = partidoString;
+	}
+
+	public void generaFechaString(String idioma) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		this.fechaString = this.fechaRealizacion.format(dtf);
+		
+	}
+	
+	public void generaFechaString() {
+		generaFechaString("ES");
 	}
 
 }
