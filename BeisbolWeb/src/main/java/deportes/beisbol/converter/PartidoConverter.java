@@ -13,6 +13,7 @@ public class PartidoConverter {
 	public static PartidoBeisbol convierteDeBase(Partido partido, Optional<String> idioma) {
 		PartidoBeisbol resultado = new PartidoBeisbol();
 		
+		resultado.setPartidoId(partido.getId());
 		resultado.setComentario(partido.getComentario());
 		
 		// La conversión de Date, es porque el objeto partido trae un tipo java.sql.Date en 
@@ -36,6 +37,9 @@ public class PartidoConverter {
 		
 		resultado.setLocal(contLocal);
 		resultado.setVisita(contVisita);
+		
+		resultado.asignaPartidoString();
+		resultado.generaFechaString(idioma.get());
 		
 		return resultado;
 	}

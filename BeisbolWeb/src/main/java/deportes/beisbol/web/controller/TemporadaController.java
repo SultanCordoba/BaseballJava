@@ -1,5 +1,6 @@
 package deportes.beisbol.web.controller;
 
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import deportes.beisbol.ErrorInfo;
 import deportes.beisbol.jpa.model.Temporada;
+import deportes.beisbol.jpa.services.PartidoService;
 import deportes.beisbol.jpa.services.TemporadaService;
+import deportes.beisbol.model.PartidoBeisbol;
 import deportes.beisbol.utils.ConstructorBreadcrumb;
 import deportes.beisbol.web.model.TemporadaModel;
 
@@ -29,11 +32,17 @@ public class TemporadaController {
 	@Autowired
 	TemporadaService temporadaService;
 	
+	@Autowired
+	PartidoService partidoService;
+	
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET) 
 	public String getTemporada(@PathVariable Short id, Model model, Locale locale) {		
 		Optional<Temporada> temporada = temporadaService.findOneBd(id);
 		
 		TemporadaModel temporadaModelo = temporadaService.crearTemporadaModel(id, Optional.of(locale.getLanguage()));
+		
+		temporadaModelo.setPartidos((LinkedHashSet<PartidoBeisbol>) 
+				partidoService.findByTemporada(id, Optional.of(locale.getLanguage())));
 		
 		model.addAttribute("menuBread", ConstructorBreadcrumb.construyeLiga(temporada.get().getLigaHistorico(), "temporadas"));
 		model.addAttribute("menuActivo", temporadaModelo.getTemporada().getNombre());

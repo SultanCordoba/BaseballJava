@@ -15,7 +15,7 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@NamedQuery(name="Partido.findAll", query="SELECT p FROM Partido p")
+//@NamedQuery(name="Partido.findAll", query="SELECT p FROM Partido p")
 public class Partido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private short id;
@@ -29,6 +29,7 @@ public class Partido implements Serializable {
 	private Parque parque;
 	private Vuelta vuelta;
 	private String partidoMilb;
+	private byte mostrar;
 	private Set<PartidoEquipo> partidoEquipos;
 
 	public Partido() {
@@ -140,6 +141,16 @@ public class Partido implements Serializable {
 	@Column(name="partido_milb")
 	public String getPartidoMilb() {
 		return partidoMilb;
+	}
+
+
+	public byte getMostrar() {
+		return mostrar;
+	}
+
+
+	public void setMostrar(byte mostrar) {
+		this.mostrar = mostrar;
 	}
 
 

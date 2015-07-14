@@ -42,7 +42,7 @@ public class PartidoController {
 			resultado = "ERROR: " + e.toString() + " - " + e.getMessage();
 		} 
 		
-		logger.info("partido: " + partido.partidoString() + " resultado:" + resultado);
+		//logger.info("partido: " + partido.partidoString() + " resultado:" + resultado);
 		
 		return new ResponseEntity<String>(resultado, new HttpHeaders(), HttpStatus.OK);
 	}
@@ -56,4 +56,11 @@ public class PartidoController {
 
 		return new ResponseEntity<String>(resultado, new HttpHeaders(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/show/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public PartidoBeisbol showPartido(@PathVariable short partidoId) {
+		return partidoService.findOne(partidoId);
+	}
+	
 }

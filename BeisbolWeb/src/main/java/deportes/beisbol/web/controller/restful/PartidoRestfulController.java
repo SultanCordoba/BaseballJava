@@ -32,4 +32,10 @@ public class PartidoRestfulController {
 		
 		return partidoService.findByTemporada(temporadaId, Optional.of(locale.getLanguage()));
 	}
+	
+	@RequestMapping(value="/show/{partidoId}", method = RequestMethod.GET)
+	@ResponseBody
+	public PartidoBeisbol showPartido(@PathVariable short partidoId) {
+		return partidoService.findOne(partidoId);
+	}
 }

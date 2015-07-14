@@ -21,18 +21,21 @@ public class PartidoPredicates {
 	public static Predicate ligaIsLike(final String ligaSiglas) {
 		QPartido partido = QPartido.partido;
 		
-		return partido.etapa.temporada.ligaHistorico.siglas.containsIgnoreCase(ligaSiglas);
+		return partido.etapa.temporada.ligaHistorico.siglas.containsIgnoreCase(ligaSiglas).and
+				(partido.mostrar.eq((byte) 1));
 	}
 	
 	public static Predicate equipoIsLike(final String equipo) {
 		QPartidoEquipo partidoEquipo = QPartidoEquipo.partidoEquipo;
 
-		return partidoEquipo.equipo.nombreTablasEs.containsIgnoreCase(equipo);
+		return partidoEquipo.equipo.nombreTablasEs.containsIgnoreCase(equipo).and
+				(partidoEquipo.partido.mostrar.eq((byte) 1));
 	}
 	
 	public static Predicate partidoTemporadaIs(final Short temporadaId) {
 		QPartido partido = QPartido.partido;
 		
-		return partido.etapa.temporada.id.eq(temporadaId);
+		return partido.etapa.temporada.id.eq(temporadaId).and
+				(partido.mostrar.eq((byte) 1));
 	}
 }

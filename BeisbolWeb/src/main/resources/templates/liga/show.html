@@ -11,16 +11,19 @@
 		<div layout:fragment="content">
 			<div role="tabpanel">
 				<ul class="nav nav-tabs" role="tablist" id="navInterior">
-					<li role="presentation" id="zTgeneral">
+					<li role="presentation" id="lTGeneral">
 						<a href="#general" aria-controls="home" role="tab" 
+						   id="zTgeneral" name="zTgeneral"
 						   data-toggle="tab">General</a>
 					</li>
-					<li role="presentation" id="zTtemporadas">
-						<a href="#temporadas" aria-controls="home" role="tab" data-toggle="tab" 
+					<li role="presentation" id="lTTemporadas">
+						<a href="#temporadas" aria-controls="home" role="tab" 
+						   id="zTtemporadas" name="zTtemporadas" data-toggle="tab" 
 					  	   th:text="#{liga.showall.temporadas}"></a>
 					</li>
-					<li role="presentation" id="zTequipos">
-						<a href="#equipos" aria-controls="home" role="tab" data-toggle="tab" 
+					<li role="presentation" id="lTEquipos">
+						<a href="#equipos" aria-controls="home" role="tab" 
+						   id="zTequipos" name="zTequipos" data-toggle="tab" 
 					  	   th:text="#{liga.showall.equipos}"></a>
 					</li>  
 				</ul>
@@ -110,10 +113,10 @@
 		  	
 	   		<script th:inline="javascript">
 				$(document).ready(function () {
-						$('#mainTab > li.active').removeClass('active');
+						$("#mainTab > li.active").removeClass('active');
 						$("#tabLigas").addClass('active');
 
-						$('#navLiga a[href="' + [[${zona}]] + '"]').tab('show');
+						$([[${zonaTab}]]).tab('show');
 						
 						$('#tabTemporadas').dataTable( {
 							"language": {

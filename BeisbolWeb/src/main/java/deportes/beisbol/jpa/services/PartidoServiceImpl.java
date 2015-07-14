@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,7 @@ public class PartidoServiceImpl implements PartidoService {
 			equipoLocal.setHits((byte) partido.getEquipoLocal().getHits());
 			equipoLocal.setErrores((byte) partido.getEquipoLocal().getErrores());
 			equipoLocal.setLocalia("L");
+			equipoLocal.setFechaActualizacion(new Timestamp(ahora.getTime()));
 			
 			equipoLocal.setEquipo(equipoRepository.findOne(EquipoPredicates.equipoLiga(
 					partido.getEquipoLocal().getEquipo().getSiglas(), 
@@ -84,6 +86,7 @@ public class PartidoServiceImpl implements PartidoService {
 			equipoVisita.setHits((byte) partido.getEquipoVisita().getHits());
 			equipoVisita.setErrores((byte) partido.getEquipoVisita().getErrores());
 			equipoVisita.setLocalia("V");
+			equipoVisita.setFechaActualizacion(new Timestamp(ahora.getTime()));
 			
 			equipoVisita.setEquipo(equipoRepository.findOne(EquipoPredicates.equipoLiga(
 					partido.getEquipoVisita().getEquipo().getSiglas(), 
@@ -105,6 +108,9 @@ public class PartidoServiceImpl implements PartidoService {
 					
 			partidoBase.setParque(equipoLocal.getEquipo().getParque());
 			partidoBase.setFechaActualizacion(new Timestamp(ahora.getTime()));
+			partidoBase.setMostrar((byte) 1);
+			
+			logger.info(partidoBase.getFechaActualizacion().toString());
 			
 			partidoBase.addPartidoEquipo(equipoLocal);
 			partidoBase.addPartidoEquipo(equipoVisita);
@@ -148,6 +154,9 @@ public class PartidoServiceImpl implements PartidoService {
 			}
 			
 			return true;
+		} catch (ConstraintViolationException cve) {
+			logger.error(cve.getSQL());
+			return false;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return false;
