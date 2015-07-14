@@ -4,15 +4,11 @@ buildscript {
         mavenLocal()
         mavenCentral()
     }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
-    }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
 
 jar {
     baseName = 'beisbolWebReader'
@@ -26,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework:spring-web")
+    compile("org.springframework:spring-web:4.1.7.RELEASE")
     testCompile("junit:junit")
     compile('deportes:deportes-core:4.1') 
-    compile("ch.qos.logback:logback-classic")    
+    compile("ch.qos.logback:logback-classic:1.1.3")    
 }

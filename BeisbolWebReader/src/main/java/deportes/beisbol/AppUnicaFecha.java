@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 
@@ -44,12 +45,19 @@ public class AppUnicaFecha {
 		boolean bProcesaSencillo;
 		int j;
 
-		// Se obtiene la fecha de hoy
-		Date input = new Date();
+		// Se obtiene la fecha de hoy, si no se proporcionó argumento
+		LocalDate date;
 		
-		// Pero se buscan los partidos del día anterior. Por eso al final el minusDays.
-		LocalDate date = input.toInstant().atZone
-				(ZoneId.systemDefault()).toLocalDate().minusDays(1);
+		if (args.length > 0) {
+			date = LocalDate.parse(args[0], 
+					DateTimeFormatter.ofPattern(lectorPartidoSencillo.formatoFecha));
+		}
+		else {
+			// Se buscan los partidos del día anterior. Por eso al final el minusDays.
+			Date input = new Date();
+			date = input.toInstant().atZone
+					(ZoneId.systemDefault()).toLocalDate().minusDays(1);
+		}
 		
 		bProcesaSencillo = false;
 		j = 0;
