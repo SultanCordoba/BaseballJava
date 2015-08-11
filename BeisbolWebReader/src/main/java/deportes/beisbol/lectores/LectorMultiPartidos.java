@@ -65,116 +65,9 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
 		this.liga = this.getPartidoPropiedades().getProperty("liga");
 	}
 	
-	/* private String construyeLigaPartidos() {
-		
-		Joiner joiner = Joiner.on("/");
-		
-		ArrayList<String> sitioPartidos = new ArrayList<>();
-		
-		sitioPartidos.add("http:/");
-		
-		String host = "www.milb.com/gdcross/components/game";
-		
-		sitioPartidos.add(host);
-		sitioPartidos.add(grupoLiga);
-		sitioPartidos.add("year_" + fechaJuegos.getYear());
-		sitioPartidos.add("month_" + String.format("%02d", fechaJuegos.getMonthValue()));
-		sitioPartidos.add("day_" + String.format("%02d", fechaJuegos.getDayOfMonth()));
-		sitioPartidos.add("master_scoreboard.json");
-		
-		logger.info("Liga de partidos:" + joiner.join(sitioPartidos));
-		
-		return joiner.join(sitioPartidos);
-	} */
 	
-	/* private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
-		PartidoBeisbol resultado = new PartidoBeisbol();
-		
-		//resultado.setFechaRealizacion(datosPartido.get("fechaJuego"));
-		resultado.setClaveMilb(datosPartido.get("minorLeagueId"));
-		resultado.setFechaRealizacion(LocalDate.parse(datosPartido.get("fechaJuego"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		resultado.setEntradas(Integer.parseInt(datosPartido.get("entradas")));
-		resultado.setNumJuego(Integer.parseInt(datosPartido.get("numJuego")));
-		
-		if (datosPartido.containsKey("comentario")) {
-			resultado.setComentario(datosPartido.get("comentario"));
-		}
-		
-		ContrincanteBeisbol cteVisitante = new ContrincanteBeisbol();
-		EquipoBeisbol eqVisita = new EquipoBeisbol();
-		eqVisita.setSiglas(datosPartido.get("eqVisita"));
-		cteVisitante.setEquipo(eqVisita);
-		cteVisitante.setScore(Short.parseShort(datosPartido.get("carVisita")));	
-		cteVisitante.setHits(Byte.parseByte(datosPartido.get("hitsVisita")));
-		cteVisitante.setErrores(Byte.parseByte(datosPartido.get("errorVisita")));
-		resultado.setVisita(cteVisitante);
-		
-		ContrincanteBeisbol cteLocal = new ContrincanteBeisbol();
-		EquipoBeisbol eqLocal = new EquipoBeisbol();
-		eqLocal.setSiglas(datosPartido.get("eqLocal"));
-		cteLocal.setEquipo(eqLocal);
-		cteLocal.setScore(Short.parseShort(datosPartido.get("carLocal")));
-		cteLocal.setHits(Byte.parseByte(datosPartido.get("hitsLocal")));
-		cteLocal.setErrores(Byte.parseByte(datosPartido.get("errorLocal")));
-		
-		resultado.setLocal(cteLocal);
-		
-		return resultado;
-	} */
 	
-	/* private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
-		RestTemplate restTemplate = new RestTemplate();
-		
-		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());  
-	    
-		//restTemplate.setErrorHandler(new MyResponseErrorHandler());
-				
-		String url = "http://localhost:8090/baseball/partido/guardar/" + etapa + "/" + vuelta;
-		
-		try {
-			ResponseEntity<String> regreso = restTemplate.postForEntity
-					(url, partido, String.class); 
-			
-			if (regreso.getStatusCode() != HttpStatus.OK) {
-				return "Estatus error es " + regreso.getStatusCode().toString();
-			}
-			else {
-				return regreso.getBody();
-			}
-			
-		} catch (HttpClientErrorException hcee) {
-			hcee.printStackTrace();
-			System.out.println(hcee.getResponseBodyAsString());
-			return hcee.getMessage();
-		}
-	} */
 	
-	/* private HashMap<String, String> obtenerEquivalenciasEquipos() {
-		HashMap<String, String> resultado = new HashMap<>();
-		
-        Properties archivoEquivalencias = new Properties();
-		String rutaPropiedades = System.getProperty("user.dir") + 
-				File.separator + "equivalencias.properties";        
-		
-		try {
-			archivoEquivalencias.load(new FileInputStream(rutaPropiedades));
-		} catch (IOException e) {
-			e.printStackTrace();			
-		}
-		
-		if (!archivoEquivalencias.isEmpty()) {
-			Iterator<Object> iteradorLlaves = archivoEquivalencias.keySet().iterator();
-			
-			String llave = "";
-			while (iteradorLlaves.hasNext()) {
-				llave = iteradorLlaves.next().toString();
-				resultado.put(llave, archivoEquivalencias.getProperty(llave));
-			}
-		}
-				
-		return resultado;
-	} */
 	
 	public int obtieneJuegos(EnumReaderActions accion) throws HttpMessageNotReadableException {
         RestTemplate restTemplate = new RestTemplate();
@@ -215,10 +108,6 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
         	
         	if (juego.getLeague().equals(this.getLiga())) {
         		        		
-        		//System.out.println("id:" + juego.getId());
-        		
-        		// System.out.println(construyeLigaJugadores(juego.getId()));
-        		
         		if (juego.getStatus().getStatus().equalsIgnoreCase("Final") ||
         				juego.getStatus().getStatus().equalsIgnoreCase("Completed Early")||
         				juego.getStatus().getStatus().equalsIgnoreCase("Game Over")||
@@ -246,25 +135,7 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
 	            		mapaDatosPartido.put("entradas", String.valueOf(juego.getStatus().getInning()));
 	            		mapaDatosPartido.put("fechaJuego", Joiner.on("-").join(fechaArreglo));
 	            		mapaDatosPartido.put("numJuego", juego.getId().substring(juego.getId().length()-1));
-	            		
-	            		/*System.out.println(mapaDatosPartido.get("fechaJuego"));
-	            		
-	            		StringBuilder inicioJuego = new StringBuilder(mapaDatosPartido.get("fechaJuego"));
-	            		
-	            		if (!juego.getId().endsWith("-1")) {
-	            			extraDatosJuego.add(String.valueOf(juego.getStatus().getInning()));
-	            			extraDatosJuego.add(juego.getId().substring(juego.getId().length()-1));
-	            		}
-	            		else {            		
-		            		if (juego.getStatus().getInning() != 9) {
-		            			extraDatosJuego.add(String.valueOf(juego.getStatus().getInning()));
-		            		}
-	            		}
-	            		
-	            		if (extraDatosJuego.size() > 0) {
-	            			inicioJuego.append("(").append(Joiner.on("-").join(extraDatosJuego)).append(")");
-	            		}*/
-	            		
+	            			            		
 	            		mapaDatosPartido.put("eqVisita", juego.getAway_name_abbrev());
 	            		mapaDatosPartido.put("carVisita", String.valueOf(juego.getLinescore().getR().getAway()));
 	            		mapaDatosPartido.put("hitsVisita", String.valueOf(juego.getLinescore().getH().getAway()));
@@ -277,14 +148,7 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
         				grabar = false;
         				logger.info("Error:" + e.getMessage());
         			}
-            		/*datosJuego.add(inicioJuego.toString());
-            		datosJuego.add(juego.getAway_name_abbrev());
-            		datosJuego.add(String.valueOf(juego.getLinescore().getR().getAway()));
-            		datosJuego.add(String.valueOf(juego.getLinescore().getR().getHome()));
-            		datosJuego.add(juego.getHome_name_abbrev());*/            		
-            		
-            		//System.out.println(Joiner.on(",").join(datosJuego));
-            		
+            		            		
         			if (grabar) {
 	            		switch(accion) {
 	            		case GUARDAR_PARTIDOS:            			
@@ -296,16 +160,6 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
 	            				mapaDatosPartido.put("eqLocal", equivalenciasEquipos.get(mapaDatosPartido.get("eqLocal")));
 	            			}
 	            			
-	            	        /* Properties partidoPropiedades = new Properties();
-	            			String rutaPropiedades = System.getProperty("user.dir") + 
-	            					File.separator + "lector.properties";        
-	            			
-	            			try {
-	            				partidoPropiedades.load(new FileInputStream(rutaPropiedades));
-	            			} catch (IOException e) {
-	            				e.printStackTrace();			
-	            			} */
-	            			            			
 	            			PartidoBeisbol partidoPaso = super.construyePartido(mapaDatosPartido);
 	            			
 	            			logger.info(super.grabarJuego(partidoPaso, this.getPartidoPropiedades().getProperty("etapa"), 

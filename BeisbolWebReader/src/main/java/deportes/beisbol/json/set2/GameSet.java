@@ -1,8 +1,6 @@
 
 package deportes.beisbol.json.set2;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -17,8 +17,9 @@
 					    data-toggle="tab" th:text="#{temporada.show.etapas}"></a></li>
 					<li role="presentation"><a href="#tabLideres" aria-controls="home" role="pill" 
 					    data-toggle="tab" th:text="#{temporada.show.lideres}"></a></li>
-					<li role="presentation"><a href="#tabPartidos" aria-controls="home" role="pill" 
-					    data-toggle="tab" th:text="#{temporada.show.partidos}"></a></li>
+					<li role="presentation" th:if="${not #lists.isEmpty(modelo.partidos)}">
+					    <a href="#tabPartidos" aria-controls="home" role="pill" 
+					       data-toggle="tab" th:text="#{temporada.show.partidos}"></a></li>
 				</ul>
 				
 				<div class="tab-content">
@@ -96,15 +97,15 @@
 									<table id="tablaPartidos" class="display table-curved">
 										<thead>
 											<tr>
-												<th>Fecha</th>
-												<th>Partido</th>
+												<th th:text="#{temporada.show.partidos.fecha}"></th>
+												<th th:text="#{temporada.show.partidos.fecha}"></th>
 											</tr>
 										</thead>
 										
 										<tfoot>
 											<tr>
-												<th>Fecha</th>
-												<th>Partido</th>
+												<th th:text="#{temporada.show.partidos.fecha}"></th>
+												<th th:text="#{temporada.show.partidos.fecha}"></th>
 											</tr>
 										</tfoot>
 										
@@ -139,16 +140,16 @@
 					
 					$('#tablaPartidos').dataTable( {
 						"language": {
-							"lengthMenu": [[#{liga.show.lenghtMenu}]],
-							"zeroRecords": [[#{liga.show.zeroRecords}]],
-							"info": [[#{liga.show.info}]],
-							"infoFiltered": [[#{liga.show.infoFiltered}]],
-							"search": [[#{liga.show.search}]],
+							"lengthMenu": [[#{tabla.lenghtMenu}]],
+							"zeroRecords": [[#{tabla.zeroRecords}]],
+							"info": [[#{tabla.info}]],
+							"infoFiltered": [[#{tabla.infoFiltered}]],
+							"search": [[#{tabla.search}]],
 							"paginate": {
-								"first": [[#{liga.show.paginateFirst}]],
-								"last": [[#{liga.show.paginateLast}]],
-								"next": [[#{liga.show.paginateNext}]],
-								"previous": [[#{liga.show.paginatePrevious}]],								
+								"first": [[#{tabla.paginateFirst}]],
+								"last": [[#{tabla.paginateLast}]],
+								"next": [[#{tabla.paginateNext}]],
+								"previous": [[#{tabla.paginatePrevious}]],								
 							}
 						}
 					});	
