@@ -15,7 +15,7 @@ import deportes.beisbol.jpa.model.QLigaHistorico;
 
 public class JugadorPredicates {
 	
-	// private static final Logger logger = LoggerFactory.getLogger(JugadorPredicates.class);
+	//private static final Logger logger = LoggerFactory.getLogger(JugadorPredicates.class);
 	
     public static OrderSpecifier<String> orderByNombreAsc() {
         return QLigaHistorico.ligaHistorico.nombre.asc();
