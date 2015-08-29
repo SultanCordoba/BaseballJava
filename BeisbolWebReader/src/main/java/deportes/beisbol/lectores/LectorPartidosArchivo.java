@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
@@ -17,72 +17,7 @@ import deportes.beisbol.model.PartidoBeisbol;
 
 public class LectorPartidosArchivo extends BaseballPartidosReader {
 
-	private static final Logger logger = LoggerFactory.getLogger(LectorPartidosArchivo.class);
-	
-	/* private String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
-		RestTemplate restTemplate = new RestTemplate();
-		
-		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());  
-	    
-		//restTemplate.setErrorHandler(new MyResponseErrorHandler());
-				
-		String url = "http://localhost:8090/baseball/partido/guardar/" + etapa + "/" + vuelta;
-		
-		try {
-			ResponseEntity<String> regreso = restTemplate.postForEntity
-					(url, partido, String.class); 
-			
-			if (regreso.getStatusCode() != HttpStatus.OK) {
-				return "Estatus error es " + regreso.getStatusCode().toString();
-			}
-			else {
-				return regreso.getBody();
-			}
-			
-		} catch (HttpClientErrorException hcee) {
-			hcee.printStackTrace();
-			System.out.println(hcee.getResponseBodyAsString());
-			return hcee.getMessage();
-		}
-	} */
-	
-	/* private PartidoBeisbol construyePartido(HashMap<String, String> datosPartido) {
-		PartidoBeisbol resultado = new PartidoBeisbol();
-		
-		//resultado.setFechaRealizacion(datosPartido.get("fechaJuego"));
-		if (datosPartido.containsKey("minorLeagueId")) {
-			resultado.setClaveMilb(datosPartido.get("minorLeagueId"));
-		}
-		resultado.setFechaRealizacion(LocalDate.parse(datosPartido.get("fechaJuego"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		resultado.setEntradas(Integer.parseInt(datosPartido.get("entradas")));
-		resultado.setNumJuego(Integer.parseInt(datosPartido.get("numJuego")));
-		
-		if (datosPartido.containsKey("comentario")) {
-			resultado.setComentario(datosPartido.get("comentario"));
-		}
-		
-		ContrincanteBeisbol cteVisitante = new ContrincanteBeisbol();
-		EquipoBeisbol eqVisita = new EquipoBeisbol();
-		eqVisita.setSiglas(datosPartido.get("eqVisita"));
-		cteVisitante.setEquipo(eqVisita);
-		cteVisitante.setScore(Short.parseShort(datosPartido.get("carVisita")));	
-		cteVisitante.setHits(Byte.parseByte(datosPartido.get("hitsVisita")));
-		cteVisitante.setErrores(Byte.parseByte(datosPartido.get("errorVisita")));
-		resultado.setVisita(cteVisitante);
-		
-		ContrincanteBeisbol cteLocal = new ContrincanteBeisbol();
-		EquipoBeisbol eqLocal = new EquipoBeisbol();
-		eqLocal.setSiglas(datosPartido.get("eqLocal"));
-		cteLocal.setEquipo(eqLocal);
-		cteLocal.setScore(Short.parseShort(datosPartido.get("carLocal")));
-		cteLocal.setHits(Byte.parseByte(datosPartido.get("hitsLocal")));
-		cteLocal.setErrores(Byte.parseByte(datosPartido.get("errorLocal")));
-		
-		resultado.setLocal(cteLocal);
-		
-		return resultado;
-	} */
+	//private static final Logger logger = LoggerFactory.getLogger(LectorPartidosArchivo.class);
 	
 	private HashMap<String, String> traducePartido(String partido) {
 		HashMap<String, String> resultado = new HashMap<>();
@@ -95,7 +30,7 @@ public class LectorPartidosArchivo extends BaseballPartidosReader {
 		// resultado.put("minorLeagueId", "");
 		
 		ArrayList<String> datosPartido = Lists.newArrayList(Splitter.on(",").trimResults().omitEmptyStrings().split(partido));
-		String fechaPartido = datosPartido.get(0);
+		//String fechaPartido = datosPartido.get(0);
 		
 		/* if (fechaJuego.contains("(")) {
 			
@@ -148,8 +83,8 @@ public class LectorPartidosArchivo extends BaseballPartidosReader {
 		        System.out.println(super.grabarJuego(partidoPaso, this.getPartidoPropiedades().getProperty("etapa"), 
 		        		this.getPartidoPropiedades().getProperty("vuelta")));
 		    }
+		    br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -29,7 +29,7 @@ public class BaseballPartidosReader {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BaseballPartidosReader.class);
 	
-	public static final String formatoFecha = "yyyy-MM-dd";
+	public final static String formatoFecha = "yyyy-MM-dd";
 	
 	private LocalDate fechaJuegos;
 	

@@ -18,6 +18,7 @@ import deportes.beisbol.lectores.LectorPartidoSencillo;
 import deportes.beisbol.web.util.EnumReaderActions;
 
 public class AppUnicaFecha {
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		
 		final Logger logger = LoggerFactory.getLogger(App.class);
@@ -37,7 +38,6 @@ public class AppUnicaFecha {
 			lectorMultiPartidos = new LectorMultiPartidos();
 			lectorPartidoSencillo = new LectorPartidoSencillo();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}

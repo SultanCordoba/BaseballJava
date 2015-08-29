@@ -19,15 +19,6 @@ public class App {
 	public static void main(String[] args) {
 			
 		final Logger logger = LoggerFactory.getLogger(App.class);
-				
-		// System.out.println(rutaPropiedades);
-		
-		/* try {
-			propiedadesLector.load(new FileInputStream(rutaPropiedades));
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
-		} */
 		
 		logger.info("INICIO DE PROCEDIMIENTO");
 		
@@ -44,19 +35,14 @@ public class App {
 			lectorMultiPartidos = new LectorMultiPartidos();
 			lectorPartidoSencillo = new LectorPartidoSencillo();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
-				
-		/* lectorMultiPartidos.setGrupoLiga(propiedadesLector.getProperty("grupoLiga"));
-		lectorMultiPartidos.setLiga(propiedadesLector.getProperty("liga"));
-
-		lectorPartidoSencillo.setGrupoLiga(propiedadesLector.getProperty("grupoLiga"));
-		lectorPartidoSencillo.setLiga(propiedadesLector.getProperty("liga")); */
 		
+		@SuppressWarnings("static-access")
 		LocalDate startDate = LocalDate.parse(propiedadesLector.getProperty("fechaInicio"), 
 				DateTimeFormatter.ofPattern(lectorMultiPartidos.formatoFecha));
+		@SuppressWarnings("static-access")
 		LocalDate endDate = LocalDate.parse(propiedadesLector.getProperty("fechaFin"), 
 				DateTimeFormatter.ofPattern(lectorMultiPartidos.formatoFecha));
 		

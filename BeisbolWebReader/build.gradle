@@ -12,7 +12,7 @@ apply plugin: 'idea'
 
 jar {
     baseName = 'beisbolWebReader'
-    version =  '0.2.0'
+    version =  '0.5'
 }
 
 repositories {
@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework:spring-web:4.1.7.RELEASE")
+    compile("org.springframework:spring-web:4.2.0.RELEASE")
     testCompile("junit:junit")
-    compile('deportes:deportes-core:4.1') 
+    compile('deportes:deportes-core:4.2') 
     compile("ch.qos.logback:logback-classic:1.1.3")    
 }

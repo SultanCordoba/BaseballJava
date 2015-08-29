@@ -1,23 +1,13 @@
 package deportes.beisbol;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
@@ -65,7 +55,6 @@ public class ValidadorFecha {
 			LocalDateTime dtPaso = LocalDateTime.ofInstant(paso.toInstant(), ZoneId.systemDefault());
 			return dtPaso.getMonthValue();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			return 13;
 		}
 	} */
