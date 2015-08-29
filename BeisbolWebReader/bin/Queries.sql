@@ -58,7 +58,36 @@ from records_vista
 where siglas_liga = 'LN' and temporada_nombre = '1984'
 order by record_id;
 
-select * from baseball.etapa where temporada_id = 68;
+select * from baseball.etapa where temporada_id = 202;
 
-select * from baseball.equipo where participante_id = 1144;
+select * from baseball.records_vista where temporada_id = 202;
+
+insert into baseball.record values
+(null, 525, 1, 1875, 'Serie PlayOff 5', 0, 0, 0, now()); 
+
+insert into baseball.record values
+(null, 525, 1, 1882, 'Serie PlayOff 5', 0, 0, 0, now()); 
+
+insert into baseball.record values
+(null, 525, 1, 1879, 'Serie PlayOff 6', 0, 0, 0, now()); 
+
+insert into baseball.record values
+(null, 525, 1, 1878, 'Serie PlayOff 6', 0, 0, 0, now());
+
+select max(id) from baseball.record;
+
+select * from baseball.record where id > 3640;
+
+delete from baseball.record
+where id = 3645;
+
+update baseball.record
+set participante_id = 1885, ganados = 1
+where id = 3644;
+
+select * from baseball.partido
+where fecha_realizacion = '2015-08-21';
+
+select max(fecha_realizacion)
+from baseball.partido;
 

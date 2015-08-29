@@ -2030,3 +2030,158 @@
 2015-08-11_09:13:10.126 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
 2015-08-11_09:13:10.137 [main] INFO  deportes.beisbol.App - Se encontraron 11 juegos para 2015-08-10
 2015-08-11_09:13:10.144 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-15_09:16:43.075 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-15_09:16:44.367 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_11/master_scoreboard.json
+2015-08-15_09:16:50.901 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:51.930 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:52.703 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:53.333 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:53.948 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:54.686 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:55.340 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:55.912 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:56.439 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:56.439 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-08-11
+2015-08-15_09:16:56.451 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_12/master_scoreboard.json
+2015-08-15_09:16:57.670 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:58.283 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:58.859 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:59.451 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:16:59.952 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:00.476 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:01.038 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:01.547 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:01.555 [main] INFO  deportes.beisbol.App - Se encontraron 24 juegos para 2015-08-12
+2015-08-15_09:17:01.571 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_13/master_scoreboard.json
+2015-08-15_09:17:03.514 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:03.960 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:04.432 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:04.885 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:05.394 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:05.826 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:06.265 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:06.716 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:06.728 [main] INFO  deportes.beisbol.App - Se encontraron 25 juegos para 2015-08-13
+2015-08-15_09:17:06.744 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_14/master_scoreboard.json
+2015-08-15_09:17:07.610 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:08.158 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:08.649 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:09.112 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:09.589 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:10.020 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:10.509 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:10.915 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:11.328 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:11.803 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-15_09:17:11.815 [main] INFO  deportes.beisbol.App - Se encontraron 27 juegos para 2015-08-14
+2015-08-15_09:17:11.823 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-15_13:09:21.549 [main] INFO  deportes.beisbol.ValidadorFecha - 15
+2015-08-15_13:09:21.597 [main] INFO  deportes.beisbol.ValidadorFecha - 15
+2015-08-15_13:09:21.597 [main] INFO  deportes.beisbol.ValidadorFecha - 15
+2015-08-15_13:09:21.599 [main] INFO  deportes.beisbol.ValidadorFecha - JUN
+2015-08-15_13:09:21.600 [main] INFO  deportes.beisbol.ValidadorFecha - 
+2015-08-15_13:09:21.601 [main] INFO  deportes.beisbol.ValidadorFecha - 
+2015-08-15_13:09:21.602 [main] INFO  deportes.beisbol.ValidadorFecha - MAY
+2015-08-15_13:09:21.603 [main] INFO  deportes.beisbol.ValidadorFecha - 
+2015-08-15_13:09:21.603 [main] INFO  deportes.beisbol.ValidadorFecha - 
+2015-08-19_09:35:36.591 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-19_09:35:38.014 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_15/master_scoreboard.json
+2015-08-19_09:35:55.286 [main] INFO  deportes.beisbol.App - Se encontraron 16 juegos para 2015-08-15
+2015-08-19_09:35:55.290 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_16/master_scoreboard.json
+2015-08-19_09:36:06.244 [main] INFO  d.b.lectores.LectorMultiPartidos - status:Postponed
+2015-08-19_09:36:09.117 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-19_09:36:09.117 [main] INFO  deportes.beisbol.App - Se encontraron 17 juegos para 2015-08-16
+2015-08-19_09:36:09.132 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_17/master_scoreboard.json
+2015-08-19_09:36:17.213 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-19_09:36:17.222 [main] INFO  deportes.beisbol.App - Se encontraron 16 juegos para 2015-08-17
+2015-08-19_09:36:17.223 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-22_14:09:04.380 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-22_14:09:05.602 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_18/master_scoreboard.json
+2015-08-22_14:09:27.173 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-18
+2015-08-22_14:09:27.173 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-18
+2015-08-22_14:09:27.178 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_19/master_scoreboard.json
+2015-08-22_14:09:48.220 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-19
+2015-08-22_14:09:48.221 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-19
+2015-08-22_14:09:48.222 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_20/master_scoreboard.json
+2015-08-22_14:10:09.311 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-20
+2015-08-22_14:10:09.312 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-20
+2015-08-22_14:10:09.313 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_21/master_scoreboard.json
+2015-08-22_14:10:30.386 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-21
+2015-08-22_14:10:30.386 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-21
+2015-08-22_14:10:30.387 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-22_14:11:02.276 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-22_14:11:03.469 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_18/master_scoreboard.json
+2015-08-22_14:11:24.756 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-18
+2015-08-22_14:11:24.760 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-18
+2015-08-22_14:11:24.761 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_19/master_scoreboard.json
+2015-08-22_14:11:45.818 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-19
+2015-08-22_14:11:45.819 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-19
+2015-08-22_14:11:45.820 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_20/master_scoreboard.json
+2015-08-22_14:11:46.289 [main] INFO  deportes.beisbol.App - Se encontraron 14 juegos para 2015-08-20
+2015-08-22_14:11:46.305 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_21/master_scoreboard.json
+2015-08-22_14:11:49.890 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:11:50.025 [main] INFO  d.b.lectores.LectorMultiPartidos - ERROR: org.springframework.transaction.TransactionSystemException: Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking - Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking
+2015-08-22_14:11:50.135 [main] INFO  d.b.lectores.LectorMultiPartidos - ERROR: org.springframework.transaction.TransactionSystemException: Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking - Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking
+2015-08-22_14:11:50.307 [main] INFO  d.b.lectores.LectorMultiPartidos - ERROR: org.springframework.transaction.TransactionSystemException: Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking - Could not roll back JPA transaction; nested exception is javax.persistence.PersistenceException: unexpected error when rollbacking
+2015-08-22_14:11:50.307 [main] INFO  deportes.beisbol.App - Se encontraron 20 juegos para 2015-08-21
+2015-08-22_14:11:50.307 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-22_14:16:27.793 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-22_14:16:28.850 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_18/master_scoreboard.json
+2015-08-22_14:16:50.116 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-18
+2015-08-22_14:16:50.119 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-18
+2015-08-22_14:16:50.120 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_19/master_scoreboard.json
+2015-08-22_14:17:11.177 [main] INFO  d.b.lectores.LectorMultiPartidos - No hay acceso al sitio para los juegos del dia 2015-08-19
+2015-08-22_14:17:11.179 [main] INFO  deportes.beisbol.App - Se encontraron 0 juegos para 2015-08-19
+2015-08-22_14:17:11.180 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_20/master_scoreboard.json
+2015-08-22_14:17:11.523 [main] INFO  deportes.beisbol.App - Se encontraron 14 juegos para 2015-08-20
+2015-08-22_14:17:11.539 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_21/master_scoreboard.json
+2015-08-22_14:17:14.035 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:17:14.651 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:17:15.151 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:17:15.643 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:17:15.643 [main] INFO  deportes.beisbol.App - Se encontraron 20 juegos para 2015-08-21
+2015-08-22_14:17:15.643 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-22_14:18:02.921 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-22_14:18:03.972 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_18/master_scoreboard.json
+2015-08-22_14:18:05.478 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:05.854 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:06.215 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:06.590 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:06.590 [main] INFO  deportes.beisbol.App - Se encontraron 19 juegos para 2015-08-18
+2015-08-22_14:18:06.607 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_19/master_scoreboard.json
+2015-08-22_14:18:07.325 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:07.653 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:08.007 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:08.615 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-22_14:18:08.630 [main] INFO  deportes.beisbol.App - Se encontraron 17 juegos para 2015-08-19
+2015-08-22_14:18:08.630 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-24_09:37:31.275 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-24_09:37:32.327 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_22/master_scoreboard.json
+2015-08-24_09:37:36.931 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:37.826 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:38.468 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:39.053 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:39.054 [main] INFO  deportes.beisbol.App - Se encontraron 20 juegos para 2015-08-22
+2015-08-24_09:37:39.064 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_23/master_scoreboard.json
+2015-08-24_09:37:39.770 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:40.330 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:40.795 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:41.201 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-24_09:37:41.210 [main] INFO  deportes.beisbol.App - Se encontraron 18 juegos para 2015-08-23
+2015-08-24_09:37:41.211 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-08-27_09:17:05.644 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-08-27_09:17:06.765 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_24/master_scoreboard.json
+2015-08-27_09:17:07.421 [main] INFO  deportes.beisbol.App - Se encontraron 14 juegos para 2015-08-24
+2015-08-27_09:17:07.428 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_25/master_scoreboard.json
+2015-08-27_09:17:09.801 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:10.250 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:10.514 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:10.876 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:10.877 [main] INFO  deportes.beisbol.App - Se encontraron 20 juegos para 2015-08-25
+2015-08-27_09:17:10.882 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_08/day_26/master_scoreboard.json
+2015-08-27_09:17:11.358 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:11.592 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:11.754 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:11.925 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-08-27_09:17:11.925 [main] INFO  deportes.beisbol.App - Se encontraron 19 juegos para 2015-08-26
+2015-08-27_09:17:11.925 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
