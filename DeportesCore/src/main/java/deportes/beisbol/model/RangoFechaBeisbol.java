@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
@@ -81,7 +81,7 @@ public class RangoFechaBeisbol implements RangoFechaInterfaz,
 	
 	public void creaRangoString() {
 		
-		Joiner joiner = Joiner.on(" - ").skipNulls();
+		// Joiner joiner = Joiner.on(" - ").skipNulls();
 		ArrayList<String> paso = new ArrayList<>();
 		
 		paso.add(Integer.toString(fechaInicio.getYear()));
@@ -105,8 +105,11 @@ public class RangoFechaBeisbol implements RangoFechaInterfaz,
 			paso.add("");
 		}
 		
+		rangoString =  paso.stream()
+				  .filter(p -> p != null)
+				  .collect(Collectors.joining(" - "));
 		
-		rangoString = joiner.join(paso);
+		// rangoString = joiner.join(paso);
 	}
 	
 	@Override

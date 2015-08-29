@@ -3,6 +3,8 @@ package deportes.beisbol.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
@@ -111,8 +113,12 @@ public class JugadorBeisbol implements JugadorInterfaz {
 
 	@Override
 	public String getNombreCompleto() {
-		Joiner joiner = Joiner.on(" ").skipNulls();
-		return joiner.join(nombre, apellidoPaterno, apellidoMaterno);
+		/* Joiner joiner = Joiner.on(" ").skipNulls();
+		return joiner.join(nombre, apellidoPaterno, apellidoMaterno); */
+		
+		return Stream.of(nombre, apellidoPaterno, apellidoMaterno)
+	      .filter(s -> s != null)
+	      .collect(Collectors.joining(" "));
 	}
 
 	@Override
@@ -132,7 +138,11 @@ public class JugadorBeisbol implements JugadorInterfaz {
 		
 		armaNombre.add(apellidoPaterno);
 		
-		return joiner.join(armaNombre);
+		return armaNombre.stream()
+		  .filter(s -> s != null)
+		  .collect(Collectors.joining(" "));
+		
+		// return joiner.join(armaNombre);
 	}
 	
 	@Override

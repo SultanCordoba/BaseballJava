@@ -3,6 +3,7 @@ package deportes.beisbol.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -144,10 +145,18 @@ public class PartidoBeisbol implements PartidoInterfaz {
 		ArrayList<String> extraDatosJuego = new ArrayList<>();
 		String formattedDate = this.fechaRealizacion.format(formatter);
 		
+		String pasoJuego;
+		
 		if (this.numJuego > 1) {
 			extraDatosJuego.add(String.valueOf(this.entradas));
 			extraDatosJuego.add(String.valueOf(this.numJuego));
-			formattedDate += "(" + Joiner.on("-").join(extraDatosJuego) + ")";
+			
+			pasoJuego = extraDatosJuego.stream()
+					  .filter(p -> p != null)
+					  .collect(Collectors.joining("-"));
+			
+			//formattedDate += "(" + Joiner.on("-").join(extraDatosJuego) + ")";
+			formattedDate += "(" + pasoJuego + ")";
 		}
 		else {
 			if (this.entradas != 9) {
@@ -161,7 +170,11 @@ public class PartidoBeisbol implements PartidoInterfaz {
 		datosJuego.add(String.valueOf(this.equipoLocal.getScore()));
 		datosJuego.add(this.equipoLocal.getEquipo().getSiglas());
 		
-		return Joiner.on(",").skipNulls().join(datosJuego);
+		return datosJuego.stream()
+				  .filter(p -> p != null)
+				  .collect(Collectors.joining(","));
+		
+		//return Joiner.on(",").skipNulls().join(datosJuego);
 	}
 	
 	public String generaPartidoResumen() {
@@ -175,7 +188,11 @@ public class PartidoBeisbol implements PartidoInterfaz {
 		datosJuego.add(String.valueOf(this.equipoLocal.getScore()));
 		datosJuego.add(this.equipoLocal.getEquipo().getNombreTabla());
 		
-		return Joiner.on(" ").skipNulls().join(datosJuego);
+		return datosJuego.stream()
+				  .filter(p -> p != null)
+				  .collect(Collectors.joining(" "));
+		
+		//return Joiner.on(" ").skipNulls().join(datosJuego);
 	}
 	
 	public void asignaPartidoString() {
