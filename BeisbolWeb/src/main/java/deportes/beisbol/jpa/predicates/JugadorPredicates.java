@@ -3,8 +3,8 @@ package deportes.beisbol.jpa.predicates;
 import java.util.Locale;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/* import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; */
 
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.types.OrderSpecifier;
@@ -15,7 +15,7 @@ import deportes.beisbol.jpa.model.QLigaHistorico;
 
 public class JugadorPredicates {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JugadorPredicates.class);
+	// private static final Logger logger = LoggerFactory.getLogger(JugadorPredicates.class);
 	
     public static OrderSpecifier<String> orderByNombreAsc() {
         return QLigaHistorico.ligaHistorico.nombre.asc();
