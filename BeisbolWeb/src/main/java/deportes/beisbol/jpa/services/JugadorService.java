@@ -9,7 +9,7 @@ import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.web.model.JugadorModel;
 
 public interface JugadorService {
-	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina);
+	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina, Optional<String> idioma);
 	
 	public Optional<Jugador> findOne(short id);
 	
@@ -17,7 +17,7 @@ public interface JugadorService {
 	
 	public short totalRegistros();
 	
-	public short totalRegistros(String nombre);
+	public short totalRegistros(String nombre, Optional<String> idioma);
 	
 	public JugadorModel getJugador(short id);
 }

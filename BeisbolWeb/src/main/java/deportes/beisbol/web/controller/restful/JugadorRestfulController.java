@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,7 +52,7 @@ public class JugadorRestfulController {
 	    
 		RespuestaDataTables resultado = new RespuestaDataTables();
 		
-		Iterator<JugadorBeisbol> jugadores = jugadorService.search(busqueda, pagina).iterator();
+		Iterator<JugadorBeisbol> jugadores = jugadorService.search(busqueda, pagina, Optional.of(locale.getLanguage())).iterator();
 		JugadorBeisbol paso;
 		
 		LinkedHashSet<ArrayList<String>> jugadoresJson = new LinkedHashSet<>();
@@ -93,7 +95,7 @@ public class JugadorRestfulController {
 		
 		resultado.setDraw(Integer.valueOf(request.getParameter("draw")) + 1);
 		
-		int totalFiltrados = jugadorService.totalRegistros(busqueda);
+		int totalFiltrados = jugadorService.totalRegistros(busqueda, Optional.of(locale.getLanguage()));
 		
 		resultado.setRecordsFiltered(totalFiltrados);
 		resultado.setRecordsTotal(totalFiltrados); 

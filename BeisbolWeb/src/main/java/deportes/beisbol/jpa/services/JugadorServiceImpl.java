@@ -26,7 +26,7 @@ import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RosterBeisbol;
 import deportes.beisbol.web.model.JugadorModel;
 
-import static deportes.beisbol.jpa.predicates.JugadorPredicates.nombreIsLike;
+import static deportes.beisbol.jpa.predicates.JugadorPredicates.jugadorIsLike;
 
 @Service
 @Transactional(readOnly = true)
@@ -41,13 +41,13 @@ public class JugadorServiceImpl implements JugadorService {
 	RosterRepository rosterRepository;
 	
 	@Override
-	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina) {	
+	public Collection<JugadorBeisbol> search(String nombre, PaginaDefinidor pagina, Optional<String> idioma) {	
 		
 		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
 				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
 		
 		Iterator<Jugador> iteraJugadores = jugadorRepository.findAll
-				(nombreIsLike(nombre), pageRequest).iterator();  
+				(jugadorIsLike(nombre, idioma), pageRequest).iterator();  
 		
 		LinkedHashSet<JugadorBeisbol> resultado = new LinkedHashSet<>();
 		Jugador pasoJugador;
@@ -85,9 +85,9 @@ public class JugadorServiceImpl implements JugadorService {
 	}
 
 	@Override
-	public short totalRegistros(String nombre) {
+	public short totalRegistros(String nombre, Optional<String> idioma) {
 		return (short) Lists.newArrayList(jugadorRepository.findAll
-				(nombreIsLike(nombre))).size();
+				(jugadorIsLike(nombre, idioma))).size();
 	}
 
 	private boolean evaluaTipoRoster(String tipoRoster, String posicion) {
