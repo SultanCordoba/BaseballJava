@@ -3,7 +3,6 @@
  */
 package deportes.beisbol.model;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.Date;
 import com.google.common.base.Joiner;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
-import com.google.common.base.Strings;
 
 import deportes.core.interfaces.DeporteBasicoInterfaz;
 import deportes.core.interfaces.RangoFechaInterfaz;
@@ -69,7 +67,6 @@ public class RangoFechaBeisbol implements RangoFechaInterfaz,
 	 */
 	@Override
 	public boolean fechaEnRango(LocalDate fecha) {
-		// TODO Auto-generated method stub
 		return (fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin)) ||
 				fecha.equals(fechaInicio) || fecha.equals(fechaFin);
 	}

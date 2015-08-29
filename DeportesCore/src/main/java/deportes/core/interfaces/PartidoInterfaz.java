@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import deportes.beisbol.model.PartidoBeisbol;
-import deportes.beisbol.model.TemporadaBeisbol;
 
 
 

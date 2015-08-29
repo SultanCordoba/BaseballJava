@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import deportes.beisbol.model.ContrincanteBeisbol;
-import deportes.beisbol.model.PartidoBeisbol;
 
 /**
  *

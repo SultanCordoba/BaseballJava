@@ -167,7 +167,7 @@ public class PartidoBeisbol implements PartidoInterfaz {
 	public String generaPartidoResumen() {
 		
 		ArrayList<String> datosJuego = new ArrayList<>();
-		ArrayList<String> extraDatosJuego = new ArrayList<>();
+		// ArrayList<String> extraDatosJuego = new ArrayList<>();
 
 		datosJuego.add(this.equipoVisita.getEquipo().getNombreTabla());
 		datosJuego.add(String.valueOf(this.equipoVisita.getScore()));
