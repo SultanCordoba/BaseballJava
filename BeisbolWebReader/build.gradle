@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     compile("org.springframework:spring-web:4.2.0.RELEASE")
-    testCompile("junit:junit")
     compile('deportes:deportes-core:4.2') 
-    compile("ch.qos.logback:logback-classic:1.1.3")    
+    compile("ch.qos.logback:logback-classic:1.1.3")  
+    testCompile group: 'junit', name: 'junit', version: '4.+'  
 }
