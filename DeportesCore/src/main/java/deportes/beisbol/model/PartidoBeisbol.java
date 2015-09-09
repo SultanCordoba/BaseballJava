@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.google.common.base.Joiner;
 
 import deportes.core.interfaces.ContrincanteInterfaz;
 import deportes.core.interfaces.PartidoInterfaz;
