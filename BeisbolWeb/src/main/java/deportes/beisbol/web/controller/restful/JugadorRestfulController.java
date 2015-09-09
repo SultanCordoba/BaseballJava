@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.services.JugadorService;
@@ -58,7 +57,7 @@ public class JugadorRestfulController {
 		LinkedHashSet<ArrayList<String>> jugadoresJson = new LinkedHashSet<>();
 		ArrayList<String> datosJugador;
 		
-		Joiner joiner1 = Joiner.on("/").skipNulls();
+		// Joiner joiner1 = Joiner.on("/").skipNulls();
 		ArrayList<String> rutaJugador = new ArrayList<>();
 		
 		rutaJugador.add(request.getContextPath());
@@ -79,9 +78,16 @@ public class JugadorRestfulController {
 			rutaJugador.set(2, Short.toString(paso.getId()));
 
 			datosJugador = new ArrayList<>();
-			datosJugador.add("<a href=\"" + joiner1.join(rutaJugador) + "\">" +
-				paso.getNombreCompleto() + "</a>");
 			
+			String rutaDatosJugador = rutaJugador.stream().filter(p -> p != null)
+					.collect(Collectors.joining("/"));
+			
+			/* datosJugador.add("<a href=\"" + joiner1.join(rutaJugador) + "\">" +
+				paso.getNombreCompleto() + "</a>"); */
+			
+			datosJugador.add("<a href=\"" + rutaDatosJugador + "\">" +
+					paso.getNombreCompleto() + "</a>");
+							
 			if (paso.getFechaNacimiento() != null) {
 				datosJugador.add(paso.getFechaNacimiento().format(formatter).toUpperCase());
 			}

@@ -4,14 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 /**
@@ -108,7 +106,7 @@ public class Ciudad implements Serializable {
 	}
 
 	public String nombreCiudad() {
-		Joiner joiner = Joiner.on(", ").skipNulls();
+		// Joiner joiner = Joiner.on(", ").skipNulls();
 		ArrayList<String> ciudadArreglo = new ArrayList<>();
 		
 		try {
@@ -119,6 +117,10 @@ public class Ciudad implements Serializable {
 			ciudadArreglo.add(Strings.emptyToNull(""));
 		}
 		
-		return Strings.nullToEmpty(joiner.join(ciudadArreglo));
+		String resultado = ciudadArreglo.stream().filter(p -> p != null).collect(Collectors.joining(", "));
+		
+		return Strings.nullToEmpty(resultado);
+		
+		//return Strings.nullToEmpty(joiner.join(ciudadArreglo));
 	}
 }

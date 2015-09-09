@@ -2,8 +2,7 @@ package deportes.beisbol.converter;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-
-import com.google.common.base.Joiner;
+import java.util.stream.Collectors;
 
 import deportes.beisbol.jpa.model.Equipo;
 import deportes.beisbol.jpa.model.Participante;
@@ -30,8 +29,10 @@ public class ParticipanteConverter {
 			fullName.add(nombreEquipo);
 		}
 		
-		Joiner joiner = Joiner.on(" / ").skipNulls();
-		resultado = joiner.join(fullName);
+		/* Joiner joiner = Joiner.on(" / ").skipNulls();
+		resultado = joiner.join(fullName); */
+		
+		resultado = fullName.stream().filter(p -> p != null).collect(Collectors.joining(" / "));
 		
 		return resultado;
 	}

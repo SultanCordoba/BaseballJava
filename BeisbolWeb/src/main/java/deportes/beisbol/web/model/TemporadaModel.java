@@ -10,7 +10,7 @@ public class TemporadaModel {
 	private TemporadaBeisbol temporada;
 	private LinkedHashSet<EtapaBeisbolAux> etapas;
 	private LinkedHashSet<PartidoBeisbol> partidos;
-	
+
 	public LinkedHashSet<PartidoBeisbol> getPartidos() {
 		return partidos;
 	}

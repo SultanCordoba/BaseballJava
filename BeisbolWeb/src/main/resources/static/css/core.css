@@ -147,3 +147,17 @@ h2 {
 	color: sienna;
 }
 
+.carousel-inner .item img {
+	margin: auto;
+} 
+
+.carousel-caption {
+	position:relative;
+}
+
+.carousel-caption p {
+	/* font-family:    Garamond;
+	font-size:      2em; */
+	color:          sienna !important;
+}
+

@@ -64,7 +64,7 @@
 							</ul>
 							
 							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active" id="bateadores" th:if="${not #lists.isEmpty(modelo.rosters)}">
+								<div role="tabpanel" class="tab-pane" id="bateadores" th:if="${not #lists.isEmpty(modelo.rosters)}">
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<table class="table" id="tJugRoster">
@@ -118,6 +118,14 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div layout:fragment="scripts">
+			<script th:inline="javascript">
+				$(document).ready(function () {
+					$('#navJugador a:first').tab('show');
+					$('#navJugador li:first').addClass('active');
+				});
+			</script>			
 		</div>
 	</body>
 </html>

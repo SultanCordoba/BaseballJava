@@ -1,5 +1,7 @@
 package deportes.beisbol.jpa.services;
 
+import static deportes.beisbol.jpa.predicates.EquipoPredicates.equiposLiga;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -9,6 +11,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +33,7 @@ import deportes.beisbol.model.JugadorBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.utils.EquipoAux;
 import deportes.beisbol.utils.JugadorComparator;
+import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RecordEtapa;
 import deportes.beisbol.utils.RosterBeisbol;
 import deportes.beisbol.web.model.EquipoModel;
@@ -197,6 +201,26 @@ public class EquipoServiceImpl implements EquipoService {
 		equipoModelo.setEquipos(equipos);
 		
 		return equipoModelo;
+	}
+
+	@Override
+	public Collection<EquipoBeisbol> search(String siglasLiga, String nombre,
+			PaginaDefinidor pagina, Optional<String> idioma) {
+		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
+				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
+		
+		Iterator<Equipo> iteraEquipos = equipoRepository.findAll
+				(equiposLiga(siglasLiga, nombre, idioma), pageRequest).iterator();  
+		
+		LinkedHashSet<EquipoBeisbol> resultado = new LinkedHashSet<>();
+		Equipo pasoEquipo;
+				
+		while (iteraEquipos.hasNext()) {			
+			pasoEquipo = iteraEquipos.next();
+			resultado.add(EquipoConverter.convierteDeBase(pasoEquipo, idioma.get()));
+		}
+		
+		return resultado;
 	}
 
 }

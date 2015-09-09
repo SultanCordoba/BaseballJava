@@ -5,11 +5,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Ciudad;
@@ -38,7 +38,7 @@ public class FormatoUtils {
 	public static String nombreCiudad(Ciudad ciudad) {
 		final String INDEFINIDO = "INDEFINIDO";
 		
-		Joiner joiner = Joiner.on(", ").skipNulls();
+		// Joiner joiner = Joiner.on(", ").skipNulls();
 		ArrayList<String> datosCiudad = new ArrayList<>();
 		
 		if (!ciudad.getNombre().equalsIgnoreCase(INDEFINIDO)) {
@@ -53,6 +53,9 @@ public class FormatoUtils {
 			datosCiudad.add(ciudad.getEstado().getPai().getAbreviaturaEs());
 		}
 		
-		return Strings.emptyToNull(joiner.join(datosCiudad));
+		String resultado = datosCiudad.stream().filter(p -> p != null).collect(Collectors.joining(", "));
+		
+		//return Strings.emptyToNull(joiner.join(datosCiudad));
+		return Strings.emptyToNull(resultado);
 	}
 }
