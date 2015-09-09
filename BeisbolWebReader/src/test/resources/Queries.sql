@@ -1,8 +1,7 @@
-select * from baseball.temporada
-where liga_id = 1;
+select * from baseball.temporada;
 
 select * from baseball.etapa
-where temporada_id = 197;
+where temporada_id = 202;
 
 select r.nombre_grupo, eq.nombre_tablas_es, sum(pe.gano), sum(pe.perdio)
 from baseball.partido_equipo pe inner join baseball.partido p
@@ -62,6 +61,15 @@ select * from baseball.etapa where temporada_id = 202;
 
 select * from baseball.records_vista where temporada_id = 202;
 
+update baseball.record
+set perdidos = 2
+where id in (3654, 3657);
+
+update baseball.record
+set ganados = 2
+where id in (3655, 3656);
+
+
 insert into baseball.record values
 (null, 525, 1, 1875, 'Serie PlayOff 5', 0, 0, 0, now()); 
 
@@ -86,8 +94,17 @@ set participante_id = 1885, ganados = 1
 where id = 3644;
 
 select * from baseball.partido
-where fecha_realizacion = '2015-08-21';
+where fecha_realizacion > '2015-08-28'
+order by id;
 
-select max(fecha_realizacion)
-from baseball.partido;
+select * from franquicia_historico_int order by id desc;
+
+insert into franquicia values (null, 1, 12, 166, 'CAV', 'Tigres de Ciego de Ávila', 'CIEGO DE ÁVILA', 'CiegoAvila2016.png', 1, null, null, now());
+
+insert into franquicia_historico values (null, 242, 1, '2016-02-01', '2100-12-31', 'CAV', 'Tigres de Ciego de Ávila', 'CIEGO DE ÁVILA', 
+  'CiegoAvila2016.png', 1, 'Ciego de Avila Tigers', null, now());
+  
+insert into franquicia_historico_int values (null, 440, 1, 'Ciego de Avila Tigers', now());
+  
+  
 

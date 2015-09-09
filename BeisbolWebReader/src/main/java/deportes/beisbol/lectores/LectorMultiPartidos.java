@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,6 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
@@ -133,7 +133,12 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
 	            		fechaArreglo.remove(fechaArreglo.size() - 1);
 	            		
 	            		mapaDatosPartido.put("entradas", String.valueOf(juego.getStatus().getInning()));
-	            		mapaDatosPartido.put("fechaJuego", Joiner.on("-").join(fechaArreglo));
+	            		
+	            		String strFechaArreglo = fechaArreglo.stream()
+	            				.filter(p -> p != null)
+	            				.collect(Collectors.joining("-"));
+	            		
+	            		mapaDatosPartido.put("fechaJuego", strFechaArreglo);
 	            		mapaDatosPartido.put("numJuego", juego.getId().substring(juego.getId().length()-1));
 	            			            		
 	            		mapaDatosPartido.put("eqVisita", juego.getAway_name_abbrev());

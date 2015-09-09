@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.common.base.Joiner;
+// import com.google.common.base.Joiner;
 
 import deportes.beisbol.model.ContrincanteBeisbol;
 import deportes.beisbol.model.EquipoBeisbol;
@@ -53,7 +54,7 @@ public class BaseballPartidosReader {
 		
 	public String construyeLigaPartidos(String grupoLiga) {
 		
-		Joiner joiner = Joiner.on("/");
+		// Joiner joiner = Joiner.on("/");
 		
 		ArrayList<String> sitioPartidos = new ArrayList<>();
 		
@@ -68,9 +69,14 @@ public class BaseballPartidosReader {
 		sitioPartidos.add("day_" + String.format("%02d", fechaJuegos.getDayOfMonth()));
 		sitioPartidos.add("master_scoreboard.json");
 		
-		logger.info("Liga de partidos:" + joiner.join(sitioPartidos));
+		String ligaPartidos = sitioPartidos.stream()
+				.filter(p -> p != null)
+				.collect(Collectors.joining("/"));
 		
-		return joiner.join(sitioPartidos);
+		logger.info("Liga de partidos:" + ligaPartidos);
+		
+		// return joiner.join(sitioPartidos);
+		return ligaPartidos;
 	}
 	
 	public String grabarJuego(PartidoBeisbol partido, String etapa, String vuelta) {
@@ -139,7 +145,7 @@ public class BaseballPartidosReader {
 	
 	public String construyeLigaJugadores(String juegoId, String grupoLiga) {
 		
-		Joiner joiner = Joiner.on("/");
+		// Joiner joiner = Joiner.on("/");
 		
 		ArrayList<String> sitioPartidos = new ArrayList<>();
 		
@@ -157,9 +163,13 @@ public class BaseballPartidosReader {
 		sitioPartidos.add(rutaDef);
 		sitioPartidos.add("boxscore.json");
 		
-		//System.out.println(joiner.join(sitioPartidos));
+		String ligaPartidos = sitioPartidos.stream()
+				.filter(p -> p != null)
+				.collect(Collectors.joining("/"));
 		
-		return joiner.join(sitioPartidos);
+		return ligaPartidos;
+		
+		// return joiner.join(ligaPartidos);
 	}
 	
 	public HashMap<String, String> obtenerEquivalenciasEquipos() {
