@@ -1,5 +1,9 @@
 package deportes.beisbol.web.controller.restful;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.services.EquipoService;
+import deportes.beisbol.model.EquipoBeisbol;
+import deportes.beisbol.utils.EquipoPais;
 import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RespuestaDataTables;
 import deportes.beisbol.web.model.EquipoModel;
@@ -36,7 +42,8 @@ public class EquipoRestfulController {
 	
 	@RequestMapping(value = "/search/{siglas}", method = RequestMethod.GET)
 	@ResponseBody
-	public RespuestaDataTables searchEquipos(HttpServletRequest request, Locale locale) {
+	public RespuestaDataTables searchEquipos(@PathVariable String siglasLiga, 
+			HttpServletRequest request, Locale locale) {
 		String busqueda = request.getParameter("search[value]");
 		
 	    if (Strings.isNullOrEmpty(busqueda)) busqueda="";
@@ -47,8 +54,27 @@ public class EquipoRestfulController {
 	    pagina.setLongitud(Integer.valueOf(request.getParameter("length")).intValue());
 	    
 		RespuestaDataTables resultado = new RespuestaDataTables();
-
+		
+		LinkedHashMap<String, EquipoPais> equipos = equipoService.busqueda
+				(siglasLiga, busqueda, pagina, Optional.of(locale.getLanguage()));
+		
+		EquipoPais equipoAux = null;
+		EquipoBeisbol paso = null;
+		
+		LinkedHashSet<ArrayList<String>> equiposJson = new LinkedHashSet<>();
+		ArrayList<String> datosEquipo = new ArrayList<>();
+		
+		for (String nombreEquipo : equipos.keySet()) {
+			datosEquipo = new ArrayList<>();
+			datosEquipo.add(equipos.get(nombreEquipo).getNombre());
+			datosEquipo.add(equipos.get(nombreEquipo).getPais());
+		}
+		
 		resultado.setDraw(Integer.valueOf(request.getParameter("draw")) + 1);
+		
+		/* resultado.setRecordsFiltered(totalFiltrados);
+		resultado.setRecordsTotal(totalFiltrados); 
+		resultado.setData(jugadoresJson); */
 		
 		return resultado;
 	}

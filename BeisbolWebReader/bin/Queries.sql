@@ -8,7 +8,7 @@ from baseball.partido_equipo pe inner join baseball.partido p
   on pe.partido_id = p.id
   inner join baseball.equipo eq on pe.equipo_id = eq.id
   inner join baseball.record r on eq.participante_id = r.participante_id
-where p.etapa_id = 522 and r.etapa_id = p.etapa_id
+where p.etapa_id = 526 and r.etapa_id = p.etapa_id
 group by r.nombre_grupo, eq.nombre_tablas_es
 order by 1, 3 desc;
 
@@ -22,20 +22,37 @@ where fecha_realizacion > '2015-07-11' and etapa_id = 522
 group by fecha_realizacion
 order by 1 desc;
 
-select record_id, nombre_grupo, nombre_tablas_es, ganados, perdidos, pctje 
+select record_id, nombre_grupo, participante_id, nombre_tablas_es, ganados, perdidos, pctje 
 from baseball.records_vista
 where siglas_liga = 'LMB' and temporada_nombre = '2015'
 order by 2, 6 desc;
+
+select *
+from baseball.record
+where id in (3642, 3658, 3659);
+
+update baseball.record
+set nombre_grupo = 'Serie Playoff 7'
+where id in (3658, 3659);
+
+select * from baseball.participante
+where id in (1879, 1882);
+
+select * from baseball.equipo
+where participante_id in (1879, 1882);
 
 update baseball.record
 set ganados = ganados-1
 where id in (3600, 3614, 3605, 3612, 3606, 3613, 3599);
 
-select partido_id, juego_dia, equipo_visita, carr_visita,
+select partido_id, juego_dia, fecha_realizacion, equipo_visita, carr_visita,
   equipo_local, carr_local
 from baseball.partido_vista
-where fecha_realizacion = '2015-05-16'
+where etapa_id = 526
 order by equipo_visita, juego_dia, partido_id;
+
+delete from baseball.partido
+where id = 27745;
 
 
 select max(fecha_realizacion) from baseball.partido;
@@ -61,50 +78,35 @@ select * from baseball.etapa where temporada_id = 202;
 
 select * from baseball.records_vista where temporada_id = 202;
 
-update baseball.record
-set perdidos = 2
-where id in (3654, 3657);
+select * from baseball.temporada where liga_datos_id = 2;
 
-update baseball.record
-set ganados = 2
-where id in (3655, 3656);
+insert into baseball.temporada values
+(null, '2015-16', 2, 1, 0, '2015-10-01', '2016-01-31', now());  -- 203
 
+-- insert into baseball.equipo
+select *
+from baseball.equipo e inner join baseball.participante p on e.participante_id = p.id
+where p.temporada_id = 198
+order by p.id;
 
-insert into baseball.record values
-(null, 525, 1, 1875, 'Serie PlayOff 5', 0, 0, 0, now()); 
+update baseball.equipo
+set campeon = 1
+where id = 1836;
 
-insert into baseball.record values
-(null, 525, 1, 1882, 'Serie PlayOff 5', 0, 0, 0, now()); 
-
-insert into baseball.record values
-(null, 525, 1, 1879, 'Serie PlayOff 6', 0, 0, 0, now()); 
-
-insert into baseball.record values
-(null, 525, 1, 1878, 'Serie PlayOff 6', 0, 0, 0, now());
-
-select max(id) from baseball.record;
-
-select * from baseball.record where id > 3640;
-
-delete from baseball.record
-where id = 3645;
-
-update baseball.record
-set participante_id = 1885, ganados = 1
-where id = 3644;
-
-select * from baseball.partido
-where fecha_realizacion > '2015-08-28'
+select *
+from baseball.participante
+where temporada_id = 203
 order by id;
 
-select * from franquicia_historico_int order by id desc;
+select e.* 
+from baseball.equipo e inner join baseball.participante p on e.participante_id = p.id
+where p.temporada_id = 198
+order by p.id;     -- Empieza con 1840 
 
-insert into franquicia values (null, 1, 12, 166, 'CAV', 'Tigres de Ciego de Ávila', 'CIEGO DE ÁVILA', 'CiegoAvila2016.png', 1, null, null, now());
+update liga
+set activa = 1
+where id = 12;
 
-insert into franquicia_historico values (null, 242, 1, '2016-02-01', '2100-12-31', 'CAV', 'Tigres de Ciego de Ávila', 'CIEGO DE ÁVILA', 
-  'CiegoAvila2016.png', 1, 'Ciego de Avila Tigers', null, now());
-  
-insert into franquicia_historico_int values (null, 440, 1, 'Ciego de Avila Tigers', now());
-  
-  
+
+
 

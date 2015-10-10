@@ -65,11 +65,8 @@ public class LectorMultiPartidos extends BaseballPartidosReader {
 		this.liga = this.getPartidoPropiedades().getProperty("liga");
 	}
 	
-	
-	
-	
-	
-	public int obtieneJuegos(EnumReaderActions accion) throws HttpMessageNotReadableException {
+	public int obtieneJuegos(EnumReaderActions accion) throws HttpMessageNotReadableException 
+	{
         RestTemplate restTemplate = new RestTemplate();
         int resultado = 0;
         

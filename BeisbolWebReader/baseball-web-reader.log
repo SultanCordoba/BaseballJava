@@ -2251,3 +2251,40 @@
 2015-09-07_14:49:47.993 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
 2015-09-07_14:49:47.994 [main] INFO  deportes.beisbol.App - Se encontraron 17 juegos para 2015-09-06
 2015-09-07_14:49:47.995 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-09-18_17:00:58.712 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-09-18_17:01:00.102 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_07/master_scoreboard.json
+2015-09-18_17:01:00.996 [main] INFO  deportes.beisbol.App - Se encontraron 15 juegos para 2015-09-07
+2015-09-18_17:01:00.996 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_08/master_scoreboard.json
+2015-09-18_17:01:01.246 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_08/master_scoreboard.json
+2015-09-18_17:02:16.664 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-09-18_17:02:17.887 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_07/master_scoreboard.json
+2015-09-18_17:02:18.399 [main] INFO  deportes.beisbol.App - Se encontraron 15 juegos para 2015-09-07
+2015-09-18_17:02:18.415 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_08/master_scoreboard.json
+2015-09-18_17:02:18.587 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_08/master_scoreboard.json
+2015-09-18_17:02:22.480 [main] INFO  d.b.lectores.LectorPartidoSencillo - OP_EXITOSA
+2015-09-18_17:02:22.486 [main] INFO  deportes.beisbol.App - Se encontraron 1 juegos para 2015-09-08
+2015-09-18_17:02:22.487 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_09/master_scoreboard.json
+2015-09-18_17:02:23.299 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-09-18_17:02:23.299 [main] INFO  deportes.beisbol.App - Se encontraron 5 juegos para 2015-09-09
+2015-09-18_17:02:23.299 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_10/master_scoreboard.json
+2015-09-18_17:02:23.455 [main] INFO  deportes.beisbol.App - Se encontraron 4 juegos para 2015-09-10
+2015-09-18_17:02:23.471 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_11/master_scoreboard.json
+2015-09-18_17:02:23.887 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-09-18_17:02:23.900 [main] INFO  deportes.beisbol.App - Se encontraron 5 juegos para 2015-09-11
+2015-09-18_17:02:23.901 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_12/master_scoreboard.json
+2015-09-18_17:02:24.323 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-09-18_17:02:24.323 [main] INFO  deportes.beisbol.App - Se encontraron 3 juegos para 2015-09-12
+2015-09-18_17:02:24.323 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_13/master_scoreboard.json
+2015-09-18_17:02:24.678 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-09-18_17:02:24.694 [main] INFO  deportes.beisbol.App - Se encontraron 2 juegos para 2015-09-13
+2015-09-18_17:02:24.709 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_14/master_scoreboard.json
+2015-09-18_17:02:25.100 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-09-18_17:02:25.103 [main] INFO  deportes.beisbol.App - Se encontraron 2 juegos para 2015-09-14
+2015-09-18_17:02:25.104 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_15/master_scoreboard.json
+2015-09-18_17:02:25.245 [main] INFO  deportes.beisbol.App - Se encontraron 2 juegos para 2015-09-15
+2015-09-18_17:02:25.245 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_16/master_scoreboard.json
+2015-09-18_17:02:25.385 [main] INFO  deportes.beisbol.App - Se encontraron 2 juegos para 2015-09-16
+2015-09-18_17:02:25.401 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_17/master_scoreboard.json
+2015-09-18_17:02:25.526 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/aaa/year_2015/month_09/day_17/master_scoreboard.json
+2015-09-18_17:02:25.541 [main] INFO  deportes.beisbol.App - Se encontraron 1 juegos para 2015-09-17
+2015-09-18_17:02:25.541 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import deportes.beisbol.model.FranquiciaBeisbol;
 import deportes.beisbol.model.JugadorBeisbol;
 import deportes.beisbol.model.TemporadaBeisbol;
 import deportes.beisbol.utils.EquipoAux;
+import deportes.beisbol.utils.EquipoPais;
 import deportes.beisbol.utils.JugadorComparator;
 import deportes.beisbol.utils.PaginaDefinidor;
 import deportes.beisbol.utils.RecordEtapa;
@@ -218,6 +220,43 @@ public class EquipoServiceImpl implements EquipoService {
 		while (iteraEquipos.hasNext()) {			
 			pasoEquipo = iteraEquipos.next();
 			resultado.add(EquipoConverter.convierteDeBase(pasoEquipo, idioma.get()));
+		}
+		
+		return resultado;
+	}
+
+	@Override
+	public short totalRegistros() {
+		return (short)Lists.newArrayList(equipoRepository.findAll()).size();
+	}
+
+	@Override
+	public short totalRegistros(String siglasLiga, String nombre, Optional<String> idioma) {
+		return (short)Lists.newArrayList(equipoRepository.findAll(
+				equiposLiga(siglasLiga, nombre, idioma))).size();
+	}
+	
+	@Override
+	public LinkedHashMap<String, EquipoPais> busqueda(String siglasLiga, String nombre, PaginaDefinidor pagina, Optional<String> idioma) {
+		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
+				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
+		
+		Iterator<Equipo> iteraEquipos = equipoRepository.findAll
+				(equiposLiga(siglasLiga, nombre, idioma), pageRequest).iterator();  
+		
+		LinkedHashMap<String, EquipoPais> resultado = new LinkedHashMap<>();
+		Equipo pasoEquipo;
+		EquipoPais paso;
+				
+		while (iteraEquipos.hasNext()) {			
+			pasoEquipo = iteraEquipos.next();
+			paso = new EquipoPais();
+			
+			paso.setIdFranquicia(pasoEquipo.getFranquiciaHistorico().getFranquicia().getId());
+			paso.setNombre(pasoEquipo.getNombreTablasEs());
+			paso.setPais(pasoEquipo.getFranquiciaHistorico().getFranquicia().getClub().getPai().getAbreviaturaEs());
+			
+			resultado.put(paso.getNombre(), paso);
 		}
 		
 		return resultado;

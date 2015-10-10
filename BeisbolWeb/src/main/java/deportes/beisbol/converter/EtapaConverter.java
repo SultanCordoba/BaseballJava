@@ -55,16 +55,47 @@ public class EtapaConverter {
 		
 		TreeMap<String, RecordBeisbol> recordFusionado = new TreeMap<>();
 		
-		for (String grupo : primeraVuelta.keySet()) {			
+		primeraVuelta.keySet().forEach(
+		 (grupo) -> {
+			primeraVuelta.get(grupo).forEach(
+				(recordActual) -> {	
+					recordFusionado.put(recordActual.getNombreAbrev(), 
+							recordActual);
+		    }); 			 
+		 });
+		
+		/* for (String grupo : primeraVuelta.keySet()) {			
 			for (RecordBeisbol recordActual : primeraVuelta.get(grupo)) {
 				recordFusionado.put(recordActual.getNombreAbrev() , recordActual);
 			}
-		}
-		
-		RecordBeisbol recordNuevo;
-		RecordBeisbol recordPaso;
+		} */
 		
 		NumberFormat formatter = new DecimalFormat("0.000");
+		
+		segundaVuelta.keySet().forEach(   
+		  (grupo) -> {
+			  segundaVuelta.get(grupo).forEach(   
+				 (recordActual) -> {
+					RecordBeisbol recordNuevo = new RecordBeisbol();		
+					RecordBeisbol recordPaso = recordFusionado.get(recordActual.getNombreAbrev());
+					
+					recordNuevo.setGanados((short) (recordPaso.getGanados() + recordActual.getGanados()));
+					recordNuevo.setPerdidos((short) (recordPaso.getPerdidos() + recordActual.getPerdidos()));
+					recordNuevo.setIdVuelta(recordActual.getIdVuelta());
+					recordNuevo.setNombre(recordActual.getNombre());
+					recordNuevo.setNombreAbrev(recordActual.getNombreAbrev());
+					recordNuevo.setNombreGrupo(recordActual.getNombreGrupo());
+					recordNuevo.setNombreVuelta(recordActual.getNombreVuelta());
+
+					recordNuevo.setPorcentaje(recordNuevo.getGanados() / ((double) recordNuevo.getGanados() + recordNuevo.getPerdidos())); 				
+					recordNuevo.setPctjeString(formatter.format(recordNuevo.getPorcentaje()));
+					recordFusionado.put(recordNuevo.getNombreAbrev(), recordNuevo);
+				 }
+			   );
+		  }); 
+		
+		/* RecordBeisbol recordNuevo;
+		RecordBeisbol recordPaso;
 		
 		for (String grupo : segundaVuelta.keySet()) {
 			for (RecordBeisbol recordActual : segundaVuelta.get(grupo)) {				
@@ -83,7 +114,7 @@ public class EtapaConverter {
 				recordNuevo.setPctjeString(formatter.format(recordNuevo.getPorcentaje()));
 				recordFusionado.put(recordNuevo.getNombreAbrev(), recordNuevo);
 			}
-		}
+		} */
 		
 		ArrayList<RecordBeisbol> recordTemp = new ArrayList<RecordBeisbol>(recordFusionado.values());
 		Collections.sort(recordTemp, new RecordComparator());
@@ -101,6 +132,7 @@ public class EtapaConverter {
 		Iterator<RecordBeisbol> iteraRecords = (Iterator<RecordBeisbol>) etapaBeisbol.getRecords().iterator();
 		String vueltaActual = "XXX";
 		String grupoActual = "XXX";
+		String grupoRecord;
 		RecordBeisbol recordActual;
 		
 		LinkedHashSet<RecordBeisbol> recordGrupo = null;
@@ -120,13 +152,19 @@ public class EtapaConverter {
 				grupoActual = "XXX";
 			}
 			
-			if (!grupoActual.equalsIgnoreCase(recordActual.getNombreGrupo())) {
+			grupoRecord = recordActual.getNombreGrupo();
+			
+			if (Strings.isNullOrEmpty(Strings.nullToEmpty(grupoRecord))) {
+				grupoRecord = "Grupo Único";
+			}
+			
+			if (!grupoActual.equalsIgnoreCase(grupoRecord)) {
 				
 				if (!grupoActual.equalsIgnoreCase("XXX")) {
 					resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
 				}
 				
-				grupoActual = Strings.nullToEmpty(recordActual.getNombreGrupo());
+				grupoActual = grupoRecord;
 				
 				resultado.addGrupo(grupoActual, vueltaActual);
 				recordGrupo = new LinkedHashSet<>();
@@ -155,16 +193,23 @@ public class EtapaConverter {
 						
 			vueltaActual = "Total";
 			resultado.addVuelta(vueltaActual);
+			
 			while (recordTotales.hasNext()) {
 				recordTemporal = recordTotales.next();
 				
-				if (!grupoActual.equalsIgnoreCase(recordTemporal.getNombreGrupo())) {
+				grupoRecord = recordTemporal.getNombreGrupo();
+				if (Strings.isNullOrEmpty(Strings.nullToEmpty(grupoRecord))) {
+					grupoRecord = "Grupo Único";
+				}
+				
+				if (!grupoActual.equalsIgnoreCase(grupoRecord)) {
 					
 					if (!grupoActual.equalsIgnoreCase("XXX")) {
 						resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
 					}
 					
-					grupoActual = recordTemporal.getNombreGrupo();
+					//grupoActual = recordTemporal.getNombreGrupo();
+					grupoActual = grupoRecord;
 					
 					resultado.addGrupo(grupoActual, vueltaActual);
 					recordGrupo = new LinkedHashSet<>();
@@ -179,10 +224,8 @@ public class EtapaConverter {
 			
 			if (!grupoActual.equalsIgnoreCase("XXX") && !(vueltaActual.equalsIgnoreCase("XXX"))) {
 				resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
-			}
-			
-		}
-		
+			}	
+		}		
 		return resultado;
 	}
 }

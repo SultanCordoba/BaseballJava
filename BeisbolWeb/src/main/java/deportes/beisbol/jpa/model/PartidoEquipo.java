@@ -18,7 +18,7 @@ public class PartidoEquipo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private byte carreras;
-	private byte errores;
+	private Byte errores;
 	private Date fechaActualizacion;
 	private byte gano;
 	private byte hits;
