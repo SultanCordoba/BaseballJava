@@ -6,7 +6,6 @@ import com.mysema.query.types.OrderSpecifier;
 import com.mysema.query.types.Predicate;
 
 import deportes.beisbol.jpa.model.QEquipo;
-import deportes.beisbol.jpa.model.QLigaHistorico;
 
 public class EquipoPredicates {
 

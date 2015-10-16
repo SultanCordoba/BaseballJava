@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Optional;
 
 import deportes.beisbol.jpa.model.Partido;
-import deportes.beisbol.jpa.model.PartidoEquipo;
 import deportes.beisbol.model.ContrincanteBeisbol;
 import deportes.beisbol.model.PartidoBeisbol;
 
@@ -24,17 +23,19 @@ public class PartidoConverter {
 		ContrincanteBeisbol contLocal = new ContrincanteBeisbol();
 		ContrincanteBeisbol contVisita = new ContrincanteBeisbol();
 		
-		for (PartidoEquipo partidoEquipos : partido.getPartidoEquipos()) {
-			if (partidoEquipos.getLocalia().equalsIgnoreCase("L")) {
-				contLocal.setScore(partidoEquipos.getCarreras());
-				contLocal.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
+		partido.getPartidoEquipos().forEach(
+			(partidoEquipos) -> {
+				if (partidoEquipos.getLocalia().equalsIgnoreCase("L")) {
+					contLocal.setScore(partidoEquipos.getCarreras());
+					contLocal.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
+				}
+				else {
+					contVisita.setScore(partidoEquipos.getCarreras());
+					contVisita.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
+				}				
 			}
-			else {
-				contVisita.setScore(partidoEquipos.getCarreras());
-				contVisita.setEquipo(EquipoConverter.convierteDeBase(partidoEquipos.getEquipo(), idioma.get()));
-			}
-		}
-		
+		);
+
 		resultado.setLocal(contLocal);
 		resultado.setVisita(contVisita);
 		

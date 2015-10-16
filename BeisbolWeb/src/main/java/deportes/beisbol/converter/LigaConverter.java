@@ -1,6 +1,6 @@
 package deportes.beisbol.converter;
 
-import java.util.Iterator;
+import java.util.Optional;
 
 import deportes.beisbol.jpa.model.LigaHistorico;
 import deportes.beisbol.jpa.model.LigaHistoricoInt;
@@ -14,24 +14,17 @@ public class LigaConverter {
 		LigaBeisbol resultado = new LigaBeisbol();
 		
 		resultado.setId(ligaBase.getLiga().getId());
-		
-		String idiomaAbrev = idioma.toUpperCase();
-
 		resultado.setNombre(ligaBase.getNombre());
 		resultado.setSiglas(ligaBase.getSiglas());			
 		
-		if (!idiomaAbrev.equals("ES")) {
-			Iterator<LigaHistoricoInt> ligasHistoricoInt = ligaBase.getLigaHistoricoInts().iterator();
-			LigaHistoricoInt ligaHistoricoInt;
-			
-			while (ligasHistoricoInt.hasNext()) {
-				ligaHistoricoInt = ligasHistoricoInt.next();
-				
-				if (ligaHistoricoInt.getIdioma().getAbreviatura().toUpperCase().equals(idiomaAbrev)) {
-					resultado.setNombre(ligaHistoricoInt.getNombre());
-					resultado.setSiglas(ligaHistoricoInt.getSiglas());
-				}
-			}
+		Optional<LigaHistoricoInt> ligaHistoricoInt = 
+		  ligaBase.getLigaHistoricoInts().stream()
+		  .filter(lh -> lh.getIdioma().getAbreviatura().equalsIgnoreCase(idioma))
+		  .findFirst();
+		  
+		if (ligaHistoricoInt.isPresent()) {
+			resultado.setNombre(ligaHistoricoInt.get().getNombre());
+			resultado.setSiglas(ligaHistoricoInt.get().getSiglas());
 		}
 		
 		return resultado;

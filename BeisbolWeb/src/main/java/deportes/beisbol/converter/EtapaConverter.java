@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory; */
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Etapa;
-import deportes.beisbol.jpa.model.EtapaInt;
 import deportes.beisbol.model.EtapaBeisbol;
 import deportes.beisbol.model.RecordBeisbol;
 import deportes.beisbol.utils.EtapaBeisbolAux;
@@ -32,18 +31,15 @@ public class EtapaConverter {
 		resultado.setNombre(etapaBase.getNombre());
 		
 		String idiomaAbrev = Strings.nullToEmpty(idioma.get()).toUpperCase();
-		
-		if (!idiomaAbrev.equals("ES")) {
-			Iterator<EtapaInt> etapasInt = etapaBase.getEtapaInts().iterator();
-			EtapaInt etapaInt;
-			
-			while (etapasInt.hasNext()) {
-				etapaInt = etapasInt.next();
-				
-				if (etapaInt.getIdioma().getAbreviatura().toUpperCase().equals(idiomaAbrev)) {
-					resultado.setNombre(etapaInt.getNombre());
-				}
-			}
+
+		if (!idiomaAbrev.equals("ES")) {			
+			etapaBase.getEtapaInts().forEach(
+			  (etapaInt) -> {
+					if (etapaInt.getIdioma().getAbreviatura().toUpperCase().equals(idiomaAbrev)) {
+						resultado.setNombre(etapaInt.getNombre());
+					}
+			  }
+			);
 		}
 		
 		return resultado;
@@ -54,6 +50,7 @@ public class EtapaConverter {
 			TreeMap<String, LinkedHashSet<RecordBeisbol>> segundaVuelta) {
 		
 		TreeMap<String, RecordBeisbol> recordFusionado = new TreeMap<>();
+		NumberFormat formatter = new DecimalFormat("0.000");
 		
 		primeraVuelta.keySet().forEach(
 		 (grupo) -> {
@@ -63,14 +60,6 @@ public class EtapaConverter {
 							recordActual);
 		    }); 			 
 		 });
-		
-		/* for (String grupo : primeraVuelta.keySet()) {			
-			for (RecordBeisbol recordActual : primeraVuelta.get(grupo)) {
-				recordFusionado.put(recordActual.getNombreAbrev() , recordActual);
-			}
-		} */
-		
-		NumberFormat formatter = new DecimalFormat("0.000");
 		
 		segundaVuelta.keySet().forEach(   
 		  (grupo) -> {
@@ -93,29 +82,7 @@ public class EtapaConverter {
 				 }
 			   );
 		  }); 
-		
-		/* RecordBeisbol recordNuevo;
-		RecordBeisbol recordPaso;
-		
-		for (String grupo : segundaVuelta.keySet()) {
-			for (RecordBeisbol recordActual : segundaVuelta.get(grupo)) {				
-				recordNuevo = new RecordBeisbol();		
-				recordPaso = recordFusionado.get(recordActual.getNombreAbrev());
 				
-				recordNuevo.setGanados((short) (recordPaso.getGanados() + recordActual.getGanados()));
-				recordNuevo.setPerdidos((short) (recordPaso.getPerdidos() + recordActual.getPerdidos()));
-				recordNuevo.setIdVuelta(recordActual.getIdVuelta());
-				recordNuevo.setNombre(recordActual.getNombre());
-				recordNuevo.setNombreAbrev(recordActual.getNombreAbrev());
-				recordNuevo.setNombreGrupo(recordActual.getNombreGrupo());
-				recordNuevo.setNombreVuelta(recordActual.getNombreVuelta());
-
-				recordNuevo.setPorcentaje(recordNuevo.getGanados() / ((double) recordNuevo.getGanados() + recordNuevo.getPerdidos())); 				
-				recordNuevo.setPctjeString(formatter.format(recordNuevo.getPorcentaje()));
-				recordFusionado.put(recordNuevo.getNombreAbrev(), recordNuevo);
-			}
-		} */
-		
 		ArrayList<RecordBeisbol> recordTemp = new ArrayList<RecordBeisbol>(recordFusionado.values());
 		Collections.sort(recordTemp, new RecordComparator());
 		
@@ -136,7 +103,7 @@ public class EtapaConverter {
 		RecordBeisbol recordActual;
 		
 		LinkedHashSet<RecordBeisbol> recordGrupo = null;
-		
+				
 		while (iteraRecords.hasNext()) {
 			recordActual = iteraRecords.next();
 			
@@ -203,12 +170,10 @@ public class EtapaConverter {
 				}
 				
 				if (!grupoActual.equalsIgnoreCase(grupoRecord)) {
-					
 					if (!grupoActual.equalsIgnoreCase("XXX")) {
 						resultado.setGrupo(grupoActual, vueltaActual, recordGrupo);
 					}
-					
-					//grupoActual = recordTemporal.getNombreGrupo();
+
 					grupoActual = grupoRecord;
 					
 					resultado.addGrupo(grupoActual, vueltaActual);

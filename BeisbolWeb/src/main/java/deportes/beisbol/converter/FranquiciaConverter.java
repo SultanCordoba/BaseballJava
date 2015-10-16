@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 /* import org.slf4j.Logger;
 import org.slf4j.LoggerFactory; */
 
+import java.util.Optional;
+
 import com.google.common.base.Strings;
 
 import deportes.beisbol.jpa.model.Franquicia;
@@ -21,19 +23,16 @@ public class FranquiciaConverter {
 	
 	public static String nombreCompletoIdioma(FranquiciaHistorico franquiciaHistorico, String idioma) {
 		String resultado = franquiciaHistorico.getNombreCompletoEs();
-		
 		String idiomaPaso = Strings.nullToEmpty(idioma);
 		
 		if (!idiomaPaso.equalsIgnoreCase("ES")) {
-			Iterator<FranquiciaHistoricoInt> iteraFranqHist = franquiciaHistorico.getFranquiciaHistoricoInts().iterator();
-			FranquiciaHistoricoInt franqPaso;
+			Optional<FranquiciaHistoricoInt> franqPaso = 
+            franquiciaHistorico.getFranquiciaHistoricoInts().stream()
+               .filter(element -> element.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaPaso))
+               .findFirst();
 			
-			while (iteraFranqHist.hasNext()) {
-				franqPaso = iteraFranqHist.next();
-				
-				if (franqPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaPaso)) {
-					resultado = franqPaso.getNombreCompleto();
-				}
+			if (franqPaso.isPresent()) {
+				resultado = franqPaso.get().getNombreCompleto();
 			}
 		}
 		
@@ -43,7 +42,6 @@ public class FranquiciaConverter {
 	public static FranquiciaBeisbol convierteDeBase(Franquicia franquicia, String idioma) {
 		
 		String inicioString = "XXXX";
-		
 		FranquiciaBeisbol resultado = new FranquiciaBeisbol();
 		
 		resultado.setId(franquicia.getId());

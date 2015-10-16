@@ -1,6 +1,5 @@
 package deportes.beisbol.converter;
 
-import java.util.Iterator;
 import java.util.Optional;
 
 import deportes.beisbol.jpa.model.Equipo;
@@ -19,14 +18,13 @@ public class RecordConverter {
 			String idiomaCompara = idioma.get().toUpperCase();
 			
 			if (!idiomaCompara.equalsIgnoreCase("ES")) {
-				Iterator<RecordInt> iteraRecordInt = recordBase.getRecordInts().iterator();
-				RecordInt recordIntPaso;
-				while (iteraRecordInt.hasNext()) {
-					recordIntPaso = iteraRecordInt.next();
-					if (recordIntPaso.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaCompara)) {
-						resultado.setNombreGrupo(recordIntPaso.getNombreGrupo());
-					}
-				}
+				Optional<RecordInt> recordIntPaso = recordBase.getRecordInts().stream()
+				  .filter(ri -> ri.getIdioma().getAbreviatura().equalsIgnoreCase(idiomaCompara))
+				  .findFirst();
+				
+				if (recordIntPaso.isPresent()) {
+					resultado.setNombreGrupo(recordIntPaso.get().getNombreGrupo());
+				}				
 			}
 		}
 		
@@ -49,21 +47,13 @@ public class RecordConverter {
 		resultado.setEtapaNombre(etapaNombre);
 		resultado.setGanados(recordBase.getGanados());
 		resultado.setPerdidos(recordBase.getPerdidos());
-		resultado.setCampeon(false);
 		resultado.setParticipanteId(recordBase.getParticipante().getId());
 		
-		Iterator<Equipo> equipos = recordBase.getParticipante().getEquipos().iterator();
-		Equipo equipoPaso;
+		Optional<Equipo> equipoPaso = recordBase.getParticipante().getEquipos()
+		.stream().filter(e -> e.getCampeon() == 1).findFirst();
 		
-		while (equipos.hasNext()) {
-			equipoPaso = equipos.next();
-			
-			if (equipoPaso.getCampeon() == 1) {
-				resultado.setCampeon(true);
-				break;
-			}
-		}
-		
+		resultado.setCampeon(equipoPaso.isPresent());
+				
 		return resultado;
 	}
 }

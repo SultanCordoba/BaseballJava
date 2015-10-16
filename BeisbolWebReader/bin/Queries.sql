@@ -107,6 +107,22 @@ update liga
 set activa = 1
 where id = 12;
 
+select fecha_realizacion, equipo_visita, carr_visita, carr_local, equipo_local
+from partido_vista
+where siglas_liga = 'LMP' and temporada_nombre = '2015-16';
+
+select record_id, nombre_tablas_es, ganados, perdidos 
+from records_vista
+where siglas_liga = 'LMP' and temporada_nombre = '2015-16';
+
+update baseball.record
+set perdidos = perdidos + 1
+where id in (3667);
+
+update baseball.record
+set perdidos = perdidos - 1
+where id in (3666);
+
 
 
 
