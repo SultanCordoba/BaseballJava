@@ -123,6 +123,45 @@ update baseball.record
 set perdidos = perdidos - 1
 where id in (3666);
 
+select * from club
+where nombre like 'VAL%';
+
+select * from franquicia
+where club_id in (139, 140);
+
+select * from franquicia_historico
+where franquicia_id = 250;
+
+update franquicia_historico
+set fecha_inicio = '1959-02-01'
+where id = 453;
+
+insert into franquicia values
+(null, 1, 12, 179, 'MARLBORO', 'Cigarreros de Marlboro', 'MARLBORO', null, 1, 
+  'Marlboro Smokers', 'MARLBORO', now());
+
+insert into franquicia_historico values
+(null, 254, 1, '1960-02-01', '1960-12-31', 'MARLBORO', 'Cigarreros de Marlboro', 'MARLBORO',
+  null, 1, 'Marlboro Smokers', null, now());
+
+select c.nombre, f.nombre_tablas_es, fh.id, fh.franquicia_id, fh.fecha_inicio, fh.fecha_fin, fh.nombre_tablas_es
+from franquicia_historico fh inner join franquicia f on fh.franquicia_id = f.id
+  inner join club c on f.club_id = c.id
+where f.id > 220;
+
+update franquicia_historico
+set fecha_fin = '1958-12-31'
+where id = 448;
+
+update franquicia_historico
+set fecha_fin = '1956-12-31'
+where id = 444;
+
+update franquicia_historico
+set fecha_fin = '1959-12-31'
+where id = 453;
+
+
 
 
 
