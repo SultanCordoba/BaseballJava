@@ -149,17 +149,12 @@ from franquicia_historico fh inner join franquicia f on fh.franquicia_id = f.id
   inner join club c on f.club_id = c.id
 where f.id > 220;
 
-update franquicia_historico
-set fecha_fin = '1958-12-31'
-where id = 448;
+select * from jugador where id = 3396;
 
-update franquicia_historico
-set fecha_fin = '1956-12-31'
-where id = 444;
-
-update franquicia_historico
-set fecha_fin = '1959-12-31'
-where id = 453;
+select  fh.*
+from franquicia_historico fh inner join franquicia f
+   on fh.franquicia_id = f.id inner join liga l on f.liga_id = l.id
+where l.siglas_es = 'LMB'   
 
 
 

@@ -2346,3 +2346,60 @@
 2015-10-19_12:36:46.156 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
 2015-10-19_12:36:46.157 [main] INFO  deportes.beisbol.App - Se encontraron 11 juegos para 2015-10-18
 2015-10-19_12:36:46.158 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-10-23_09:46:17.547 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-10-23_09:46:19.009 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_19/master_scoreboard.json
+2015-10-23_09:46:19.799 [main] INFO  deportes.beisbol.App - Se encontraron 4 juegos para 2015-10-19
+2015-10-23_09:46:19.812 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_20/master_scoreboard.json
+2015-10-23_09:46:22.886 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:23.392 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:23.880 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:24.208 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:24.209 [main] INFO  deportes.beisbol.App - Se encontraron 12 juegos para 2015-10-20
+2015-10-23_09:46:24.220 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_21/master_scoreboard.json
+2015-10-23_09:46:24.857 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:25.162 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:25.458 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:25.722 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:25.723 [main] INFO  deportes.beisbol.App - Se encontraron 12 juegos para 2015-10-21
+2015-10-23_09:46:25.734 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_22/master_scoreboard.json
+2015-10-23_09:46:26.303 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:26.567 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:26.843 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:27.078 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-23_09:46:27.079 [main] INFO  deportes.beisbol.App - Se encontraron 12 juegos para 2015-10-22
+2015-10-23_09:46:27.080 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
+2015-10-29_09:17:16.764 [main] INFO  deportes.beisbol.App - INICIO DE PROCEDIMIENTO
+2015-10-29_09:17:18.163 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_23/master_scoreboard.json
+2015-10-29_09:17:21.810 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:22.319 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:22.837 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:22.838 [main] INFO  deportes.beisbol.App - Se encontraron 16 juegos para 2015-10-23
+2015-10-29_09:17:22.850 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_24/master_scoreboard.json
+2015-10-29_09:17:23.460 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:23.770 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:24.079 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:24.408 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:24.408 [main] INFO  deportes.beisbol.App - Se encontraron 19 juegos para 2015-10-24
+2015-10-29_09:17:24.423 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_25/master_scoreboard.json
+2015-10-29_09:17:24.921 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:25.197 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:25.493 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:25.735 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:25.966 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:25.966 [main] INFO  deportes.beisbol.App - Se encontraron 15 juegos para 2015-10-25
+2015-10-29_09:17:25.966 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_26/master_scoreboard.json
+2015-10-29_09:17:26.442 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:26.443 [main] INFO  deportes.beisbol.App - Se encontraron 9 juegos para 2015-10-26
+2015-10-29_09:17:26.445 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_27/master_scoreboard.json
+2015-10-29_09:17:26.896 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:27.142 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:27.455 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:27.701 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:27.703 [main] INFO  deportes.beisbol.App - Se encontraron 11 juegos para 2015-10-27
+2015-10-29_09:17:27.711 [main] INFO  d.b.lectores.BaseballPartidosReader - Liga de partidos:http://www.milb.com/gdcross/components/game/win/year_2015/month_10/day_28/master_scoreboard.json
+2015-10-29_09:17:28.100 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:28.366 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:28.594 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:28.791 [main] INFO  d.b.lectores.LectorMultiPartidos - OP_EXITOSA
+2015-10-29_09:17:28.791 [main] INFO  deportes.beisbol.App - Se encontraron 13 juegos para 2015-10-28
+2015-10-29_09:17:28.792 [main] INFO  deportes.beisbol.App - FIN DE PROCEDIMIENTO
