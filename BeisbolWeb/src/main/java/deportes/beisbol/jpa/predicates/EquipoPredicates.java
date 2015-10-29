@@ -32,7 +32,6 @@ public class EquipoPredicates {
 		QEquipo equipo = QEquipo.equipo;
 		
 		return equipo.franquiciaHistorico.franquicia.liga.siglasEs.equalsIgnoreCase(siglasLiga).and
-				(equipo.nombreCompletoEs.containsIgnoreCase(equipoStr).or
-				(equipo.nombreTablasEs.containsIgnoreCase(equipoStr)));
+				(equipo.nombreCompletoEs.containsIgnoreCase(equipoStr));
 	}
 }

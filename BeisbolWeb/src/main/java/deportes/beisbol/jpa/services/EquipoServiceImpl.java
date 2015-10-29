@@ -11,6 +11,8 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,8 @@ import deportes.beisbol.web.model.EquipoModel;
 @Transactional(readOnly = true)
 public class EquipoServiceImpl implements EquipoService {
 
+	private static final Logger logger = LoggerFactory.getLogger(EquipoServiceImpl.class);
+	
 	@Autowired
 	EquipoRepository equipoRepository;
 	
@@ -209,7 +213,7 @@ public class EquipoServiceImpl implements EquipoService {
 	public Collection<EquipoBeisbol> search(String siglasLiga, String nombre,
 			PaginaDefinidor pagina, Optional<String> idioma) {
 		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
-				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
+				pagina.getLongitud(), pagina.getSort("nombreCompletoEs"));
 		
 		Iterator<Equipo> iteraEquipos = equipoRepository.findAll
 				(equiposLiga(siglasLiga, nombre, idioma), pageRequest).iterator();  
@@ -239,7 +243,10 @@ public class EquipoServiceImpl implements EquipoService {
 	@Override
 	public LinkedHashMap<String, EquipoPais> busqueda(String siglasLiga, String nombre, PaginaDefinidor pagina, Optional<String> idioma) {
 		PageRequest pageRequest = new PageRequest(pagina.getNumeroPagina() - 1, 
-				pagina.getLongitud(), pagina.getSort("apellidoPaterno"));
+				pagina.getLongitud(), pagina.getSort("nombreCompletoEs"));
+		
+		logger.info("siglasLiga = " + siglasLiga);
+		logger.info("nombre = " + nombre);
 		
 		Iterator<Equipo> iteraEquipos = equipoRepository.findAll
 				(equiposLiga(siglasLiga, nombre, idioma), pageRequest).iterator();  
@@ -253,7 +260,8 @@ public class EquipoServiceImpl implements EquipoService {
 			paso = new EquipoPais();
 			
 			paso.setIdFranquicia(pasoEquipo.getFranquiciaHistorico().getFranquicia().getId());
-			paso.setNombre(pasoEquipo.getNombreTablasEs());
+			//paso.setNombre(pasoEquipo.getNombreTablasEs());
+			paso.setNombre(pasoEquipo.getNombreCompletoEs());
 			paso.setPais(pasoEquipo.getFranquiciaHistorico().getFranquicia().getClub().getPai().getAbreviaturaEs());
 			
 			resultado.put(paso.getNombre(), paso);

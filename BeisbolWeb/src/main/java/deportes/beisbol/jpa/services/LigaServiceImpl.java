@@ -6,11 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
-
-
-
-/* import org.slf4j.Logger;
-import org.slf4j.LoggerFactory; */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,7 +44,7 @@ import deportes.beisbol.web.model.LigaModel;
 @Transactional(readOnly = true)
 public class LigaServiceImpl implements LigaService {
 
-	// private static final Logger logger = LoggerFactory.getLogger(LigaServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(LigaServiceImpl.class);
 	
 	@Autowired
 	LigaRepository ligaRepository;
@@ -81,8 +78,12 @@ public class LigaServiceImpl implements LigaService {
 		
 		while (temporadasBase.hasNext()) {
 			tempPaso = TemporadaConverter.convierteDeBase(temporadasBase.next());
+			
+			logger.info("ID Temp = " + tempPaso.getId());
+			
 			tempPaso.setCampeon(EquipoConverter.convierteDeBase(
-					equipoRepository.findOne(EquipoPredicates.campeonTemporada(tempPaso.getId())), idioma));
+					equipoRepository.findOne(
+							EquipoPredicates.campeonTemporada(tempPaso.getId())), idioma));
 			temporadas.add(tempPaso);
 		}			
 		
