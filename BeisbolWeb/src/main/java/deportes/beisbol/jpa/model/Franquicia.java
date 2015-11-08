@@ -27,6 +27,7 @@ public class Franquicia implements Serializable {
 	private Club club;
 	private Liga liga;
 	private Set<FranquiciaHistorico> franquiciaHistoricos;
+	private Set<FranquiciaVista> franquiciaVistas;
 
 	public Franquicia() {
 	}
@@ -160,4 +161,14 @@ public class Franquicia implements Serializable {
 		return franquiciaHistorico;
 	}
 
+	
+	//bi-directional many-to-one association to LigaHistorico
+	@OneToMany(mappedBy="liga")
+	public Set<FranquiciaVista> getFranquiciaVistas() {
+		return this.franquiciaVistas;
+	}
+
+	public void setFranquiciaVistas(Set<FranquiciaVista> franquiciaVistas) {
+		this.franquiciaVistas = franquiciaVistas;
+	}	
 }

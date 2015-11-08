@@ -29,6 +29,7 @@ import deportes.beisbol.jpa.predicates.LigaPredicates;
 import deportes.beisbol.jpa.predicates.TemporadaPredicates;
 import deportes.beisbol.jpa.repository.EquipoRepository;
 import deportes.beisbol.jpa.repository.FranquiciaRepository;
+import deportes.beisbol.jpa.repository.FranquiciaVistaRepository;
 import deportes.beisbol.jpa.repository.LigaHistoricoIntRepository;
 import deportes.beisbol.jpa.repository.LigaHistoricoRepository;
 import deportes.beisbol.jpa.repository.LigaRepository;
@@ -63,6 +64,9 @@ public class LigaServiceImpl implements LigaService {
 	
 	@Autowired
 	LigaHistoricoIntRepository ligaHistoricoIntRepository;
+	
+	@Autowired
+	FranquiciaVistaRepository franquiciaVistaRepository;
 
 	private LigaBeisbol completarLiga(LigaHistorico lh, String idioma) {
 		LigaBeisbol ligaBeisbol = null;
@@ -79,7 +83,7 @@ public class LigaServiceImpl implements LigaService {
 		while (temporadasBase.hasNext()) {
 			tempPaso = TemporadaConverter.convierteDeBase(temporadasBase.next());
 			
-			logger.info("ID Temp = " + tempPaso.getId());
+			// logger.info("ID Temp = " + tempPaso.getId());
 			
 			tempPaso.setCampeon(EquipoConverter.convierteDeBase(
 					equipoRepository.findOne(
@@ -164,6 +168,8 @@ public class LigaServiceImpl implements LigaService {
 		LinkedHashMap<String, EquipoPais> equipos = new LinkedHashMap<>();
 		
 		EquipoPais equipoAux = null;
+		
+		
 		
 		while (iteradorFranquicias.hasNext()) {
 			franquicia = iteradorFranquicias.next();

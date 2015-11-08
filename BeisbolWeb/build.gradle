@@ -15,7 +15,6 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
@@ -45,7 +44,7 @@ dependencies {
     compile('com.mysema.querydsl:querydsl-apt:3.6.8')
     compile('com.mysema.querydsl:querydsl-jpa:3.6.8')
     compile('ch.qos.logback:logback-classic')
-    compile('org.webjars:datatables:1.10.7')
+    compile('org.webjars:datatables:1.10.9')
     compile('org.webjars:bootstrap:3.3.5')
     compile('org.webjars:jquery:2.1.4')
     querydslapt group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.6.8', classifier:   'apt-one-jar', transitive: false	        
