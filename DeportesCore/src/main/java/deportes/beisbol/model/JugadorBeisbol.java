@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
@@ -123,7 +122,7 @@ public class JugadorBeisbol implements JugadorInterfaz {
 
 	@Override
 	public String getNombreAbreviado() {
-		Joiner joiner = Joiner.on(" ").skipNulls();
+		//Joiner joiner = Joiner.on(" ").skipNulls();
 		Splitter splitter = Splitter.on(" ").trimResults().omitEmptyStrings();
 		
 		ArrayList<String> separaNombre = Lists.newArrayList(splitter.split(nombre));
